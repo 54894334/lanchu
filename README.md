@@ -24,7 +24,9 @@ lanchu/
 │   ├── m2_objc.py        ObjC 元数据 → objc.txt / objc.json
 │   ├── m3_disasm.py      基础反汇编
 │   ├── m4_symbolic.py    符号化反汇编（解析 SEL / 类引用 / CFSTR / 外部符号）
-│   └── m5_gen.py         由元数据生成 src/ 下的头与实现骨架
+│   ├── m5_gen.py         由元数据生成 src/ 下的头与实现骨架
+│   ├── apply_manual.py   把手工逐条还原的方法贴回生成物（m5 会整目录重写）
+│   └── m6_verify.py      生成物自检：括号/配对/ivar 引用/void 里 return 值
 ├── analysis/
 │   ├── objc.txt          2458 行，全部类的 ivar / 属性 / 方法 + imp 地址
 │   ├── objc.json         同上，机器可读
@@ -110,10 +112,42 @@ python tools/m4_symbolic.py --all CQTouchInjector     # 整类导出到 analysis
 # 本地（需要 Theos）
 make package FINALPACKAGE=1
 
-# 没有 Mac：GitHub Actions
+# 没有 Mac：GitHub Actions（推代码 + 触发 macos-14 构建 + 等结果 + 拉产物）
 node ../gh_deploy.js --src=lanchu --repo=lanchu
+
+# 单独取产物（raw.githubusercontent 不通，走 contents API）
+node ../gh_get.js lanchu dist dist/Lanchu.dylib dist/Lanchu.dylib
 ```
 
-产物 `Lanchu.dylib`（arm64 + arm64e），注入方式与原版一致（TrollFools / ESign 注入目标 App 重签）。
+**已编译通过**（Actions run 39312469120）：
+
+| 产物 | 大小 | 说明 |
+|---|---|---|
+| `dist/Lanchu.dylib` | 430,544 B<br>sha256 `3dd4bcb0f9f0898b69e44447396f42f6f8c2240d9d5e39bc345b2eccff1dd965` | fat：arm64 + arm64e，两 slice 都是 `MH_DYLIB(6)` |
+| `dist/com.reversed.lanchu_1.0.35-1_iphoneos-arm64.deb` | 63,288 B | `Version: 1.0.35-1`，内含 dylib + `Lanchu.plist` |
+
+改了生成器或手工实现之后，本地先跑一遍自检再推，省一次 CI 往返：
+
+```bash
+python tools/m5_gen.py && python tools/apply_manual.py && python tools/m6_verify.py
+```
+
+`Lanchu.plist` 里**没写 Filter**，等于注入全部进程（所有 App + SpringBoard），
+全局连点器必须这样；只想在单个 App 里跑就改成
+`Filter = { Bundles = ( "com.apple.springboard" ); };`。
+
 HID 通道需要宿主带 `entitlements.plist` 里的 `com.apple.private.hid.client.event-dispatch`，
 没有就只能走进程内通道。
+
+## 七、重新生成时踩过的坑（改生成器前先看）
+
+| 坑 | 现象 | 修法 |
+|---|---|---|
+| ivar 名本身已带 `_` 前缀 | 生成出 `__详细`，编译报 undeclared | 拼接时不再补 `_`（`tools/m5_gen.py` 里所有 `_%s` 已改 `%s`） |
+| 把 `;` 拼进类型列 | `BOOL;   __详细;` → `declaration does not declare anything` | 分号只在语句尾加一次 |
+| 属性类型靠猜 | `@property (nonatomic) id 详细;` | 直接解析属性 attrs 的 `T` 段（`decode_type_enc`） |
+| 属性与存取器类型不一致 | `type of property 'gid' does not match type of accessor` | `method_sig()` 对属性存取器强制用属性类型 |
+| `.cxx_destruct` 当方法声明 | `expected selector for Objective-C method` | 跳过以 `.` 开头的 SEL |
+| setter 被还原成 `return _x;` | void 方法里 return 值 | `simple_body()` 用 `is_setter` 分流 |
+| `IOFixed` 在 Theos SDK 里不存在 | `type specifier missing ... redefinition of parameter 'IOFixed'` | `LZRuntime.h` 自定义 `typedef int32_t LZIOFixed;` |
+| 中文文件名不被 make 的 wildcard 支持 | `File src/CQ匹 does not exist` | 源文件名全 ASCII（`FILENAME` 映射表），类名保持中文 |
