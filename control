@@ -1,0 +1,9 @@
+Package: com.reversed.lanchu
+Name: Lanchu-Recovered
+Version: 1.0.35-1
+Architecture: iphoneos-arm64
+Description: 懒触 v1.0.35 逆向还原工程（接口 100% 还原，核心逻辑按反汇编重建）
+Maintainer: reversed
+Author: reversed
+Section: Tweaks
+Depends: firmware (>= 13.0)

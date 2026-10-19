@@ -1,0 +1,2458 @@
+=== CLASSES (54) ===
+
+@interface CQLogger                     : ROOT              size=10
+   ivar  _详细                      B                            off=8
+   ivar  _回声到系统日志                 B                            off=9
+   @prop 详细   {TB,N,V_详细}
+   @prop 回声到系统日志   {TB,N,V_回声到系统日志}
+   - 写入:级别:                                         v32@0:8@16Q24          imp=0xd5a8
+   - 详细                                             B16@0:8                imp=0xd5dc
+   - set详细:                                         v20@0:8B16             imp=0xd5e4
+   - 回声到系统日志                                        B16@0:8                imp=0xd5ec
+   - set回声到系统日志:                                    v20@0:8B16             imp=0xd5f4
+
+@interface CQOCR行                       : ROOT              size=48
+   ivar  _文本                      @"NSString"                  off=8
+   ivar  _框                       {CGRect="origin"{CGPoint="x"d"y"d}"size"{CGSize="width"d"height"d}} off=16
+   @prop 文本   {T@"NSString",C,N,V_文本}
+   @prop 框   {T{CGRect={CGPoint=dd}{CGSize=dd}},N,V_框}
+   - 文本                                             @16@0:8                imp=0x1faf4
+   - set文本:                                         v24@0:8@16             imp=0x1fafc
+   - 框                                              {CGRect={CGPoint=dd}{CGSize=dd}}16@0:8 imp=0x1fb04
+   - set框:                                          v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x1fb10
+   - .cxx_destruct                                  v16@0:8                imp=0x1fb1c
+
+@interface CQOverlay                    : ROOT              size=32
+   ivar  _球                       @"悬浮球"                       off=8
+   ivar  _浮窗                      @"穿透窗口"                      off=16
+   ivar  _面板栈                     @"NSMutableArray"            off=24
+   @prop 浮窗   {T@"穿透窗口",&,N,V_浮窗}
+   @prop 球   {T@"悬浮球",&,N,V_球}
+   @prop 面板栈   {T@"NSMutableArray",&,N,V_面板栈}
+   @prop 窗口   {T@"UIWindow",R,N}
+   @prop 根视图   {T@"UIView",R,N}
+   - init                                           @16@0:8                imp=0xd668
+   - 窗口                                             @16@0:8                imp=0xd6d4
+   - 根视图                                            @16@0:8                imp=0xd6d8
+   - 安装                                             v16@0:8                imp=0xda60
+   - 任务运行状态变更:                                      v24@0:8@16             imp=0xe494
+   - 任务进度变更:                                        v24@0:8@16             imp=0xe598
+   - 屏幕变化                                           v16@0:8                imp=0xe6c4
+   - 弹出面板:                                          v24@0:8@16             imp=0xe888
+   - 关闭面板                                           v16@0:8                imp=0xec20
+   - 关闭全部面板                                         v16@0:8                imp=0xed28
+   - 提示:                                            v24@0:8@16             imp=0xee78
+   - 球                                              @16@0:8                imp=0xf414
+   - set球:                                          v24@0:8@16             imp=0xf41c
+   - 浮窗                                             @16@0:8                imp=0xf428
+   - set浮窗:                                         v24@0:8@16             imp=0xf430
+   - 面板栈                                            @16@0:8                imp=0xf43c
+   - set面板栈:                                        v24@0:8@16             imp=0xf444
+   - .cxx_destruct                                  v16@0:8                imp=0xf450
+
+@interface CQRecorder                   : ROOT              size=64
+   ivar  _events                  @"NSMutableArray"            off=8
+   ivar  _fingerMap               @"NSMutableDictionary"       off=16
+   ivar  _startDate               @"NSDate"                    off=24
+   ivar  _录制时间                    d                            off=32
+   ivar  _nextFingerID            q                            off=40
+   ivar  _hooked                  B                            off=48
+   ivar  _录制中                     B                            off=49
+   ivar  _状态回调                    @?                           off=56
+   @prop 录制中   {TB,R,N,V_录制中}
+   @prop 录制时长   {Td,R,N}
+   @prop 事件列表   {T@"NSArray",R,N}
+   @prop 状态回调   {T@?,C,N,V_状态回调}
+   - init                                           @16@0:8                imp=0xf624
+   - 安装                                             v16@0:8                imp=0xf6ac
+   - 开始                                             v16@0:8                imp=0xf7ac
+   - 停止                                             @16@0:8                imp=0xf818
+   - 事件列表                                           @16@0:8                imp=0xf894
+   - 录制时长                                           d16@0:8                imp=0xf8cc
+   - 处理事件:                                          v24@0:8@16             imp=0xf8f8
+   - 录制中                                            B16@0:8                imp=0xfd38
+   - 状态回调                                           @?16@0:8               imp=0xfd40
+   - set状态回调:                                       v24@0:8@?16            imp=0xfd48
+   - .cxx_destruct                                  v16@0:8                imp=0xfd50
+
+@interface CQScreenshot                 : ROOT              size=8
+
+@interface CQStats                      : ROOT              size=25
+   ivar  _存                       @"NSMutableDictionary"       off=8
+   ivar  _q                       @"NSObject<OS_dispatch_queue>" off=16
+   ivar  _开启                      B                            off=24
+   @prop 开启   {TB,N,V_开启}
+   - init                                           @16@0:8                imp=0x10e44
+   - set开启:                                         v20@0:8B16             imp=0x10f38
+   - 路径                                             @16@0:8                imp=0x10f80
+   - 读盘                                             @16@0:8                imp=0x10fec
+   - 异步写盘                                           v16@0:8                imp=0x11114
+   - 检查跨天                                           v16@0:8                imp=0x111f0
+   - 今天字符串                                          @16@0:8                imp=0x112d4
+   - 记录组:名称:成功:耗时:                                  v44@0:8@16@24B32d36    imp=0x11344
+   - 累加表:组ID:名称:成功:耗时:时间:                           v60@0:8@16@24@32B40d44d52 imp=0x11678
+   - 数组From:                                        @24@0:8@16             imp=0x1189c
+   - 组统计                                            @16@0:8                imp=0x11cec
+   - 汇总                                             @16@0:8                imp=0x11dfc
+   - 清零                                             v16@0:8                imp=0x120e4
+   - 开启                                             B16@0:8                imp=0x121e8
+   - .cxx_destruct                                  v16@0:8                imp=0x121f0
+
+@interface CQStore                      : ROOT              size=112
+   ivar  _循环执行                    B                            off=8
+   ivar  _自动旋转                    B                            off=9
+   ivar  _自动缩放                    B                            off=10
+   ivar  _悬浮球自动隐藏                 B                            off=11
+   ivar  _悬浮球贴边隐藏                 B                            off=12
+   ivar  _动作提示                    B                            off=13
+   ivar  _反检测                     B                            off=14
+   ivar  _详细日志                    B                            off=15
+   ivar  _定时开始开                   B                            off=16
+   ivar  _定时停止开                   B                            off=17
+   ivar  _动作列表                    @"NSArray"                   off=24
+   ivar  _组列表                     @"NSArray"                   off=32
+   ivar  _列表版本                    q                            off=40
+   ivar  _悬浮球透明度                  d                            off=48
+   ivar  _悬浮球尺寸                   q                            off=56
+   ivar  _悬浮球形态                   q                            off=64
+   ivar  _注入通道                    q                            off=72
+   ivar  _并发模式                    q                            off=80
+   ivar  _坐标量程                    q                            off=88
+   ivar  _定时开始分                   q                            off=96
+   ivar  _定时停止分                   q                            off=104
+   @prop 动作列表   {T@"NSArray",C,N,V_动作列表}
+   @prop 组列表   {T@"NSArray",C,N,V_组列表}
+   @prop 列表版本   {Tq,N,V_列表版本}
+   @prop 循环执行   {TB,N,V_循环执行}
+   @prop 自动旋转   {TB,N,V_自动旋转}
+   @prop 自动缩放   {TB,N,V_自动缩放}
+   @prop 悬浮球自动隐藏   {TB,N,V_悬浮球自动隐藏}
+   @prop 悬浮球透明度   {Td,N,V_悬浮球透明度}
+   @prop 悬浮球贴边隐藏   {TB,N,V_悬浮球贴边隐藏}
+   @prop 动作提示   {TB,N,V_动作提示}
+   @prop 悬浮球尺寸   {Tq,N,V_悬浮球尺寸}
+   @prop 悬浮球形态   {Tq,N,V_悬浮球形态}
+   @prop 反检测   {TB,N,V_反检测}
+   @prop 注入通道   {Tq,N,V_注入通道}
+   @prop 并发模式   {Tq,N,V_并发模式}
+   @prop 坐标量程   {Tq,N,V_坐标量程}
+   @prop 详细日志   {TB,N,V_详细日志}
+   @prop 定时开始开   {TB,N,V_定时开始开}
+   @prop 定时停止开   {TB,N,V_定时停止开}
+   @prop 定时开始分   {Tq,N,V_定时开始分}
+   @prop 定时停止分   {Tq,N,V_定时停止分}
+   - init                                           @16@0:8                imp=0x13518
+   - set动作列表:                                       v24@0:8@16             imp=0x135d4
+   - set组列表:                                        v24@0:8@16             imp=0x13600
+   - 数据目录                                           @16@0:8                imp=0x1362c
+   - 归档路径                                           @16@0:8                imp=0x13754
+   - 保存                                             v16@0:8                imp=0x1379c
+   - 载入                                             v16@0:8                imp=0x13d60
+   - 关闭全部动作                                         v16@0:8                imp=0x144ac
+   - 导出文件名:                                         @24@0:8@16             imp=0x14640
+   - 导入路径:                                          B24@0:8@16             imp=0x14930
+   - 组ById:                                         @24@0:8@16             imp=0x14cf8
+   - 组内动作:                                          @24@0:8@16             imp=0x14e24
+   - 整理归属                                           B16@0:8                imp=0x14f68
+   - 需要调度                                           B16@0:8                imp=0x15544
+   - 在时间窗:                                          B24@0:8q16             imp=0x1557c
+   - 录制组                                            @16@0:8                imp=0x15620
+   - 添加录制动作:                                        v24@0:8@16             imp=0x15778
+   - 设置组开关:开:                                       v28@0:8@16B24          imp=0x15830
+   - 设置动作开关:开:                                      v28@0:8@16B24          imp=0x159fc
+   - 索引Of标识:                                        Q24@0:8@16             imp=0x15bdc
+   - 识图跳转显示名:                                       @24@0:8@16             imp=0x15c98
+   - 动作列表                                           @16@0:8                imp=0x15f40
+   - 组列表                                            @16@0:8                imp=0x15f48
+   - 列表版本                                           q16@0:8                imp=0x15f50
+   - set列表版本:                                       v24@0:8q16             imp=0x15f58
+   - 循环执行                                           B16@0:8                imp=0x15f60
+   - set循环执行:                                       v20@0:8B16             imp=0x15f68
+   - 自动旋转                                           B16@0:8                imp=0x15f70
+   - set自动旋转:                                       v20@0:8B16             imp=0x15f78
+   - 自动缩放                                           B16@0:8                imp=0x15f80
+   - set自动缩放:                                       v20@0:8B16             imp=0x15f88
+   - 悬浮球自动隐藏                                        B16@0:8                imp=0x15f90
+   - set悬浮球自动隐藏:                                    v20@0:8B16             imp=0x15f98
+   - 悬浮球透明度                                         d16@0:8                imp=0x15fa0
+   - set悬浮球透明度:                                     v24@0:8d16             imp=0x15fa8
+   - 悬浮球贴边隐藏                                        B16@0:8                imp=0x15fb0
+   - set悬浮球贴边隐藏:                                    v20@0:8B16             imp=0x15fb8
+   - 动作提示                                           B16@0:8                imp=0x15fc0
+   - set动作提示:                                       v20@0:8B16             imp=0x15fc8
+   - 悬浮球尺寸                                          q16@0:8                imp=0x15fd0
+   - set悬浮球尺寸:                                      v24@0:8q16             imp=0x15fd8
+   - 悬浮球形态                                          q16@0:8                imp=0x15fe0
+   - set悬浮球形态:                                      v24@0:8q16             imp=0x15fe8
+   - 反检测                                            B16@0:8                imp=0x15ff0
+   - set反检测:                                        v20@0:8B16             imp=0x15ff8
+   - 注入通道                                           q16@0:8                imp=0x16000
+   - set注入通道:                                       v24@0:8q16             imp=0x16008
+   - 并发模式                                           q16@0:8                imp=0x16010
+   - set并发模式:                                       v24@0:8q16             imp=0x16018
+   - 坐标量程                                           q16@0:8                imp=0x16020
+   - set坐标量程:                                       v24@0:8q16             imp=0x16028
+   - 详细日志                                           B16@0:8                imp=0x16030
+   - set详细日志:                                       v20@0:8B16             imp=0x16038
+   - 定时开始开                                          B16@0:8                imp=0x16040
+   - set定时开始开:                                      v20@0:8B16             imp=0x16048
+   - 定时停止开                                          B16@0:8                imp=0x16050
+   - set定时停止开:                                      v20@0:8B16             imp=0x16058
+   - 定时开始分                                          q16@0:8                imp=0x16060
+   - set定时开始分:                                      v24@0:8q16             imp=0x16068
+   - 定时停止分                                          q16@0:8                imp=0x16070
+   - set定时停止分:                                      v24@0:8q16             imp=0x16078
+   - .cxx_destruct                                  v16@0:8                imp=0x16080
+
+@interface CQTaskEngine                 : ROOT              size=64
+   ivar  _运行中                     B                            off=8
+   ivar  _需要停止                    B                            off=9
+   ivar  _等待调度中                   B                            off=10
+   ivar  _动作成功                    B                            off=11
+   ivar  _动作备注                    @"NSString"                  off=16
+   ivar  _输入表                     @"NSMutableDictionary"       off=24
+   ivar  _试跑白名单                   @"NSSet"                     off=32
+   ivar  _变量表                     @"NSMutableDictionary"       off=40
+   ivar  _取字暂存                    @"NSString"                  off=48
+   ivar  _状态回调                    @?                           off=56
+   @prop 运行中   {TB,R,N}
+   @prop 取字暂存   {T@"NSString",C,N,V_取字暂存}
+   @prop 状态回调   {T@?,C,N,V_状态回调}
+   @prop 试跑白名单   {T@"NSSet",C,N}
+   - 运行中                                            B16@0:8                imp=0x16370
+   - set试跑白名单:                                      v24@0:8@16             imp=0x16378
+   - 试跑白名单                                          @16@0:8                imp=0x163a4
+   - 启动                                             v16@0:8                imp=0x163ac
+   - 停止                                             v16@0:8                imp=0x1659c
+   - 主循环                                            v16@0:8                imp=0x165d8
+   - 执行单个:                                          @24@0:8@16             imp=0x1787c
+   - 跳转下标:列表:                                       q32@0:8@16@24          imp=0x17d58
+   - 休眠:                                            v24@0:8d16             imp=0x17df8
+   - 偏移随机:                                          B24@0:8@16             imp=0x17ee8
+   - 输入取一条:动作:                                      @32@0:8@16@24          imp=0x17f08
+   - 跑输入:                                           v24@0:8@16             imp=0x18050
+   - 跑等待:                                           @24@0:8@16             imp=0x18a18
+   - 跑循环:                                           v24@0:8@16             imp=0x18b58
+   - 跑循环结尾:                                         @24@0:8@16             imp=0x18bfc
+   - 动作By标识:                                        @24@0:8@16             imp=0x18d64
+   - 取值时长:动作:                                       d32@0:8d16@24          imp=0x18ebc
+   - 多点列表:                                          @24@0:8@16             imp=0x18f68
+   - 跑点击:                                           v24@0:8@16             imp=0x19124
+   - 跑并发点击:点列表:                                     v32@0:8@16@24          imp=0x19238
+   - 注入点击:                                          v24@0:8@16             imp=0x1937c
+   - 跑多点:                                           v24@0:8@16             imp=0x1944c
+   - 跑双击:                                           v24@0:8@16             imp=0x19550
+   - 跑自由滑动:                                         v24@0:8@16             imp=0x197dc
+   - 跑长按:                                           v24@0:8@16             imp=0x19c10
+   - 跑滑动:                                           v24@0:8@16             imp=0x19cc4
+   - 跑识图:                                           @24@0:8@16             imp=0x19f08
+   - 跑录制:                                           v24@0:8@16             imp=0x1a698
+   - 跑识字:                                           @24@0:8@16             imp=0x1a748
+   - 识字尝试:命中框:                                      B32@0:8@16^{CGRect={CGPoint=dd}{CGSize=dd}}24 imp=0x1a8a4
+   - 识字成功分支:命中框:                                    @56@0:8@16{CGRect={CGPoint=dd}{CGSize=dd}}24 imp=0x1addc
+   - 识字失败分支:                                        @24@0:8@16             imp=0x1afd4
+   - 跑识色:                                           @24@0:8@16             imp=0x1b0a8
+   - 识色成功分支:命中点:                                    @40@0:8@16{CGPoint=dd}24 imp=0x1b88c
+   - 识色失败分支:                                        @24@0:8@16             imp=0x1ba1c
+   - 跑取字:                                           @24@0:8@16             imp=0x1bae8
+   - 取字成功分支:                                        @24@0:8@16             imp=0x1c290
+   - 取字失败分支:                                        @24@0:8@16             imp=0x1c360
+   - 取字暂存                                           @16@0:8                imp=0x1c434
+   - set取字暂存:                                       v24@0:8@16             imp=0x1c43c
+   - 状态回调                                           @?16@0:8               imp=0x1c444
+   - set状态回调:                                       v24@0:8@?16            imp=0x1c44c
+   - .cxx_destruct                                  v16@0:8                imp=0x1c454
+
+@interface CQTechKit                    : ROOT              size=8
+
+@interface CQTemplateMatcher            : ROOT              size=8
+
+@interface CQTextOCR                    : ROOT              size=8
+
+@interface CQTouchInjector              : ROOT              size=144
+   ivar  _启用                      B                            off=8
+   ivar  _显示反馈                    B                            off=9
+   ivar  _上下文已就绪                  B                            off=10
+   ivar  _并发已取消                   B                            off=11
+   ivar  _保活中                     B                            off=12
+   ivar  _已请求建客户端                 B                            off=13
+   ivar  _已装事件观察者                 B                            off=14
+   ivar  _上下文Id                   I                            off=16
+   ivar  _派发锁                     {os_unfair_lock_s="_os_unfair_lock_opaque"I} off=20
+   ivar  _客户端锁                    {os_unfair_lock_s="_os_unfair_lock_opaque"I} off=24
+   ivar  _计数锁                     {os_unfair_lock_s="_os_unfair_lock_opaque"I} off=28
+   ivar  _抖动下限                    d                            off=32
+   ivar  _抖动上限                    d                            off=40
+   ivar  _通道                      Q                            off=48
+   ivar  _并发模式                    Q                            off=56
+   ivar  _坐标量程                    Q                            off=64
+   ivar  _实测系数X                   d                            off=72
+   ivar  _实测系数Y                   d                            off=80
+   ivar  _活跃并发数                   q                            off=88
+   ivar  _累计派发次数                  Q                            off=96
+   ivar  _client                  ^{__IOHIDEventSystemClient=} off=104
+   ivar  _上下文刷新时刻                 d                            off=112
+   ivar  _后台任务                    Q                            off=120
+   ivar  _后台观察者                   @                            off=128
+   ivar  _前台观察者                   @                            off=136
+   @prop client   {T^{__IOHIDEventSystemClient=},N,V_client}
+   @prop 上下文Id   {TI,N,V_上下文Id}
+   @prop 上下文已就绪   {TB,N,V_上下文已就绪}
+   @prop 上下文刷新时刻   {Td,N,V_上下文刷新时刻}
+   @prop 累计派发次数   {TQ,N,V_累计派发次数}
+   @prop 活跃并发数   {Tq,N,V_活跃并发数}
+   @prop 并发已取消   {TB,N,V_并发已取消}
+   @prop 派发锁   {T{os_unfair_lock_s=I},N,V_派发锁}
+   @prop 客户端锁   {T{os_unfair_lock_s=I},N,V_客户端锁}
+   @prop 计数锁   {T{os_unfair_lock_s=I},N,V_计数锁}
+   @prop 实测系数X   {Td,N,V_实测系数X}
+   @prop 实测系数Y   {Td,N,V_实测系数Y}
+   @prop 保活中   {TB,N,V_保活中}
+   @prop 后台任务   {TQ,N,V_后台任务}
+   @prop 后台观察者   {T@,N,V_后台观察者}
+   @prop 前台观察者   {T@,N,V_前台观察者}
+   @prop 已请求建客户端   {TB,N,V_已请求建客户端}
+   @prop 已装事件观察者   {TB,N,V_已装事件观察者}
+   @prop 启用   {TB,N,V_启用}
+   @prop 显示反馈   {TB,N,V_显示反馈}
+   @prop 抖动下限   {Td,N,V_抖动下限}
+   @prop 抖动上限   {Td,N,V_抖动上限}
+   @prop 通道   {TQ,N,V_通道}
+   @prop 并发模式   {TQ,N,V_并发模式}
+   @prop 坐标量程   {TQ,N,V_坐标量程}
+   @prop 量程说明   {T@"NSString",R,N}
+   - init                                           @16@0:8                imp=0x2040c
+   - 取客户端                                           ^{__IOHIDEventSystemClient=}16@0:8 imp=0x20470
+   - 刷新上下文                                          v16@0:8                imp=0x204dc
+   - 取窗口上下文                                         I16@0:8                imp=0x209a4
+   - 当前上下文Id                                        I16@0:8                imp=0x20ad8
+   - 预热                                             v16@0:8                imp=0x20ae0
+   - 安排上下文补抓:                                       v24@0:8q16             imp=0x20b30
+   - 确保上下文就绪                                        v16@0:8                imp=0x20c44
+   - set通道:                                         v24@0:8Q16             imp=0x20ddc
+   - 安装事件观察者                                        v16@0:8                imp=0x20e74
+   - 开启后台保活                                         v16@0:8                imp=0x2103c
+   - 回前台刷新上下文                                       v16@0:8                imp=0x210cc
+   - 结束后台保活                                         v16@0:8                imp=0x21170
+   - 续后台断言                                          v16@0:8                imp=0x211fc
+   - 结束后台断言                                         v16@0:8                imp=0x212d0
+   - 安装事件探针                                         v16@0:8                imp=0x21354
+   - cq原发事件:                                        v24@0:8@16             imp=0x21bb0
+   - 抖动后的点:开启:                                      {CGPoint=dd}36@0:8{CGPoint=dd}16B32 imp=0x21bb4
+   - 量程说明                                           @16@0:8                imp=0x21c38
+   - HID坐标:                                         {CGPoint=dd}32@0:8{CGPoint=dd}16 imp=0x21ccc
+   - 派发:按下:                                         v28@0:8@16B24          imp=0x21d98
+   - 派发:按下:起始索引:                                    v32@0:8@16B24I28       imp=0x21da0
+   - 派发HID坐标:按下:起始索引:反馈点:说明:                        v48@0:8@16B24I28@32@40 imp=0x22118
+   - 投递:                                            v24@0:8^{__IOHIDEvent=}16 imp=0x22520
+   - 点击:                                            v32@0:8{CGPoint=dd}16  imp=0x226c0
+   - 点击:次数:偏移随机:间隔:                                 v52@0:8{CGPoint=dd}16q32B40d44 imp=0x227e0
+   - 双击:次数:偏移随机:间隔:                                 v52@0:8{CGPoint=dd}16q32B40d44 imp=0x22860
+   - 长按:时长:                                         v40@0:8{CGPoint=dd}16d32 imp=0x22b10
+   - 滑动:to:时长:帧数:随机点数:                              v68@0:8{CGPoint=dd}16{CGPoint=dd}32d48q56B64 imp=0x22c0c
+   - 多点点击:偏移随机:                                     v28@0:8@16B24          imp=0x22e04
+   - 自由滑动:to:长按:时长:帧数:随机点数:                         v76@0:8{CGPoint=dd}16{CGPoint=dd}32d48d56q64B72 imp=0x22f8c
+   - 连续滑动:长按:段时长:段帧数:间隔:随机点数:                       v60@0:8@16d24d32q40d48B56 imp=0x23188
+   - 回放:循环:                                         v32@0:8@16q24          imp=0x23558
+   - 并发点击:次数:间隔:按下时长:偏移随机:同步起手:完成:                  v64@0:8@16q24d32d40B48B52@?56 imp=0x23720
+   - 取消并发                                           v16@0:8                imp=0x23c80
+   - 启用                                             B16@0:8                imp=0x23c88
+   - set启用:                                         v20@0:8B16             imp=0x23c90
+   - 显示反馈                                           B16@0:8                imp=0x23c98
+   - set显示反馈:                                       v20@0:8B16             imp=0x23ca0
+   - 抖动下限                                           d16@0:8                imp=0x23ca8
+   - set抖动下限:                                       v24@0:8d16             imp=0x23cb0
+   - 抖动上限                                           d16@0:8                imp=0x23cb8
+   - set抖动上限:                                       v24@0:8d16             imp=0x23cc0
+   - 通道                                             Q16@0:8                imp=0x23cc8
+   - 并发模式                                           Q16@0:8                imp=0x23cd0
+   - set并发模式:                                       v24@0:8Q16             imp=0x23cd8
+   - 坐标量程                                           Q16@0:8                imp=0x23ce0
+   - set坐标量程:                                       v24@0:8Q16             imp=0x23ce8
+   - 实测系数X                                          d16@0:8                imp=0x23cf0
+   - set实测系数X:                                      v24@0:8d16             imp=0x23cf8
+   - 实测系数Y                                          d16@0:8                imp=0x23d00
+   - set实测系数Y:                                      v24@0:8d16             imp=0x23d08
+   - 活跃并发数                                          q16@0:8                imp=0x23d10
+   - set活跃并发数:                                      v24@0:8q16             imp=0x23d18
+   - 累计派发次数                                         Q16@0:8                imp=0x23d20
+   - set累计派发次数:                                     v24@0:8Q16             imp=0x23d28
+   - client                                         ^{__IOHIDEventSystemClient=}16@0:8 imp=0x23d30
+   - setClient:                                     v24@0:8^{__IOHIDEventSystemClient=}16 imp=0x23d38
+   - 上下文Id                                          I16@0:8                imp=0x23d40
+   - set上下文Id:                                      v20@0:8I16             imp=0x23d48
+   - 上下文已就绪                                         B16@0:8                imp=0x23d50
+   - set上下文已就绪:                                     v20@0:8B16             imp=0x23d58
+   - 上下文刷新时刻                                        d16@0:8                imp=0x23d60
+   - set上下文刷新时刻:                                    v24@0:8d16             imp=0x23d68
+   - 并发已取消                                          B16@0:8                imp=0x23d70
+   - set并发已取消:                                      v20@0:8B16             imp=0x23d78
+   - 派发锁                                            {os_unfair_lock_s=I}16@0:8 imp=0x23d80
+   - set派发锁:                                        v20@0:8{os_unfair_lock_s=I}16 imp=0x23d88
+   - 客户端锁                                           {os_unfair_lock_s=I}16@0:8 imp=0x23d90
+   - set客户端锁:                                       v20@0:8{os_unfair_lock_s=I}16 imp=0x23d98
+   - 计数锁                                            {os_unfair_lock_s=I}16@0:8 imp=0x23da0
+   - set计数锁:                                        v20@0:8{os_unfair_lock_s=I}16 imp=0x23da8
+   - 保活中                                            B16@0:8                imp=0x23db0
+   - set保活中:                                        v20@0:8B16             imp=0x23db8
+   - 后台任务                                           Q16@0:8                imp=0x23dc0
+   - set后台任务:                                       v24@0:8Q16             imp=0x23dc8
+   - 后台观察者                                          @16@0:8                imp=0x23dd0
+   - set后台观察者:                                      v24@0:8@16             imp=0x23dd8
+   - 前台观察者                                          @16@0:8                imp=0x23de0
+   - set前台观察者:                                      v24@0:8@16             imp=0x23de8
+   - 已请求建客户端                                        B16@0:8                imp=0x23df0
+   - set已请求建客户端:                                    v20@0:8B16             imp=0x23df8
+   - 已装事件观察者                                        B16@0:8                imp=0x23e00
+   - set已装事件观察者:                                    v20@0:8B16             imp=0x23e08
+
+@interface CQ匹配结果                       : ROOT              size=72
+   ivar  _命中                      B                            off=8
+   ivar  _相似度                     d                            off=16
+   ivar  _中心                      {CGPoint="x"d"y"d}           off=24
+   ivar  _矩形                      {CGRect="origin"{CGPoint="x"d"y"d}"size"{CGSize="width"d"height"d}} off=40
+   @prop 相似度   {Td,N,V_相似度}
+   @prop 中心   {T{CGPoint=dd},N,V_中心}
+   @prop 矩形   {T{CGRect={CGPoint=dd}{CGSize=dd}},N,V_矩形}
+   @prop 命中   {TB,N,V_命中}
+   - 相似度                                            d16@0:8                imp=0x1ebec
+   - set相似度:                                        v24@0:8d16             imp=0x1ebf4
+   - 中心                                             {CGPoint=dd}16@0:8     imp=0x1ebfc
+   - set中心:                                         v32@0:8{CGPoint=dd}16  imp=0x1ec04
+   - 矩形                                             {CGRect={CGPoint=dd}{CGSize=dd}}16@0:8 imp=0x1ec0c
+   - set矩形:                                         v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x1ec18
+   - 命中                                             B16@0:8                imp=0x1ec24
+   - set命中:                                         v20@0:8B16             imp=0x1ec2c
+
+@interface 任务编辑视图                       : ROOT              size=72
+   ivar  _表                       @"UITableView"               off=8
+   ivar  _标题                      @"UILabel"                   off=16
+   ivar  _左按钮                     @"UIButton"                  off=24
+   ivar  _右按钮                     @"UIButton"                  off=32
+   ivar  _新增动作按钮                  @"UIButton"                  off=40
+   ivar  _试跑按钮                    @"UIButton"                  off=48
+   ivar  _层级                      q                            off=56
+   ivar  _当前组                     @"动作组模型"                     off=64
+   @prop 表   {T@"UITableView",&,N,V_表}
+   @prop 标题   {T@"UILabel",&,N,V_标题}
+   @prop 左按钮   {T@"UIButton",&,N,V_左按钮}
+   @prop 右按钮   {T@"UIButton",&,N,V_右按钮}
+   @prop 新增动作按钮   {T@"UIButton",&,N,V_新增动作按钮}
+   @prop 试跑按钮   {T@"UIButton",&,N,V_试跑按钮}
+   @prop 层级   {Tq,N,V_层级}
+   @prop 当前组   {T@"动作组模型",&,N,V_当前组}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - 构建                                             v16@0:8                imp=0x25764
+   - 显示                                             v16@0:8                imp=0x25e0c
+   - 关闭                                             v16@0:8                imp=0x25e48
+   - layoutSubviews                                 v16@0:8                imp=0x25e7c
+   - 切换层级:                                          v24@0:8q16             imp=0x260b4
+   - 左按钮点按                                          v16@0:8                imp=0x26250
+   - 点试跑                                            v16@0:8                imp=0x26574
+   - 点标题重命名                                         v16@0:8                imp=0x26868
+   - 显示组列表                                          @16@0:8                imp=0x26a40
+   - tableView:numberOfRowsInSection:               q32@0:8@16q24          imp=0x26bdc
+   - tableView:cellForRowAtIndexPath:               @32@0:8@16@24          imp=0x26c9c
+   - 成功行为名:                                         @24@0:8q16             imp=0x28350
+   - 组行控件:                                          @24@0:8@16             imp=0x28378
+   - 动作行控件:录制组:                                     @28@0:8@16B24          imp=0x28494
+   - 排序按钮:上:                                        @28@0:8@16B24          imp=0x2861c
+   - 组开关:                                           v24@0:8@16             imp=0x28760
+   - 录制动作开关:                                        v24@0:8@16             imp=0x287f0
+   - 排序:                                            v24@0:8@16             imp=0x28880
+   - tableView:didSelectRowAtIndexPath:             v32@0:8@16@24          imp=0x28e84
+   - tableView:canEditRowAtIndexPath:               B32@0:8@16@24          imp=0x290f0
+   - tableView:commitEditingStyle:forRowAtIndexPath: v40@0:8@16q24@32       imp=0x2919c
+   - 删除组:                                           v24@0:8@16             imp=0x29a30
+   - 新增动作                                           v16@0:8                imp=0x2a07c
+   - 表                                              @16@0:8                imp=0x2a8e0
+   - set表:                                          v24@0:8@16             imp=0x2a8ec
+   - 标题                                             @16@0:8                imp=0x2a8fc
+   - set标题:                                         v24@0:8@16             imp=0x2a908
+   - 左按钮                                            @16@0:8                imp=0x2a918
+   - set左按钮:                                        v24@0:8@16             imp=0x2a924
+   - 右按钮                                            @16@0:8                imp=0x2a934
+   - set右按钮:                                        v24@0:8@16             imp=0x2a940
+   - 新增动作按钮                                         @16@0:8                imp=0x2a950
+   - set新增动作按钮:                                     v24@0:8@16             imp=0x2a95c
+   - 试跑按钮                                           @16@0:8                imp=0x2a96c
+   - set试跑按钮:                                       v24@0:8@16             imp=0x2a978
+   - 层级                                             q16@0:8                imp=0x2a988
+   - set层级:                                         v24@0:8q16             imp=0x2a994
+   - 当前组                                            @16@0:8                imp=0x2a9a4
+   - set当前组:                                        v24@0:8@16             imp=0x2a9b0
+   - .cxx_destruct                                  v16@0:8                imp=0x2a9c0
+
+@interface 副标题单元格                       : ROOT              size=16
+   ivar  _卡片底                     @"UIView"                    off=8
+   @prop 卡片底   {T@"UIView",&,N,V_卡片底}
+   - initWithStyle:reuseIdentifier:                 @32@0:8q16@24          imp=0x25548
+   - layoutSubviews                                 v16@0:8                imp=0x25650
+   - 卡片底                                            @16@0:8                imp=0x256d4
+   - set卡片底:                                        v24@0:8@16             imp=0x256e0
+   - .cxx_destruct                                  v16@0:8                imp=0x256f0
+
+@interface 功能视图                         : ROOT              size=16
+   ivar  _按钮列表                    @"NSMutableArray"            off=8
+   @prop 按钮列表   {T@"NSMutableArray",&,N,V_按钮列表}
+   - 构建                                             v16@0:8                imp=0x2af24
+   - 点按:                                            v24@0:8@16             imp=0x2b514
+   - 使用方法                                           v16@0:8                imp=0x2b5a8
+   - 运行统计                                           v16@0:8                imp=0x2b66c
+   - 新增动作                                           v16@0:8                imp=0x2b678
+   - 动作列表                                           v16@0:8                imp=0x2c3d8
+   - 录制                                             v16@0:8                imp=0x2c428
+   - 设置                                             v16@0:8                imp=0x2c478
+   - 按钮列表                                           @16@0:8                imp=0x2c4e8
+   - set按钮列表:                                       v24@0:8@16             imp=0x2c4f8
+   - .cxx_destruct                                  v16@0:8                imp=0x2c50c
+
+@interface 动作模型                         : ROOT              size=912
+   ivar  _是否开启                    B                            off=8
+   ivar  _识图判断                    B                            off=9
+   ivar  _自由长按                    B                            off=10
+   ivar  _循环每轮清零                  B                            off=11
+   ivar  _输入清空                    B                            off=12
+   ivar  _输入回车                    B                            off=13
+   ivar  _等待模式                    B                            off=14
+   ivar  _击杀特效                    B                            off=15
+   ivar  _自动旋转                    B                            off=16
+   ivar  _自动缩放                    B                            off=17
+   ivar  _标识                      @"NSString"                  off=24
+   ivar  _gid                     @"NSString"                  off=32
+   ivar  _名称                      @"NSString"                  off=40
+   ivar  _类型                      q                            off=48
+   ivar  _次数                      q                            off=56
+   ivar  _开始延迟                    d                            off=64
+   ivar  _结束延迟                    d                            off=72
+   ivar  _连点间隔                    d                            off=80
+   ivar  _自动复杂度                   q                            off=88
+   ivar  _位置偏移                    @"NSArray"                   off=96
+   ivar  _偏移随机数                   q                            off=104
+   ivar  _时长随机开关                  q                            off=112
+   ivar  _时长随机幅度                  d                            off=120
+   ivar  _等待随机                    q                            off=128
+   ivar  _等待秒                     d                            off=136
+   ivar  _等待下限                    d                            off=144
+   ivar  _等待上限                    d                            off=152
+   ivar  _等待结束行为                  q                            off=160
+   ivar  _等待跳转                    @"NSString"                  off=168
+   ivar  _是否随机                    q                            off=176
+   ivar  _位置偏移随机数开关               q                            off=184
+   ivar  _长按时长                    d                            off=192
+   ivar  _滑动时长                    d                            off=200
+   ivar  _方向                      q                            off=208
+   ivar  _距离                      d                            off=216
+   ivar  _滑动帧数                    q                            off=224
+   ivar  _图片                      @"UIImage"                   off=232
+   ivar  _相似度                     d                            off=240
+   ivar  _识图超时                    d                            off=248
+   ivar  _识图延迟                    d                            off=256
+   ivar  _识图点击                    q                            off=264
+   ivar  _识图跳转                    @"NSString"                  off=272
+   ivar  _识图命中行为                  q                            off=280
+   ivar  _识图长按时长                  d                            off=288
+   ivar  _识图滑动时长                  d                            off=296
+   ivar  _识图滑动帧数                  q                            off=304
+   ivar  _识图滑动时隔                  d                            off=312
+   ivar  _识图路径点                   @"NSArray"                   off=320
+   ivar  _识图判断次数                  q                            off=328
+   ivar  _识图判断失败行为                q                            off=336
+   ivar  _识图判断跳转                  @"NSString"                  off=344
+   ivar  _识图失败行为                  q                            off=352
+   ivar  _识图失败跳转                  @"NSString"                  off=360
+   ivar  _多点坐标组                   @"NSArray"                   off=368
+   ivar  _自由模式                    q                            off=376
+   ivar  _自由路径点                   @"NSArray"                   off=384
+   ivar  _自由滑动时长                  d                            off=392
+   ivar  _自由滑动帧数                  q                            off=400
+   ivar  _自由坐标组                   @"NSArray"                   off=408
+   ivar  _循环上限                    q                            off=416
+   ivar  _循环变量名                   @"NSString"                  off=424
+   ivar  _循环配对标识                  @"NSString"                  off=432
+   ivar  _识字等待                    d                            off=440
+   ivar  _识字类型                    q                            off=448
+   ivar  _识字文本                    @"NSString"                  off=456
+   ivar  _识字条件                    q                            off=464
+   ivar  _识字数值                    d                            off=472
+   ivar  _识字成功行为                  q                            off=480
+   ivar  _识字长按时长                  d                            off=488
+   ivar  _识字滑动时长                  d                            off=496
+   ivar  _识字滑动帧数                  q                            off=504
+   ivar  _识字滑动时隔                  d                            off=512
+   ivar  _识字路径点                   @"NSArray"                   off=520
+   ivar  _识字失败行为                  q                            off=528
+   ivar  _识字跳转                    @"NSString"                  off=536
+   ivar  _识字失败跳转                  @"NSString"                  off=544
+   ivar  _取字等待                    d                            off=552
+   ivar  _取字存储                    q                            off=560
+   ivar  _取字成功行为                  q                            off=568
+   ivar  _取字失败行为                  q                            off=576
+   ivar  _取字跳转                    @"NSString"                  off=584
+   ivar  _取字失败跳转                  @"NSString"                  off=592
+   ivar  _取字模式                    q                            off=600
+   ivar  _取字高级类型                  q                            off=608
+   ivar  _取字目标文本                  @"NSString"                  off=616
+   ivar  _取字替换文本                  @"NSString"                  off=624
+   ivar  _取字正则                    @"NSString"                  off=632
+   ivar  _取字第几条                   q                            off=640
+   ivar  _输入等待                    d                            off=648
+   ivar  _输入文本                    @"NSString"                  off=656
+   ivar  _输入模式                    q                            off=664
+   ivar  _输入来源                    q                            off=672
+   ivar  _输入暂存取条                  q                            off=680
+   ivar  _识色等待                    d                            off=688
+   ivar  _识色次数                    q                            off=696
+   ivar  _识色容差                    q                            off=704
+   ivar  _识色模式                    q                            off=712
+   ivar  _识色点组                    @"NSArray"                   off=720
+   ivar  _识色成功行为                  q                            off=728
+   ivar  _识色长按时长                  d                            off=736
+   ivar  _识色滑动时长                  d                            off=744
+   ivar  _识色滑动帧数                  q                            off=752
+   ivar  _识色滑动时隔                  d                            off=760
+   ivar  _识色路径点                   @"NSArray"                   off=768
+   ivar  _识色失败行为                  q                            off=776
+   ivar  _识色跳转                    @"NSString"                  off=784
+   ivar  _识色失败跳转                  @"NSString"                  off=792
+   ivar  _等待总超时                   d                            off=800
+   ivar  _录制数据                    @"NSData"                    off=808
+   ivar  _录制时间                    d                            off=816
+   ivar  _循环次数                    d                            off=824
+   ivar  _坐标                      {CGPoint="x"d"y"d}           off=832
+   ivar  _起始坐标                    {CGPoint="x"d"y"d}           off=848
+   ivar  _结束坐标                    {CGPoint="x"d"y"d}           off=864
+   ivar  _识别区域                    {CGRect="origin"{CGPoint="x"d"y"d}"size"{CGSize="width"d"height"d}} off=880
+   @prop 标识   {T@"NSString",C,N,V_标识}
+   @prop gid   {T@"NSString",C,N,V_gid}
+   @prop 名称   {T@"NSString",C,N,V_名称}
+   @prop 类型   {Tq,N,V_类型}
+   @prop 是否开启   {TB,N,V_是否开启}
+   @prop 次数   {Tq,N,V_次数}
+   @prop 开始延迟   {Td,N,V_开始延迟}
+   @prop 结束延迟   {Td,N,V_结束延迟}
+   @prop 连点间隔   {Td,N,V_连点间隔}
+   @prop 自动复杂度   {Tq,N,V_自动复杂度}
+   @prop 坐标   {T{CGPoint=dd},N,V_坐标}
+   @prop 起始坐标   {T{CGPoint=dd},N,V_起始坐标}
+   @prop 结束坐标   {T{CGPoint=dd},N,V_结束坐标}
+   @prop 位置偏移   {T@"NSArray",C,N,V_位置偏移}
+   @prop 偏移随机数   {Tq,N,V_偏移随机数}
+   @prop 时长随机开关   {Tq,N,V_时长随机开关}
+   @prop 时长随机幅度   {Td,N,V_时长随机幅度}
+   @prop 等待随机   {Tq,N,V_等待随机}
+   @prop 等待秒   {Td,N,V_等待秒}
+   @prop 等待下限   {Td,N,V_等待下限}
+   @prop 等待上限   {Td,N,V_等待上限}
+   @prop 等待结束行为   {Tq,N,V_等待结束行为}
+   @prop 等待跳转   {T@"NSString",C,N,V_等待跳转}
+   @prop 是否随机   {Tq,N,V_是否随机}
+   @prop 位置偏移随机数开关   {Tq,N,V_位置偏移随机数开关}
+   @prop 长按时长   {Td,N,V_长按时长}
+   @prop 滑动时长   {Td,N,V_滑动时长}
+   @prop 方向   {Tq,N,V_方向}
+   @prop 距离   {Td,N,V_距离}
+   @prop 滑动帧数   {Tq,N,V_滑动帧数}
+   @prop 图片   {T@"UIImage",&,N,V_图片}
+   @prop 相似度   {Td,N,V_相似度}
+   @prop 识别区域   {T{CGRect={CGPoint=dd}{CGSize=dd}},N,V_识别区域}
+   @prop 识图超时   {Td,N,V_识图超时}
+   @prop 识图延迟   {Td,N,V_识图延迟}
+   @prop 识图点击   {Tq,N,V_识图点击}
+   @prop 识图跳转   {T@"NSString",C,N,V_识图跳转}
+   @prop 识图命中行为   {Tq,N,V_识图命中行为}
+   @prop 识图长按时长   {Td,N,V_识图长按时长}
+   @prop 识图滑动时长   {Td,N,V_识图滑动时长}
+   @prop 识图滑动帧数   {Tq,N,V_识图滑动帧数}
+   @prop 识图滑动时隔   {Td,N,V_识图滑动时隔}
+   @prop 识图路径点   {T@"NSArray",C,N,V_识图路径点}
+   @prop 识图判断   {TB,N,V_识图判断}
+   @prop 识图判断次数   {Tq,N,V_识图判断次数}
+   @prop 识图判断失败行为   {Tq,N,V_识图判断失败行为}
+   @prop 识图判断跳转   {T@"NSString",C,N,V_识图判断跳转}
+   @prop 识图失败行为   {Tq,N,V_识图失败行为}
+   @prop 识图失败跳转   {T@"NSString",C,N,V_识图失败跳转}
+   @prop 多点坐标组   {T@"NSArray",C,N,V_多点坐标组}
+   @prop 自由模式   {Tq,N,V_自由模式}
+   @prop 自由长按   {TB,N,V_自由长按}
+   @prop 自由路径点   {T@"NSArray",C,N,V_自由路径点}
+   @prop 自由滑动时长   {Td,N,V_自由滑动时长}
+   @prop 自由滑动帧数   {Tq,N,V_自由滑动帧数}
+   @prop 自由坐标组   {T@"NSArray",C,N,V_自由坐标组}
+   @prop 循环上限   {Tq,N,V_循环上限}
+   @prop 循环变量名   {T@"NSString",C,N,V_循环变量名}
+   @prop 循环每轮清零   {TB,N,V_循环每轮清零}
+   @prop 循环配对标识   {T@"NSString",C,N,V_循环配对标识}
+   @prop 识字等待   {Td,N,V_识字等待}
+   @prop 识字类型   {Tq,N,V_识字类型}
+   @prop 识字文本   {T@"NSString",C,N,V_识字文本}
+   @prop 识字条件   {Tq,N,V_识字条件}
+   @prop 识字数值   {Td,N,V_识字数值}
+   @prop 识字成功行为   {Tq,N,V_识字成功行为}
+   @prop 识字长按时长   {Td,N,V_识字长按时长}
+   @prop 识字滑动时长   {Td,N,V_识字滑动时长}
+   @prop 识字滑动帧数   {Tq,N,V_识字滑动帧数}
+   @prop 识字滑动时隔   {Td,N,V_识字滑动时隔}
+   @prop 识字路径点   {T@"NSArray",C,N,V_识字路径点}
+   @prop 识字失败行为   {Tq,N,V_识字失败行为}
+   @prop 识字跳转   {T@"NSString",C,N,V_识字跳转}
+   @prop 识字失败跳转   {T@"NSString",C,N,V_识字失败跳转}
+   @prop 取字等待   {Td,N,V_取字等待}
+   @prop 取字存储   {Tq,N,V_取字存储}
+   @prop 取字成功行为   {Tq,N,V_取字成功行为}
+   @prop 取字失败行为   {Tq,N,V_取字失败行为}
+   @prop 取字跳转   {T@"NSString",C,N,V_取字跳转}
+   @prop 取字失败跳转   {T@"NSString",C,N,V_取字失败跳转}
+   @prop 取字模式   {Tq,N,V_取字模式}
+   @prop 取字高级类型   {Tq,N,V_取字高级类型}
+   @prop 取字目标文本   {T@"NSString",C,N,V_取字目标文本}
+   @prop 取字替换文本   {T@"NSString",C,N,V_取字替换文本}
+   @prop 取字正则   {T@"NSString",C,N,V_取字正则}
+   @prop 取字第几条   {Tq,N,V_取字第几条}
+   @prop 输入等待   {Td,N,V_输入等待}
+   @prop 输入文本   {T@"NSString",C,N,V_输入文本}
+   @prop 输入模式   {Tq,N,V_输入模式}
+   @prop 输入来源   {Tq,N,V_输入来源}
+   @prop 输入暂存取条   {Tq,N,V_输入暂存取条}
+   @prop 输入清空   {TB,N,V_输入清空}
+   @prop 输入回车   {TB,N,V_输入回车}
+   @prop 识色等待   {Td,N,V_识色等待}
+   @prop 识色次数   {Tq,N,V_识色次数}
+   @prop 识色容差   {Tq,N,V_识色容差}
+   @prop 识色模式   {Tq,N,V_识色模式}
+   @prop 识色点组   {T@"NSArray",C,N,V_识色点组}
+   @prop 识色成功行为   {Tq,N,V_识色成功行为}
+   @prop 识色长按时长   {Td,N,V_识色长按时长}
+   @prop 识色滑动时长   {Td,N,V_识色滑动时长}
+   @prop 识色滑动帧数   {Tq,N,V_识色滑动帧数}
+   @prop 识色滑动时隔   {Td,N,V_识色滑动时隔}
+   @prop 识色路径点   {T@"NSArray",C,N,V_识色路径点}
+   @prop 识色失败行为   {Tq,N,V_识色失败行为}
+   @prop 识色跳转   {T@"NSString",C,N,V_识色跳转}
+   @prop 识色失败跳转   {T@"NSString",C,N,V_识色失败跳转}
+   @prop 等待模式   {TB,N,V_等待模式}
+   @prop 等待总超时   {Td,N,V_等待总超时}
+   @prop 录制数据   {T@"NSData",&,N,V_录制数据}
+   @prop 录制时间   {Td,N,V_录制时间}
+   @prop 循环次数   {Td,N,V_循环次数}
+   @prop 击杀特效   {TB,N,V_击杀特效}
+   @prop 自动旋转   {TB,N,V_自动旋转}
+   @prop 自动缩放   {TB,N,V_自动缩放}
+   - init                                           @16@0:8                imp=0x2c5c4
+   - 确保标识                                           v16@0:8                imp=0x2cac4
+   - CQ全部跳转目标标识                                     @16@0:8                imp=0x2cb28
+   - initWithCoder:                                 @24@0:8@16             imp=0x2cc7c
+   - encodeWithCoder:                               v24@0:8@16             imp=0x2dc74
+   - copyWithZone:                                  @24@0:8^{_NSZone=}16   imp=0x2e478
+   - description                                    @16@0:8                imp=0x2e6fc
+   - 标识                                             @16@0:8                imp=0x2e794
+   - set标识:                                         v24@0:8@16             imp=0x2e79c
+   - gid                                            @16@0:8                imp=0x2e7a4
+   - setGid:                                        v24@0:8@16             imp=0x2e7ac
+   - 名称                                             @16@0:8                imp=0x2e7b4
+   - set名称:                                         v24@0:8@16             imp=0x2e7bc
+   - 类型                                             q16@0:8                imp=0x2e7c4
+   - set类型:                                         v24@0:8q16             imp=0x2e7cc
+   - 是否开启                                           B16@0:8                imp=0x2e7d4
+   - set是否开启:                                       v20@0:8B16             imp=0x2e7dc
+   - 次数                                             q16@0:8                imp=0x2e7e4
+   - set次数:                                         v24@0:8q16             imp=0x2e7ec
+   - 开始延迟                                           d16@0:8                imp=0x2e7f4
+   - set开始延迟:                                       v24@0:8d16             imp=0x2e7fc
+   - 结束延迟                                           d16@0:8                imp=0x2e804
+   - set结束延迟:                                       v24@0:8d16             imp=0x2e80c
+   - 连点间隔                                           d16@0:8                imp=0x2e814
+   - set连点间隔:                                       v24@0:8d16             imp=0x2e81c
+   - 自动复杂度                                          q16@0:8                imp=0x2e824
+   - set自动复杂度:                                      v24@0:8q16             imp=0x2e82c
+   - 坐标                                             {CGPoint=dd}16@0:8     imp=0x2e834
+   - set坐标:                                         v32@0:8{CGPoint=dd}16  imp=0x2e840
+   - 起始坐标                                           {CGPoint=dd}16@0:8     imp=0x2e84c
+   - set起始坐标:                                       v32@0:8{CGPoint=dd}16  imp=0x2e858
+   - 结束坐标                                           {CGPoint=dd}16@0:8     imp=0x2e864
+   - set结束坐标:                                       v32@0:8{CGPoint=dd}16  imp=0x2e870
+   - 位置偏移                                           @16@0:8                imp=0x2e87c
+   - set位置偏移:                                       v24@0:8@16             imp=0x2e884
+   - 偏移随机数                                          q16@0:8                imp=0x2e88c
+   - set偏移随机数:                                      v24@0:8q16             imp=0x2e894
+   - 时长随机开关                                         q16@0:8                imp=0x2e89c
+   - set时长随机开关:                                     v24@0:8q16             imp=0x2e8a4
+   - 时长随机幅度                                         d16@0:8                imp=0x2e8ac
+   - set时长随机幅度:                                     v24@0:8d16             imp=0x2e8b4
+   - 等待随机                                           q16@0:8                imp=0x2e8bc
+   - set等待随机:                                       v24@0:8q16             imp=0x2e8c4
+   - 等待秒                                            d16@0:8                imp=0x2e8cc
+   - set等待秒:                                        v24@0:8d16             imp=0x2e8d4
+   - 等待下限                                           d16@0:8                imp=0x2e8dc
+   - set等待下限:                                       v24@0:8d16             imp=0x2e8e4
+   - 等待上限                                           d16@0:8                imp=0x2e8ec
+   - set等待上限:                                       v24@0:8d16             imp=0x2e8f4
+   - 等待结束行为                                         q16@0:8                imp=0x2e8fc
+   - set等待结束行为:                                     v24@0:8q16             imp=0x2e904
+   - 等待跳转                                           @16@0:8                imp=0x2e90c
+   - set等待跳转:                                       v24@0:8@16             imp=0x2e914
+   - 是否随机                                           q16@0:8                imp=0x2e91c
+   - set是否随机:                                       v24@0:8q16             imp=0x2e924
+   - 位置偏移随机数开关                                      q16@0:8                imp=0x2e92c
+   - set位置偏移随机数开关:                                  v24@0:8q16             imp=0x2e934
+   - 长按时长                                           d16@0:8                imp=0x2e93c
+   - set长按时长:                                       v24@0:8d16             imp=0x2e944
+   - 滑动时长                                           d16@0:8                imp=0x2e94c
+   - set滑动时长:                                       v24@0:8d16             imp=0x2e954
+   - 方向                                             q16@0:8                imp=0x2e95c
+   - set方向:                                         v24@0:8q16             imp=0x2e964
+   - 距离                                             d16@0:8                imp=0x2e96c
+   - set距离:                                         v24@0:8d16             imp=0x2e974
+   - 滑动帧数                                           q16@0:8                imp=0x2e97c
+   - set滑动帧数:                                       v24@0:8q16             imp=0x2e984
+   - 图片                                             @16@0:8                imp=0x2e98c
+   - set图片:                                         v24@0:8@16             imp=0x2e994
+   - 相似度                                            d16@0:8                imp=0x2e9a0
+   - set相似度:                                        v24@0:8d16             imp=0x2e9a8
+   - 识别区域                                           {CGRect={CGPoint=dd}{CGSize=dd}}16@0:8 imp=0x2e9b0
+   - set识别区域:                                       v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x2e9c4
+   - 识图超时                                           d16@0:8                imp=0x2e9d8
+   - set识图超时:                                       v24@0:8d16             imp=0x2e9e0
+   - 识图延迟                                           d16@0:8                imp=0x2e9e8
+   - set识图延迟:                                       v24@0:8d16             imp=0x2e9f0
+   - 识图点击                                           q16@0:8                imp=0x2e9f8
+   - set识图点击:                                       v24@0:8q16             imp=0x2ea00
+   - 识图跳转                                           @16@0:8                imp=0x2ea08
+   - set识图跳转:                                       v24@0:8@16             imp=0x2ea10
+   - 识图命中行为                                         q16@0:8                imp=0x2ea18
+   - set识图命中行为:                                     v24@0:8q16             imp=0x2ea20
+   - 识图长按时长                                         d16@0:8                imp=0x2ea28
+   - set识图长按时长:                                     v24@0:8d16             imp=0x2ea30
+   - 识图滑动时长                                         d16@0:8                imp=0x2ea38
+   - set识图滑动时长:                                     v24@0:8d16             imp=0x2ea40
+   - 识图滑动帧数                                         q16@0:8                imp=0x2ea48
+   - set识图滑动帧数:                                     v24@0:8q16             imp=0x2ea50
+   - 识图滑动时隔                                         d16@0:8                imp=0x2ea58
+   - set识图滑动时隔:                                     v24@0:8d16             imp=0x2ea60
+   - 识图路径点                                          @16@0:8                imp=0x2ea68
+   - set识图路径点:                                      v24@0:8@16             imp=0x2ea70
+   - 识图判断                                           B16@0:8                imp=0x2ea78
+   - set识图判断:                                       v20@0:8B16             imp=0x2ea80
+   - 识图判断次数                                         q16@0:8                imp=0x2ea88
+   - set识图判断次数:                                     v24@0:8q16             imp=0x2ea90
+   - 识图判断失败行为                                       q16@0:8                imp=0x2ea98
+   - set识图判断失败行为:                                   v24@0:8q16             imp=0x2eaa0
+   - 识图判断跳转                                         @16@0:8                imp=0x2eaa8
+   - set识图判断跳转:                                     v24@0:8@16             imp=0x2eab0
+   - 识图失败行为                                         q16@0:8                imp=0x2eab8
+   - set识图失败行为:                                     v24@0:8q16             imp=0x2eac0
+   - 识图失败跳转                                         @16@0:8                imp=0x2eac8
+   - set识图失败跳转:                                     v24@0:8@16             imp=0x2ead0
+   - 多点坐标组                                          @16@0:8                imp=0x2ead8
+   - set多点坐标组:                                      v24@0:8@16             imp=0x2eae0
+   - 自由模式                                           q16@0:8                imp=0x2eae8
+   - set自由模式:                                       v24@0:8q16             imp=0x2eaf0
+   - 自由长按                                           B16@0:8                imp=0x2eaf8
+   - set自由长按:                                       v20@0:8B16             imp=0x2eb00
+   - 自由路径点                                          @16@0:8                imp=0x2eb08
+   - set自由路径点:                                      v24@0:8@16             imp=0x2eb10
+   - 自由滑动时长                                         d16@0:8                imp=0x2eb18
+   - set自由滑动时长:                                     v24@0:8d16             imp=0x2eb20
+   - 自由滑动帧数                                         q16@0:8                imp=0x2eb28
+   - set自由滑动帧数:                                     v24@0:8q16             imp=0x2eb30
+   - 自由坐标组                                          @16@0:8                imp=0x2eb38
+   - set自由坐标组:                                      v24@0:8@16             imp=0x2eb40
+   - 循环上限                                           q16@0:8                imp=0x2eb48
+   - set循环上限:                                       v24@0:8q16             imp=0x2eb50
+   - 循环变量名                                          @16@0:8                imp=0x2eb58
+   - set循环变量名:                                      v24@0:8@16             imp=0x2eb60
+   - 循环每轮清零                                         B16@0:8                imp=0x2eb68
+   - set循环每轮清零:                                     v20@0:8B16             imp=0x2eb70
+   - 循环配对标识                                         @16@0:8                imp=0x2eb78
+   - set循环配对标识:                                     v24@0:8@16             imp=0x2eb80
+   - 识字等待                                           d16@0:8                imp=0x2eb88
+   - set识字等待:                                       v24@0:8d16             imp=0x2eb90
+   - 识字类型                                           q16@0:8                imp=0x2eb98
+   - set识字类型:                                       v24@0:8q16             imp=0x2eba0
+   - 识字文本                                           @16@0:8                imp=0x2eba8
+   - set识字文本:                                       v24@0:8@16             imp=0x2ebb0
+   - 识字条件                                           q16@0:8                imp=0x2ebb8
+   - set识字条件:                                       v24@0:8q16             imp=0x2ebc0
+   - 识字数值                                           d16@0:8                imp=0x2ebc8
+   - set识字数值:                                       v24@0:8d16             imp=0x2ebd0
+   - 识字成功行为                                         q16@0:8                imp=0x2ebd8
+   - set识字成功行为:                                     v24@0:8q16             imp=0x2ebe0
+   - 识字长按时长                                         d16@0:8                imp=0x2ebe8
+   - set识字长按时长:                                     v24@0:8d16             imp=0x2ebf0
+   - 识字滑动时长                                         d16@0:8                imp=0x2ebf8
+   - set识字滑动时长:                                     v24@0:8d16             imp=0x2ec00
+   - 识字滑动帧数                                         q16@0:8                imp=0x2ec08
+   - set识字滑动帧数:                                     v24@0:8q16             imp=0x2ec10
+   - 识字滑动时隔                                         d16@0:8                imp=0x2ec18
+   - set识字滑动时隔:                                     v24@0:8d16             imp=0x2ec20
+   - 识字路径点                                          @16@0:8                imp=0x2ec28
+   - set识字路径点:                                      v24@0:8@16             imp=0x2ec30
+   - 识字失败行为                                         q16@0:8                imp=0x2ec38
+   - set识字失败行为:                                     v24@0:8q16             imp=0x2ec40
+   - 识字跳转                                           @16@0:8                imp=0x2ec48
+   - set识字跳转:                                       v24@0:8@16             imp=0x2ec50
+   - 识字失败跳转                                         @16@0:8                imp=0x2ec58
+   - set识字失败跳转:                                     v24@0:8@16             imp=0x2ec60
+   - 取字等待                                           d16@0:8                imp=0x2ec68
+   - set取字等待:                                       v24@0:8d16             imp=0x2ec70
+   - 取字存储                                           q16@0:8                imp=0x2ec78
+   - set取字存储:                                       v24@0:8q16             imp=0x2ec80
+   - 取字成功行为                                         q16@0:8                imp=0x2ec88
+   - set取字成功行为:                                     v24@0:8q16             imp=0x2ec90
+   - 取字失败行为                                         q16@0:8                imp=0x2ec98
+   - set取字失败行为:                                     v24@0:8q16             imp=0x2eca0
+   - 取字跳转                                           @16@0:8                imp=0x2eca8
+   - set取字跳转:                                       v24@0:8@16             imp=0x2ecb0
+   - 取字失败跳转                                         @16@0:8                imp=0x2ecb8
+   - set取字失败跳转:                                     v24@0:8@16             imp=0x2ecc0
+   - 取字模式                                           q16@0:8                imp=0x2ecc8
+   - set取字模式:                                       v24@0:8q16             imp=0x2ecd0
+   - 取字高级类型                                         q16@0:8                imp=0x2ecd8
+   - set取字高级类型:                                     v24@0:8q16             imp=0x2ece0
+   - 取字目标文本                                         @16@0:8                imp=0x2ece8
+   - set取字目标文本:                                     v24@0:8@16             imp=0x2ecf0
+   - 取字替换文本                                         @16@0:8                imp=0x2ecf8
+   - set取字替换文本:                                     v24@0:8@16             imp=0x2ed00
+   - 取字正则                                           @16@0:8                imp=0x2ed08
+   - set取字正则:                                       v24@0:8@16             imp=0x2ed10
+   - 取字第几条                                          q16@0:8                imp=0x2ed18
+   - set取字第几条:                                      v24@0:8q16             imp=0x2ed20
+   - 输入等待                                           d16@0:8                imp=0x2ed28
+   - set输入等待:                                       v24@0:8d16             imp=0x2ed30
+   - 输入文本                                           @16@0:8                imp=0x2ed38
+   - set输入文本:                                       v24@0:8@16             imp=0x2ed40
+   - 输入模式                                           q16@0:8                imp=0x2ed48
+   - set输入模式:                                       v24@0:8q16             imp=0x2ed50
+   - 输入来源                                           q16@0:8                imp=0x2ed58
+   - set输入来源:                                       v24@0:8q16             imp=0x2ed60
+   - 输入暂存取条                                         q16@0:8                imp=0x2ed68
+   - set输入暂存取条:                                     v24@0:8q16             imp=0x2ed70
+   - 输入清空                                           B16@0:8                imp=0x2ed78
+   - set输入清空:                                       v20@0:8B16             imp=0x2ed80
+   - 输入回车                                           B16@0:8                imp=0x2ed88
+   - set输入回车:                                       v20@0:8B16             imp=0x2ed90
+   - 识色等待                                           d16@0:8                imp=0x2ed98
+   - set识色等待:                                       v24@0:8d16             imp=0x2eda0
+   - 识色次数                                           q16@0:8                imp=0x2eda8
+   - set识色次数:                                       v24@0:8q16             imp=0x2edb0
+   - 识色容差                                           q16@0:8                imp=0x2edb8
+   - set识色容差:                                       v24@0:8q16             imp=0x2edc0
+   - 识色模式                                           q16@0:8                imp=0x2edc8
+   - set识色模式:                                       v24@0:8q16             imp=0x2edd0
+   - 识色点组                                           @16@0:8                imp=0x2edd8
+   - set识色点组:                                       v24@0:8@16             imp=0x2ede0
+   - 识色成功行为                                         q16@0:8                imp=0x2ede8
+   - set识色成功行为:                                     v24@0:8q16             imp=0x2edf0
+   - 识色长按时长                                         d16@0:8                imp=0x2edf8
+   - set识色长按时长:                                     v24@0:8d16             imp=0x2ee00
+   - 识色滑动时长                                         d16@0:8                imp=0x2ee08
+   - set识色滑动时长:                                     v24@0:8d16             imp=0x2ee10
+   - 识色滑动帧数                                         q16@0:8                imp=0x2ee18
+   - set识色滑动帧数:                                     v24@0:8q16             imp=0x2ee20
+   - 识色滑动时隔                                         d16@0:8                imp=0x2ee28
+   - set识色滑动时隔:                                     v24@0:8d16             imp=0x2ee30
+   - 识色路径点                                          @16@0:8                imp=0x2ee38
+   - set识色路径点:                                      v24@0:8@16             imp=0x2ee40
+   - 识色失败行为                                         q16@0:8                imp=0x2ee48
+   - set识色失败行为:                                     v24@0:8q16             imp=0x2ee50
+   - 识色跳转                                           @16@0:8                imp=0x2ee58
+   - set识色跳转:                                       v24@0:8@16             imp=0x2ee60
+   - 识色失败跳转                                         @16@0:8                imp=0x2ee68
+   - set识色失败跳转:                                     v24@0:8@16             imp=0x2ee70
+   - 等待模式                                           B16@0:8                imp=0x2ee78
+   - set等待模式:                                       v20@0:8B16             imp=0x2ee80
+   - 等待总超时                                          d16@0:8                imp=0x2ee88
+   - set等待总超时:                                      v24@0:8d16             imp=0x2ee90
+   - 录制数据                                           @16@0:8                imp=0x2ee98
+   - set录制数据:                                       v24@0:8@16             imp=0x2eea0
+   - 录制时间                                           d16@0:8                imp=0x2eeac
+   - set录制时间:                                       v24@0:8d16             imp=0x2eeb4
+   - 循环次数                                           d16@0:8                imp=0x2eebc
+   - set循环次数:                                       v24@0:8d16             imp=0x2eec4
+   - 击杀特效                                           B16@0:8                imp=0x2eecc
+   - set击杀特效:                                       v20@0:8B16             imp=0x2eed4
+   - 自动旋转                                           B16@0:8                imp=0x2eedc
+   - set自动旋转:                                       v20@0:8B16             imp=0x2eee4
+   - 自动缩放                                           B16@0:8                imp=0x2eeec
+   - set自动缩放:                                       v20@0:8B16             imp=0x2eef4
+   - .cxx_destruct                                  v16@0:8                imp=0x2eefc
+
+@interface 动作组模型                        : ROOT              size=32
+   ivar  _专属                      B                            off=8
+   ivar  _是否开启                    B                            off=9
+   ivar  _标识                      @"NSString"                  off=16
+   ivar  _名称                      @"NSString"                  off=24
+   @prop 标识   {T@"NSString",C,N,V_标识}
+   @prop 名称   {T@"NSString",C,N,V_名称}
+   @prop 专属   {TB,N,V_专属}
+   @prop 是否开启   {TB,N,V_是否开启}
+   - initWithCoder:                                 @24@0:8@16             imp=0x37e4c
+   - encodeWithCoder:                               v24@0:8@16             imp=0x37f74
+   - description                                    @16@0:8                imp=0x3816c
+   - 标识                                             @16@0:8                imp=0x381e8
+   - set标识:                                         v24@0:8@16             imp=0x381f0
+   - 名称                                             @16@0:8                imp=0x381f8
+   - set名称:                                         v24@0:8@16             imp=0x38200
+   - 专属                                             B16@0:8                imp=0x38208
+   - set专属:                                         v20@0:8B16             imp=0x38210
+   - 是否开启                                           B16@0:8                imp=0x38218
+   - set是否开启:                                       v20@0:8B16             imp=0x38220
+   - .cxx_destruct                                  v16@0:8                imp=0x38228
+
+@interface 动作选择视图                       : ROOT              size=160
+   ivar  _最小化                     B                            off=8
+   ivar  _面板位置已重定                 B                            off=9
+   ivar  _内容已搬运                   B                            off=10
+   ivar  _完成回调                    @?                           off=16
+   ivar  _隐式归组回调                  @?                           off=24
+   ivar  _标记视图                    @"UIView"                    off=32
+   ivar  _时长随机段                   @"UISegmentedControl"        off=40
+   ivar  _随机幅度行                   @"参数行"                       off=48
+   ivar  _面板                      @"UIView"                    off=56
+   ivar  _坐标标签                    @"UILabel"                   off=64
+   ivar  _行列表                     @"NSMutableArray"            off=72
+   ivar  _编辑动作                    @"动作模型"                      off=80
+   ivar  _原动作                     @"动作模型"                      off=88
+   ivar  _把手栏                     @"UIView"                    off=96
+   ivar  _最小化按钮                   @"UIButton"                  off=104
+   ivar  _名称输入框                   @"UITextField"               off=112
+   ivar  _内容滚动                    @"UIScrollView"              off=120
+   ivar  _拖动偏移                    {CGPoint="x"d"y"d}           off=128
+   ivar  _面板中心自定                  {CGPoint="x"d"y"d}           off=144
+   @prop 拖动偏移   {T{CGPoint=dd},N,V_拖动偏移}
+   @prop 时长随机段   {T@"UISegmentedControl",&,N,V_时长随机段}
+   @prop 随机幅度行   {T@"参数行",W,N,V_随机幅度行}
+   @prop 标记视图   {T@"UIView",&,N,V_标记视图}
+   @prop 面板   {T@"UIView",&,N,V_面板}
+   @prop 坐标标签   {T@"UILabel",&,N,V_坐标标签}
+   @prop 行列表   {T@"NSMutableArray",&,N,V_行列表}
+   @prop 编辑动作   {T@"动作模型",&,N,V_编辑动作}
+   @prop 原动作   {T@"动作模型",&,N,V_原动作}
+   @prop 把手栏   {T@"UIView",&,N,V_把手栏}
+   @prop 最小化按钮   {T@"UIButton",&,N,V_最小化按钮}
+   @prop 最小化   {TB,N,V_最小化}
+   @prop 面板位置已重定   {TB,N,V_面板位置已重定}
+   @prop 面板中心自定   {T{CGPoint=dd},N,V_面板中心自定}
+   @prop 名称输入框   {T@"UITextField",&,N,V_名称输入框}
+   @prop 内容滚动   {T@"UIScrollView",&,N,V_内容滚动}
+   @prop 内容已搬运   {TB,N,V_内容已搬运}
+   @prop 动作   {T@"动作模型",R,N}
+   @prop 完成回调   {T@?,C,N,V_完成回调}
+   @prop 隐式归组回调   {T@?,C,N,V_隐式归组回调}
+   - initWith动作:                                    @24@0:8@16             imp=0x406ec
+   - 动作                                             @16@0:8                imp=0x40cec
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x40cf0
+   - 新建标记视图                                         @16@0:8                imp=0x40df8
+   - 摆放标记:                                          v32@0:8{CGPoint=dd}16  imp=0x411bc
+   - 更新标记                                           v16@0:8                imp=0x411f4
+   - 拖动:                                            v24@0:8@16             imp=0x411f8
+   - 刷新准星                                           v16@0:8                imp=0x413b4
+   - 显示标记                                           B16@0:8                imp=0x415f0
+   - 坐标文本                                           @16@0:8                imp=0x415f4
+   - 构建参数                                           v16@0:8                imp=0x41654
+   - 添加参数:                                          @24@0:8@16             imp=0x41658
+   - 含时长字段                                          B16@0:8                imp=0x416b4
+   - 时长随机附加高度                                       d16@0:8                imp=0x416b8
+   - 构建时长随机控件                                       v16@0:8                imp=0x41710
+   - 时长随机段变化:                                       v24@0:8@16             imp=0x41bbc
+   - 布局时长随机:宽:                                      v32@0:8^d16d24         imp=0x41bf8
+   - 面板附加高度                                         d16@0:8                imp=0x41d7c
+   - 内容区域                                           @16@0:8                imp=0x41d84
+   - 面板把手栏高                                         d16@0:8                imp=0x41dd4
+   - 面板最小化总高                                        d16@0:8                imp=0x41ddc
+   - 面板行区起点                                         d16@0:8                imp=0x41e0c
+   - 可见参数行数                                         Q16@0:8                imp=0x41e28
+   - 面板行区高                                          d16@0:8                imp=0x41f18
+   - 面板名称行高                                         d16@0:8                imp=0x41f60
+   - 布局参数区                                          v16@0:8                imp=0x41f6c
+   - 切换最小化                                          v16@0:8                imp=0x42fe4
+   - 拖动面板:                                          v24@0:8@16             imp=0x43090
+   - layoutSubviews                                 v16@0:8                imp=0x43240
+   - 取消                                             v16@0:8                imp=0x432a0
+   - 确定                                             v16@0:8                imp=0x432a4
+   - 名称回车                                           v16@0:8                imp=0x434bc
+   - 显示                                             v16@0:8                imp=0x434e4
+   - 设置界面隐藏:                                        v20@0:8B16             imp=0x43668
+   - 选跳转目标:                                         v24@0:8@?16            imp=0x4370c
+   - 摆放行:显:y:宽:                                     v44@0:8@16B24^d28d36   imp=0x44284
+   - 完成回调                                           @?16@0:8               imp=0x4431c
+   - set完成回调:                                       v24@0:8@?16            imp=0x44328
+   - 隐式归组回调                                         @?16@0:8               imp=0x44334
+   - set隐式归组回调:                                     v24@0:8@?16            imp=0x44340
+   - 标记视图                                           @16@0:8                imp=0x4434c
+   - set标记视图:                                       v24@0:8@16             imp=0x44358
+   - 拖动偏移                                           {CGPoint=dd}16@0:8     imp=0x44368
+   - set拖动偏移:                                       v32@0:8{CGPoint=dd}16  imp=0x44374
+   - 时长随机段                                          @16@0:8                imp=0x44380
+   - set时长随机段:                                      v24@0:8@16             imp=0x4438c
+   - 随机幅度行                                          @16@0:8                imp=0x4439c
+   - set随机幅度行:                                      v24@0:8@16             imp=0x443b8
+   - 面板                                             @16@0:8                imp=0x443c8
+   - set面板:                                         v24@0:8@16             imp=0x443d4
+   - 坐标标签                                           @16@0:8                imp=0x443e4
+   - set坐标标签:                                       v24@0:8@16             imp=0x443f0
+   - 行列表                                            @16@0:8                imp=0x44400
+   - set行列表:                                        v24@0:8@16             imp=0x4440c
+   - 编辑动作                                           @16@0:8                imp=0x4441c
+   - set编辑动作:                                       v24@0:8@16             imp=0x44428
+   - 原动作                                            @16@0:8                imp=0x44438
+   - set原动作:                                        v24@0:8@16             imp=0x44444
+   - 把手栏                                            @16@0:8                imp=0x44454
+   - set把手栏:                                        v24@0:8@16             imp=0x44460
+   - 最小化按钮                                          @16@0:8                imp=0x44470
+   - set最小化按钮:                                      v24@0:8@16             imp=0x4447c
+   - 最小化                                            B16@0:8                imp=0x4448c
+   - set最小化:                                        v20@0:8B16             imp=0x44498
+   - 面板位置已重定                                        B16@0:8                imp=0x444a4
+   - set面板位置已重定:                                    v20@0:8B16             imp=0x444b0
+   - 面板中心自定                                         {CGPoint=dd}16@0:8     imp=0x444bc
+   - set面板中心自定:                                     v32@0:8{CGPoint=dd}16  imp=0x444c8
+   - 名称输入框                                          @16@0:8                imp=0x444d4
+   - set名称输入框:                                      v24@0:8@16             imp=0x444e0
+   - 内容滚动                                           @16@0:8                imp=0x444f0
+   - set内容滚动:                                       v24@0:8@16             imp=0x444fc
+   - 内容已搬运                                          B16@0:8                imp=0x4450c
+   - set内容已搬运:                                      v20@0:8B16             imp=0x44518
+   - .cxx_destruct                                  v16@0:8                imp=0x44524
+
+@interface 参数行                          : ROOT              size=64
+   ivar  _小数位                     q                            off=8
+   ivar  _隐藏                      B                            off=16
+   ivar  _标题                      @"UILabel"                   off=24
+   ivar  _数值                      @"UILabel"                   off=32
+   ivar  _步进                      @"UIStepper"                 off=40
+   ivar  _变化                      @?                           off=48
+   ivar  _零显示                     @"NSString"                  off=56
+   @prop 标题   {T@"UILabel",&,N,V_标题}
+   @prop 数值   {T@"UILabel",&,N,V_数值}
+   @prop 步进   {T@"UIStepper",&,N,V_步进}
+   @prop 零显示   {T@"NSString",C,N,V_零显示}
+   @prop 变化   {T@?,C,N,V_变化}
+   @prop 隐藏   {TB,N,V_隐藏}
+   - 布局宽:                                           v24@0:8d16             imp=0x4038c
+   - 值变化:                                           v24@0:8@16             imp=0x40430
+   - 刷新:                                            v24@0:8d16             imp=0x404a4
+   - 赋值:                                            v24@0:8d16             imp=0x405b8
+   - 标题                                             @16@0:8                imp=0x405f8
+   - set标题:                                         v24@0:8@16             imp=0x40604
+   - 数值                                             @16@0:8                imp=0x40614
+   - set数值:                                         v24@0:8@16             imp=0x40620
+   - 步进                                             @16@0:8                imp=0x40630
+   - set步进:                                         v24@0:8@16             imp=0x4063c
+   - 变化                                             @?16@0:8               imp=0x4064c
+   - set变化:                                         v24@0:8@?16            imp=0x40658
+   - 隐藏                                             B16@0:8                imp=0x40664
+   - set隐藏:                                         v20@0:8B16             imp=0x40670
+   - 零显示                                            @16@0:8                imp=0x4067c
+   - set零显示:                                        v24@0:8@16             imp=0x40688
+   - .cxx_destruct                                  v16@0:8                imp=0x40694
+
+@interface 双击选择视图                       : 动作选择视图            size=160
+   - 构建参数                                           v16@0:8                imp=0x4928c
+   - 含时长字段                                          B16@0:8                imp=0x4962c
+   - 面板附加高度                                         d16@0:8                imp=0x49630
+
+@interface 取字选择视图                       : 动作选择视图            size=280
+   ivar  _模式段                     @"UISegmentedControl"        off=160
+   ivar  _高级段                     @"UISegmentedControl"        off=168
+   ivar  _目标框                     @"UITextField"               off=176
+   ivar  _替换框                     @"UITextField"               off=184
+   ivar  _正则框                     @"UITextField"               off=192
+   ivar  _第几条框                    @"UITextField"               off=200
+   ivar  _存储段                     @"UISegmentedControl"        off=208
+   ivar  _框选按钮                    @"UIButton"                  off=216
+   ivar  _测试按钮                    @"UIButton"                  off=224
+   ivar  _成功段                     @"UISegmentedControl"        off=232
+   ivar  _成功跳按钮                   @"UIButton"                  off=240
+   ivar  _失败段                     @"UISegmentedControl"        off=248
+   ivar  _失败跳按钮                   @"UIButton"                  off=256
+   ivar  _区域宽行                    @"参数行"                       off=264
+   ivar  _区域高行                    @"参数行"                       off=272
+   @prop 模式段   {T@"UISegmentedControl",&,N,V_模式段}
+   @prop 高级段   {T@"UISegmentedControl",&,N,V_高级段}
+   @prop 目标框   {T@"UITextField",&,N,V_目标框}
+   @prop 替换框   {T@"UITextField",&,N,V_替换框}
+   @prop 正则框   {T@"UITextField",&,N,V_正则框}
+   @prop 第几条框   {T@"UITextField",&,N,V_第几条框}
+   @prop 存储段   {T@"UISegmentedControl",&,N,V_存储段}
+   @prop 框选按钮   {T@"UIButton",&,N,V_框选按钮}
+   @prop 测试按钮   {T@"UIButton",&,N,V_测试按钮}
+   @prop 成功段   {T@"UISegmentedControl",&,N,V_成功段}
+   @prop 成功跳按钮   {T@"UIButton",&,N,V_成功跳按钮}
+   @prop 失败段   {T@"UISegmentedControl",&,N,V_失败段}
+   @prop 失败跳按钮   {T@"UIButton",&,N,V_失败跳按钮}
+   @prop 区域宽行   {T@"参数行",W,N,V_区域宽行}
+   @prop 区域高行   {T@"参数行",W,N,V_区域高行}
+   - 显示标记                                           B16@0:8                imp=0x58784
+   - 新建标记视图                                         @16@0:8                imp=0x58788
+   - 构建参数                                           v16@0:8                imp=0x587c8
+   - 配段:                                            v24@0:8@16             imp=0x5983c
+   - 面板附加高度                                         d16@0:8                imp=0x59984
+   - 布局参数区                                          v16@0:8                imp=0x59a2c
+   - 新建按钮                                           @16@0:8                imp=0x5a04c
+   - 新建输入框:                                         @24@0:8@16             imp=0x5a108
+   - 收起键盘                                           v16@0:8                imp=0x5a344
+   - 模式段变化:                                         v24@0:8@16             imp=0x5a3b8
+   - 高级段变化:                                         v24@0:8@16             imp=0x5a3f4
+   - 目标框变化:                                         v24@0:8@16             imp=0x5a430
+   - 替换框变化:                                         v24@0:8@16             imp=0x5a474
+   - 正则框变化:                                         v24@0:8@16             imp=0x5a4b8
+   - 第几条框变化:                                        v24@0:8@16             imp=0x5a4fc
+   - 存储段变化:                                         v24@0:8@16             imp=0x5a554
+   - 成功段变化:                                         v24@0:8@16             imp=0x5a588
+   - 失败段变化:                                         v24@0:8@16             imp=0x5a5c4
+   - 选择成功跳转                                         v16@0:8                imp=0x5a600
+   - 选择失败跳转                                         v16@0:8                imp=0x5a680
+   - 刷新跳转按钮                                         v16@0:8                imp=0x5a700
+   - 框选识别区                                          v16@0:8                imp=0x5a8f0
+   - 测试提取                                           v16@0:8                imp=0x5a9ec
+   - 模式段                                            @16@0:8                imp=0x5adf8
+   - set模式段:                                        v24@0:8@16             imp=0x5ae04
+   - 高级段                                            @16@0:8                imp=0x5ae14
+   - set高级段:                                        v24@0:8@16             imp=0x5ae20
+   - 目标框                                            @16@0:8                imp=0x5ae30
+   - set目标框:                                        v24@0:8@16             imp=0x5ae3c
+   - 替换框                                            @16@0:8                imp=0x5ae4c
+   - set替换框:                                        v24@0:8@16             imp=0x5ae58
+   - 正则框                                            @16@0:8                imp=0x5ae68
+   - set正则框:                                        v24@0:8@16             imp=0x5ae74
+   - 第几条框                                           @16@0:8                imp=0x5ae84
+   - set第几条框:                                       v24@0:8@16             imp=0x5ae90
+   - 存储段                                            @16@0:8                imp=0x5aea0
+   - set存储段:                                        v24@0:8@16             imp=0x5aeac
+   - 框选按钮                                           @16@0:8                imp=0x5aebc
+   - set框选按钮:                                       v24@0:8@16             imp=0x5aec8
+   - 测试按钮                                           @16@0:8                imp=0x5aed8
+   - set测试按钮:                                       v24@0:8@16             imp=0x5aee4
+   - 成功段                                            @16@0:8                imp=0x5aef4
+   - set成功段:                                        v24@0:8@16             imp=0x5af00
+   - 成功跳按钮                                          @16@0:8                imp=0x5af10
+   - set成功跳按钮:                                      v24@0:8@16             imp=0x5af1c
+   - 失败段                                            @16@0:8                imp=0x5af2c
+   - set失败段:                                        v24@0:8@16             imp=0x5af38
+   - 失败跳按钮                                          @16@0:8                imp=0x5af48
+   - set失败跳按钮:                                      v24@0:8@16             imp=0x5af54
+   - 区域宽行                                           @16@0:8                imp=0x5af64
+   - set区域宽行:                                       v24@0:8@16             imp=0x5af80
+   - 区域高行                                           @16@0:8                imp=0x5af90
+   - set区域高行:                                       v24@0:8@16             imp=0x5afac
+   - .cxx_destruct                                  v16@0:8                imp=0x5afbc
+
+@interface 命中路径编辑器                      : ROOT              size=136
+   ivar  _点们                      @"NSMutableArray"            off=8
+   ivar  _标签们                     @"NSMutableArray"            off=16
+   ivar  _线们                      @"NSMutableArray"            off=24
+   ivar  _表                       @"UITableView"               off=32
+   ivar  _起点已被用户拖动                B                            off=40
+   ivar  _宿主                      @"UIView"                    off=48
+   ivar  _面板                      @"UIView"                    off=56
+   ivar  _容器                      @"UIView"                    off=64
+   ivar  _路径点                     @"NSArray"                   off=72
+   ivar  _变化                      @?                           off=80
+   ivar  _起点参考                    {CGPoint="x"d"y"d}           off=88
+   ivar  _列表区                     {CGRect="origin"{CGPoint="x"d"y"d}"size"{CGSize="width"d"height"d}} off=104
+   @prop 宿主   {T@"UIView",W,N,V_宿主}
+   @prop 面板   {T@"UIView",W,N,V_面板}
+   @prop 容器   {T@"UIView",W,N,V_容器}
+   @prop 路径点   {T@"NSArray",C,N,V_路径点}
+   @prop 变化   {T@?,C,N,V_变化}
+   @prop 起点参考   {T{CGPoint=dd},N,V_起点参考}
+   @prop 起点已被用户拖动   {TB,N,V_起点已被用户拖动}
+   @prop 列表区   {T{CGRect={CGPoint=dd}{CGSize=dd}},N,V_列表区}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - init                                           @16@0:8                imp=0x4a82c
+   - set路径点:                                        v24@0:8@16             imp=0x4a91c
+   - 布局                                             v16@0:8                imp=0x4a964
+   - tableView:numberOfRowsInSection:               q32@0:8@16q24          imp=0x4acc4
+   - tableView:cellForRowAtIndexPath:               @32@0:8@16@24          imp=0x4acf8
+   - tableView:didSelectRowAtIndexPath:             v32@0:8@16@24          imp=0x4aec4
+   - 点字母:                                           @24@0:8q16             imp=0x4aef0
+   - 添加点                                            v16@0:8                imp=0x4af40
+   - 删除点:                                           v24@0:8q16             imp=0x4b01c
+   - 提交:                                            v24@0:8@16             imp=0x4b0a4
+   - 刷新                                             v16@0:8                imp=0x4b110
+   - 重建列表                                           v16@0:8                imp=0x4b134
+   - 命中测试:事件:                                       @40@0:8{CGPoint=dd}16@32 imp=0x4b144
+   - 重建标记                                           v16@0:8                imp=0x4b2a0
+   - 摆放标记                                           v16@0:8                imp=0x4b810
+   - 拖动:                                            v24@0:8@16             imp=0x4bcf8
+   - 清理                                             v16@0:8                imp=0x4be6c
+   - 宿主                                             @16@0:8                imp=0x4c080
+   - set宿主:                                         v24@0:8@16             imp=0x4c098
+   - 面板                                             @16@0:8                imp=0x4c0a4
+   - set面板:                                         v24@0:8@16             imp=0x4c0bc
+   - 容器                                             @16@0:8                imp=0x4c0c8
+   - set容器:                                         v24@0:8@16             imp=0x4c0e0
+   - 路径点                                            @16@0:8                imp=0x4c0ec
+   - 变化                                             @?16@0:8               imp=0x4c0f4
+   - set变化:                                         v24@0:8@?16            imp=0x4c0fc
+   - 起点参考                                           {CGPoint=dd}16@0:8     imp=0x4c104
+   - set起点参考:                                       v32@0:8{CGPoint=dd}16  imp=0x4c10c
+   - 起点已被用户拖动                                       B16@0:8                imp=0x4c114
+   - set起点已被用户拖动:                                   v20@0:8B16             imp=0x4c11c
+   - 列表区                                            {CGRect={CGPoint=dd}{CGSize=dd}}16@0:8 imp=0x4c124
+   - set列表区:                                        v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x4c130
+   - .cxx_destruct                                  v16@0:8                imp=0x4c13c
+
+@interface 多点选择视图                       : 动作选择视图            size=176
+   ivar  _标记们                     @"NSMutableArray"            off=160
+   ivar  _标签们                     @"NSMutableArray"            off=168
+   @prop 标记们   {T@"NSMutableArray",&,N,V_标记们}
+   @prop 标签们   {T@"NSMutableArray",&,N,V_标签们}
+   - 构建参数                                           v16@0:8                imp=0x44eb4
+   - 显示标记                                           B16@0:8                imp=0x45334
+   - 新建标记视图                                         @16@0:8                imp=0x45338
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x45378
+   - 拖动点:                                           v24@0:8@16             imp=0x454a0
+   - 新建点标记:                                         @24@0:8q16             imp=0x45584
+   - 重设数量:                                          v24@0:8q16             imp=0x4574c
+   - 同步标记                                           v16@0:8                imp=0x45878
+   - 摆放点标记:                                         v24@0:8q16             imp=0x45bac
+   - 刷新准星                                           v16@0:8                imp=0x45d80
+   - 标记们                                            @16@0:8                imp=0x45db8
+   - set标记们:                                        v24@0:8@16             imp=0x45dc4
+   - 标签们                                            @16@0:8                imp=0x45dd4
+   - set标签们:                                        v24@0:8@16             imp=0x45de0
+   - .cxx_destruct                                  v16@0:8                imp=0x45df0
+
+@interface 录制视图                         : ROOT              size=48
+   ivar  _状态                      @"UILabel"                   off=8
+   ivar  _统计                      @"UILabel"                   off=16
+   ivar  _主按钮                     @"UIButton"                  off=24
+   ivar  _状态灯                     @"UIView"                    off=32
+   ivar  _刷新                      @"NSTimer"                   off=40
+   - 构建                                             v16@0:8                imp=0x33334
+   - 刷新状态灯                                          v16@0:8                imp=0x336b8
+   - 显示                                             v16@0:8                imp=0x3399c
+   - willMoveToSuperview:                           v24@0:8@16             imp=0x33b84
+   - 刷新                                             v16@0:8                imp=0x33c0c
+   - 切换                                             v16@0:8                imp=0x33d1c
+   - 保存                                             v16@0:8                imp=0x34074
+   - .cxx_destruct                                  v16@0:8                imp=0x340e0
+
+@interface 循环结尾选择视图                     : 动作选择视图            size=168
+   ivar  _配对标签                    @"UILabel"                   off=160
+   @prop 配对标签   {T@"UILabel",&,N,V_配对标签}
+   - 显示标记                                           B16@0:8                imp=0x5fa28
+   - 新建标记视图                                         @16@0:8                imp=0x5fa2c
+   - 构建参数                                           v16@0:8                imp=0x5fa6c
+   - 面板附加高度                                         d16@0:8                imp=0x5fb48
+   - 布局参数区                                          v16@0:8                imp=0x5fb4c
+   - 刷新                                             v16@0:8                imp=0x5fbf8
+   - 配对标签                                           @16@0:8                imp=0x60154
+   - set配对标签:                                       v24@0:8@16             imp=0x60160
+   - .cxx_destruct                                  v16@0:8                imp=0x60170
+
+@interface 循环选择视图                       : 动作选择视图            size=176
+   ivar  _配对标签                    @"UILabel"                   off=160
+   ivar  _清零行                     @"参数行"                       off=168
+   @prop 配对标签   {T@"UILabel",&,N,V_配对标签}
+   @prop 清零行   {T@"参数行",&,N,V_清零行}
+   - 显示标记                                           B16@0:8                imp=0x5f0cc
+   - 新建标记视图                                         @16@0:8                imp=0x5f0d0
+   - 构建参数                                           v16@0:8                imp=0x5f110
+   - 面板附加高度                                         d16@0:8                imp=0x5f4e8
+   - 布局参数区                                          v16@0:8                imp=0x5f4ec
+   - 刷新配对:                                          v20@0:8B16             imp=0x5f598
+   - 配对标签                                           @16@0:8                imp=0x5f9bc
+   - set配对标签:                                       v24@0:8@16             imp=0x5f9c8
+   - 清零行                                            @16@0:8                imp=0x5f9d8
+   - set清零行:                                        v24@0:8@16             imp=0x5f9e4
+   - .cxx_destruct                                  v16@0:8                imp=0x5f9f4
+
+@interface 悬浮球                          : ROOT              size=160
+   ivar  _自动隐藏                    B                            off=8
+   ivar  _贴边隐藏                    B                            off=9
+   ivar  _已贴边                     B                            off=10
+   ivar  _拉手态                     B                            off=11
+   ivar  _运行中                     B                            off=12
+   ivar  _已运行过                    B                            off=13
+   ivar  _已移动                     B                            off=14
+   ivar  _闪现中                     B                            off=15
+   ivar  _本次由拉手拖出                 B                            off=16
+   ivar  _点击回调                    @?                           off=24
+   ivar  _长按回调                    @?                           off=32
+   ivar  _隐藏透明度                   d                            off=40
+   ivar  _直径                      d                            off=48
+   ivar  _形态                      q                            off=56
+   ivar  _拖动手势                    @"UIPanGestureRecognizer"    off=64
+   ivar  _隐藏计时器                   @"NSTimer"                   off=72
+   ivar  _名称标签                    @"UILabel"                   off=80
+   ivar  _副标签                     @"UILabel"                   off=88
+   ivar  _图标层                     @"CAShapeLayer"              off=96
+   ivar  _闪现代号                    q                            off=104
+   ivar  _箭头层                     @"CAShapeLayer"              off=112
+   ivar  _进度底环                    @"CAShapeLayer"              off=120
+   ivar  _进度环                     @"CAShapeLayer"              off=128
+   ivar  _计时器                     @"NSTimer"                   off=136
+   ivar  _拖动起点                    {CGPoint="x"d"y"d}           off=144
+   @prop 拖动手势   {T@"UIPanGestureRecognizer",&,N,V_拖动手势}
+   @prop 隐藏计时器   {T@"NSTimer",&,N,V_隐藏计时器}
+   @prop 拖动起点   {T{CGPoint=dd},N,V_拖动起点}
+   @prop 已移动   {TB,N,V_已移动}
+   @prop 名称标签   {T@"UILabel",&,N,V_名称标签}
+   @prop 副标签   {T@"UILabel",&,N,V_副标签}
+   @prop 图标层   {T@"CAShapeLayer",&,N,V_图标层}
+   @prop 闪现代号   {Tq,N,V_闪现代号}
+   @prop 闪现中   {TB,N,V_闪现中}
+   @prop 箭头层   {T@"CAShapeLayer",&,N,V_箭头层}
+   @prop 本次由拉手拖出   {TB,N,V_本次由拉手拖出}
+   @prop 进度底环   {T@"CAShapeLayer",&,N,V_进度底环}
+   @prop 进度环   {T@"CAShapeLayer",&,N,V_进度环}
+   @prop 拉手态   {TB,N,G拉手态,V_拉手态}
+   @prop 计时器   {T@"NSTimer",&,N,V_计时器}
+   @prop 点击回调   {T@?,C,N,V_点击回调}
+   @prop 长按回调   {T@?,C,N,V_长按回调}
+   @prop 自动隐藏   {TB,N,V_自动隐藏}
+   @prop 隐藏透明度   {Td,N,V_隐藏透明度}
+   @prop 贴边隐藏   {TB,N,V_贴边隐藏}
+   @prop 已贴边   {TB,N,V_已贴边}
+   @prop 直径   {Td,N,V_直径}
+   @prop 形态   {Tq,N,V_形态}
+   @prop 运行中   {TB,N,V_运行中}
+   @prop 已运行过   {TB,N,V_已运行过}
+   - 半径                                             d16@0:8                imp=0x34304
+   - 缩放比                                            d16@0:8                imp=0x34348
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x3438c
+   - layoutSubviews                                 v16@0:8                imp=0x34b84
+   - 应用外观                                           v16@0:8                imp=0x34cb0
+   - 布局进度层                                          v16@0:8                imp=0x34ef8
+   - 显示进度:                                          v24@0:8d16             imp=0x35098
+   - set运行中:                                        v20@0:8B16             imp=0x351b4
+   - set已运行过:                                       v20@0:8B16             imp=0x35228
+   - 刷新显示                                           v16@0:8                imp=0x35264
+   - _绘播放图标                                         v16@0:8                imp=0x3566c
+   - _绘停止图标                                         v16@0:8                imp=0x357b0
+   - 开始计时                                           v16@0:8                imp=0x358a4
+   - 停止计时                                           v16@0:8                imp=0x35a24
+   - 刷新计时文本                                         v16@0:8                imp=0x35ab0
+   - 计时文本                                           @16@0:8                imp=0x35b1c
+   - 闪现名称:                                          v24@0:8@16             imp=0x35c08
+   - 单击                                             v16@0:8                imp=0x35e58
+   - 长按:                                            v24@0:8@16             imp=0x35ef4
+   - 拖动:                                            v24@0:8@16             imp=0x35f84
+   - 吸附                                             v16@0:8                imp=0x3612c
+   - 变形为拉手:                                         v20@0:8B16             imp=0x363dc
+   - 恢复圆形                                           v16@0:8                imp=0x36540
+   - _绘拉手箭头:                                        v20@0:8B16             imp=0x365ac
+   - 滑回贴边                                           v16@0:8                imp=0x366f0
+   - 重新吸附                                           v16@0:8                imp=0x3684c
+   - 排隐藏                                            v16@0:8                imp=0x368a4
+   - 唤醒                                             v16@0:8                imp=0x36a80
+   - didMoveToSuperview                             v16@0:8                imp=0x36aa8
+   - 点击回调                                           @?16@0:8               imp=0x36b5c
+   - set点击回调:                                       v24@0:8@?16            imp=0x36b68
+   - 长按回调                                           @?16@0:8               imp=0x36b74
+   - set长按回调:                                       v24@0:8@?16            imp=0x36b80
+   - 自动隐藏                                           B16@0:8                imp=0x36b8c
+   - set自动隐藏:                                       v20@0:8B16             imp=0x36b98
+   - 隐藏透明度                                          d16@0:8                imp=0x36ba4
+   - set隐藏透明度:                                      v24@0:8d16             imp=0x36bb4
+   - 贴边隐藏                                           B16@0:8                imp=0x36bc4
+   - set贴边隐藏:                                       v20@0:8B16             imp=0x36bd0
+   - 已贴边                                            B16@0:8                imp=0x36bdc
+   - set已贴边:                                        v20@0:8B16             imp=0x36be8
+   - 拉手态                                            B16@0:8                imp=0x36bf4
+   - set拉手态:                                        v20@0:8B16             imp=0x36c00
+   - 直径                                             d16@0:8                imp=0x36c0c
+   - set直径:                                         v24@0:8d16             imp=0x36c1c
+   - 形态                                             q16@0:8                imp=0x36c2c
+   - set形态:                                         v24@0:8q16             imp=0x36c38
+   - 运行中                                            B16@0:8                imp=0x36c48
+   - 已运行过                                           B16@0:8                imp=0x36c54
+   - 拖动手势                                           @16@0:8                imp=0x36c60
+   - set拖动手势:                                       v24@0:8@16             imp=0x36c6c
+   - 隐藏计时器                                          @16@0:8                imp=0x36c7c
+   - set隐藏计时器:                                      v24@0:8@16             imp=0x36c88
+   - 拖动起点                                           {CGPoint=dd}16@0:8     imp=0x36c98
+   - set拖动起点:                                       v32@0:8{CGPoint=dd}16  imp=0x36cac
+   - 已移动                                            B16@0:8                imp=0x36cc0
+   - set已移动:                                        v20@0:8B16             imp=0x36ccc
+   - 名称标签                                           @16@0:8                imp=0x36cd8
+   - set名称标签:                                       v24@0:8@16             imp=0x36ce4
+   - 副标签                                            @16@0:8                imp=0x36cf4
+   - set副标签:                                        v24@0:8@16             imp=0x36d00
+   - 图标层                                            @16@0:8                imp=0x36d10
+   - set图标层:                                        v24@0:8@16             imp=0x36d1c
+   - 闪现代号                                           q16@0:8                imp=0x36d2c
+   - set闪现代号:                                       v24@0:8q16             imp=0x36d38
+   - 闪现中                                            B16@0:8                imp=0x36d48
+   - set闪现中:                                        v20@0:8B16             imp=0x36d54
+   - 箭头层                                            @16@0:8                imp=0x36d60
+   - set箭头层:                                        v24@0:8@16             imp=0x36d6c
+   - 本次由拉手拖出                                        B16@0:8                imp=0x36d7c
+   - set本次由拉手拖出:                                    v20@0:8B16             imp=0x36d88
+   - 进度底环                                           @16@0:8                imp=0x36d94
+   - set进度底环:                                       v24@0:8@16             imp=0x36da0
+   - 进度环                                            @16@0:8                imp=0x36db0
+   - set进度环:                                        v24@0:8@16             imp=0x36dbc
+   - 计时器                                            @16@0:8                imp=0x36dcc
+   - set计时器:                                        v24@0:8@16             imp=0x36dd8
+   - .cxx_destruct                                  v16@0:8                imp=0x36de8
+
+@interface 方向箭头视图                       : ROOT              size=48
+   ivar  _杆                       @"CAShapeLayer"              off=8
+   ivar  _头                       @"CAShapeLayer"              off=16
+   ivar  _尾                       @"CAShapeLayer"              off=24
+   ivar  _方向                      q                            off=32
+   ivar  _长度                      d                            off=40
+   @prop 方向   {Tq,N,V_方向}
+   @prop 长度   {Td,N,V_长度}
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x445e8
+   - set方向:                                         v24@0:8q16             imp=0x447ec
+   - set长度:                                         v24@0:8d16             imp=0x447fc
+   - layoutSubviews                                 v16@0:8                imp=0x4480c
+   - 重画                                             v16@0:8                imp=0x44848
+   - 方向                                             q16@0:8                imp=0x449bc
+   - 长度                                             d16@0:8                imp=0x449c8
+   - .cxx_destruct                                  v16@0:8                imp=0x449d8
+
+@interface 时间选择弹窗                       : ROOT              size=24
+   ivar  _picker                  @"UIDatePicker"              off=8
+   ivar  _回调                      @?                           off=16
+   - 确定                                             v16@0:8                imp=0x32d10
+   - 取消                                             v16@0:8                imp=0x32d5c
+   - 收起                                             v16@0:8                imp=0x32da0
+   - 描述                                             @16@0:8                imp=0x32de0
+   - .cxx_destruct                                  v16@0:8                imp=0x32dec
+
+@interface 模板裁切视图                       : ROOT              size=128
+   ivar  _截图                      @"UIImage"                   off=8
+   ivar  _遮罩                      @"NSMutableArray"            off=16
+   ivar  _框                       @"UIView"                    off=24
+   ivar  _角                       @"NSMutableArray"            off=32
+   ivar  _尺寸                      @"UILabel"                   off=40
+   ivar  _选区                      {CGRect="origin"{CGPoint="x"d"y"d}"size"{CGSize="width"d"height"d}} off=48
+   ivar  _起点                      {CGPoint="x"d"y"d}           off=80
+   ivar  _模式                      q                            off=96
+   ivar  _按钮条                     @"UIView"                    off=104
+   ivar  _完成                      @?                           off=112
+   ivar  _取消                      @?                           off=120
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - initWithFrame:截图:                              @56@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16@48 imp=0x5b2e0
+   - 刷新选区                                           v16@0:8                imp=0x5bd2c
+   - 命中角:                                           q32@0:8{CGPoint=dd}16  imp=0x5bfac
+   - gestureRecognizer:shouldReceiveTouch:          B32@0:8@16@24          imp=0x5c03c
+   - 拖按钮条:                                          v24@0:8@16             imp=0x5c0cc
+   - 拖:                                             v24@0:8@16             imp=0x5c16c
+   - 确认裁切                                           v16@0:8                imp=0x5c3a4
+   - 取消裁切                                           v16@0:8                imp=0x5c5c8
+   - .cxx_destruct                                  v16@0:8                imp=0x5c61c
+
+@interface 滑动选择视图                       : 动作选择视图            size=176
+   ivar  _方向段                     @"UISegmentedControl"        off=160
+   ivar  _箭头                      @"方向箭头视图"                    off=168
+   - 构建参数                                           v16@0:8                imp=0x49a14
+   - 方向变化:                                          v24@0:8@16             imp=0x4a130
+   - 含时长字段                                          B16@0:8                imp=0x4a19c
+   - 面板附加高度                                         d16@0:8                imp=0x4a1a0
+   - 布局参数区                                          v16@0:8                imp=0x4a1c0
+   - 新建标记视图                                         @16@0:8                imp=0x4a270
+   - 摆放标记:                                          v32@0:8{CGPoint=dd}16  imp=0x4a2c0
+   - 更新标记                                           v16@0:8                imp=0x4a474
+   - 同步起止                                           v16@0:8                imp=0x4a4d8
+   - 刷新准星                                           v16@0:8                imp=0x4a620
+   - 坐标文本                                           @16@0:8                imp=0x4a658
+   - .cxx_destruct                                  v16@0:8                imp=0x4a7f8
+
+@interface 点击反馈视图                       : ROOT              size=8
+
+@interface 点击选择视图                       : 动作选择视图            size=160
+   - 构建参数                                           v16@0:8                imp=0x44a18
+   - 含时长字段                                          B16@0:8                imp=0x44eac
+   - 面板附加高度                                         d16@0:8                imp=0x44eb0
+
+@interface 穿透窗口                         : ROOT              size=16
+   ivar  _响应视图                    @"NSMutableArray"            off=8
+   @prop 响应视图   {T@"NSMutableArray",&,N,V_响应视图}
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x37994
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x37a68
+   - 响应视图                                           @16@0:8                imp=0x37c2c
+   - set响应视图:                                       v24@0:8@16             imp=0x37c3c
+   - .cxx_destruct                                  v16@0:8                imp=0x37c50
+
+@interface 穿透窗口控制器                      : ROOT              size=8
+   - viewDidLoad                                    v16@0:8                imp=0x37c64
+   - prefersStatusBarHidden                         B16@0:8                imp=0x37d30
+   - shouldAutorotate                               B16@0:8                imp=0x37d38
+   - supportedInterfaceOrientations                 Q16@0:8                imp=0x37d40
+
+@interface 等待选择视图                       : 动作选择视图            size=208
+   ivar  _模式段                     @"UISegmentedControl"        off=160
+   ivar  _固定行                     @"参数行"                       off=168
+   ivar  _下限行                     @"参数行"                       off=176
+   ivar  _上限行                     @"参数行"                       off=184
+   ivar  _结束段                     @"UISegmentedControl"        off=192
+   ivar  _跳转按钮                    @"UIButton"                  off=200
+   @prop 模式段   {T@"UISegmentedControl",&,N,V_模式段}
+   @prop 固定行   {T@"参数行",&,N,V_固定行}
+   @prop 下限行   {T@"参数行",&,N,V_下限行}
+   @prop 上限行   {T@"参数行",&,N,V_上限行}
+   @prop 结束段   {T@"UISegmentedControl",&,N,V_结束段}
+   @prop 跳转按钮   {T@"UIButton",&,N,V_跳转按钮}
+   - 显示标记                                           B16@0:8                imp=0x5e0a0
+   - 新建标记视图                                         @16@0:8                imp=0x5e0a4
+   - 构建参数                                           v16@0:8                imp=0x5e0e4
+   - 模式段变化:                                         v24@0:8@16             imp=0x5e844
+   - 结束段变化:                                         v24@0:8@16             imp=0x5e8dc
+   - 选择等待跳转                                         v16@0:8                imp=0x5e918
+   - 刷新跳转按钮                                         v16@0:8                imp=0x5e9b0
+   - 配段:                                            v24@0:8@16             imp=0x5ea74
+   - 新建按钮                                           @16@0:8                imp=0x5ebbc
+   - 等待动作名By标识:                                     @24@0:8@16             imp=0x5ec78
+   - 面板附加高度                                         d16@0:8                imp=0x5ee10
+   - 布局参数区                                          v16@0:8                imp=0x5ee5c
+   - 模式段                                            @16@0:8                imp=0x5efc0
+   - set模式段:                                        v24@0:8@16             imp=0x5efcc
+   - 固定行                                            @16@0:8                imp=0x5efdc
+   - set固定行:                                        v24@0:8@16             imp=0x5efe8
+   - 下限行                                            @16@0:8                imp=0x5eff8
+   - set下限行:                                        v24@0:8@16             imp=0x5f004
+   - 上限行                                            @16@0:8                imp=0x5f014
+   - set上限行:                                        v24@0:8@16             imp=0x5f020
+   - 结束段                                            @16@0:8                imp=0x5f030
+   - set结束段:                                        v24@0:8@16             imp=0x5f03c
+   - 跳转按钮                                           @16@0:8                imp=0x5f04c
+   - set跳转按钮:                                       v24@0:8@16             imp=0x5f058
+   - .cxx_destruct                                  v16@0:8                imp=0x5f068
+
+@interface 统计视图                         : ROOT              size=72
+   ivar  _今日值                     @"UILabel"                   off=8
+   ivar  _累计值                     @"UILabel"                   off=16
+   ivar  _列表                      @"UIScrollView"              off=24
+   ivar  _空态                      @"UILabel"                   off=32
+   ivar  _明细按钮                    @"UIButton"                  off=40
+   ivar  _清零按钮                    @"UIButton"                  off=48
+   ivar  _数据                      @"NSArray"                   off=56
+   ivar  _选中行                     q                            off=64
+   @prop 今日值   {T@"UILabel",&,N,V_今日值}
+   @prop 累计值   {T@"UILabel",&,N,V_累计值}
+   @prop 列表   {T@"UIScrollView",&,N,V_列表}
+   @prop 空态   {T@"UILabel",&,N,V_空态}
+   @prop 明细按钮   {T@"UIButton",&,N,V_明细按钮}
+   @prop 清零按钮   {T@"UIButton",&,N,V_清零按钮}
+   @prop 数据   {T@"NSArray",&,N,V_数据}
+   @prop 选中行   {Tq,N,V_选中行}
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x38368
+   - 构建                                             v16@0:8                imp=0x38484
+   - 刷新                                             v16@0:8                imp=0x38e5c
+   - 建行:宽:y:高:                                      @48@0:8q16d24d32d40    imp=0x39234
+   - 点行:                                            v24@0:8@16             imp=0x396b0
+   - 查看明细                                           v16@0:8                imp=0x3970c
+   - 清零                                             v16@0:8                imp=0x399c4
+   - 关闭自己                                           v16@0:8                imp=0x39b60
+   - 今日值                                            @16@0:8                imp=0x39b98
+   - set今日值:                                        v24@0:8@16             imp=0x39ba4
+   - 累计值                                            @16@0:8                imp=0x39bb4
+   - set累计值:                                        v24@0:8@16             imp=0x39bc0
+   - 列表                                             @16@0:8                imp=0x39bd0
+   - set列表:                                         v24@0:8@16             imp=0x39bdc
+   - 空态                                             @16@0:8                imp=0x39bec
+   - set空态:                                         v24@0:8@16             imp=0x39bf8
+   - 明细按钮                                           @16@0:8                imp=0x39c08
+   - set明细按钮:                                       v24@0:8@16             imp=0x39c14
+   - 清零按钮                                           @16@0:8                imp=0x39c24
+   - set清零按钮:                                       v24@0:8@16             imp=0x39c30
+   - 数据                                             @16@0:8                imp=0x39c40
+   - set数据:                                         v24@0:8@16             imp=0x39c4c
+   - 选中行                                            q16@0:8                imp=0x39c5c
+   - set选中行:                                        v24@0:8q16             imp=0x39c68
+   - .cxx_destruct                                  v16@0:8                imp=0x39c78
+
+@interface 网格格                          : ROOT              size=8
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x31c88
+   - setHighlighted:                                v20@0:8B16             imp=0x31ce0
+   - 添加图标:文字:                                       v32@0:8@16@24          imp=0x31df4
+
+@interface 自定义弹窗                        : ROOT              size=24
+   ivar  _回调                      @?                           off=8
+   ivar  _回调2                     @?                           off=16
+   - 按钮点击:                                          v24@0:8@16             imp=0x2fe78
+   - 分组项点击:                                         v24@0:8@16             imp=0x2ff10
+   - 描述                                             @16@0:8                imp=0x3076c
+   - .cxx_destruct                                  v16@0:8                imp=0x31c54
+
+@interface 自由滑动选择视图                     : 动作选择视图            size=216
+   ivar  _点们                      @"NSMutableArray"            off=160
+   ivar  _标签们                     @"NSMutableArray"            off=168
+   ivar  _连线们                     @"NSMutableArray"            off=176
+   ivar  _模式段                     @"UISegmentedControl"        off=184
+   ivar  _添加组按钮                   @"UIButton"                  off=192
+   ivar  _组列表容器                   @"UIView"                    off=200
+   ivar  _当前组                     q                            off=208
+   @prop 点们   {T@"NSMutableArray",&,N,V_点们}
+   @prop 标签们   {T@"NSMutableArray",&,N,V_标签们}
+   @prop 连线们   {T@"NSMutableArray",&,N,V_连线们}
+   @prop 模式段   {T@"UISegmentedControl",&,N,V_模式段}
+   @prop 添加组按钮   {T@"UIButton",&,N,V_添加组按钮}
+   @prop 组列表容器   {T@"UIView",&,N,V_组列表容器}
+   @prop 当前组   {Tq,N,V_当前组}
+   - 构建参数                                           v16@0:8                imp=0x45e24
+   - 模式变化:                                          v24@0:8@16             imp=0x46b4c
+   - 更新模式相关UI                                       v16@0:8                imp=0x46ba4
+   - 添加一项                                           v16@0:8                imp=0x46c44
+   - 添加路径点                                          v16@0:8                imp=0x46e34
+   - 删除一组:                                          v24@0:8@16             imp=0x46f6c
+   - 选中组:                                           v24@0:8@16             imp=0x470a8
+   - 显示标记                                           B16@0:8                imp=0x470d8
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x470dc
+   - 拖动点:                                           v24@0:8@16             imp=0x47204
+   - 新建点标记:                                         @24@0:8q16             imp=0x47460
+   - 点总数                                            q16@0:8                imp=0x475c4
+   - 连线总数                                           q16@0:8                imp=0x4765c
+   - 同步标记                                           v16@0:8                imp=0x476f4
+   - 摆放点标记:                                         v24@0:8q16             imp=0x47b4c
+   - 摆放连线                                           v16@0:8                imp=0x47fd4
+   - 摆放线:a:b:显示:                                    v60@0:8@16{CGPoint=dd}24{CGPoint=dd}40B56 imp=0x48284
+   - 点字母:                                           @24@0:8q16             imp=0x48330
+   - 刷新准星                                           v16@0:8                imp=0x48380
+   - 重建组列表                                          v16@0:8                imp=0x483bc
+   - 圈码:                                            @24@0:8Q16             imp=0x48e00
+   - 列表行数                                           q16@0:8                imp=0x48f80
+   - 面板附加高度                                         d16@0:8                imp=0x4901c
+   - 布局参数区                                          v16@0:8                imp=0x49040
+   - 点们                                             @16@0:8                imp=0x49164
+   - set点们:                                         v24@0:8@16             imp=0x49170
+   - 标签们                                            @16@0:8                imp=0x49180
+   - set标签们:                                        v24@0:8@16             imp=0x4918c
+   - 连线们                                            @16@0:8                imp=0x4919c
+   - set连线们:                                        v24@0:8@16             imp=0x491a8
+   - 模式段                                            @16@0:8                imp=0x491b8
+   - set模式段:                                        v24@0:8@16             imp=0x491c4
+   - 添加组按钮                                          @16@0:8                imp=0x491d4
+   - set添加组按钮:                                      v24@0:8@16             imp=0x491e0
+   - 组列表容器                                          @16@0:8                imp=0x491f0
+   - set组列表容器:                                      v24@0:8@16             imp=0x491fc
+   - 当前组                                            q16@0:8                imp=0x4920c
+   - set当前组:                                        v24@0:8q16             imp=0x49218
+   - .cxx_destruct                                  v16@0:8                imp=0x49228
+
+@interface 触摸事件数据                       : ROOT              size=48
+   ivar  _时间戳                     d                            off=8
+   ivar  _事件类型                    q                            off=16
+   ivar  _手指ID                    q                            off=24
+   ivar  _位置                      {CGPoint="x"d"y"d}           off=32
+   @prop 时间戳   {Td,N,V_时间戳}
+   @prop 事件类型   {Tq,N,V_事件类型}
+   @prop 手指ID   {Tq,N,V_手指ID}
+   @prop 位置   {T{CGPoint=dd},N,V_位置}
+   - initWithCoder:                                 @24@0:8@16             imp=0x39f10
+   - encodeWithCoder:                               v24@0:8@16             imp=0x39fd4
+   - copyWithZone:                                  @24@0:8^{_NSZone=}16   imp=0x3a074
+   - description                                    @16@0:8                imp=0x3a0d4
+   - 时间戳                                            d16@0:8                imp=0x3a11c
+   - set时间戳:                                        v24@0:8d16             imp=0x3a124
+   - 事件类型                                           q16@0:8                imp=0x3a12c
+   - set事件类型:                                       v24@0:8q16             imp=0x3a134
+   - 手指ID                                           q16@0:8                imp=0x3a13c
+   - set手指ID:                                       v24@0:8q16             imp=0x3a144
+   - 位置                                             {CGPoint=dd}16@0:8     imp=0x3a14c
+   - set位置:                                         v32@0:8{CGPoint=dd}16  imp=0x3a154
+
+@interface 设置视图                         : ROOT              size=168
+   ivar  _循环                      @"UISwitch"                  off=8
+   ivar  _自动隐藏                    @"UISwitch"                  off=16
+   ivar  _贴边隐藏                    @"UISwitch"                  off=24
+   ivar  _动作提示                    @"UISwitch"                  off=32
+   ivar  _反馈                      @"UISwitch"                  off=40
+   ivar  _详细日志                    @"UISwitch"                  off=48
+   ivar  _定时开始开关                  @"UISwitch"                  off=56
+   ivar  _定时开始按钮                  @"UIButton"                  off=64
+   ivar  _定时停止开关                  @"UISwitch"                  off=72
+   ivar  _定时停止按钮                  @"UIButton"                  off=80
+   ivar  _透明                      @"UISlider"                  off=88
+   ivar  _通道段                     @"UISegmentedControl"        off=96
+   ivar  _并发段                     @"UISegmentedControl"        off=104
+   ivar  _量程段                     @"UISegmentedControl"        off=112
+   ivar  _尺寸段                     @"UISegmentedControl"        off=120
+   ivar  _形状段                     @"UISegmentedControl"        off=128
+   ivar  _通道标题                    @"UILabel"                   off=136
+   ivar  _并发标题                    @"UILabel"                   off=144
+   ivar  _量程标题                    @"UILabel"                   off=152
+   ivar  _高级区子视图                  @"NSArray"                   off=160
+   - 添加开关:y:on:                                     @36@0:8@16d24B32       imp=0x3a458
+   - 添加开关:y:on:进高级区:                                @40@0:8@16d24B32B36    imp=0x3a460
+   - 美化开关:                                          v24@0:8@16             imp=0x3a5b8
+   - 添加紧凑开关:y:on:                                   @36@0:8@16d24B32       imp=0x3a624
+   - 添加时间按钮:y:分:                                    @40@0:8:16d24q32       imp=0x3a6f0
+   - 美化分段:                                          v24@0:8@16             imp=0x3a8a0
+   - 格式化时分:                                         @24@0:8q16             imp=0x3aaac
+   - 时分转日期:                                         @24@0:8q16             imp=0x3aae8
+   - 日期转时分:                                         q24@0:8@16             imp=0x3abb0
+   - 选定时开始:                                         v24@0:8@16             imp=0x3ac44
+   - 选定时停止:                                         v24@0:8@16             imp=0x3ad80
+   - 添加可解锁开关:y:on:                                  @36@0:8@16d24B32       imp=0x3aebc
+   - 构建                                             v16@0:8                imp=0x3afc0
+   - 点击入口被点击:                                       v24@0:8@16             imp=0x3bf64
+   - 包成滚动容器                                         v16@0:8                imp=0x3c028
+   - 添加分组标题:y:                                      v32@0:8@16d24          imp=0x3c1a0
+   - 添加分组标题:y:入收:                                   @36@0:8@16d24B32       imp=0x3c1c0
+   - 收进高级区:                                         v24@0:8@16             imp=0x3c340
+   - 尺寸变化:                                          v24@0:8@16             imp=0x3c3f4
+   - 形状变化:                                          v24@0:8@16             imp=0x3c528
+   - 量程变化:                                          v24@0:8@16             imp=0x3c628
+   - 通道变化:                                          v24@0:8@16             imp=0x3c70c
+   - 并发变化:                                          v24@0:8@16             imp=0x3c7bc
+   - 开关变化:                                          v24@0:8@16             imp=0x3c854
+   - 透明变化:                                          v24@0:8@16             imp=0x3cad8
+   - 透明预览结束                                         v16@0:8                imp=0x3cbcc
+   - 打开官网                                           v16@0:8                imp=0x3cc14
+   - 显示启动诊断                                         v16@0:8                imp=0x3cc84
+   - 显示能力自检                                         v16@0:8                imp=0x3cd64
+   - 显示更新详情                                         v16@0:8                imp=0x3ce18
+   - 导入配置                                           v16@0:8                imp=0x3cedc
+   - 导出配置                                           v16@0:8                imp=0x3cf1c
+   - 清空                                             v16@0:8                imp=0x3d01c
+   - .cxx_destruct                                  v16@0:8                imp=0x3d178
+
+@interface 识图选择视图                       : 动作选择视图            size=280
+   ivar  _预览                      @"UIImageView"               off=160
+   ivar  _宽行                      @"参数行"                       off=168
+   ivar  _高行                      @"参数行"                       off=176
+   ivar  _命中段                     @"UISegmentedControl"        off=184
+   ivar  _跳转按钮                    @"UIButton"                  off=192
+   ivar  _路径编辑器                   @"命中路径编辑器"                   off=200
+   ivar  _命中长按行                   @"参数行"                       off=208
+   ivar  _命中滑时行                   @"参数行"                       off=216
+   ivar  _命中帧数行                   @"参数行"                       off=224
+   ivar  _命中时隔行                   @"参数行"                       off=232
+   ivar  _判断段                     @"UISegmentedControl"        off=240
+   ivar  _失败段                     @"UISegmentedControl"        off=248
+   ivar  _失败跳按钮                   @"UIButton"                  off=256
+   ivar  _识失败段                    @"UISegmentedControl"        off=264
+   ivar  _识失败跳按钮                  @"UIButton"                  off=272
+   @prop 预览   {T@"UIImageView",&,N,V_预览}
+   @prop 宽行   {T@"参数行",&,N,V_宽行}
+   @prop 高行   {T@"参数行",&,N,V_高行}
+   @prop 命中段   {T@"UISegmentedControl",&,N,V_命中段}
+   @prop 跳转按钮   {T@"UIButton",&,N,V_跳转按钮}
+   @prop 路径编辑器   {T@"命中路径编辑器",&,N,V_路径编辑器}
+   @prop 命中长按行   {T@"参数行",&,N,V_命中长按行}
+   @prop 命中滑时行   {T@"参数行",&,N,V_命中滑时行}
+   @prop 命中帧数行   {T@"参数行",&,N,V_命中帧数行}
+   @prop 命中时隔行   {T@"参数行",&,N,V_命中时隔行}
+   @prop 判断段   {T@"UISegmentedControl",&,N,V_判断段}
+   @prop 失败段   {T@"UISegmentedControl",&,N,V_失败段}
+   @prop 失败跳按钮   {T@"UIButton",&,N,V_失败跳按钮}
+   @prop 识失败段   {T@"UISegmentedControl",&,N,V_识失败段}
+   @prop 识失败跳按钮   {T@"UIButton",&,N,V_识失败跳按钮}
+   - 显示标记                                           B16@0:8                imp=0x4c19c
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x4c1a0
+   - 同步起点参考                                         v16@0:8                imp=0x4c240
+   - 新建标记视图                                         @16@0:8                imp=0x4c2e8
+   - 构建参数                                           v16@0:8                imp=0x4c328
+   - 面板附加高度                                         d16@0:8                imp=0x4e378
+   - 布局参数区                                          v16@0:8                imp=0x4e4ec
+   - 命中段变化:                                         v24@0:8@16             imp=0x4edac
+   - 选择跳转目标                                         v16@0:8                imp=0x4ee24
+   - 刷新跳转按钮                                         v16@0:8                imp=0x4eef4
+   - 判断段变化:                                         v24@0:8@16             imp=0x4f010
+   - 失败段变化:                                         v24@0:8@16             imp=0x4f050
+   - 选择失败跳转                                         v16@0:8                imp=0x4f08c
+   - 刷新失败跳按钮                                        v16@0:8                imp=0x4f430
+   - 识失败段变化:                                        v24@0:8@16             imp=0x4f54c
+   - 选择识失败跳转                                        v16@0:8                imp=0x4f588
+   - 刷新识失败跳按钮                                       v16@0:8                imp=0x4f92c
+   - 裁切模板                                           v16@0:8                imp=0x4fa48
+   - 刷新预览                                           v16@0:8                imp=0x4fda0
+   - 刷新区域行                                          v16@0:8                imp=0x4fe00
+   - 测试匹配                                           v16@0:8                imp=0x4fe88
+   - 预览                                             @16@0:8                imp=0x50118
+   - set预览:                                         v24@0:8@16             imp=0x50124
+   - 宽行                                             @16@0:8                imp=0x50134
+   - set宽行:                                         v24@0:8@16             imp=0x50140
+   - 高行                                             @16@0:8                imp=0x50150
+   - set高行:                                         v24@0:8@16             imp=0x5015c
+   - 命中段                                            @16@0:8                imp=0x5016c
+   - set命中段:                                        v24@0:8@16             imp=0x50178
+   - 跳转按钮                                           @16@0:8                imp=0x50188
+   - set跳转按钮:                                       v24@0:8@16             imp=0x50194
+   - 路径编辑器                                          @16@0:8                imp=0x501a4
+   - set路径编辑器:                                      v24@0:8@16             imp=0x501b0
+   - 命中长按行                                          @16@0:8                imp=0x501c0
+   - set命中长按行:                                      v24@0:8@16             imp=0x501cc
+   - 命中滑时行                                          @16@0:8                imp=0x501dc
+   - set命中滑时行:                                      v24@0:8@16             imp=0x501e8
+   - 命中帧数行                                          @16@0:8                imp=0x501f8
+   - set命中帧数行:                                      v24@0:8@16             imp=0x50204
+   - 命中时隔行                                          @16@0:8                imp=0x50214
+   - set命中时隔行:                                      v24@0:8@16             imp=0x50220
+   - 判断段                                            @16@0:8                imp=0x50230
+   - set判断段:                                        v24@0:8@16             imp=0x5023c
+   - 失败段                                            @16@0:8                imp=0x5024c
+   - set失败段:                                        v24@0:8@16             imp=0x50258
+   - 失败跳按钮                                          @16@0:8                imp=0x50268
+   - set失败跳按钮:                                      v24@0:8@16             imp=0x50274
+   - 识失败段                                           @16@0:8                imp=0x50284
+   - set识失败段:                                       v24@0:8@16             imp=0x50290
+   - 识失败跳按钮                                         @16@0:8                imp=0x502a0
+   - set识失败跳按钮:                                     v24@0:8@16             imp=0x502ac
+   - .cxx_destruct                                  v16@0:8                imp=0x502bc
+
+@interface 识字选择视图                       : 动作选择视图            size=312
+   ivar  _类型段                     @"UISegmentedControl"        off=160
+   ivar  _文本框                     @"UITextField"               off=168
+   ivar  _条件按钮                    @"UIButton"                  off=176
+   ivar  _数值框                     @"UITextField"               off=184
+   ivar  _框选按钮                    @"UIButton"                  off=192
+   ivar  _测试按钮                    @"UIButton"                  off=200
+   ivar  _成功段                     @"UISegmentedControl"        off=208
+   ivar  _成功跳按钮                   @"UIButton"                  off=216
+   ivar  _失败段                     @"UISegmentedControl"        off=224
+   ivar  _失败跳按钮                   @"UIButton"                  off=232
+   ivar  _区域宽行                    @"参数行"                       off=240
+   ivar  _区域高行                    @"参数行"                       off=248
+   ivar  _成功长按行                   @"参数行"                       off=256
+   ivar  _成功滑时行                   @"参数行"                       off=264
+   ivar  _成功帧数行                   @"参数行"                       off=272
+   ivar  _成功时隔行                   @"参数行"                       off=280
+   ivar  _路径编辑器                   @"命中路径编辑器"                   off=288
+   ivar  _等待段                     @"UISegmentedControl"        off=296
+   ivar  _等待超时行                   @"参数行"                       off=304
+   @prop 类型段   {T@"UISegmentedControl",&,N,V_类型段}
+   @prop 文本框   {T@"UITextField",&,N,V_文本框}
+   @prop 条件按钮   {T@"UIButton",&,N,V_条件按钮}
+   @prop 数值框   {T@"UITextField",&,N,V_数值框}
+   @prop 框选按钮   {T@"UIButton",&,N,V_框选按钮}
+   @prop 测试按钮   {T@"UIButton",&,N,V_测试按钮}
+   @prop 成功段   {T@"UISegmentedControl",&,N,V_成功段}
+   @prop 成功跳按钮   {T@"UIButton",&,N,V_成功跳按钮}
+   @prop 失败段   {T@"UISegmentedControl",&,N,V_失败段}
+   @prop 失败跳按钮   {T@"UIButton",&,N,V_失败跳按钮}
+   @prop 区域宽行   {T@"参数行",W,N,V_区域宽行}
+   @prop 区域高行   {T@"参数行",W,N,V_区域高行}
+   @prop 成功长按行   {T@"参数行",&,N,V_成功长按行}
+   @prop 成功滑时行   {T@"参数行",&,N,V_成功滑时行}
+   @prop 成功帧数行   {T@"参数行",&,N,V_成功帧数行}
+   @prop 成功时隔行   {T@"参数行",&,N,V_成功时隔行}
+   @prop 路径编辑器   {T@"命中路径编辑器",&,N,V_路径编辑器}
+   @prop 等待段   {T@"UISegmentedControl",&,N,V_等待段}
+   @prop 等待超时行   {T@"参数行",W,N,V_等待超时行}
+   - 显示标记                                           B16@0:8                imp=0x5038c
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x50390
+   - 同步起点参考                                         v16@0:8                imp=0x50430
+   - 新建标记视图                                         @16@0:8                imp=0x504d8
+   - 构建参数                                           v16@0:8                imp=0x50518
+   - 配段:                                            v24@0:8@16             imp=0x51b70
+   - 面板附加高度                                         d16@0:8                imp=0x51cb8
+   - 布局参数区                                          v16@0:8                imp=0x51de4
+   - 新建输入框:                                         @24@0:8@16             imp=0x524ec
+   - 收起键盘                                           v16@0:8                imp=0x52728
+   - 新建按钮                                           @16@0:8                imp=0x5276c
+   - 类型段变化:                                         v24@0:8@16             imp=0x52828
+   - 文本框变化:                                         v24@0:8@16             imp=0x52864
+   - 数值框变化:                                         v24@0:8@16             imp=0x528fc
+   - 选择条件                                           v16@0:8                imp=0x52950
+   - 刷新条件按钮                                         v16@0:8                imp=0x52ae0
+   - 成功段变化:                                         v24@0:8@16             imp=0x52b84
+   - 失败段变化:                                         v24@0:8@16             imp=0x52bc0
+   - 等待段变化:                                         v24@0:8@16             imp=0x52bfc
+   - 选择成功跳转                                         v16@0:8                imp=0x52c34
+   - 选择失败跳转                                         v16@0:8                imp=0x52cb4
+   - 刷新跳转按钮                                         v16@0:8                imp=0x52d34
+   - 框选识别区                                          v16@0:8                imp=0x52f24
+   - 测试识别                                           v16@0:8                imp=0x53054
+   - 类型段                                            @16@0:8                imp=0x53640
+   - set类型段:                                        v24@0:8@16             imp=0x5364c
+   - 文本框                                            @16@0:8                imp=0x5365c
+   - set文本框:                                        v24@0:8@16             imp=0x53668
+   - 条件按钮                                           @16@0:8                imp=0x53678
+   - set条件按钮:                                       v24@0:8@16             imp=0x53684
+   - 数值框                                            @16@0:8                imp=0x53694
+   - set数值框:                                        v24@0:8@16             imp=0x536a0
+   - 框选按钮                                           @16@0:8                imp=0x536b0
+   - set框选按钮:                                       v24@0:8@16             imp=0x536bc
+   - 测试按钮                                           @16@0:8                imp=0x536cc
+   - set测试按钮:                                       v24@0:8@16             imp=0x536d8
+   - 成功段                                            @16@0:8                imp=0x536e8
+   - set成功段:                                        v24@0:8@16             imp=0x536f4
+   - 成功跳按钮                                          @16@0:8                imp=0x53704
+   - set成功跳按钮:                                      v24@0:8@16             imp=0x53710
+   - 失败段                                            @16@0:8                imp=0x53720
+   - set失败段:                                        v24@0:8@16             imp=0x5372c
+   - 失败跳按钮                                          @16@0:8                imp=0x5373c
+   - set失败跳按钮:                                      v24@0:8@16             imp=0x53748
+   - 区域宽行                                           @16@0:8                imp=0x53758
+   - set区域宽行:                                       v24@0:8@16             imp=0x53774
+   - 区域高行                                           @16@0:8                imp=0x53784
+   - set区域高行:                                       v24@0:8@16             imp=0x537a0
+   - 成功长按行                                          @16@0:8                imp=0x537b0
+   - set成功长按行:                                      v24@0:8@16             imp=0x537bc
+   - 成功滑时行                                          @16@0:8                imp=0x537cc
+   - set成功滑时行:                                      v24@0:8@16             imp=0x537d8
+   - 成功帧数行                                          @16@0:8                imp=0x537e8
+   - set成功帧数行:                                      v24@0:8@16             imp=0x537f4
+   - 成功时隔行                                          @16@0:8                imp=0x53804
+   - set成功时隔行:                                      v24@0:8@16             imp=0x53810
+   - 路径编辑器                                          @16@0:8                imp=0x53820
+   - set路径编辑器:                                      v24@0:8@16             imp=0x5382c
+   - 等待段                                            @16@0:8                imp=0x5383c
+   - set等待段:                                        v24@0:8@16             imp=0x53848
+   - 等待超时行                                          @16@0:8                imp=0x53858
+   - set等待超时行:                                      v24@0:8@16             imp=0x53874
+   - .cxx_destruct                                  v16@0:8                imp=0x53884
+
+@interface 识色选择视图                       : 动作选择视图            size=304
+   ivar  _模式段                     @"UISegmentedControl"        off=160
+   ivar  _框选按钮                    @"UIButton"                  off=168
+   ivar  _取色按钮                    @"UIButton"                  off=176
+   ivar  _色点条                     @"UIView"                    off=184
+   ivar  _测试按钮                    @"UIButton"                  off=192
+   ivar  _成功段                     @"UISegmentedControl"        off=200
+   ivar  _成功跳按钮                   @"UIButton"                  off=208
+   ivar  _失败段                     @"UISegmentedControl"        off=216
+   ivar  _失败跳按钮                   @"UIButton"                  off=224
+   ivar  _区域宽行                    @"参数行"                       off=232
+   ivar  _区域高行                    @"参数行"                       off=240
+   ivar  _成功长按行                   @"参数行"                       off=248
+   ivar  _成功滑时行                   @"参数行"                       off=256
+   ivar  _成功帧数行                   @"参数行"                       off=264
+   ivar  _成功时隔行                   @"参数行"                       off=272
+   ivar  _路径编辑器                   @"命中路径编辑器"                   off=280
+   ivar  _等待段                     @"UISegmentedControl"        off=288
+   ivar  _等待超时行                   @"参数行"                       off=296
+   @prop 模式段   {T@"UISegmentedControl",&,N,V_模式段}
+   @prop 框选按钮   {T@"UIButton",&,N,V_框选按钮}
+   @prop 取色按钮   {T@"UIButton",&,N,V_取色按钮}
+   @prop 色点条   {T@"UIView",&,N,V_色点条}
+   @prop 测试按钮   {T@"UIButton",&,N,V_测试按钮}
+   @prop 成功段   {T@"UISegmentedControl",&,N,V_成功段}
+   @prop 成功跳按钮   {T@"UIButton",&,N,V_成功跳按钮}
+   @prop 失败段   {T@"UISegmentedControl",&,N,V_失败段}
+   @prop 失败跳按钮   {T@"UIButton",&,N,V_失败跳按钮}
+   @prop 区域宽行   {T@"参数行",W,N,V_区域宽行}
+   @prop 区域高行   {T@"参数行",W,N,V_区域高行}
+   @prop 成功长按行   {T@"参数行",&,N,V_成功长按行}
+   @prop 成功滑时行   {T@"参数行",&,N,V_成功滑时行}
+   @prop 成功帧数行   {T@"参数行",&,N,V_成功帧数行}
+   @prop 成功时隔行   {T@"参数行",&,N,V_成功时隔行}
+   @prop 路径编辑器   {T@"命中路径编辑器",&,N,V_路径编辑器}
+   @prop 等待段   {T@"UISegmentedControl",&,N,V_等待段}
+   @prop 等待超时行   {T@"参数行",W,N,V_等待超时行}
+   - 显示标记                                           B16@0:8                imp=0x550b4
+   - hitTest:withEvent:                             @40@0:8{CGPoint=dd}16@32 imp=0x550b8
+   - 同步起点参考                                         v16@0:8                imp=0x55158
+   - 新建标记视图                                         @16@0:8                imp=0x55200
+   - 构建参数                                           v16@0:8                imp=0x55240
+   - 配段:                                            v24@0:8@16             imp=0x56904
+   - 面板附加高度                                         d16@0:8                imp=0x56a4c
+   - 布局参数区                                          v16@0:8                imp=0x56b70
+   - 新建按钮                                           @16@0:8                imp=0x571f0
+   - 模式段变化:                                         v24@0:8@16             imp=0x572ac
+   - 成功段变化:                                         v24@0:8@16             imp=0x572e0
+   - 失败段变化:                                         v24@0:8@16             imp=0x5731c
+   - 选择成功跳转                                         v16@0:8                imp=0x57358
+   - 选择失败跳转                                         v16@0:8                imp=0x573d8
+   - 等待段变化:                                         v24@0:8@16             imp=0x57458
+   - 刷新跳转按钮                                         v16@0:8                imp=0x57490
+   - 框选识别区                                          v16@0:8                imp=0x57680
+   - 选取色点                                           v16@0:8                imp=0x5777c
+   - 刷新取色按钮                                         v16@0:8                imp=0x5790c
+   - 刷新色点条                                          v16@0:8                imp=0x579a4
+   - 测试识别                                           v16@0:8                imp=0x57e54
+   - 模式段                                            @16@0:8                imp=0x5846c
+   - set模式段:                                        v24@0:8@16             imp=0x58478
+   - 框选按钮                                           @16@0:8                imp=0x58488
+   - set框选按钮:                                       v24@0:8@16             imp=0x58494
+   - 取色按钮                                           @16@0:8                imp=0x584a4
+   - set取色按钮:                                       v24@0:8@16             imp=0x584b0
+   - 色点条                                            @16@0:8                imp=0x584c0
+   - set色点条:                                        v24@0:8@16             imp=0x584cc
+   - 测试按钮                                           @16@0:8                imp=0x584dc
+   - set测试按钮:                                       v24@0:8@16             imp=0x584e8
+   - 成功段                                            @16@0:8                imp=0x584f8
+   - set成功段:                                        v24@0:8@16             imp=0x58504
+   - 成功跳按钮                                          @16@0:8                imp=0x58514
+   - set成功跳按钮:                                      v24@0:8@16             imp=0x58520
+   - 失败段                                            @16@0:8                imp=0x58530
+   - set失败段:                                        v24@0:8@16             imp=0x5853c
+   - 失败跳按钮                                          @16@0:8                imp=0x5854c
+   - set失败跳按钮:                                      v24@0:8@16             imp=0x58558
+   - 区域宽行                                           @16@0:8                imp=0x58568
+   - set区域宽行:                                       v24@0:8@16             imp=0x58584
+   - 区域高行                                           @16@0:8                imp=0x58594
+   - set区域高行:                                       v24@0:8@16             imp=0x585b0
+   - 成功长按行                                          @16@0:8                imp=0x585c0
+   - set成功长按行:                                      v24@0:8@16             imp=0x585cc
+   - 成功滑时行                                          @16@0:8                imp=0x585dc
+   - set成功滑时行:                                      v24@0:8@16             imp=0x585e8
+   - 成功帧数行                                          @16@0:8                imp=0x585f8
+   - set成功帧数行:                                      v24@0:8@16             imp=0x58604
+   - 成功时隔行                                          @16@0:8                imp=0x58614
+   - set成功时隔行:                                      v24@0:8@16             imp=0x58620
+   - 路径编辑器                                          @16@0:8                imp=0x58630
+   - set路径编辑器:                                      v24@0:8@16             imp=0x5863c
+   - 等待段                                            @16@0:8                imp=0x5864c
+   - set等待段:                                        v24@0:8@16             imp=0x58658
+   - 等待超时行                                          @16@0:8                imp=0x58668
+   - set等待超时行:                                      v24@0:8@16             imp=0x58684
+   - .cxx_destruct                                  v16@0:8                imp=0x58694
+
+@interface 试跑会话                         : ROOT              size=40
+   ivar  _原循环                     B                            off=8
+   ivar  _原开始                     B                            off=9
+   ivar  _原停止                     B                            off=10
+   ivar  _组开备份                    @"NSArray"                   off=16
+   ivar  _结束时                     @?                           off=24
+   ivar  _观察者                     @                            off=32
+   @prop 组开备份   {T@"NSArray",C,N,V_组开备份}
+   @prop 原循环   {TB,N,V_原循环}
+   @prop 原开始   {TB,N,V_原开始}
+   @prop 原停止   {TB,N,V_原停止}
+   @prop 结束时   {T@?,C,N,V_结束时}
+   @prop 观察者   {T@,&,N,V_观察者}
+   - 收尾                                             v16@0:8                imp=0x3d68c
+   - 组开备份                                           @16@0:8                imp=0x3d91c
+   - set组开备份:                                       v24@0:8@16             imp=0x3d924
+   - 原循环                                            B16@0:8                imp=0x3d92c
+   - set原循环:                                        v20@0:8B16             imp=0x3d934
+   - 原开始                                            B16@0:8                imp=0x3d93c
+   - set原开始:                                        v20@0:8B16             imp=0x3d944
+   - 原停止                                            B16@0:8                imp=0x3d94c
+   - set原停止:                                        v20@0:8B16             imp=0x3d954
+   - 结束时                                            @?16@0:8               imp=0x3d95c
+   - set结束时:                                        v24@0:8@?16            imp=0x3d964
+   - 观察者                                            @16@0:8                imp=0x3d96c
+   - set观察者:                                        v24@0:8@16             imp=0x3d974
+   - .cxx_destruct                                  v16@0:8                imp=0x3d980
+
+@interface 试跑选择视图                       : ROOT              size=88
+   ivar  _已默认全选                   B                            off=8
+   ivar  _结束回调                    @?                           off=16
+   ivar  _表                       @"UITableView"               off=24
+   ivar  _标题                      @"UILabel"                   off=32
+   ivar  _副标题                     @"UILabel"                   off=40
+   ivar  _单选按钮                    @"UIButton"                  off=48
+   ivar  _连跑按钮                    @"UIButton"                  off=56
+   ivar  _动作                      @"NSArray"                   off=64
+   ivar  _选中                      @"NSMutableSet"              off=72
+   ivar  _组                       @"动作组模型"                     off=80
+   @prop 表   {T@"UITableView",&,N,V_表}
+   @prop 标题   {T@"UILabel",&,N,V_标题}
+   @prop 副标题   {T@"UILabel",&,N,V_副标题}
+   @prop 单选按钮   {T@"UIButton",&,N,V_单选按钮}
+   @prop 连跑按钮   {T@"UIButton",&,N,V_连跑按钮}
+   @prop 动作   {T@"NSArray",C,N,V_动作}
+   @prop 选中   {T@"NSMutableSet",&,N,V_选中}
+   @prop 组   {T@"动作组模型",&,N,V_组}
+   @prop 已默认全选   {TB,N,V_已默认全选}
+   @prop 结束回调   {T@?,C,N,V_结束回调}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - 设置组:                                           v24@0:8@16             imp=0x3daa0
+   - initWithFrame:                                 @48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16 imp=0x3db24
+   - 构建                                             v16@0:8                imp=0x3dc58
+   - 刷新                                             v16@0:8                imp=0x3e4b8
+   - 当前组                                            @16@0:8                imp=0x3e844
+   - 选中动作按序                                         @16@0:8                imp=0x3e964
+   - tableView:numberOfRowsInSection:               q32@0:8@16q24          imp=0x3eaf0
+   - tableView:cellForRowAtIndexPath:               @32@0:8@16@24          imp=0x3eb24
+   - tableView:didSelectRowAtIndexPath:             v32@0:8@16@24          imp=0x3eda4
+   - 全选                                             v16@0:8                imp=0x3efd4
+   - 试跑选中                                           v16@0:8                imp=0x3f11c
+   - 从首项连跑                                          v16@0:8                imp=0x3f2f8
+   - 执行试跑:说明:                                       v32@0:8@16@24          imp=0x3f59c
+   - 关闭自己                                           v16@0:8                imp=0x3fc94
+   - 结束回调                                           @?16@0:8               imp=0x3fcc8
+   - set结束回调:                                       v24@0:8@?16            imp=0x3fcd4
+   - 表                                              @16@0:8                imp=0x3fce0
+   - set表:                                          v24@0:8@16             imp=0x3fcec
+   - 标题                                             @16@0:8                imp=0x3fcfc
+   - set标题:                                         v24@0:8@16             imp=0x3fd08
+   - 副标题                                            @16@0:8                imp=0x3fd18
+   - set副标题:                                        v24@0:8@16             imp=0x3fd24
+   - 单选按钮                                           @16@0:8                imp=0x3fd34
+   - set单选按钮:                                       v24@0:8@16             imp=0x3fd40
+   - 连跑按钮                                           @16@0:8                imp=0x3fd50
+   - set连跑按钮:                                       v24@0:8@16             imp=0x3fd5c
+   - 动作                                             @16@0:8                imp=0x3fd6c
+   - set动作:                                         v24@0:8@16             imp=0x3fd78
+   - 选中                                             @16@0:8                imp=0x3fd84
+   - set选中:                                         v24@0:8@16             imp=0x3fd90
+   - 组                                              @16@0:8                imp=0x3fda0
+   - set组:                                          v24@0:8@16             imp=0x3fdac
+   - 已默认全选                                          B16@0:8                imp=0x3fdbc
+   - set已默认全选:                                      v20@0:8B16             imp=0x3fdcc
+   - .cxx_destruct                                  v16@0:8                imp=0x3fddc
+
+@interface 输入弹窗视图                       : ROOT              size=24
+   ivar  _输入框                     @"UITextField"               off=8
+   ivar  _回调                      @?                           off=16
+   - 取消                                             v16@0:8                imp=0x3265c
+   - 完成输入                                           v16@0:8                imp=0x32660
+   - 收起                                             v16@0:8                imp=0x326ac
+   - 描述                                             @16@0:8                imp=0x326ec
+   - .cxx_destruct                                  v16@0:8                imp=0x326f8
+
+@interface 输入选择视图                       : 动作选择视图            size=240
+   ivar  _来源段                     @"UISegmentedControl"        off=160
+   ivar  _暂存段                     @"UISegmentedControl"        off=168
+   ivar  _模式段                     @"UISegmentedControl"        off=176
+   ivar  _文本框                     @"UITextView"                off=184
+   ivar  _占位标签                    @"UILabel"                   off=192
+   ivar  _来源提示                    @"UILabel"                   off=200
+   ivar  _清空标签                    @"UILabel"                   off=208
+   ivar  _清空开关                    @"UISwitch"                  off=216
+   ivar  _回车标签                    @"UILabel"                   off=224
+   ivar  _回车开关                    @"UISwitch"                  off=232
+   @prop 来源段   {T@"UISegmentedControl",&,N,V_来源段}
+   @prop 暂存段   {T@"UISegmentedControl",&,N,V_暂存段}
+   @prop 模式段   {T@"UISegmentedControl",&,N,V_模式段}
+   @prop 文本框   {T@"UITextView",&,N,V_文本框}
+   @prop 占位标签   {T@"UILabel",&,N,V_占位标签}
+   @prop 来源提示   {T@"UILabel",&,N,V_来源提示}
+   @prop 清空标签   {T@"UILabel",&,N,V_清空标签}
+   @prop 清空开关   {T@"UISwitch",&,N,V_清空开关}
+   @prop 回车标签   {T@"UILabel",&,N,V_回车标签}
+   @prop 回车开关   {T@"UISwitch",&,N,V_回车开关}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - 显示标记                                           B16@0:8                imp=0x53980
+   - 新建标记视图                                         @16@0:8                imp=0x53984
+   - 构建参数                                           v16@0:8                imp=0x539c4
+   - 面板附加高度                                         d16@0:8                imp=0x54538
+   - 布局参数区                                          v16@0:8                imp=0x545bc
+   - 刷新来源显隐                                         v16@0:8                imp=0x54a40
+   - 来源段变化:                                         v24@0:8@16             imp=0x54a44
+   - 暂存段变化:                                         v24@0:8@16             imp=0x54a80
+   - 模式段变化:                                         v24@0:8@16             imp=0x54abc
+   - 清空开关变化:                                        v24@0:8@16             imp=0x54af0
+   - 回车开关变化:                                        v24@0:8@16             imp=0x54b28
+   - 配段:                                            v24@0:8@16             imp=0x54b60
+   - 行标签:                                           @24@0:8@16             imp=0x54ca8
+   - 行开关:动作:                                        @28@0:8B16:20          imp=0x54d60
+   - 收起键盘                                           v16@0:8                imp=0x54df4
+   - textViewDidChange:                             v24@0:8@16             imp=0x54e1c
+   - 来源段                                            @16@0:8                imp=0x54f08
+   - set来源段:                                        v24@0:8@16             imp=0x54f14
+   - 暂存段                                            @16@0:8                imp=0x54f24
+   - set暂存段:                                        v24@0:8@16             imp=0x54f30
+   - 模式段                                            @16@0:8                imp=0x54f40
+   - set模式段:                                        v24@0:8@16             imp=0x54f4c
+   - 文本框                                            @16@0:8                imp=0x54f5c
+   - set文本框:                                        v24@0:8@16             imp=0x54f68
+   - 占位标签                                           @16@0:8                imp=0x54f78
+   - set占位标签:                                       v24@0:8@16             imp=0x54f84
+   - 来源提示                                           @16@0:8                imp=0x54f94
+   - set来源提示:                                       v24@0:8@16             imp=0x54fa0
+   - 清空标签                                           @16@0:8                imp=0x54fb0
+   - set清空标签:                                       v24@0:8@16             imp=0x54fbc
+   - 清空开关                                           @16@0:8                imp=0x54fcc
+   - set清空开关:                                       v24@0:8@16             imp=0x54fd8
+   - 回车标签                                           @16@0:8                imp=0x54fe8
+   - set回车标签:                                       v24@0:8@16             imp=0x54ff4
+   - 回车开关                                           @16@0:8                imp=0x55004
+   - set回车开关:                                       v24@0:8@16             imp=0x55010
+   - .cxx_destruct                                  v16@0:8                imp=0x55020
+
+@interface 配置导入视图                       : ROOT              size=24
+   ivar  _表                       @"UITableView"               off=8
+   ivar  _文件列表                    @"NSMutableArray"            off=16
+   @prop 表   {T@"UITableView",&,N,V_表}
+   @prop 文件列表   {T@"NSMutableArray",&,N,V_文件列表}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - 构建                                             v16@0:8                imp=0x625e0
+   - 显示                                             v16@0:8                imp=0x628b4
+   - 关闭                                             v16@0:8                imp=0x628f0
+   - 文件列表                                           @16@0:8                imp=0x62924
+   - tableView:numberOfRowsInSection:               q32@0:8@16q24          imp=0x6298c
+   - tableView:cellForRowAtIndexPath:               @32@0:8@16@24          imp=0x629c4
+   - tableView:didSelectRowAtIndexPath:             v32@0:8@16@24          imp=0x62d64
+   - tableView:canEditRowAtIndexPath:               B32@0:8@16@24          imp=0x62e64
+   - tableView:commitEditingStyle:forRowAtIndexPath: v40@0:8@16q24@32       imp=0x62e6c
+   - 表                                              @16@0:8                imp=0x630c8
+   - set表:                                          v24@0:8@16             imp=0x630d8
+   - set文件列表:                                       v24@0:8@16             imp=0x630e8
+   - .cxx_destruct                                  v16@0:8                imp=0x630f8
+
+@interface 长按选择视图                       : 动作选择视图            size=160
+   - 构建参数                                           v16@0:8                imp=0x49634
+   - 含时长字段                                          B16@0:8                imp=0x499dc
+   - 面板附加高度                                         d16@0:8                imp=0x499e0
+
+@interface 问题反馈视图                       : ROOT              size=208
+   ivar  _页签                      @"UISegmentedControl"        off=8
+   ivar  _提交页                     @"UIView"                    off=16
+   ivar  _工单页                     @"UIView"                    off=24
+   ivar  _分类段                     @"UISegmentedControl"        off=32
+   ivar  _主题输入                    @"UITextField"               off=40
+   ivar  _描述输入                    @"UITextView"                off=48
+   ivar  _描述占位                    @"UILabel"                   off=56
+   ivar  _字数提示                    @"UILabel"                   off=64
+   ivar  _联系方式输入                  @"UITextField"               off=72
+   ivar  _取消按钮                    @"UIButton"                  off=80
+   ivar  _提交按钮                    @"UIButton"                  off=88
+   ivar  _备用提示                    @"UILabel"                   off=96
+   ivar  _提交滚动                    @"UIScrollView"              off=104
+   ivar  _分类标签                    @"UILabel"                   off=112
+   ivar  _主题标签                    @"UILabel"                   off=120
+   ivar  _描述标签                    @"UILabel"                   off=128
+   ivar  _联系标签                    @"UILabel"                   off=136
+   ivar  _列表                      @"UITableView"               off=144
+   ivar  _列表空态                    @"UILabel"                   off=152
+   ivar  _工单                      @"NSArray"                   off=160
+   ivar  _刷新                      @"UIRefreshControl"          off=168
+   ivar  _工单号输入                   @"UITextField"               off=176
+   ivar  _查询按钮                    @"UIButton"                  off=184
+   ivar  _查询中的号                   @"NSString"                  off=192
+   ivar  _键盘位移                    d                            off=200
+   @prop 页签   {T@"UISegmentedControl",&,N,V_页签}
+   @prop 提交页   {T@"UIView",&,N,V_提交页}
+   @prop 工单页   {T@"UIView",&,N,V_工单页}
+   @prop 分类段   {T@"UISegmentedControl",&,N,V_分类段}
+   @prop 主题输入   {T@"UITextField",&,N,V_主题输入}
+   @prop 描述输入   {T@"UITextView",&,N,V_描述输入}
+   @prop 描述占位   {T@"UILabel",&,N,V_描述占位}
+   @prop 字数提示   {T@"UILabel",&,N,V_字数提示}
+   @prop 联系方式输入   {T@"UITextField",&,N,V_联系方式输入}
+   @prop 取消按钮   {T@"UIButton",&,N,V_取消按钮}
+   @prop 提交按钮   {T@"UIButton",&,N,V_提交按钮}
+   @prop 备用提示   {T@"UILabel",&,N,V_备用提示}
+   @prop 提交滚动   {T@"UIScrollView",&,N,V_提交滚动}
+   @prop 分类标签   {T@"UILabel",&,N,V_分类标签}
+   @prop 主题标签   {T@"UILabel",&,N,V_主题标签}
+   @prop 描述标签   {T@"UILabel",&,N,V_描述标签}
+   @prop 联系标签   {T@"UILabel",&,N,V_联系标签}
+   @prop 列表   {T@"UITableView",&,N,V_列表}
+   @prop 列表空态   {T@"UILabel",&,N,V_列表空态}
+   @prop 工单   {T@"NSArray",&,N,V_工单}
+   @prop 刷新   {T@"UIRefreshControl",&,N,V_刷新}
+   @prop 工单号输入   {T@"UITextField",&,N,V_工单号输入}
+   @prop 查询按钮   {T@"UIButton",&,N,V_查询按钮}
+   @prop 查询中的号   {T@"NSString",C,N,V_查询中的号}
+   @prop 键盘位移   {Td,N,V_键盘位移}
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - 显示                                             v16@0:8                imp=0x63348
+   - 关闭                                             v16@0:8                imp=0x63384
+   - layoutSubviews                                 v16@0:8                imp=0x633b8
+   - dealloc                                        v16@0:8                imp=0x63a8c
+   - 构建                                             v16@0:8                imp=0x63af0
+   - 构建提交页                                          v16@0:8                imp=0x63e00
+   - 构建工单页                                          v16@0:8                imp=0x64828
+   - 切页签                                            v16@0:8                imp=0x64ff4
+   - 键盘工具栏                                          @16@0:8                imp=0x650d0
+   - 收起键盘                                           v16@0:8                imp=0x651d0
+   - 点空白关闭键盘                                        v16@0:8                imp=0x65234
+   - gestureRecognizer:shouldReceiveTouch:          B32@0:8@16@24          imp=0x652d4
+   - 键盘显示:                                          v24@0:8@16             imp=0x653c4
+   - 键盘隐藏:                                          v24@0:8@16             imp=0x655a0
+   - 恢复位移                                           v16@0:8                imp=0x655a4
+   - 添加标签:y:到:                                      @40@0:8@16d24@32       imp=0x65658
+   - 添加输入框WithY:placeholder:到:                      @40@0:8d16@24@32       imp=0x65720
+   - textViewDidChange:                             v24@0:8@16             imp=0x65920
+   - 提交                                             v16@0:8                imp=0x65abc
+   - 提交查询                                           v16@0:8                imp=0x664d0
+   - 上报单条已读到服务端:                                    v24@0:8@16             imp=0x66b18
+   - 拉取工单                                           v16@0:8                imp=0x66ce8
+   - 上报已读到服务端                                       v16@0:8                imp=0x67250
+   - URL编码:                                         @24@0:8@16             imp=0x67538
+   - tableView:numberOfRowsInSection:               q32@0:8@16q24          imp=0x675b4
+   - tableView:cellForRowAtIndexPath:               @32@0:8@16@24          imp=0x675ec
+   - 状态文本:                                          @24@0:8q16             imp=0x67740
+   - 渲染工单:                                          @24@0:8@16             imp=0x67764
+   - 页签                                             @16@0:8                imp=0x67cf8
+   - set页签:                                         v24@0:8@16             imp=0x67d04
+   - 提交页                                            @16@0:8                imp=0x67d14
+   - set提交页:                                        v24@0:8@16             imp=0x67d20
+   - 工单页                                            @16@0:8                imp=0x67d30
+   - set工单页:                                        v24@0:8@16             imp=0x67d3c
+   - 分类段                                            @16@0:8                imp=0x67d4c
+   - set分类段:                                        v24@0:8@16             imp=0x67d58
+   - 主题输入                                           @16@0:8                imp=0x67d68
+   - set主题输入:                                       v24@0:8@16             imp=0x67d74
+   - 描述输入                                           @16@0:8                imp=0x67d84
+   - set描述输入:                                       v24@0:8@16             imp=0x67d90
+   - 描述占位                                           @16@0:8                imp=0x67da0
+   - set描述占位:                                       v24@0:8@16             imp=0x67dac
+   - 字数提示                                           @16@0:8                imp=0x67dbc
+   - set字数提示:                                       v24@0:8@16             imp=0x67dc8
+   - 联系方式输入                                         @16@0:8                imp=0x67dd8
+   - set联系方式输入:                                     v24@0:8@16             imp=0x67de4
+   - 取消按钮                                           @16@0:8                imp=0x67df4
+   - set取消按钮:                                       v24@0:8@16             imp=0x67e00
+   - 提交按钮                                           @16@0:8                imp=0x67e10
+   - set提交按钮:                                       v24@0:8@16             imp=0x67e1c
+   - 备用提示                                           @16@0:8                imp=0x67e2c
+   - set备用提示:                                       v24@0:8@16             imp=0x67e38
+   - 提交滚动                                           @16@0:8                imp=0x67e48
+   - set提交滚动:                                       v24@0:8@16             imp=0x67e54
+   - 分类标签                                           @16@0:8                imp=0x67e64
+   - set分类标签:                                       v24@0:8@16             imp=0x67e70
+   - 主题标签                                           @16@0:8                imp=0x67e80
+   - set主题标签:                                       v24@0:8@16             imp=0x67e8c
+   - 描述标签                                           @16@0:8                imp=0x67e9c
+   - set描述标签:                                       v24@0:8@16             imp=0x67ea8
+   - 联系标签                                           @16@0:8                imp=0x67eb8
+   - set联系标签:                                       v24@0:8@16             imp=0x67ec4
+   - 列表                                             @16@0:8                imp=0x67ed4
+   - set列表:                                         v24@0:8@16             imp=0x67ee0
+   - 列表空态                                           @16@0:8                imp=0x67ef0
+   - set列表空态:                                       v24@0:8@16             imp=0x67efc
+   - 工单                                             @16@0:8                imp=0x67f0c
+   - set工单:                                         v24@0:8@16             imp=0x67f18
+   - 刷新                                             @16@0:8                imp=0x67f28
+   - set刷新:                                         v24@0:8@16             imp=0x67f34
+   - 工单号输入                                          @16@0:8                imp=0x67f44
+   - set工单号输入:                                      v24@0:8@16             imp=0x67f50
+   - 查询按钮                                           @16@0:8                imp=0x67f60
+   - set查询按钮:                                       v24@0:8@16             imp=0x67f6c
+   - 查询中的号                                          @16@0:8                imp=0x67f7c
+   - set查询中的号:                                      v24@0:8@16             imp=0x67f88
+   - 键盘位移                                           d16@0:8                imp=0x67f94
+   - set键盘位移:                                       v24@0:8d16             imp=0x67fa4
+   - .cxx_destruct                                  v16@0:8                imp=0x67fb4
+
+@interface 颜色取样视图                       : ROOT              size=88
+   ivar  _截图                      @"UIImage"                   off=8
+   ivar  _框                       @"UIView"                    off=16
+   ivar  _点组                      @"NSMutableArray"            off=24
+   ivar  _点标                      @"NSMutableArray"            off=32
+   ivar  _按钮条                     @"UIView"                    off=40
+   ivar  _完成                      @?                           off=48
+   ivar  _取消                      @?                           off=56
+   ivar  _拖动序号                    q                            off=64
+   ivar  _拖动偏移                    {CGPoint="x"d"y"d}           off=72
+   @prop hash   {TQ,R}
+   @prop superclass   {T#,R}
+   @prop description   {T@"NSString",R,C}
+   @prop debugDescription   {T@"NSString",?,R,C}
+   - initWithFrame:截图:区域:点组:                        @96@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16@48{CGRect={CGPoint=dd}{CGSize=dd}}56@88 imp=0x5c92c
+   - 点位:                                            {CGPoint=dd}24@0:8@16  imp=0x5d25c
+   - 刷新点标                                           v16@0:8                imp=0x5d350
+   - gestureRecognizer:shouldReceiveTouch:          B32@0:8@16@24          imp=0x5d7a8
+   - 拖按钮条:                                          v24@0:8@16             imp=0x5d838
+   - 点按:                                            v24@0:8@16             imp=0x5d8d8
+   - 清空色点                                           v16@0:8                imp=0x5db18
+   - 拖动色点:                                          v24@0:8@16             imp=0x5db60
+   - 确认取样                                           v16@0:8                imp=0x5df54
+   - 取消取样                                           v16@0:8                imp=0x5dfdc
+   - .cxx_destruct                                  v16@0:8                imp=0x5e030
+
+=== CATEGORIES (1) ===
+
+@interface 0 (CQ找第一响应者)
+   - CQ记录第一响应者                                      v16@0:8
+
+=== PROTOCOLS ===
+['NSObject', 'UITableViewDataSource', 'UIScrollViewDelegate', 'UITableViewDelegate', 'NSCoding', 'NSCopying', 'UITextViewDelegate', 'UIGestureRecognizerDelegate']
+
+methods total: 1418
