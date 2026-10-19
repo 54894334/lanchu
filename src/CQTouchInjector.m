@@ -487,9 +487,9 @@
     //        0 → 看实测系数：两个都 >0 用 绝对点/系数；否则退回归一化
     CGRect b = [UIScreen mainScreen].bounds;
 
-    double nx = 抖动后的点.x / 100.0;
+    double nx = HID坐标.x / 100.0;
     double pw = nx * b.size.width;
-    double ny = 抖动后的点.y / 100.0;
+    double ny = HID坐标.y / 100.0;
     double ph = ny * b.size.height;
 
     NSInteger scale = [self 坐标量程];
@@ -497,7 +497,7 @@
 
     switch (scale) {
         case 2:
-            out = 抖动后的点;
+            out = HID坐标;
             break;
         case 3:
             out = CGPointMake(pw, ph);
