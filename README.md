@@ -119,12 +119,14 @@ node ../gh_deploy.js --src=lanchu --repo=lanchu
 node ../gh_get.js lanchu dist dist/Lanchu.dylib dist/Lanchu.dylib
 ```
 
-**已编译通过**（Actions run 39312469120）：
+**已编译通过**（Actions run 39313205005）：
 
 | 产物 | 大小 | 说明 |
 |---|---|---|
-| `dist/Lanchu.dylib` | 430,544 B<br>sha256 `3dd4bcb0f9f0898b69e44447396f42f6f8c2240d9d5e39bc345b2eccff1dd965` | fat：arm64 + arm64e，两 slice 都是 `MH_DYLIB(6)` |
-| `dist/com.reversed.lanchu_1.0.35-1_iphoneos-arm64.deb` | 63,288 B | `Version: 1.0.35-1`，内含 dylib + `Lanchu.plist` |
+| `dist/Lanchu.dylib` | 430,544 B<br>sha256 `2ba8b744ca2a412b3223da560d1406849d917975337de3205466d9c3d8b91357` | fat：arm64 + arm64e，两 slice 都是 `MH_DYLIB(6)` |
+| `dist/com.reversed.lanchu_1.0.35-1_iphoneos-arm64.deb` | 63,004 B | `Version: 1.0.35-1`，内含 dylib + `Lanchu.plist` |
+
+> sha256 每次重建都会变（链接期 uuid / 时间戳进二进制），不是可重现构建；以 `dist` 分支实际产物为准。
 
 改了生成器或手工实现之后，本地先跑一遍自检再推，省一次 CI 往返：
 
