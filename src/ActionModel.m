@@ -224,7 +224,7 @@
     return _gid;
 }
 
-- (void)setGid:(id)setGid {   // 0x2e7ac
+- (void)setGid:(NSString *)setGid {   // 0x2e7ac
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 setGid: 即可补全。
     // 0x02e7ac  mov      w3, #0x20                               

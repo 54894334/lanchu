@@ -841,7 +841,7 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (NSString *)标识;
 - (void)set标识:(NSString *)set标识;
 - (NSString *)gid;
-- (void)setGid:(id)setGid;
+- (void)setGid:(NSString *)setGid;
 - (NSString *)名称;
 - (void)set名称:(NSString *)set名称;
 - (long long)类型;

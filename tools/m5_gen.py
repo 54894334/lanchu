@@ -388,11 +388,14 @@ def method_sig(c, m, ptypes):
     ret, args = parse_encoding(m['type'])
     if sel in ptypes and not sel_parts(sel):
         ret = ptypes[sel]
-    if sel.startswith('set') and sel.endswith(':') and sel[3:-1] in ptypes:
-        if args:
-            args = [ptypes[sel[3:-1]]] + args[1:]
-        else:
-            args = [ptypes[sel[3:-1]]]
+    if sel.startswith('set') and sel.endswith(':'):
+        pn = sel[3:-1]
+        # setGid: 对应属性 gid，首字母大小写会不一样，两种写法都试
+        t = ptypes.get(pn)
+        if t is None and pn:
+            t = ptypes.get(pn[0].lower() + pn[1:])
+        if t is not None:
+            args = [t] + args[1:] if args else [t]
     parts = sel_parts(sel)
     if not parts:
         return '- (%s)%s' % (ret, sel)
