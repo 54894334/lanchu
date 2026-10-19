@@ -236,6 +236,56 @@ def fmt_asm(addr, limit=24):
 
 
 # ---------- 代码生成 ----------
+
+# 中文类名 → ASCII 文件名。Theos/make 对 src 下的 UTF-8 文件名支持有问题
+# （实测报 "File src/CQ匹 does not exist"），所以源文件名统一用英文，
+# 类名本身保持不变 —— 代码里搜类名即可。
+FILENAME = {
+    '任务编辑视图': 'TaskEditorView',
+    '副标题单元格': 'SubtitleCell',
+    '功能视图': 'FeatureView',
+    '动作模型': 'ActionModel',
+    '动作组模型': 'ActionGroupModel',
+    '动作选择视图': 'ActionPickerView',
+    '参数行': 'ParamRow',
+    '双击选择视图': 'DoubleTapPickerView',
+    '取字选择视图': 'TextGrabPickerView',
+    '命中路径编辑器': 'HitPathEditor',
+    '多点选择视图': 'MultiPointPickerView',
+    '录制视图': 'RecordView',
+    '循环结尾选择视图': 'LoopEndPickerView',
+    '循环选择视图': 'LoopPickerView',
+    '悬浮球': 'FloatingBall',
+    '方向箭头视图': 'ArrowView',
+    '时间选择弹窗': 'TimePickerPopup',
+    '模板裁切视图': 'TemplateCropView',
+    '滑动选择视图': 'SwipePickerView',
+    '点击反馈视图': 'TapFeedbackView',
+    '点击选择视图': 'TapPickerView',
+    '穿透窗口': 'PassThroughWindow',
+    '穿透窗口控制器': 'PassThroughWindowController',
+    '等待选择视图': 'WaitPickerView',
+    '统计视图': 'StatsView',
+    '网格格': 'GridCell',
+    '自定义弹窗': 'CustomPopup',
+    '自由滑动选择视图': 'FreeSwipePickerView',
+    '触摸事件数据': 'TouchEventData',
+    '设置视图': 'SettingsView',
+    '识图选择视图': 'ImagePickerView',
+    '识字选择视图': 'TextOCRPickerView',
+    '识色选择视图': 'ColorPickerView',
+    '试跑会话': 'TrialRunSession',
+    '试跑选择视图': 'TrialRunPickerView',
+    '输入弹窗视图': 'InputPopupView',
+    '输入选择视图': 'InputPickerView',
+    '配置导入视图': 'ConfigImportView',
+    '长按选择视图': 'LongPressPickerView',
+    '问题反馈视图': 'FeedbackView',
+    '颜色取样视图': 'ColorSamplerView',
+    'CQOCR行': 'CQOCRLine',
+    'CQ匹配结果': 'CQMatchResult',
+}
+
 def type_decl_of_ivar(iv):
     t = iv['type']
     if t.startswith('@"'):
@@ -385,7 +435,11 @@ def main():
         impl, todo = gen_impl(c, 0)
         total_todo += todo
         total_m += len(c['methods'])
-        safe = re.sub(r'[^\w\u4e00-\u9fa5]', '_', name)
+        safe = FILENAME.get(name) or re.sub(r'[^\w]', '_', name)
+        if not safe.isascii():
+            safe = 'Cls_%02d' % classes.index(c)
+        if not safe.isascii():
+            safe = 'Cls_%02d' % classes.index(c)
         open(os.path.join(SRC, safe + '.m'), 'w', encoding='utf-8', newline='\n').write(impl)
     print('类 %d，方法 %d，未还原(TODO) %d，已还原 %d' % (
         len(classes), total_m, total_todo, total_m - total_todo))
