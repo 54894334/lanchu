@@ -406,7 +406,7 @@
     // 0x03fcdc  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)表 {   // 0x3fce0
+- (UITableView *)表 {   // 0x3fce0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 表 即可补全。
     // 0x03fce0  adrp     x8, #0xad000                            
@@ -414,7 +414,7 @@
     // 0x03fce8  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set表:(id)set表 {   // 0x3fcec
+- (void)set表:(UITableView *)set表 {   // 0x3fcec
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set表: 即可补全。
     // 0x03fcec  mov      x1, x2                                  
@@ -423,7 +423,7 @@
     // 0x03fcf8  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)标题 {   // 0x3fcfc
+- (UILabel *)标题 {   // 0x3fcfc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 标题 即可补全。
     // 0x03fcfc  adrp     x8, #0xad000                            
@@ -431,7 +431,7 @@
     // 0x03fd04  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set标题:(id)set标题 {   // 0x3fd08
+- (void)set标题:(UILabel *)set标题 {   // 0x3fd08
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set标题: 即可补全。
     // 0x03fd08  mov      x1, x2                                  
@@ -440,7 +440,7 @@
     // 0x03fd14  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)副标题 {   // 0x3fd18
+- (UILabel *)副标题 {   // 0x3fd18
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 副标题 即可补全。
     // 0x03fd18  adrp     x8, #0xad000                            
@@ -448,7 +448,7 @@
     // 0x03fd20  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set副标题:(id)set副标题 {   // 0x3fd24
+- (void)set副标题:(UILabel *)set副标题 {   // 0x3fd24
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set副标题: 即可补全。
     // 0x03fd24  mov      x1, x2                                  
@@ -457,7 +457,7 @@
     // 0x03fd30  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)单选按钮 {   // 0x3fd34
+- (UIButton *)单选按钮 {   // 0x3fd34
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 单选按钮 即可补全。
     // 0x03fd34  adrp     x8, #0xad000                            
@@ -465,7 +465,7 @@
     // 0x03fd3c  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set单选按钮:(id)set单选按钮 {   // 0x3fd40
+- (void)set单选按钮:(UIButton *)set单选按钮 {   // 0x3fd40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set单选按钮: 即可补全。
     // 0x03fd40  mov      x1, x2                                  
@@ -474,7 +474,7 @@
     // 0x03fd4c  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)连跑按钮 {   // 0x3fd50
+- (UIButton *)连跑按钮 {   // 0x3fd50
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 连跑按钮 即可补全。
     // 0x03fd50  adrp     x8, #0xad000                            
@@ -482,7 +482,7 @@
     // 0x03fd58  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set连跑按钮:(id)set连跑按钮 {   // 0x3fd5c
+- (void)set连跑按钮:(UIButton *)set连跑按钮 {   // 0x3fd5c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set连跑按钮: 即可补全。
     // 0x03fd5c  mov      x1, x2                                  
@@ -491,7 +491,7 @@
     // 0x03fd68  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)动作 {   // 0x3fd6c
+- (NSArray *)动作 {   // 0x3fd6c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 动作 即可补全。
     // 0x03fd6c  adrp     x8, #0xad000                            
@@ -499,7 +499,7 @@
     // 0x03fd74  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set动作:(id)set动作 {   // 0x3fd78
+- (void)set动作:(NSArray *)set动作 {   // 0x3fd78
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set动作: 即可补全。
     // 0x03fd78  adrp     x8, #0xad000                            
@@ -507,7 +507,7 @@
     // 0x03fd80  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)选中 {   // 0x3fd84
+- (NSMutableSet *)选中 {   // 0x3fd84
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 选中 即可补全。
     // 0x03fd84  adrp     x8, #0xad000                            
@@ -515,7 +515,7 @@
     // 0x03fd8c  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set选中:(id)set选中 {   // 0x3fd90
+- (void)set选中:(NSMutableSet *)set选中 {   // 0x3fd90
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set选中: 即可补全。
     // 0x03fd90  mov      x1, x2                                  
@@ -524,7 +524,7 @@
     // 0x03fd9c  b        #0x3fe78                                ; func_0x3fe78
 }
 
-- (id)组 {   // 0x3fda0
+- (动作组模型 *)组 {   // 0x3fda0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 组 即可补全。
     // 0x03fda0  adrp     x8, #0xad000                            
@@ -532,7 +532,7 @@
     // 0x03fda8  b        #0x3febc                                ; func_0x3febc
 }
 
-- (void)set组:(id)set组 {   // 0x3fdac
+- (void)set组:(动作组模型 *)set组 {   // 0x3fdac
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑选择视图 set组: 即可补全。
     // 0x03fdac  mov      x1, x2                                  

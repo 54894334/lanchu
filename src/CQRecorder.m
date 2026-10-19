@@ -122,7 +122,7 @@
     // 0x00f874  bl       #0x69070                                ; _objc_retainAutoreleasedReturnValue
 }
 
-- (id)事件列表 {   // 0xf894
+- (NSArray *)事件列表 {   // 0xf894
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQRecorder 事件列表 即可补全。
     // 0x00f894  stp      x20, x19, [sp, #-0x20]!                 
@@ -187,11 +187,11 @@
 }
 
 - (BOOL)录制中 {   // 0xfd38
-    return __录制中;
+    return _录制中;
 }
 
 - (id)状态回调 {   // 0xfd40
-    return __状态回调;
+    return _状态回调;
 }
 
 - (void)set状态回调:(id)set状态回调 {   // 0xfd48

@@ -556,7 +556,7 @@
     // 0x05aa48  mov      x19, x0                                 
 }
 
-- (id)模式段 {   // 0x5adf8
+- (UISegmentedControl *)模式段 {   // 0x5adf8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 模式段 即可补全。
     // 0x05adf8  adrp     x8, #0xad000                            
@@ -564,7 +564,7 @@
     // 0x05ae00  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set模式段:(id)set模式段 {   // 0x5ae04
+- (void)set模式段:(UISegmentedControl *)set模式段 {   // 0x5ae04
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set模式段: 即可补全。
     // 0x05ae04  mov      x1, x2                                  
@@ -573,7 +573,7 @@
     // 0x05ae10  b        #0x60194                                ; func_0x60194
 }
 
-- (id)高级段 {   // 0x5ae14
+- (UISegmentedControl *)高级段 {   // 0x5ae14
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 高级段 即可补全。
     // 0x05ae14  adrp     x8, #0xad000                            
@@ -581,7 +581,7 @@
     // 0x05ae1c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set高级段:(id)set高级段 {   // 0x5ae20
+- (void)set高级段:(UISegmentedControl *)set高级段 {   // 0x5ae20
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set高级段: 即可补全。
     // 0x05ae20  mov      x1, x2                                  
@@ -590,7 +590,7 @@
     // 0x05ae2c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)目标框 {   // 0x5ae30
+- (UITextField *)目标框 {   // 0x5ae30
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 目标框 即可补全。
     // 0x05ae30  adrp     x8, #0xad000                            
@@ -598,7 +598,7 @@
     // 0x05ae38  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set目标框:(id)set目标框 {   // 0x5ae3c
+- (void)set目标框:(UITextField *)set目标框 {   // 0x5ae3c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set目标框: 即可补全。
     // 0x05ae3c  mov      x1, x2                                  
@@ -607,7 +607,7 @@
     // 0x05ae48  b        #0x60194                                ; func_0x60194
 }
 
-- (id)替换框 {   // 0x5ae4c
+- (UITextField *)替换框 {   // 0x5ae4c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 替换框 即可补全。
     // 0x05ae4c  adrp     x8, #0xad000                            
@@ -615,7 +615,7 @@
     // 0x05ae54  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set替换框:(id)set替换框 {   // 0x5ae58
+- (void)set替换框:(UITextField *)set替换框 {   // 0x5ae58
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set替换框: 即可补全。
     // 0x05ae58  mov      x1, x2                                  
@@ -624,7 +624,7 @@
     // 0x05ae64  b        #0x60194                                ; func_0x60194
 }
 
-- (id)正则框 {   // 0x5ae68
+- (UITextField *)正则框 {   // 0x5ae68
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 正则框 即可补全。
     // 0x05ae68  adrp     x8, #0xad000                            
@@ -632,7 +632,7 @@
     // 0x05ae70  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set正则框:(id)set正则框 {   // 0x5ae74
+- (void)set正则框:(UITextField *)set正则框 {   // 0x5ae74
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set正则框: 即可补全。
     // 0x05ae74  mov      x1, x2                                  
@@ -641,7 +641,7 @@
     // 0x05ae80  b        #0x60194                                ; func_0x60194
 }
 
-- (id)第几条框 {   // 0x5ae84
+- (UITextField *)第几条框 {   // 0x5ae84
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 第几条框 即可补全。
     // 0x05ae84  adrp     x8, #0xad000                            
@@ -649,7 +649,7 @@
     // 0x05ae8c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set第几条框:(id)set第几条框 {   // 0x5ae90
+- (void)set第几条框:(UITextField *)set第几条框 {   // 0x5ae90
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set第几条框: 即可补全。
     // 0x05ae90  mov      x1, x2                                  
@@ -658,7 +658,7 @@
     // 0x05ae9c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)存储段 {   // 0x5aea0
+- (UISegmentedControl *)存储段 {   // 0x5aea0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 存储段 即可补全。
     // 0x05aea0  adrp     x8, #0xad000                            
@@ -666,7 +666,7 @@
     // 0x05aea8  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set存储段:(id)set存储段 {   // 0x5aeac
+- (void)set存储段:(UISegmentedControl *)set存储段 {   // 0x5aeac
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set存储段: 即可补全。
     // 0x05aeac  mov      x1, x2                                  
@@ -675,7 +675,7 @@
     // 0x05aeb8  b        #0x60194                                ; func_0x60194
 }
 
-- (id)框选按钮 {   // 0x5aebc
+- (UIButton *)框选按钮 {   // 0x5aebc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 框选按钮 即可补全。
     // 0x05aebc  adrp     x8, #0xad000                            
@@ -683,7 +683,7 @@
     // 0x05aec4  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set框选按钮:(id)set框选按钮 {   // 0x5aec8
+- (void)set框选按钮:(UIButton *)set框选按钮 {   // 0x5aec8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set框选按钮: 即可补全。
     // 0x05aec8  mov      x1, x2                                  
@@ -692,7 +692,7 @@
     // 0x05aed4  b        #0x60194                                ; func_0x60194
 }
 
-- (id)测试按钮 {   // 0x5aed8
+- (UIButton *)测试按钮 {   // 0x5aed8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 测试按钮 即可补全。
     // 0x05aed8  adrp     x8, #0xad000                            
@@ -700,7 +700,7 @@
     // 0x05aee0  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set测试按钮:(id)set测试按钮 {   // 0x5aee4
+- (void)set测试按钮:(UIButton *)set测试按钮 {   // 0x5aee4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set测试按钮: 即可补全。
     // 0x05aee4  mov      x1, x2                                  
@@ -709,7 +709,7 @@
     // 0x05aef0  b        #0x60194                                ; func_0x60194
 }
 
-- (id)成功段 {   // 0x5aef4
+- (UISegmentedControl *)成功段 {   // 0x5aef4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 成功段 即可补全。
     // 0x05aef4  adrp     x8, #0xad000                            
@@ -717,7 +717,7 @@
     // 0x05aefc  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set成功段:(id)set成功段 {   // 0x5af00
+- (void)set成功段:(UISegmentedControl *)set成功段 {   // 0x5af00
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set成功段: 即可补全。
     // 0x05af00  mov      x1, x2                                  
@@ -726,7 +726,7 @@
     // 0x05af0c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)成功跳按钮 {   // 0x5af10
+- (UIButton *)成功跳按钮 {   // 0x5af10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 成功跳按钮 即可补全。
     // 0x05af10  adrp     x8, #0xad000                            
@@ -734,7 +734,7 @@
     // 0x05af18  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set成功跳按钮:(id)set成功跳按钮 {   // 0x5af1c
+- (void)set成功跳按钮:(UIButton *)set成功跳按钮 {   // 0x5af1c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set成功跳按钮: 即可补全。
     // 0x05af1c  mov      x1, x2                                  
@@ -743,7 +743,7 @@
     // 0x05af28  b        #0x60194                                ; func_0x60194
 }
 
-- (id)失败段 {   // 0x5af2c
+- (UISegmentedControl *)失败段 {   // 0x5af2c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 失败段 即可补全。
     // 0x05af2c  adrp     x8, #0xad000                            
@@ -751,7 +751,7 @@
     // 0x05af34  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set失败段:(id)set失败段 {   // 0x5af38
+- (void)set失败段:(UISegmentedControl *)set失败段 {   // 0x5af38
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set失败段: 即可补全。
     // 0x05af38  mov      x1, x2                                  
@@ -760,7 +760,7 @@
     // 0x05af44  b        #0x60194                                ; func_0x60194
 }
 
-- (id)失败跳按钮 {   // 0x5af48
+- (UIButton *)失败跳按钮 {   // 0x5af48
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 失败跳按钮 即可补全。
     // 0x05af48  adrp     x8, #0xad000                            
@@ -768,7 +768,7 @@
     // 0x05af50  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set失败跳按钮:(id)set失败跳按钮 {   // 0x5af54
+- (void)set失败跳按钮:(UIButton *)set失败跳按钮 {   // 0x5af54
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set失败跳按钮: 即可补全。
     // 0x05af54  mov      x1, x2                                  
@@ -777,7 +777,7 @@
     // 0x05af60  b        #0x60194                                ; func_0x60194
 }
 
-- (id)区域宽行 {   // 0x5af64
+- (参数行 *)区域宽行 {   // 0x5af64
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 区域宽行 即可补全。
     // 0x05af64  stp      x29, x30, [sp, #-0x10]!                 
@@ -789,7 +789,7 @@
     // 0x05af7c  b        #0x68f98                                ; _objc_autoreleaseReturnValue
 }
 
-- (void)set区域宽行:(id)set区域宽行 {   // 0x5af80
+- (void)set区域宽行:(参数行 *)set区域宽行 {   // 0x5af80
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set区域宽行: 即可补全。
     // 0x05af80  mov      x1, x2                                  
@@ -798,7 +798,7 @@
     // 0x05af8c  b        #0x60324                                ; func_0x60324
 }
 
-- (id)区域高行 {   // 0x5af90
+- (参数行 *)区域高行 {   // 0x5af90
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 区域高行 即可补全。
     // 0x05af90  stp      x29, x30, [sp, #-0x10]!                 
@@ -810,7 +810,7 @@
     // 0x05afa8  b        #0x68f98                                ; _objc_autoreleaseReturnValue
 }
 
-- (void)set区域高行:(id)set区域高行 {   // 0x5afac
+- (void)set区域高行:(参数行 *)set区域高行 {   // 0x5afac
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 取字选择视图 set区域高行: 即可补全。
     // 0x05afac  mov      x1, x2                                  

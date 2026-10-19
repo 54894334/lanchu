@@ -35,13 +35,13 @@
     // 0x00d6c4  ldp      x29, x30, [sp, #0x20]                   
 }
 
-- (id)窗口 {   // 0xd6d4
+- (UIWindow *)窗口 {   // 0xd6d4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOverlay 窗口 即可补全。
     // 0x00d6d4  b        #0x72a20                                ; [x0 浮窗] x2, x3, x4, x5, x6, x7
 }
 
-- (id)根视图 {   // 0xd6d8
+- (UIView *)根视图 {   // 0xd6d8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOverlay 根视图 即可补全。
     // 0x00d6d8  stp      x22, x21, [sp, #-0x30]!                 
@@ -276,11 +276,11 @@
     // 0x00eed4  b        #0xf4c8                                 ; func_0xf4c8
 }
 
-- (id)球 {   // 0xf414
-    return __球;
+- (悬浮球 *)球 {   // 0xf414
+    return _球;
 }
 
-- (void)set球:(id)set球 {   // 0xf41c
+- (void)set球:(悬浮球 *)set球 {   // 0xf41c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOverlay set球: 即可补全。
     // 0x00f41c  mov      x1, x2                                  
@@ -288,11 +288,11 @@
     // 0x00f424  b        #0x690a0                                ; _objc_storeStrong
 }
 
-- (id)浮窗 {   // 0xf428
-    return __浮窗;
+- (穿透窗口 *)浮窗 {   // 0xf428
+    return _浮窗;
 }
 
-- (void)set浮窗:(id)set浮窗 {   // 0xf430
+- (void)set浮窗:(穿透窗口 *)set浮窗 {   // 0xf430
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOverlay set浮窗: 即可补全。
     // 0x00f430  mov      x1, x2                                  
@@ -300,11 +300,11 @@
     // 0x00f438  b        #0x690a0                                ; _objc_storeStrong
 }
 
-- (id)面板栈 {   // 0xf43c
-    return __面板栈;
+- (NSMutableArray *)面板栈 {   // 0xf43c
+    return _面板栈;
 }
 
-- (void)set面板栈:(id)set面板栈 {   // 0xf444
+- (void)set面板栈:(NSMutableArray *)set面板栈 {   // 0xf444
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOverlay set面板栈: 即可补全。
     // 0x00f444  mov      x1, x2                                  

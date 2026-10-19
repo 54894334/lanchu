@@ -1,7 +1,5 @@
 {
-    Filter = {
-        Bundles = (
-            "com.xt.lanchu.directload.only"
-        );
-    };
+    // 不写 Filter = 注入所有进程（全部 App + SpringBoard），全局连点器必须这样；
+    // 只想在单个 App 里跑，就改成：
+    //   Filter = { Bundles = ( "com.apple.springboard" ); };
 }

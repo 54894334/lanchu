@@ -353,7 +353,7 @@
     // 0x054e78  mov      x24, #0                                 
 }
 
-- (id)来源段 {   // 0x54f08
+- (UISegmentedControl *)来源段 {   // 0x54f08
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 来源段 即可补全。
     // 0x054f08  adrp     x8, #0xad000                            
@@ -361,7 +361,7 @@
     // 0x054f10  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set来源段:(id)set来源段 {   // 0x54f14
+- (void)set来源段:(UISegmentedControl *)set来源段 {   // 0x54f14
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set来源段: 即可补全。
     // 0x054f14  mov      x1, x2                                  
@@ -370,7 +370,7 @@
     // 0x054f20  b        #0x60194                                ; func_0x60194
 }
 
-- (id)暂存段 {   // 0x54f24
+- (UISegmentedControl *)暂存段 {   // 0x54f24
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 暂存段 即可补全。
     // 0x054f24  adrp     x8, #0xad000                            
@@ -378,7 +378,7 @@
     // 0x054f2c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set暂存段:(id)set暂存段 {   // 0x54f30
+- (void)set暂存段:(UISegmentedControl *)set暂存段 {   // 0x54f30
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set暂存段: 即可补全。
     // 0x054f30  mov      x1, x2                                  
@@ -387,7 +387,7 @@
     // 0x054f3c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)模式段 {   // 0x54f40
+- (UISegmentedControl *)模式段 {   // 0x54f40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 模式段 即可补全。
     // 0x054f40  adrp     x8, #0xad000                            
@@ -395,7 +395,7 @@
     // 0x054f48  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set模式段:(id)set模式段 {   // 0x54f4c
+- (void)set模式段:(UISegmentedControl *)set模式段 {   // 0x54f4c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set模式段: 即可补全。
     // 0x054f4c  mov      x1, x2                                  
@@ -404,7 +404,7 @@
     // 0x054f58  b        #0x60194                                ; func_0x60194
 }
 
-- (id)文本框 {   // 0x54f5c
+- (UITextView *)文本框 {   // 0x54f5c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 文本框 即可补全。
     // 0x054f5c  adrp     x8, #0xad000                            
@@ -412,7 +412,7 @@
     // 0x054f64  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set文本框:(id)set文本框 {   // 0x54f68
+- (void)set文本框:(UITextView *)set文本框 {   // 0x54f68
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set文本框: 即可补全。
     // 0x054f68  mov      x1, x2                                  
@@ -421,7 +421,7 @@
     // 0x054f74  b        #0x60194                                ; func_0x60194
 }
 
-- (id)占位标签 {   // 0x54f78
+- (UILabel *)占位标签 {   // 0x54f78
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 占位标签 即可补全。
     // 0x054f78  adrp     x8, #0xad000                            
@@ -429,7 +429,7 @@
     // 0x054f80  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set占位标签:(id)set占位标签 {   // 0x54f84
+- (void)set占位标签:(UILabel *)set占位标签 {   // 0x54f84
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set占位标签: 即可补全。
     // 0x054f84  mov      x1, x2                                  
@@ -438,7 +438,7 @@
     // 0x054f90  b        #0x60194                                ; func_0x60194
 }
 
-- (id)来源提示 {   // 0x54f94
+- (UILabel *)来源提示 {   // 0x54f94
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 来源提示 即可补全。
     // 0x054f94  adrp     x8, #0xad000                            
@@ -446,7 +446,7 @@
     // 0x054f9c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set来源提示:(id)set来源提示 {   // 0x54fa0
+- (void)set来源提示:(UILabel *)set来源提示 {   // 0x54fa0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set来源提示: 即可补全。
     // 0x054fa0  mov      x1, x2                                  
@@ -455,7 +455,7 @@
     // 0x054fac  b        #0x60194                                ; func_0x60194
 }
 
-- (id)清空标签 {   // 0x54fb0
+- (UILabel *)清空标签 {   // 0x54fb0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 清空标签 即可补全。
     // 0x054fb0  adrp     x8, #0xad000                            
@@ -463,7 +463,7 @@
     // 0x054fb8  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set清空标签:(id)set清空标签 {   // 0x54fbc
+- (void)set清空标签:(UILabel *)set清空标签 {   // 0x54fbc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set清空标签: 即可补全。
     // 0x054fbc  mov      x1, x2                                  
@@ -472,7 +472,7 @@
     // 0x054fc8  b        #0x60194                                ; func_0x60194
 }
 
-- (id)清空开关 {   // 0x54fcc
+- (UISwitch *)清空开关 {   // 0x54fcc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 清空开关 即可补全。
     // 0x054fcc  adrp     x8, #0xad000                            
@@ -480,7 +480,7 @@
     // 0x054fd4  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set清空开关:(id)set清空开关 {   // 0x54fd8
+- (void)set清空开关:(UISwitch *)set清空开关 {   // 0x54fd8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set清空开关: 即可补全。
     // 0x054fd8  mov      x1, x2                                  
@@ -489,7 +489,7 @@
     // 0x054fe4  b        #0x60194                                ; func_0x60194
 }
 
-- (id)回车标签 {   // 0x54fe8
+- (UILabel *)回车标签 {   // 0x54fe8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 回车标签 即可补全。
     // 0x054fe8  adrp     x8, #0xad000                            
@@ -497,7 +497,7 @@
     // 0x054ff0  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set回车标签:(id)set回车标签 {   // 0x54ff4
+- (void)set回车标签:(UILabel *)set回车标签 {   // 0x54ff4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set回车标签: 即可补全。
     // 0x054ff4  mov      x1, x2                                  
@@ -506,7 +506,7 @@
     // 0x055000  b        #0x60194                                ; func_0x60194
 }
 
-- (id)回车开关 {   // 0x55004
+- (UISwitch *)回车开关 {   // 0x55004
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 回车开关 即可补全。
     // 0x055004  adrp     x8, #0xad000                            
@@ -514,7 +514,7 @@
     // 0x05500c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set回车开关:(id)set回车开关 {   // 0x55010
+- (void)set回车开关:(UISwitch *)set回车开关 {   // 0x55010
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 输入选择视图 set回车开关: 即可补全。
     // 0x055010  mov      x1, x2                                  

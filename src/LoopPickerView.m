@@ -126,7 +126,7 @@
     // 0x05f5f4  bl       #0x69070                                ; _objc_retainAutoreleasedReturnValue
 }
 
-- (id)配对标签 {   // 0x5f9bc
+- (UILabel *)配对标签 {   // 0x5f9bc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 循环选择视图 配对标签 即可补全。
     // 0x05f9bc  adrp     x8, #0xad000                            
@@ -134,7 +134,7 @@
     // 0x05f9c4  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set配对标签:(id)set配对标签 {   // 0x5f9c8
+- (void)set配对标签:(UILabel *)set配对标签 {   // 0x5f9c8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 循环选择视图 set配对标签: 即可补全。
     // 0x05f9c8  mov      x1, x2                                  
@@ -143,7 +143,7 @@
     // 0x05f9d4  b        #0x60194                                ; func_0x60194
 }
 
-- (id)清零行 {   // 0x5f9d8
+- (参数行 *)清零行 {   // 0x5f9d8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 循环选择视图 清零行 即可补全。
     // 0x05f9d8  adrp     x8, #0xad000                            
@@ -151,7 +151,7 @@
     // 0x05f9e0  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set清零行:(id)set清零行 {   // 0x5f9e4
+- (void)set清零行:(参数行 *)set清零行 {   // 0x5f9e4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 循环选择视图 set清零行: 即可补全。
     // 0x05f9e4  mov      x1, x2                                  

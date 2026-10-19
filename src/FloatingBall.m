@@ -963,7 +963,7 @@
     // 0x036c5c  b        #0x36f68                                ; func_0x36f68
 }
 
-- (id)拖动手势 {   // 0x36c60
+- (UIPanGestureRecognizer *)拖动手势 {   // 0x36c60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 拖动手势 即可补全。
     // 0x036c60  adrp     x8, #0xad000                            
@@ -971,7 +971,7 @@
     // 0x036c68  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set拖动手势:(id)set拖动手势 {   // 0x36c6c
+- (void)set拖动手势:(UIPanGestureRecognizer *)set拖动手势 {   // 0x36c6c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set拖动手势: 即可补全。
     // 0x036c6c  mov      x1, x2                                  
@@ -980,7 +980,7 @@
     // 0x036c78  b        #0x36ea4                                ; func_0x36ea4
 }
 
-- (id)隐藏计时器 {   // 0x36c7c
+- (NSTimer *)隐藏计时器 {   // 0x36c7c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 隐藏计时器 即可补全。
     // 0x036c7c  adrp     x8, #0xad000                            
@@ -988,7 +988,7 @@
     // 0x036c84  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set隐藏计时器:(id)set隐藏计时器 {   // 0x36c88
+- (void)set隐藏计时器:(NSTimer *)set隐藏计时器 {   // 0x36c88
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set隐藏计时器: 即可补全。
     // 0x036c88  mov      x1, x2                                  
@@ -1033,7 +1033,7 @@
     // 0x036cd4  b        #0x36fa0                                ; func_0x36fa0
 }
 
-- (id)名称标签 {   // 0x36cd8
+- (UILabel *)名称标签 {   // 0x36cd8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 名称标签 即可补全。
     // 0x036cd8  adrp     x8, #0xad000                            
@@ -1041,7 +1041,7 @@
     // 0x036ce0  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set名称标签:(id)set名称标签 {   // 0x36ce4
+- (void)set名称标签:(UILabel *)set名称标签 {   // 0x36ce4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set名称标签: 即可补全。
     // 0x036ce4  mov      x1, x2                                  
@@ -1050,7 +1050,7 @@
     // 0x036cf0  b        #0x36ea4                                ; func_0x36ea4
 }
 
-- (id)副标签 {   // 0x36cf4
+- (UILabel *)副标签 {   // 0x36cf4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 副标签 即可补全。
     // 0x036cf4  adrp     x8, #0xad000                            
@@ -1058,7 +1058,7 @@
     // 0x036cfc  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set副标签:(id)set副标签 {   // 0x36d00
+- (void)set副标签:(UILabel *)set副标签 {   // 0x36d00
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set副标签: 即可补全。
     // 0x036d00  mov      x1, x2                                  
@@ -1067,7 +1067,7 @@
     // 0x036d0c  b        #0x36ea4                                ; func_0x36ea4
 }
 
-- (id)图标层 {   // 0x36d10
+- (CAShapeLayer *)图标层 {   // 0x36d10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 图标层 即可补全。
     // 0x036d10  adrp     x8, #0xad000                            
@@ -1075,7 +1075,7 @@
     // 0x036d18  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set图标层:(id)set图标层 {   // 0x36d1c
+- (void)set图标层:(CAShapeLayer *)set图标层 {   // 0x36d1c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set图标层: 即可补全。
     // 0x036d1c  mov      x1, x2                                  
@@ -1117,7 +1117,7 @@
     // 0x036d5c  b        #0x36fa0                                ; func_0x36fa0
 }
 
-- (id)箭头层 {   // 0x36d60
+- (CAShapeLayer *)箭头层 {   // 0x36d60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 箭头层 即可补全。
     // 0x036d60  adrp     x8, #0xad000                            
@@ -1125,7 +1125,7 @@
     // 0x036d68  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set箭头层:(id)set箭头层 {   // 0x36d6c
+- (void)set箭头层:(CAShapeLayer *)set箭头层 {   // 0x36d6c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set箭头层: 即可补全。
     // 0x036d6c  mov      x1, x2                                  
@@ -1150,7 +1150,7 @@
     // 0x036d90  b        #0x36fa0                                ; func_0x36fa0
 }
 
-- (id)进度底环 {   // 0x36d94
+- (CAShapeLayer *)进度底环 {   // 0x36d94
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 进度底环 即可补全。
     // 0x036d94  adrp     x8, #0xad000                            
@@ -1158,7 +1158,7 @@
     // 0x036d9c  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set进度底环:(id)set进度底环 {   // 0x36da0
+- (void)set进度底环:(CAShapeLayer *)set进度底环 {   // 0x36da0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set进度底环: 即可补全。
     // 0x036da0  mov      x1, x2                                  
@@ -1167,7 +1167,7 @@
     // 0x036dac  b        #0x36ea4                                ; func_0x36ea4
 }
 
-- (id)进度环 {   // 0x36db0
+- (CAShapeLayer *)进度环 {   // 0x36db0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 进度环 即可补全。
     // 0x036db0  adrp     x8, #0xad000                            
@@ -1175,7 +1175,7 @@
     // 0x036db8  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set进度环:(id)set进度环 {   // 0x36dbc
+- (void)set进度环:(CAShapeLayer *)set进度环 {   // 0x36dbc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set进度环: 即可补全。
     // 0x036dbc  mov      x1, x2                                  
@@ -1184,7 +1184,7 @@
     // 0x036dc8  b        #0x36ea4                                ; func_0x36ea4
 }
 
-- (id)计时器 {   // 0x36dcc
+- (NSTimer *)计时器 {   // 0x36dcc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 计时器 即可补全。
     // 0x036dcc  adrp     x8, #0xad000                            
@@ -1192,7 +1192,7 @@
     // 0x036dd4  b        #0x36ef0                                ; func_0x36ef0
 }
 
-- (void)set计时器:(id)set计时器 {   // 0x36dd8
+- (void)set计时器:(NSTimer *)set计时器 {   // 0x36dd8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 悬浮球 set计时器: 即可补全。
     // 0x036dd8  mov      x1, x2                                  

@@ -209,19 +209,19 @@
     // 0x02e758  add      x2, x2, #0xcb0                          
 }
 
-- (id)标识 {   // 0x2e794
-    return __标识;
+- (NSString *)标识 {   // 0x2e794
+    return _标识;
 }
 
-- (void)set标识:(id)set标识 {   // 0x2e79c
+- (void)set标识:(NSString *)set标识 {   // 0x2e79c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set标识: 即可补全。
     // 0x02e79c  mov      w3, #0x18                               
     // 0x02e7a0  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)gid {   // 0x2e7a4
-    return __gid;
+- (NSString *)gid {   // 0x2e7a4
+    return _gid;
 }
 
 - (void)setGid:(id)setGid {   // 0x2e7ac
@@ -231,11 +231,11 @@
     // 0x02e7b0  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)名称 {   // 0x2e7b4
-    return __名称;
+- (NSString *)名称 {   // 0x2e7b4
+    return _名称;
 }
 
-- (void)set名称:(id)set名称 {   // 0x2e7bc
+- (void)set名称:(NSString *)set名称 {   // 0x2e7bc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set名称: 即可补全。
     // 0x02e7bc  mov      w3, #0x28                               
@@ -243,59 +243,59 @@
 }
 
 - (long long)类型 {   // 0x2e7c4
-    return __类型;
+    return _类型;
 }
 
 - (void)set类型:(long long)set类型 {   // 0x2e7cc
-    __类型 = set类型;
+    _类型 = set类型;
 }
 
 - (BOOL)是否开启 {   // 0x2e7d4
-    return __是否开启;
+    return _是否开启;
 }
 
 - (void)set是否开启:(BOOL)set是否开启 {   // 0x2e7dc
-    __是否开启 = set是否开启;
+    _是否开启 = set是否开启;
 }
 
 - (long long)次数 {   // 0x2e7e4
-    return __次数;
+    return _次数;
 }
 
 - (void)set次数:(long long)set次数 {   // 0x2e7ec
-    __次数 = set次数;
+    _次数 = set次数;
 }
 
 - (double)开始延迟 {   // 0x2e7f4
-    return __开始延迟;
+    return _开始延迟;
 }
 
 - (void)set开始延迟:(double)set开始延迟 {   // 0x2e7fc
-    return __开始延迟;
+    _开始延迟 = set开始延迟;
 }
 
 - (double)结束延迟 {   // 0x2e804
-    return __结束延迟;
+    return _结束延迟;
 }
 
 - (void)set结束延迟:(double)set结束延迟 {   // 0x2e80c
-    return __结束延迟;
+    _结束延迟 = set结束延迟;
 }
 
 - (double)连点间隔 {   // 0x2e814
-    return __连点间隔;
+    return _连点间隔;
 }
 
 - (void)set连点间隔:(double)set连点间隔 {   // 0x2e81c
-    return __连点间隔;
+    _连点间隔 = set连点间隔;
 }
 
 - (long long)自动复杂度 {   // 0x2e824
-    return __自动复杂度;
+    return _自动复杂度;
 }
 
 - (void)set自动复杂度:(long long)set自动复杂度 {   // 0x2e82c
-    __自动复杂度 = set自动复杂度;
+    _自动复杂度 = set自动复杂度;
 }
 
 - (CGPoint)坐标 {   // 0x2e834
@@ -346,11 +346,11 @@
     // 0x02e878  ret                                              
 }
 
-- (id)位置偏移 {   // 0x2e87c
-    return __位置偏移;
+- (NSArray *)位置偏移 {   // 0x2e87c
+    return _位置偏移;
 }
 
-- (void)set位置偏移:(id)set位置偏移 {   // 0x2e884
+- (void)set位置偏移:(NSArray *)set位置偏移 {   // 0x2e884
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set位置偏移: 即可补全。
     // 0x02e884  mov      w3, #0x60                               
@@ -358,74 +358,74 @@
 }
 
 - (long long)偏移随机数 {   // 0x2e88c
-    return __偏移随机数;
+    return _偏移随机数;
 }
 
 - (void)set偏移随机数:(long long)set偏移随机数 {   // 0x2e894
-    __偏移随机数 = set偏移随机数;
+    _偏移随机数 = set偏移随机数;
 }
 
 - (long long)时长随机开关 {   // 0x2e89c
-    return __时长随机开关;
+    return _时长随机开关;
 }
 
 - (void)set时长随机开关:(long long)set时长随机开关 {   // 0x2e8a4
-    __时长随机开关 = set时长随机开关;
+    _时长随机开关 = set时长随机开关;
 }
 
 - (double)时长随机幅度 {   // 0x2e8ac
-    return __时长随机幅度;
+    return _时长随机幅度;
 }
 
 - (void)set时长随机幅度:(double)set时长随机幅度 {   // 0x2e8b4
-    return __时长随机幅度;
+    _时长随机幅度 = set时长随机幅度;
 }
 
 - (long long)等待随机 {   // 0x2e8bc
-    return __等待随机;
+    return _等待随机;
 }
 
 - (void)set等待随机:(long long)set等待随机 {   // 0x2e8c4
-    __等待随机 = set等待随机;
+    _等待随机 = set等待随机;
 }
 
 - (double)等待秒 {   // 0x2e8cc
-    return __等待秒;
+    return _等待秒;
 }
 
 - (void)set等待秒:(double)set等待秒 {   // 0x2e8d4
-    return __等待秒;
+    _等待秒 = set等待秒;
 }
 
 - (double)等待下限 {   // 0x2e8dc
-    return __等待下限;
+    return _等待下限;
 }
 
 - (void)set等待下限:(double)set等待下限 {   // 0x2e8e4
-    return __等待下限;
+    _等待下限 = set等待下限;
 }
 
 - (double)等待上限 {   // 0x2e8ec
-    return __等待上限;
+    return _等待上限;
 }
 
 - (void)set等待上限:(double)set等待上限 {   // 0x2e8f4
-    return __等待上限;
+    _等待上限 = set等待上限;
 }
 
 - (long long)等待结束行为 {   // 0x2e8fc
-    return __等待结束行为;
+    return _等待结束行为;
 }
 
 - (void)set等待结束行为:(long long)set等待结束行为 {   // 0x2e904
-    __等待结束行为 = set等待结束行为;
+    _等待结束行为 = set等待结束行为;
 }
 
-- (id)等待跳转 {   // 0x2e90c
-    return __等待跳转;
+- (NSString *)等待跳转 {   // 0x2e90c
+    return _等待跳转;
 }
 
-- (void)set等待跳转:(id)set等待跳转 {   // 0x2e914
+- (void)set等待跳转:(NSString *)set等待跳转 {   // 0x2e914
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set等待跳转: 即可补全。
     // 0x02e914  mov      w3, #0xa8                               
@@ -433,66 +433,66 @@
 }
 
 - (long long)是否随机 {   // 0x2e91c
-    return __是否随机;
+    return _是否随机;
 }
 
 - (void)set是否随机:(long long)set是否随机 {   // 0x2e924
-    __是否随机 = set是否随机;
+    _是否随机 = set是否随机;
 }
 
 - (long long)位置偏移随机数开关 {   // 0x2e92c
-    return __位置偏移随机数开关;
+    return _位置偏移随机数开关;
 }
 
 - (void)set位置偏移随机数开关:(long long)set位置偏移随机数开关 {   // 0x2e934
-    __位置偏移随机数开关 = set位置偏移随机数开关;
+    _位置偏移随机数开关 = set位置偏移随机数开关;
 }
 
 - (double)长按时长 {   // 0x2e93c
-    return __长按时长;
+    return _长按时长;
 }
 
 - (void)set长按时长:(double)set长按时长 {   // 0x2e944
-    return __长按时长;
+    _长按时长 = set长按时长;
 }
 
 - (double)滑动时长 {   // 0x2e94c
-    return __滑动时长;
+    return _滑动时长;
 }
 
 - (void)set滑动时长:(double)set滑动时长 {   // 0x2e954
-    return __滑动时长;
+    _滑动时长 = set滑动时长;
 }
 
 - (long long)方向 {   // 0x2e95c
-    return __方向;
+    return _方向;
 }
 
 - (void)set方向:(long long)set方向 {   // 0x2e964
-    __方向 = set方向;
+    _方向 = set方向;
 }
 
 - (double)距离 {   // 0x2e96c
-    return __距离;
+    return _距离;
 }
 
 - (void)set距离:(double)set距离 {   // 0x2e974
-    return __距离;
+    _距离 = set距离;
 }
 
 - (long long)滑动帧数 {   // 0x2e97c
-    return __滑动帧数;
+    return _滑动帧数;
 }
 
 - (void)set滑动帧数:(long long)set滑动帧数 {   // 0x2e984
-    __滑动帧数 = set滑动帧数;
+    _滑动帧数 = set滑动帧数;
 }
 
-- (id)图片 {   // 0x2e98c
-    return __图片;
+- (UIImage *)图片 {   // 0x2e98c
+    return _图片;
 }
 
-- (void)set图片:(id)set图片 {   // 0x2e994
+- (void)set图片:(UIImage *)set图片 {   // 0x2e994
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set图片: 即可补全。
     // 0x02e994  mov      x1, x2                                  
@@ -501,11 +501,11 @@
 }
 
 - (double)相似度 {   // 0x2e9a0
-    return __相似度;
+    return _相似度;
 }
 
 - (void)set相似度:(double)set相似度 {   // 0x2e9a8
-    return __相似度;
+    _相似度 = set相似度;
 }
 
 - (CGRect)识别区域 {   // 0x2e9b0
@@ -529,34 +529,34 @@
 }
 
 - (double)识图超时 {   // 0x2e9d8
-    return __识图超时;
+    return _识图超时;
 }
 
 - (void)set识图超时:(double)set识图超时 {   // 0x2e9e0
-    return __识图超时;
+    _识图超时 = set识图超时;
 }
 
 - (double)识图延迟 {   // 0x2e9e8
-    return __识图延迟;
+    return _识图延迟;
 }
 
 - (void)set识图延迟:(double)set识图延迟 {   // 0x2e9f0
-    return __识图延迟;
+    _识图延迟 = set识图延迟;
 }
 
 - (long long)识图点击 {   // 0x2e9f8
-    return __识图点击;
+    return _识图点击;
 }
 
 - (void)set识图点击:(long long)set识图点击 {   // 0x2ea00
-    __识图点击 = set识图点击;
+    _识图点击 = set识图点击;
 }
 
-- (id)识图跳转 {   // 0x2ea08
-    return __识图跳转;
+- (NSString *)识图跳转 {   // 0x2ea08
+    return _识图跳转;
 }
 
-- (void)set识图跳转:(id)set识图跳转 {   // 0x2ea10
+- (void)set识图跳转:(NSString *)set识图跳转 {   // 0x2ea10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识图跳转: 即可补全。
     // 0x02ea10  mov      w3, #0x110                              
@@ -564,50 +564,50 @@
 }
 
 - (long long)识图命中行为 {   // 0x2ea18
-    return __识图命中行为;
+    return _识图命中行为;
 }
 
 - (void)set识图命中行为:(long long)set识图命中行为 {   // 0x2ea20
-    __识图命中行为 = set识图命中行为;
+    _识图命中行为 = set识图命中行为;
 }
 
 - (double)识图长按时长 {   // 0x2ea28
-    return __识图长按时长;
+    return _识图长按时长;
 }
 
 - (void)set识图长按时长:(double)set识图长按时长 {   // 0x2ea30
-    return __识图长按时长;
+    _识图长按时长 = set识图长按时长;
 }
 
 - (double)识图滑动时长 {   // 0x2ea38
-    return __识图滑动时长;
+    return _识图滑动时长;
 }
 
 - (void)set识图滑动时长:(double)set识图滑动时长 {   // 0x2ea40
-    return __识图滑动时长;
+    _识图滑动时长 = set识图滑动时长;
 }
 
 - (long long)识图滑动帧数 {   // 0x2ea48
-    return __识图滑动帧数;
+    return _识图滑动帧数;
 }
 
 - (void)set识图滑动帧数:(long long)set识图滑动帧数 {   // 0x2ea50
-    __识图滑动帧数 = set识图滑动帧数;
+    _识图滑动帧数 = set识图滑动帧数;
 }
 
 - (double)识图滑动时隔 {   // 0x2ea58
-    return __识图滑动时隔;
+    return _识图滑动时隔;
 }
 
 - (void)set识图滑动时隔:(double)set识图滑动时隔 {   // 0x2ea60
-    return __识图滑动时隔;
+    _识图滑动时隔 = set识图滑动时隔;
 }
 
-- (id)识图路径点 {   // 0x2ea68
-    return __识图路径点;
+- (NSArray *)识图路径点 {   // 0x2ea68
+    return _识图路径点;
 }
 
-- (void)set识图路径点:(id)set识图路径点 {   // 0x2ea70
+- (void)set识图路径点:(NSArray *)set识图路径点 {   // 0x2ea70
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识图路径点: 即可补全。
     // 0x02ea70  mov      w3, #0x140                              
@@ -615,34 +615,34 @@
 }
 
 - (BOOL)识图判断 {   // 0x2ea78
-    return __识图判断;
+    return _识图判断;
 }
 
 - (void)set识图判断:(BOOL)set识图判断 {   // 0x2ea80
-    __识图判断 = set识图判断;
+    _识图判断 = set识图判断;
 }
 
 - (long long)识图判断次数 {   // 0x2ea88
-    return __识图判断次数;
+    return _识图判断次数;
 }
 
 - (void)set识图判断次数:(long long)set识图判断次数 {   // 0x2ea90
-    __识图判断次数 = set识图判断次数;
+    _识图判断次数 = set识图判断次数;
 }
 
 - (long long)识图判断失败行为 {   // 0x2ea98
-    return __识图判断失败行为;
+    return _识图判断失败行为;
 }
 
 - (void)set识图判断失败行为:(long long)set识图判断失败行为 {   // 0x2eaa0
-    __识图判断失败行为 = set识图判断失败行为;
+    _识图判断失败行为 = set识图判断失败行为;
 }
 
-- (id)识图判断跳转 {   // 0x2eaa8
-    return __识图判断跳转;
+- (NSString *)识图判断跳转 {   // 0x2eaa8
+    return _识图判断跳转;
 }
 
-- (void)set识图判断跳转:(id)set识图判断跳转 {   // 0x2eab0
+- (void)set识图判断跳转:(NSString *)set识图判断跳转 {   // 0x2eab0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识图判断跳转: 即可补全。
     // 0x02eab0  mov      w3, #0x158                              
@@ -650,29 +650,29 @@
 }
 
 - (long long)识图失败行为 {   // 0x2eab8
-    return __识图失败行为;
+    return _识图失败行为;
 }
 
 - (void)set识图失败行为:(long long)set识图失败行为 {   // 0x2eac0
-    __识图失败行为 = set识图失败行为;
+    _识图失败行为 = set识图失败行为;
 }
 
-- (id)识图失败跳转 {   // 0x2eac8
-    return __识图失败跳转;
+- (NSString *)识图失败跳转 {   // 0x2eac8
+    return _识图失败跳转;
 }
 
-- (void)set识图失败跳转:(id)set识图失败跳转 {   // 0x2ead0
+- (void)set识图失败跳转:(NSString *)set识图失败跳转 {   // 0x2ead0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识图失败跳转: 即可补全。
     // 0x02ead0  mov      w3, #0x168                              
     // 0x02ead4  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)多点坐标组 {   // 0x2ead8
-    return __多点坐标组;
+- (NSArray *)多点坐标组 {   // 0x2ead8
+    return _多点坐标组;
 }
 
-- (void)set多点坐标组:(id)set多点坐标组 {   // 0x2eae0
+- (void)set多点坐标组:(NSArray *)set多点坐标组 {   // 0x2eae0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set多点坐标组: 即可补全。
     // 0x02eae0  mov      w3, #0x170                              
@@ -680,26 +680,26 @@
 }
 
 - (long long)自由模式 {   // 0x2eae8
-    return __自由模式;
+    return _自由模式;
 }
 
 - (void)set自由模式:(long long)set自由模式 {   // 0x2eaf0
-    __自由模式 = set自由模式;
+    _自由模式 = set自由模式;
 }
 
 - (BOOL)自由长按 {   // 0x2eaf8
-    return __自由长按;
+    return _自由长按;
 }
 
 - (void)set自由长按:(BOOL)set自由长按 {   // 0x2eb00
-    __自由长按 = set自由长按;
+    _自由长按 = set自由长按;
 }
 
-- (id)自由路径点 {   // 0x2eb08
-    return __自由路径点;
+- (NSArray *)自由路径点 {   // 0x2eb08
+    return _自由路径点;
 }
 
-- (void)set自由路径点:(id)set自由路径点 {   // 0x2eb10
+- (void)set自由路径点:(NSArray *)set自由路径点 {   // 0x2eb10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set自由路径点: 即可补全。
     // 0x02eb10  mov      w3, #0x180                              
@@ -707,26 +707,26 @@
 }
 
 - (double)自由滑动时长 {   // 0x2eb18
-    return __自由滑动时长;
+    return _自由滑动时长;
 }
 
 - (void)set自由滑动时长:(double)set自由滑动时长 {   // 0x2eb20
-    return __自由滑动时长;
+    _自由滑动时长 = set自由滑动时长;
 }
 
 - (long long)自由滑动帧数 {   // 0x2eb28
-    return __自由滑动帧数;
+    return _自由滑动帧数;
 }
 
 - (void)set自由滑动帧数:(long long)set自由滑动帧数 {   // 0x2eb30
-    __自由滑动帧数 = set自由滑动帧数;
+    _自由滑动帧数 = set自由滑动帧数;
 }
 
-- (id)自由坐标组 {   // 0x2eb38
-    return __自由坐标组;
+- (NSArray *)自由坐标组 {   // 0x2eb38
+    return _自由坐标组;
 }
 
-- (void)set自由坐标组:(id)set自由坐标组 {   // 0x2eb40
+- (void)set自由坐标组:(NSArray *)set自由坐标组 {   // 0x2eb40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set自由坐标组: 即可补全。
     // 0x02eb40  mov      w3, #0x198                              
@@ -734,18 +734,18 @@
 }
 
 - (long long)循环上限 {   // 0x2eb48
-    return __循环上限;
+    return _循环上限;
 }
 
 - (void)set循环上限:(long long)set循环上限 {   // 0x2eb50
-    __循环上限 = set循环上限;
+    _循环上限 = set循环上限;
 }
 
-- (id)循环变量名 {   // 0x2eb58
-    return __循环变量名;
+- (NSString *)循环变量名 {   // 0x2eb58
+    return _循环变量名;
 }
 
-- (void)set循环变量名:(id)set循环变量名 {   // 0x2eb60
+- (void)set循环变量名:(NSString *)set循环变量名 {   // 0x2eb60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set循环变量名: 即可补全。
     // 0x02eb60  mov      w3, #0x1a8                              
@@ -753,18 +753,18 @@
 }
 
 - (BOOL)循环每轮清零 {   // 0x2eb68
-    return __循环每轮清零;
+    return _循环每轮清零;
 }
 
 - (void)set循环每轮清零:(BOOL)set循环每轮清零 {   // 0x2eb70
-    __循环每轮清零 = set循环每轮清零;
+    _循环每轮清零 = set循环每轮清零;
 }
 
-- (id)循环配对标识 {   // 0x2eb78
-    return __循环配对标识;
+- (NSString *)循环配对标识 {   // 0x2eb78
+    return _循环配对标识;
 }
 
-- (void)set循环配对标识:(id)set循环配对标识 {   // 0x2eb80
+- (void)set循环配对标识:(NSString *)set循环配对标识 {   // 0x2eb80
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set循环配对标识: 即可补全。
     // 0x02eb80  mov      w3, #0x1b0                              
@@ -772,26 +772,26 @@
 }
 
 - (double)识字等待 {   // 0x2eb88
-    return __识字等待;
+    return _识字等待;
 }
 
 - (void)set识字等待:(double)set识字等待 {   // 0x2eb90
-    return __识字等待;
+    _识字等待 = set识字等待;
 }
 
 - (long long)识字类型 {   // 0x2eb98
-    return __识字类型;
+    return _识字类型;
 }
 
 - (void)set识字类型:(long long)set识字类型 {   // 0x2eba0
-    __识字类型 = set识字类型;
+    _识字类型 = set识字类型;
 }
 
-- (id)识字文本 {   // 0x2eba8
-    return __识字文本;
+- (NSString *)识字文本 {   // 0x2eba8
+    return _识字文本;
 }
 
-- (void)set识字文本:(id)set识字文本 {   // 0x2ebb0
+- (void)set识字文本:(NSString *)set识字文本 {   // 0x2ebb0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识字文本: 即可补全。
     // 0x02ebb0  mov      w3, #0x1c8                              
@@ -799,66 +799,66 @@
 }
 
 - (long long)识字条件 {   // 0x2ebb8
-    return __识字条件;
+    return _识字条件;
 }
 
 - (void)set识字条件:(long long)set识字条件 {   // 0x2ebc0
-    __识字条件 = set识字条件;
+    _识字条件 = set识字条件;
 }
 
 - (double)识字数值 {   // 0x2ebc8
-    return __识字数值;
+    return _识字数值;
 }
 
 - (void)set识字数值:(double)set识字数值 {   // 0x2ebd0
-    return __识字数值;
+    _识字数值 = set识字数值;
 }
 
 - (long long)识字成功行为 {   // 0x2ebd8
-    return __识字成功行为;
+    return _识字成功行为;
 }
 
 - (void)set识字成功行为:(long long)set识字成功行为 {   // 0x2ebe0
-    __识字成功行为 = set识字成功行为;
+    _识字成功行为 = set识字成功行为;
 }
 
 - (double)识字长按时长 {   // 0x2ebe8
-    return __识字长按时长;
+    return _识字长按时长;
 }
 
 - (void)set识字长按时长:(double)set识字长按时长 {   // 0x2ebf0
-    return __识字长按时长;
+    _识字长按时长 = set识字长按时长;
 }
 
 - (double)识字滑动时长 {   // 0x2ebf8
-    return __识字滑动时长;
+    return _识字滑动时长;
 }
 
 - (void)set识字滑动时长:(double)set识字滑动时长 {   // 0x2ec00
-    return __识字滑动时长;
+    _识字滑动时长 = set识字滑动时长;
 }
 
 - (long long)识字滑动帧数 {   // 0x2ec08
-    return __识字滑动帧数;
+    return _识字滑动帧数;
 }
 
 - (void)set识字滑动帧数:(long long)set识字滑动帧数 {   // 0x2ec10
-    __识字滑动帧数 = set识字滑动帧数;
+    _识字滑动帧数 = set识字滑动帧数;
 }
 
 - (double)识字滑动时隔 {   // 0x2ec18
-    return __识字滑动时隔;
+    return _识字滑动时隔;
 }
 
 - (void)set识字滑动时隔:(double)set识字滑动时隔 {   // 0x2ec20
-    return __识字滑动时隔;
+    _识字滑动时隔 = set识字滑动时隔;
 }
 
-- (id)识字路径点 {   // 0x2ec28
-    return __识字路径点;
+- (NSArray *)识字路径点 {   // 0x2ec28
+    return _识字路径点;
 }
 
-- (void)set识字路径点:(id)set识字路径点 {   // 0x2ec30
+- (void)set识字路径点:(NSArray *)set识字路径点 {   // 0x2ec30
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识字路径点: 即可补全。
     // 0x02ec30  mov      w3, #0x208                              
@@ -866,29 +866,29 @@
 }
 
 - (long long)识字失败行为 {   // 0x2ec38
-    return __识字失败行为;
+    return _识字失败行为;
 }
 
 - (void)set识字失败行为:(long long)set识字失败行为 {   // 0x2ec40
-    __识字失败行为 = set识字失败行为;
+    _识字失败行为 = set识字失败行为;
 }
 
-- (id)识字跳转 {   // 0x2ec48
-    return __识字跳转;
+- (NSString *)识字跳转 {   // 0x2ec48
+    return _识字跳转;
 }
 
-- (void)set识字跳转:(id)set识字跳转 {   // 0x2ec50
+- (void)set识字跳转:(NSString *)set识字跳转 {   // 0x2ec50
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识字跳转: 即可补全。
     // 0x02ec50  mov      w3, #0x218                              
     // 0x02ec54  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)识字失败跳转 {   // 0x2ec58
-    return __识字失败跳转;
+- (NSString *)识字失败跳转 {   // 0x2ec58
+    return _识字失败跳转;
 }
 
-- (void)set识字失败跳转:(id)set识字失败跳转 {   // 0x2ec60
+- (void)set识字失败跳转:(NSString *)set识字失败跳转 {   // 0x2ec60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识字失败跳转: 即可补全。
     // 0x02ec60  mov      w3, #0x220                              
@@ -896,53 +896,53 @@
 }
 
 - (double)取字等待 {   // 0x2ec68
-    return __取字等待;
+    return _取字等待;
 }
 
 - (void)set取字等待:(double)set取字等待 {   // 0x2ec70
-    return __取字等待;
+    _取字等待 = set取字等待;
 }
 
 - (long long)取字存储 {   // 0x2ec78
-    return __取字存储;
+    return _取字存储;
 }
 
 - (void)set取字存储:(long long)set取字存储 {   // 0x2ec80
-    __取字存储 = set取字存储;
+    _取字存储 = set取字存储;
 }
 
 - (long long)取字成功行为 {   // 0x2ec88
-    return __取字成功行为;
+    return _取字成功行为;
 }
 
 - (void)set取字成功行为:(long long)set取字成功行为 {   // 0x2ec90
-    __取字成功行为 = set取字成功行为;
+    _取字成功行为 = set取字成功行为;
 }
 
 - (long long)取字失败行为 {   // 0x2ec98
-    return __取字失败行为;
+    return _取字失败行为;
 }
 
 - (void)set取字失败行为:(long long)set取字失败行为 {   // 0x2eca0
-    __取字失败行为 = set取字失败行为;
+    _取字失败行为 = set取字失败行为;
 }
 
-- (id)取字跳转 {   // 0x2eca8
-    return __取字跳转;
+- (NSString *)取字跳转 {   // 0x2eca8
+    return _取字跳转;
 }
 
-- (void)set取字跳转:(id)set取字跳转 {   // 0x2ecb0
+- (void)set取字跳转:(NSString *)set取字跳转 {   // 0x2ecb0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set取字跳转: 即可补全。
     // 0x02ecb0  mov      w3, #0x248                              
     // 0x02ecb4  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)取字失败跳转 {   // 0x2ecb8
-    return __取字失败跳转;
+- (NSString *)取字失败跳转 {   // 0x2ecb8
+    return _取字失败跳转;
 }
 
-- (void)set取字失败跳转:(id)set取字失败跳转 {   // 0x2ecc0
+- (void)set取字失败跳转:(NSString *)set取字失败跳转 {   // 0x2ecc0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set取字失败跳转: 即可补全。
     // 0x02ecc0  mov      w3, #0x250                              
@@ -950,48 +950,48 @@
 }
 
 - (long long)取字模式 {   // 0x2ecc8
-    return __取字模式;
+    return _取字模式;
 }
 
 - (void)set取字模式:(long long)set取字模式 {   // 0x2ecd0
-    __取字模式 = set取字模式;
+    _取字模式 = set取字模式;
 }
 
 - (long long)取字高级类型 {   // 0x2ecd8
-    return __取字高级类型;
+    return _取字高级类型;
 }
 
 - (void)set取字高级类型:(long long)set取字高级类型 {   // 0x2ece0
-    __取字高级类型 = set取字高级类型;
+    _取字高级类型 = set取字高级类型;
 }
 
-- (id)取字目标文本 {   // 0x2ece8
-    return __取字目标文本;
+- (NSString *)取字目标文本 {   // 0x2ece8
+    return _取字目标文本;
 }
 
-- (void)set取字目标文本:(id)set取字目标文本 {   // 0x2ecf0
+- (void)set取字目标文本:(NSString *)set取字目标文本 {   // 0x2ecf0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set取字目标文本: 即可补全。
     // 0x02ecf0  mov      w3, #0x268                              
     // 0x02ecf4  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)取字替换文本 {   // 0x2ecf8
-    return __取字替换文本;
+- (NSString *)取字替换文本 {   // 0x2ecf8
+    return _取字替换文本;
 }
 
-- (void)set取字替换文本:(id)set取字替换文本 {   // 0x2ed00
+- (void)set取字替换文本:(NSString *)set取字替换文本 {   // 0x2ed00
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set取字替换文本: 即可补全。
     // 0x02ed00  mov      w3, #0x270                              
     // 0x02ed04  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)取字正则 {   // 0x2ed08
-    return __取字正则;
+- (NSString *)取字正则 {   // 0x2ed08
+    return _取字正则;
 }
 
-- (void)set取字正则:(id)set取字正则 {   // 0x2ed10
+- (void)set取字正则:(NSString *)set取字正则 {   // 0x2ed10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set取字正则: 即可补全。
     // 0x02ed10  mov      w3, #0x278                              
@@ -999,26 +999,26 @@
 }
 
 - (long long)取字第几条 {   // 0x2ed18
-    return __取字第几条;
+    return _取字第几条;
 }
 
 - (void)set取字第几条:(long long)set取字第几条 {   // 0x2ed20
-    __取字第几条 = set取字第几条;
+    _取字第几条 = set取字第几条;
 }
 
 - (double)输入等待 {   // 0x2ed28
-    return __输入等待;
+    return _输入等待;
 }
 
 - (void)set输入等待:(double)set输入等待 {   // 0x2ed30
-    return __输入等待;
+    _输入等待 = set输入等待;
 }
 
-- (id)输入文本 {   // 0x2ed38
-    return __输入文本;
+- (NSString *)输入文本 {   // 0x2ed38
+    return _输入文本;
 }
 
-- (void)set输入文本:(id)set输入文本 {   // 0x2ed40
+- (void)set输入文本:(NSString *)set输入文本 {   // 0x2ed40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set输入文本: 即可补全。
     // 0x02ed40  mov      w3, #0x290                              
@@ -1026,82 +1026,82 @@
 }
 
 - (long long)输入模式 {   // 0x2ed48
-    return __输入模式;
+    return _输入模式;
 }
 
 - (void)set输入模式:(long long)set输入模式 {   // 0x2ed50
-    __输入模式 = set输入模式;
+    _输入模式 = set输入模式;
 }
 
 - (long long)输入来源 {   // 0x2ed58
-    return __输入来源;
+    return _输入来源;
 }
 
 - (void)set输入来源:(long long)set输入来源 {   // 0x2ed60
-    __输入来源 = set输入来源;
+    _输入来源 = set输入来源;
 }
 
 - (long long)输入暂存取条 {   // 0x2ed68
-    return __输入暂存取条;
+    return _输入暂存取条;
 }
 
 - (void)set输入暂存取条:(long long)set输入暂存取条 {   // 0x2ed70
-    __输入暂存取条 = set输入暂存取条;
+    _输入暂存取条 = set输入暂存取条;
 }
 
 - (BOOL)输入清空 {   // 0x2ed78
-    return __输入清空;
+    return _输入清空;
 }
 
 - (void)set输入清空:(BOOL)set输入清空 {   // 0x2ed80
-    __输入清空 = set输入清空;
+    _输入清空 = set输入清空;
 }
 
 - (BOOL)输入回车 {   // 0x2ed88
-    return __输入回车;
+    return _输入回车;
 }
 
 - (void)set输入回车:(BOOL)set输入回车 {   // 0x2ed90
-    __输入回车 = set输入回车;
+    _输入回车 = set输入回车;
 }
 
 - (double)识色等待 {   // 0x2ed98
-    return __识色等待;
+    return _识色等待;
 }
 
 - (void)set识色等待:(double)set识色等待 {   // 0x2eda0
-    return __识色等待;
+    _识色等待 = set识色等待;
 }
 
 - (long long)识色次数 {   // 0x2eda8
-    return __识色次数;
+    return _识色次数;
 }
 
 - (void)set识色次数:(long long)set识色次数 {   // 0x2edb0
-    __识色次数 = set识色次数;
+    _识色次数 = set识色次数;
 }
 
 - (long long)识色容差 {   // 0x2edb8
-    return __识色容差;
+    return _识色容差;
 }
 
 - (void)set识色容差:(long long)set识色容差 {   // 0x2edc0
-    __识色容差 = set识色容差;
+    _识色容差 = set识色容差;
 }
 
 - (long long)识色模式 {   // 0x2edc8
-    return __识色模式;
+    return _识色模式;
 }
 
 - (void)set识色模式:(long long)set识色模式 {   // 0x2edd0
-    __识色模式 = set识色模式;
+    _识色模式 = set识色模式;
 }
 
-- (id)识色点组 {   // 0x2edd8
-    return __识色点组;
+- (NSArray *)识色点组 {   // 0x2edd8
+    return _识色点组;
 }
 
-- (void)set识色点组:(id)set识色点组 {   // 0x2ede0
+- (void)set识色点组:(NSArray *)set识色点组 {   // 0x2ede0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识色点组: 即可补全。
     // 0x02ede0  mov      w3, #0x2d0                              
@@ -1109,50 +1109,50 @@
 }
 
 - (long long)识色成功行为 {   // 0x2ede8
-    return __识色成功行为;
+    return _识色成功行为;
 }
 
 - (void)set识色成功行为:(long long)set识色成功行为 {   // 0x2edf0
-    __识色成功行为 = set识色成功行为;
+    _识色成功行为 = set识色成功行为;
 }
 
 - (double)识色长按时长 {   // 0x2edf8
-    return __识色长按时长;
+    return _识色长按时长;
 }
 
 - (void)set识色长按时长:(double)set识色长按时长 {   // 0x2ee00
-    return __识色长按时长;
+    _识色长按时长 = set识色长按时长;
 }
 
 - (double)识色滑动时长 {   // 0x2ee08
-    return __识色滑动时长;
+    return _识色滑动时长;
 }
 
 - (void)set识色滑动时长:(double)set识色滑动时长 {   // 0x2ee10
-    return __识色滑动时长;
+    _识色滑动时长 = set识色滑动时长;
 }
 
 - (long long)识色滑动帧数 {   // 0x2ee18
-    return __识色滑动帧数;
+    return _识色滑动帧数;
 }
 
 - (void)set识色滑动帧数:(long long)set识色滑动帧数 {   // 0x2ee20
-    __识色滑动帧数 = set识色滑动帧数;
+    _识色滑动帧数 = set识色滑动帧数;
 }
 
 - (double)识色滑动时隔 {   // 0x2ee28
-    return __识色滑动时隔;
+    return _识色滑动时隔;
 }
 
 - (void)set识色滑动时隔:(double)set识色滑动时隔 {   // 0x2ee30
-    return __识色滑动时隔;
+    _识色滑动时隔 = set识色滑动时隔;
 }
 
-- (id)识色路径点 {   // 0x2ee38
-    return __识色路径点;
+- (NSArray *)识色路径点 {   // 0x2ee38
+    return _识色路径点;
 }
 
-- (void)set识色路径点:(id)set识色路径点 {   // 0x2ee40
+- (void)set识色路径点:(NSArray *)set识色路径点 {   // 0x2ee40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识色路径点: 即可补全。
     // 0x02ee40  mov      w3, #0x300                              
@@ -1160,29 +1160,29 @@
 }
 
 - (long long)识色失败行为 {   // 0x2ee48
-    return __识色失败行为;
+    return _识色失败行为;
 }
 
 - (void)set识色失败行为:(long long)set识色失败行为 {   // 0x2ee50
-    __识色失败行为 = set识色失败行为;
+    _识色失败行为 = set识色失败行为;
 }
 
-- (id)识色跳转 {   // 0x2ee58
-    return __识色跳转;
+- (NSString *)识色跳转 {   // 0x2ee58
+    return _识色跳转;
 }
 
-- (void)set识色跳转:(id)set识色跳转 {   // 0x2ee60
+- (void)set识色跳转:(NSString *)set识色跳转 {   // 0x2ee60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识色跳转: 即可补全。
     // 0x02ee60  mov      w3, #0x310                              
     // 0x02ee64  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)识色失败跳转 {   // 0x2ee68
-    return __识色失败跳转;
+- (NSString *)识色失败跳转 {   // 0x2ee68
+    return _识色失败跳转;
 }
 
-- (void)set识色失败跳转:(id)set识色失败跳转 {   // 0x2ee70
+- (void)set识色失败跳转:(NSString *)set识色失败跳转 {   // 0x2ee70
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set识色失败跳转: 即可补全。
     // 0x02ee70  mov      w3, #0x318                              
@@ -1190,26 +1190,26 @@
 }
 
 - (BOOL)等待模式 {   // 0x2ee78
-    return __等待模式;
+    return _等待模式;
 }
 
 - (void)set等待模式:(BOOL)set等待模式 {   // 0x2ee80
-    __等待模式 = set等待模式;
+    _等待模式 = set等待模式;
 }
 
 - (double)等待总超时 {   // 0x2ee88
-    return __等待总超时;
+    return _等待总超时;
 }
 
 - (void)set等待总超时:(double)set等待总超时 {   // 0x2ee90
-    return __等待总超时;
+    _等待总超时 = set等待总超时;
 }
 
-- (id)录制数据 {   // 0x2ee98
-    return __录制数据;
+- (NSData *)录制数据 {   // 0x2ee98
+    return _录制数据;
 }
 
-- (void)set录制数据:(id)set录制数据 {   // 0x2eea0
+- (void)set录制数据:(NSData *)set录制数据 {   // 0x2eea0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作模型 set录制数据: 即可补全。
     // 0x02eea0  mov      x1, x2                                  
@@ -1218,43 +1218,43 @@
 }
 
 - (double)录制时间 {   // 0x2eeac
-    return __录制时间;
+    return _录制时间;
 }
 
 - (void)set录制时间:(double)set录制时间 {   // 0x2eeb4
-    return __录制时间;
+    _录制时间 = set录制时间;
 }
 
 - (double)循环次数 {   // 0x2eebc
-    return __循环次数;
+    return _循环次数;
 }
 
 - (void)set循环次数:(double)set循环次数 {   // 0x2eec4
-    return __循环次数;
+    _循环次数 = set循环次数;
 }
 
 - (BOOL)击杀特效 {   // 0x2eecc
-    return __击杀特效;
+    return _击杀特效;
 }
 
 - (void)set击杀特效:(BOOL)set击杀特效 {   // 0x2eed4
-    __击杀特效 = set击杀特效;
+    _击杀特效 = set击杀特效;
 }
 
 - (BOOL)自动旋转 {   // 0x2eedc
-    return __自动旋转;
+    return _自动旋转;
 }
 
 - (void)set自动旋转:(BOOL)set自动旋转 {   // 0x2eee4
-    __自动旋转 = set自动旋转;
+    _自动旋转 = set自动旋转;
 }
 
 - (BOOL)自动缩放 {   // 0x2eeec
-    return __自动缩放;
+    return _自动缩放;
 }
 
 - (void)set自动缩放:(BOOL)set自动缩放 {   // 0x2eef4
-    __自动缩放 = set自动缩放;
+    _自动缩放 = set自动缩放;
 }
 
 @end

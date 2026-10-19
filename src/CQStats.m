@@ -376,7 +376,7 @@
 }
 
 - (BOOL)开启 {   // 0x121e8
-    return __开启;
+    return _开启;
 }
 
 @end

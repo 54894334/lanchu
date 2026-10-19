@@ -35,12 +35,12 @@
     // 0x013574  strb     w8, [x19, #8]                           
 }
 
-- (void)set动作列表:(id)set动作列表 {   // 0x135d4
-    __动作列表 = set动作列表;
+- (void)set动作列表:(NSArray *)set动作列表 {   // 0x135d4
+    _动作列表 = set动作列表;
 }
 
-- (void)set组列表:(id)set组列表 {   // 0x13600
-    __组列表 = set组列表;
+- (void)set组列表:(NSArray *)set组列表 {   // 0x13600
+    _组列表 = set组列表;
 }
 
 - (id)数据目录 {   // 0x1362c
@@ -549,164 +549,164 @@
     // 0x015cf4  add      x22, x22, #0x2d0                        
 }
 
-- (id)动作列表 {   // 0x15f40
-    return __动作列表;
+- (NSArray *)动作列表 {   // 0x15f40
+    return _动作列表;
 }
 
-- (id)组列表 {   // 0x15f48
-    return __组列表;
+- (NSArray *)组列表 {   // 0x15f48
+    return _组列表;
 }
 
 - (long long)列表版本 {   // 0x15f50
-    return __列表版本;
+    return _列表版本;
 }
 
 - (void)set列表版本:(long long)set列表版本 {   // 0x15f58
-    __列表版本 = set列表版本;
+    _列表版本 = set列表版本;
 }
 
 - (BOOL)循环执行 {   // 0x15f60
-    return __循环执行;
+    return _循环执行;
 }
 
 - (void)set循环执行:(BOOL)set循环执行 {   // 0x15f68
-    __循环执行 = set循环执行;
+    _循环执行 = set循环执行;
 }
 
 - (BOOL)自动旋转 {   // 0x15f70
-    return __自动旋转;
+    return _自动旋转;
 }
 
 - (void)set自动旋转:(BOOL)set自动旋转 {   // 0x15f78
-    __自动旋转 = set自动旋转;
+    _自动旋转 = set自动旋转;
 }
 
 - (BOOL)自动缩放 {   // 0x15f80
-    return __自动缩放;
+    return _自动缩放;
 }
 
 - (void)set自动缩放:(BOOL)set自动缩放 {   // 0x15f88
-    __自动缩放 = set自动缩放;
+    _自动缩放 = set自动缩放;
 }
 
 - (BOOL)悬浮球自动隐藏 {   // 0x15f90
-    return __悬浮球自动隐藏;
+    return _悬浮球自动隐藏;
 }
 
 - (void)set悬浮球自动隐藏:(BOOL)set悬浮球自动隐藏 {   // 0x15f98
-    __悬浮球自动隐藏 = set悬浮球自动隐藏;
+    _悬浮球自动隐藏 = set悬浮球自动隐藏;
 }
 
 - (double)悬浮球透明度 {   // 0x15fa0
-    return __悬浮球透明度;
+    return _悬浮球透明度;
 }
 
 - (void)set悬浮球透明度:(double)set悬浮球透明度 {   // 0x15fa8
-    return __悬浮球透明度;
+    _悬浮球透明度 = set悬浮球透明度;
 }
 
 - (BOOL)悬浮球贴边隐藏 {   // 0x15fb0
-    return __悬浮球贴边隐藏;
+    return _悬浮球贴边隐藏;
 }
 
 - (void)set悬浮球贴边隐藏:(BOOL)set悬浮球贴边隐藏 {   // 0x15fb8
-    __悬浮球贴边隐藏 = set悬浮球贴边隐藏;
+    _悬浮球贴边隐藏 = set悬浮球贴边隐藏;
 }
 
 - (BOOL)动作提示 {   // 0x15fc0
-    return __动作提示;
+    return _动作提示;
 }
 
 - (void)set动作提示:(BOOL)set动作提示 {   // 0x15fc8
-    __动作提示 = set动作提示;
+    _动作提示 = set动作提示;
 }
 
 - (long long)悬浮球尺寸 {   // 0x15fd0
-    return __悬浮球尺寸;
+    return _悬浮球尺寸;
 }
 
 - (void)set悬浮球尺寸:(long long)set悬浮球尺寸 {   // 0x15fd8
-    __悬浮球尺寸 = set悬浮球尺寸;
+    _悬浮球尺寸 = set悬浮球尺寸;
 }
 
 - (long long)悬浮球形态 {   // 0x15fe0
-    return __悬浮球形态;
+    return _悬浮球形态;
 }
 
 - (void)set悬浮球形态:(long long)set悬浮球形态 {   // 0x15fe8
-    __悬浮球形态 = set悬浮球形态;
+    _悬浮球形态 = set悬浮球形态;
 }
 
 - (BOOL)反检测 {   // 0x15ff0
-    return __反检测;
+    return _反检测;
 }
 
 - (void)set反检测:(BOOL)set反检测 {   // 0x15ff8
-    __反检测 = set反检测;
+    _反检测 = set反检测;
 }
 
 - (long long)注入通道 {   // 0x16000
-    return __注入通道;
+    return _注入通道;
 }
 
 - (void)set注入通道:(long long)set注入通道 {   // 0x16008
-    __注入通道 = set注入通道;
+    _注入通道 = set注入通道;
 }
 
 - (long long)并发模式 {   // 0x16010
-    return __并发模式;
+    return _并发模式;
 }
 
 - (void)set并发模式:(long long)set并发模式 {   // 0x16018
-    __并发模式 = set并发模式;
+    _并发模式 = set并发模式;
 }
 
 - (long long)坐标量程 {   // 0x16020
-    return __坐标量程;
+    return _坐标量程;
 }
 
 - (void)set坐标量程:(long long)set坐标量程 {   // 0x16028
-    __坐标量程 = set坐标量程;
+    _坐标量程 = set坐标量程;
 }
 
 - (BOOL)详细日志 {   // 0x16030
-    return __详细日志;
+    return _详细日志;
 }
 
 - (void)set详细日志:(BOOL)set详细日志 {   // 0x16038
-    __详细日志 = set详细日志;
+    _详细日志 = set详细日志;
 }
 
 - (BOOL)定时开始开 {   // 0x16040
-    return __定时开始开;
+    return _定时开始开;
 }
 
 - (void)set定时开始开:(BOOL)set定时开始开 {   // 0x16048
-    __定时开始开 = set定时开始开;
+    _定时开始开 = set定时开始开;
 }
 
 - (BOOL)定时停止开 {   // 0x16050
-    return __定时停止开;
+    return _定时停止开;
 }
 
 - (void)set定时停止开:(BOOL)set定时停止开 {   // 0x16058
-    __定时停止开 = set定时停止开;
+    _定时停止开 = set定时停止开;
 }
 
 - (long long)定时开始分 {   // 0x16060
-    return __定时开始分;
+    return _定时开始分;
 }
 
 - (void)set定时开始分:(long long)set定时开始分 {   // 0x16068
-    __定时开始分 = set定时开始分;
+    _定时开始分 = set定时开始分;
 }
 
 - (long long)定时停止分 {   // 0x16070
-    return __定时停止分;
+    return _定时停止分;
 }
 
 - (void)set定时停止分:(long long)set定时停止分 {   // 0x16078
-    __定时停止分 = set定时停止分;
+    _定时停止分 = set定时停止分;
 }
 
 @end

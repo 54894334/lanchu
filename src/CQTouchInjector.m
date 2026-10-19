@@ -123,7 +123,7 @@
 }
 
 - (unsigned int)当前上下文Id {   // 0x20ad8
-    return __上下文Id;
+    return _上下文Id;
 }
 
 - (void)预热 {   // 0x20ae0
@@ -446,7 +446,7 @@
     return CGPointMake(抖动后的点.x * kx, 抖动后的点.y * ky);
 }
 
-- (id)量程说明 {   // 0x21c38
+- (NSString *)量程说明 {   // 0x21c38
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQTouchInjector 量程说明 即可补全。
     // 0x021c38  sub      sp, sp, #0x30                           
@@ -910,199 +910,199 @@
 }
 
 - (BOOL)启用 {   // 0x23c88
-    return __启用;
+    return _启用;
 }
 
 - (void)set启用:(BOOL)set启用 {   // 0x23c90
-    __启用 = set启用;
+    _启用 = set启用;
 }
 
 - (BOOL)显示反馈 {   // 0x23c98
-    return __显示反馈;
+    return _显示反馈;
 }
 
 - (void)set显示反馈:(BOOL)set显示反馈 {   // 0x23ca0
-    __显示反馈 = set显示反馈;
+    _显示反馈 = set显示反馈;
 }
 
 - (double)抖动下限 {   // 0x23ca8
-    return __抖动下限;
+    return _抖动下限;
 }
 
 - (void)set抖动下限:(double)set抖动下限 {   // 0x23cb0
-    return __抖动下限;
+    _抖动下限 = set抖动下限;
 }
 
 - (double)抖动上限 {   // 0x23cb8
-    return __抖动上限;
+    return _抖动上限;
 }
 
 - (void)set抖动上限:(double)set抖动上限 {   // 0x23cc0
-    return __抖动上限;
+    _抖动上限 = set抖动上限;
 }
 
 - (unsigned long long)通道 {   // 0x23cc8
-    return __通道;
+    return _通道;
 }
 
 - (unsigned long long)并发模式 {   // 0x23cd0
-    return __并发模式;
+    return _并发模式;
 }
 
 - (void)set并发模式:(unsigned long long)set并发模式 {   // 0x23cd8
-    __并发模式 = set并发模式;
+    _并发模式 = set并发模式;
 }
 
 - (unsigned long long)坐标量程 {   // 0x23ce0
-    return __坐标量程;
+    return _坐标量程;
 }
 
 - (void)set坐标量程:(unsigned long long)set坐标量程 {   // 0x23ce8
-    __坐标量程 = set坐标量程;
+    _坐标量程 = set坐标量程;
 }
 
 - (double)实测系数X {   // 0x23cf0
-    return __实测系数X;
+    return _实测系数X;
 }
 
 - (void)set实测系数X:(double)set实测系数X {   // 0x23cf8
-    return __实测系数X;
+    _实测系数X = set实测系数X;
 }
 
 - (double)实测系数Y {   // 0x23d00
-    return __实测系数Y;
+    return _实测系数Y;
 }
 
 - (void)set实测系数Y:(double)set实测系数Y {   // 0x23d08
-    return __实测系数Y;
+    _实测系数Y = set实测系数Y;
 }
 
 - (long long)活跃并发数 {   // 0x23d10
-    return __活跃并发数;
+    return _活跃并发数;
 }
 
 - (void)set活跃并发数:(long long)set活跃并发数 {   // 0x23d18
-    __活跃并发数 = set活跃并发数;
+    _活跃并发数 = set活跃并发数;
 }
 
 - (unsigned long long)累计派发次数 {   // 0x23d20
-    return __累计派发次数;
+    return _累计派发次数;
 }
 
 - (void)set累计派发次数:(unsigned long long)set累计派发次数 {   // 0x23d28
-    __累计派发次数 = set累计派发次数;
+    _累计派发次数 = set累计派发次数;
 }
 
 - (void *)client {   // 0x23d30
-    return __client;
+    return _client;
 }
 
 - (void)setClient:(void *)setClient {   // 0x23d38
-    __client = setClient;
+    _client = setClient;
 }
 
 - (unsigned int)上下文Id {   // 0x23d40
-    return __上下文Id;
+    return _上下文Id;
 }
 
 - (void)set上下文Id:(unsigned int)set上下文Id {   // 0x23d48
-    __上下文Id = set上下文Id;
+    _上下文Id = set上下文Id;
 }
 
 - (BOOL)上下文已就绪 {   // 0x23d50
-    return __上下文已就绪;
+    return _上下文已就绪;
 }
 
 - (void)set上下文已就绪:(BOOL)set上下文已就绪 {   // 0x23d58
-    __上下文已就绪 = set上下文已就绪;
+    _上下文已就绪 = set上下文已就绪;
 }
 
 - (double)上下文刷新时刻 {   // 0x23d60
-    return __上下文刷新时刻;
+    return _上下文刷新时刻;
 }
 
 - (void)set上下文刷新时刻:(double)set上下文刷新时刻 {   // 0x23d68
-    return __上下文刷新时刻;
+    _上下文刷新时刻 = set上下文刷新时刻;
 }
 
 - (BOOL)并发已取消 {   // 0x23d70
-    return __并发已取消;
+    return _并发已取消;
 }
 
 - (void)set并发已取消:(BOOL)set并发已取消 {   // 0x23d78
-    __并发已取消 = set并发已取消;
+    _并发已取消 = set并发已取消;
 }
 
 - (os_unfair_lock)派发锁 {   // 0x23d80
-    return __派发锁;
+    return _派发锁;
 }
 
 - (void)set派发锁:(os_unfair_lock)set派发锁 {   // 0x23d88
-    __派发锁 = set派发锁;
+    _派发锁 = set派发锁;
 }
 
 - (os_unfair_lock)客户端锁 {   // 0x23d90
-    return __客户端锁;
+    return _客户端锁;
 }
 
 - (void)set客户端锁:(os_unfair_lock)set客户端锁 {   // 0x23d98
-    __客户端锁 = set客户端锁;
+    _客户端锁 = set客户端锁;
 }
 
 - (os_unfair_lock)计数锁 {   // 0x23da0
-    return __计数锁;
+    return _计数锁;
 }
 
 - (void)set计数锁:(os_unfair_lock)set计数锁 {   // 0x23da8
-    __计数锁 = set计数锁;
+    _计数锁 = set计数锁;
 }
 
 - (BOOL)保活中 {   // 0x23db0
-    return __保活中;
+    return _保活中;
 }
 
 - (void)set保活中:(BOOL)set保活中 {   // 0x23db8
-    __保活中 = set保活中;
+    _保活中 = set保活中;
 }
 
 - (unsigned long long)后台任务 {   // 0x23dc0
-    return __后台任务;
+    return _后台任务;
 }
 
 - (void)set后台任务:(unsigned long long)set后台任务 {   // 0x23dc8
-    __后台任务 = set后台任务;
+    _后台任务 = set后台任务;
 }
 
 - (id)后台观察者 {   // 0x23dd0
-    return __后台观察者;
+    return _后台观察者;
 }
 
 - (void)set后台观察者:(id)set后台观察者 {   // 0x23dd8
-    __后台观察者 = set后台观察者;
+    _后台观察者 = set后台观察者;
 }
 
 - (id)前台观察者 {   // 0x23de0
-    return __前台观察者;
+    return _前台观察者;
 }
 
 - (void)set前台观察者:(id)set前台观察者 {   // 0x23de8
-    __前台观察者 = set前台观察者;
+    _前台观察者 = set前台观察者;
 }
 
 - (BOOL)已请求建客户端 {   // 0x23df0
-    return __已请求建客户端;
+    return _已请求建客户端;
 }
 
 - (void)set已请求建客户端:(BOOL)set已请求建客户端 {   // 0x23df8
-    __已请求建客户端 = set已请求建客户端;
+    _已请求建客户端 = set已请求建客户端;
 }
 
 - (BOOL)已装事件观察者 {   // 0x23e00
-    return __已装事件观察者;
+    return _已装事件观察者;
 }
 
 - (void)set已装事件观察者:(BOOL)set已装事件观察者 {   // 0x23e08
-    __已装事件观察者 = set已装事件观察者;
+    _已装事件观察者 = set已装事件观察者;
 }
 
 @end

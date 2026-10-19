@@ -35,11 +35,11 @@
     // 0x03d6e8  bl       #0x3ff1c                                ; func_0x3ff1c
 }
 
-- (id)组开备份 {   // 0x3d91c
-    return __组开备份;
+- (NSArray *)组开备份 {   // 0x3d91c
+    return _组开备份;
 }
 
-- (void)set组开备份:(id)set组开备份 {   // 0x3d924
+- (void)set组开备份:(NSArray *)set组开备份 {   // 0x3d924
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 试跑会话 set组开备份: 即可补全。
     // 0x03d924  mov      w3, #0x10                               
@@ -47,31 +47,31 @@
 }
 
 - (BOOL)原循环 {   // 0x3d92c
-    return __原循环;
+    return _原循环;
 }
 
 - (void)set原循环:(BOOL)set原循环 {   // 0x3d934
-    __原循环 = set原循环;
+    _原循环 = set原循环;
 }
 
 - (BOOL)原开始 {   // 0x3d93c
-    return __原开始;
+    return _原开始;
 }
 
 - (void)set原开始:(BOOL)set原开始 {   // 0x3d944
-    __原开始 = set原开始;
+    _原开始 = set原开始;
 }
 
 - (BOOL)原停止 {   // 0x3d94c
-    return __原停止;
+    return _原停止;
 }
 
 - (void)set原停止:(BOOL)set原停止 {   // 0x3d954
-    __原停止 = set原停止;
+    _原停止 = set原停止;
 }
 
 - (id)结束时 {   // 0x3d95c
-    return __结束时;
+    return _结束时;
 }
 
 - (void)set结束时:(id)set结束时 {   // 0x3d964
@@ -82,7 +82,7 @@
 }
 
 - (id)观察者 {   // 0x3d96c
-    return __观察者;
+    return _观察者;
 }
 
 - (void)set观察者:(id)set观察者 {   // 0x3d974

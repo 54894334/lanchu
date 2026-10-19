@@ -209,7 +209,7 @@
     // 0x02c4d4  bl       #0x71760                                ; [class(CQOverlay) 弹出面板:] class(设置视图), x3, x4, x5, x6, x7
 }
 
-- (id)按钮列表 {   // 0x2c4e8
+- (NSMutableArray *)按钮列表 {   // 0x2c4e8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 功能视图 按钮列表 即可补全。
     // 0x02c4e8  adrp     x8, #0xad000                            
@@ -218,7 +218,7 @@
     // 0x02c4f4  ret                                              
 }
 
-- (void)set按钮列表:(id)set按钮列表 {   // 0x2c4f8
+- (void)set按钮列表:(NSMutableArray *)set按钮列表 {   // 0x2c4f8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 功能视图 set按钮列表: 即可补全。
     // 0x02c4f8  mov      x1, x2                                  

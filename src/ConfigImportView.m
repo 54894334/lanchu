@@ -73,7 +73,7 @@
     // 0x062920  b        #0x63148                                ; func_0x63148
 }
 
-- (id)文件列表 {   // 0x62924
+- (NSMutableArray *)文件列表 {   // 0x62924
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 配置导入视图 文件列表 即可补全。
     // 0x062924  stp      x22, x21, [sp, #-0x30]!                 
@@ -215,7 +215,7 @@
     // 0x062ec8  bl       #0x720a0                                ; [x0 文件列表] x2, x3, x4, x5, x6, x7
 }
 
-- (id)表 {   // 0x630c8
+- (UITableView *)表 {   // 0x630c8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 配置导入视图 表 即可补全。
     // 0x0630c8  adrp     x8, #0xad000                            
@@ -224,7 +224,7 @@
     // 0x0630d4  ret                                              
 }
 
-- (void)set表:(id)set表 {   // 0x630d8
+- (void)set表:(UITableView *)set表 {   // 0x630d8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 配置导入视图 set表: 即可补全。
     // 0x0630d8  mov      x1, x2                                  
@@ -233,7 +233,7 @@
     // 0x0630e4  b        #0x63180                                ; func_0x63180
 }
 
-- (void)set文件列表:(id)set文件列表 {   // 0x630e8
+- (void)set文件列表:(NSMutableArray *)set文件列表 {   // 0x630e8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 配置导入视图 set文件列表: 即可补全。
     // 0x0630e8  mov      x1, x2                                  

@@ -227,7 +227,7 @@
     // 0x039b94  b        #0x69040                                ; _objc_release
 }
 
-- (id)今日值 {   // 0x39b98
+- (UILabel *)今日值 {   // 0x39b98
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 今日值 即可补全。
     // 0x039b98  adrp     x8, #0xad000                            
@@ -235,7 +235,7 @@
     // 0x039ba0  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set今日值:(id)set今日值 {   // 0x39ba4
+- (void)set今日值:(UILabel *)set今日值 {   // 0x39ba4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set今日值: 即可补全。
     // 0x039ba4  mov      x1, x2                                  
@@ -244,7 +244,7 @@
     // 0x039bb0  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)累计值 {   // 0x39bb4
+- (UILabel *)累计值 {   // 0x39bb4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 累计值 即可补全。
     // 0x039bb4  adrp     x8, #0xad000                            
@@ -252,7 +252,7 @@
     // 0x039bbc  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set累计值:(id)set累计值 {   // 0x39bc0
+- (void)set累计值:(UILabel *)set累计值 {   // 0x39bc0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set累计值: 即可补全。
     // 0x039bc0  mov      x1, x2                                  
@@ -261,7 +261,7 @@
     // 0x039bcc  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)列表 {   // 0x39bd0
+- (UIScrollView *)列表 {   // 0x39bd0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 列表 即可补全。
     // 0x039bd0  adrp     x8, #0xad000                            
@@ -269,7 +269,7 @@
     // 0x039bd8  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set列表:(id)set列表 {   // 0x39bdc
+- (void)set列表:(UIScrollView *)set列表 {   // 0x39bdc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set列表: 即可补全。
     // 0x039bdc  mov      x1, x2                                  
@@ -278,7 +278,7 @@
     // 0x039be8  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)空态 {   // 0x39bec
+- (UILabel *)空态 {   // 0x39bec
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 空态 即可补全。
     // 0x039bec  adrp     x8, #0xad000                            
@@ -286,7 +286,7 @@
     // 0x039bf4  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set空态:(id)set空态 {   // 0x39bf8
+- (void)set空态:(UILabel *)set空态 {   // 0x39bf8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set空态: 即可补全。
     // 0x039bf8  mov      x1, x2                                  
@@ -295,7 +295,7 @@
     // 0x039c04  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)明细按钮 {   // 0x39c08
+- (UIButton *)明细按钮 {   // 0x39c08
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 明细按钮 即可补全。
     // 0x039c08  adrp     x8, #0xad000                            
@@ -303,7 +303,7 @@
     // 0x039c10  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set明细按钮:(id)set明细按钮 {   // 0x39c14
+- (void)set明细按钮:(UIButton *)set明细按钮 {   // 0x39c14
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set明细按钮: 即可补全。
     // 0x039c14  mov      x1, x2                                  
@@ -312,7 +312,7 @@
     // 0x039c20  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)清零按钮 {   // 0x39c24
+- (UIButton *)清零按钮 {   // 0x39c24
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 清零按钮 即可补全。
     // 0x039c24  adrp     x8, #0xad000                            
@@ -320,7 +320,7 @@
     // 0x039c2c  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set清零按钮:(id)set清零按钮 {   // 0x39c30
+- (void)set清零按钮:(UIButton *)set清零按钮 {   // 0x39c30
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set清零按钮: 即可补全。
     // 0x039c30  mov      x1, x2                                  
@@ -329,7 +329,7 @@
     // 0x039c3c  b        #0x39cfc                                ; func_0x39cfc
 }
 
-- (id)数据 {   // 0x39c40
+- (NSArray *)数据 {   // 0x39c40
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 数据 即可补全。
     // 0x039c40  adrp     x8, #0xad000                            
@@ -337,7 +337,7 @@
     // 0x039c48  b        #0x39d68                                ; func_0x39d68
 }
 
-- (void)set数据:(id)set数据 {   // 0x39c4c
+- (void)set数据:(NSArray *)set数据 {   // 0x39c4c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 统计视图 set数据: 即可补全。
     // 0x039c4c  mov      x1, x2                                  

@@ -6,11 +6,11 @@
 
 @implementation CQOCR行
 
-- (id)文本 {   // 0x1faf4
-    return __文本;
+- (NSString *)文本 {   // 0x1faf4
+    return _文本;
 }
 
-- (void)set文本:(id)set文本 {   // 0x1fafc
+- (void)set文本:(NSString *)set文本 {   // 0x1fafc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQOCR行 set文本: 即可补全。
     // 0x01fafc  mov      w3, #8                                  

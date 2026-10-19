@@ -750,7 +750,7 @@
     // 0x0677c0  cmp      x0, #0                                  
 }
 
-- (id)页签 {   // 0x67cf8
+- (UISegmentedControl *)页签 {   // 0x67cf8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 页签 即可补全。
     // 0x067cf8  adrp     x8, #0xad000                            
@@ -758,7 +758,7 @@
     // 0x067d00  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set页签:(id)set页签 {   // 0x67d04
+- (void)set页签:(UISegmentedControl *)set页签 {   // 0x67d04
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set页签: 即可补全。
     // 0x067d04  mov      x1, x2                                  
@@ -767,7 +767,7 @@
     // 0x067d10  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)提交页 {   // 0x67d14
+- (UIView *)提交页 {   // 0x67d14
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 提交页 即可补全。
     // 0x067d14  adrp     x8, #0xad000                            
@@ -775,7 +775,7 @@
     // 0x067d1c  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set提交页:(id)set提交页 {   // 0x67d20
+- (void)set提交页:(UIView *)set提交页 {   // 0x67d20
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set提交页: 即可补全。
     // 0x067d20  mov      x1, x2                                  
@@ -784,7 +784,7 @@
     // 0x067d2c  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)工单页 {   // 0x67d30
+- (UIView *)工单页 {   // 0x67d30
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 工单页 即可补全。
     // 0x067d30  adrp     x8, #0xad000                            
@@ -792,7 +792,7 @@
     // 0x067d38  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set工单页:(id)set工单页 {   // 0x67d3c
+- (void)set工单页:(UIView *)set工单页 {   // 0x67d3c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set工单页: 即可补全。
     // 0x067d3c  mov      x1, x2                                  
@@ -801,7 +801,7 @@
     // 0x067d48  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)分类段 {   // 0x67d4c
+- (UISegmentedControl *)分类段 {   // 0x67d4c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 分类段 即可补全。
     // 0x067d4c  adrp     x8, #0xad000                            
@@ -809,7 +809,7 @@
     // 0x067d54  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set分类段:(id)set分类段 {   // 0x67d58
+- (void)set分类段:(UISegmentedControl *)set分类段 {   // 0x67d58
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set分类段: 即可补全。
     // 0x067d58  mov      x1, x2                                  
@@ -818,7 +818,7 @@
     // 0x067d64  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)主题输入 {   // 0x67d68
+- (UITextField *)主题输入 {   // 0x67d68
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 主题输入 即可补全。
     // 0x067d68  adrp     x8, #0xad000                            
@@ -826,7 +826,7 @@
     // 0x067d70  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set主题输入:(id)set主题输入 {   // 0x67d74
+- (void)set主题输入:(UITextField *)set主题输入 {   // 0x67d74
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set主题输入: 即可补全。
     // 0x067d74  mov      x1, x2                                  
@@ -835,7 +835,7 @@
     // 0x067d80  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)描述输入 {   // 0x67d84
+- (UITextView *)描述输入 {   // 0x67d84
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 描述输入 即可补全。
     // 0x067d84  adrp     x8, #0xad000                            
@@ -843,7 +843,7 @@
     // 0x067d8c  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set描述输入:(id)set描述输入 {   // 0x67d90
+- (void)set描述输入:(UITextView *)set描述输入 {   // 0x67d90
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set描述输入: 即可补全。
     // 0x067d90  mov      x1, x2                                  
@@ -852,7 +852,7 @@
     // 0x067d9c  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)描述占位 {   // 0x67da0
+- (UILabel *)描述占位 {   // 0x67da0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 描述占位 即可补全。
     // 0x067da0  adrp     x8, #0xad000                            
@@ -860,7 +860,7 @@
     // 0x067da8  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set描述占位:(id)set描述占位 {   // 0x67dac
+- (void)set描述占位:(UILabel *)set描述占位 {   // 0x67dac
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set描述占位: 即可补全。
     // 0x067dac  mov      x1, x2                                  
@@ -869,7 +869,7 @@
     // 0x067db8  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)字数提示 {   // 0x67dbc
+- (UILabel *)字数提示 {   // 0x67dbc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 字数提示 即可补全。
     // 0x067dbc  adrp     x8, #0xad000                            
@@ -877,7 +877,7 @@
     // 0x067dc4  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set字数提示:(id)set字数提示 {   // 0x67dc8
+- (void)set字数提示:(UILabel *)set字数提示 {   // 0x67dc8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set字数提示: 即可补全。
     // 0x067dc8  mov      x1, x2                                  
@@ -886,7 +886,7 @@
     // 0x067dd4  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)联系方式输入 {   // 0x67dd8
+- (UITextField *)联系方式输入 {   // 0x67dd8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 联系方式输入 即可补全。
     // 0x067dd8  adrp     x8, #0xad000                            
@@ -894,7 +894,7 @@
     // 0x067de0  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set联系方式输入:(id)set联系方式输入 {   // 0x67de4
+- (void)set联系方式输入:(UITextField *)set联系方式输入 {   // 0x67de4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set联系方式输入: 即可补全。
     // 0x067de4  mov      x1, x2                                  
@@ -903,7 +903,7 @@
     // 0x067df0  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)取消按钮 {   // 0x67df4
+- (UIButton *)取消按钮 {   // 0x67df4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 取消按钮 即可补全。
     // 0x067df4  adrp     x8, #0xad000                            
@@ -911,7 +911,7 @@
     // 0x067dfc  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set取消按钮:(id)set取消按钮 {   // 0x67e00
+- (void)set取消按钮:(UIButton *)set取消按钮 {   // 0x67e00
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set取消按钮: 即可补全。
     // 0x067e00  mov      x1, x2                                  
@@ -920,7 +920,7 @@
     // 0x067e0c  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)提交按钮 {   // 0x67e10
+- (UIButton *)提交按钮 {   // 0x67e10
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 提交按钮 即可补全。
     // 0x067e10  adrp     x8, #0xad000                            
@@ -928,7 +928,7 @@
     // 0x067e18  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set提交按钮:(id)set提交按钮 {   // 0x67e1c
+- (void)set提交按钮:(UIButton *)set提交按钮 {   // 0x67e1c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set提交按钮: 即可补全。
     // 0x067e1c  mov      x1, x2                                  
@@ -937,7 +937,7 @@
     // 0x067e28  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)备用提示 {   // 0x67e2c
+- (UILabel *)备用提示 {   // 0x67e2c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 备用提示 即可补全。
     // 0x067e2c  adrp     x8, #0xad000                            
@@ -945,7 +945,7 @@
     // 0x067e34  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set备用提示:(id)set备用提示 {   // 0x67e38
+- (void)set备用提示:(UILabel *)set备用提示 {   // 0x67e38
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set备用提示: 即可补全。
     // 0x067e38  mov      x1, x2                                  
@@ -954,7 +954,7 @@
     // 0x067e44  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)提交滚动 {   // 0x67e48
+- (UIScrollView *)提交滚动 {   // 0x67e48
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 提交滚动 即可补全。
     // 0x067e48  adrp     x8, #0xad000                            
@@ -962,7 +962,7 @@
     // 0x067e50  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set提交滚动:(id)set提交滚动 {   // 0x67e54
+- (void)set提交滚动:(UIScrollView *)set提交滚动 {   // 0x67e54
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set提交滚动: 即可补全。
     // 0x067e54  mov      x1, x2                                  
@@ -971,7 +971,7 @@
     // 0x067e60  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)分类标签 {   // 0x67e64
+- (UILabel *)分类标签 {   // 0x67e64
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 分类标签 即可补全。
     // 0x067e64  adrp     x8, #0xad000                            
@@ -979,7 +979,7 @@
     // 0x067e6c  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set分类标签:(id)set分类标签 {   // 0x67e70
+- (void)set分类标签:(UILabel *)set分类标签 {   // 0x67e70
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set分类标签: 即可补全。
     // 0x067e70  mov      x1, x2                                  
@@ -988,7 +988,7 @@
     // 0x067e7c  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)主题标签 {   // 0x67e80
+- (UILabel *)主题标签 {   // 0x67e80
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 主题标签 即可补全。
     // 0x067e80  adrp     x8, #0xad000                            
@@ -996,7 +996,7 @@
     // 0x067e88  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set主题标签:(id)set主题标签 {   // 0x67e8c
+- (void)set主题标签:(UILabel *)set主题标签 {   // 0x67e8c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set主题标签: 即可补全。
     // 0x067e8c  mov      x1, x2                                  
@@ -1005,7 +1005,7 @@
     // 0x067e98  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)描述标签 {   // 0x67e9c
+- (UILabel *)描述标签 {   // 0x67e9c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 描述标签 即可补全。
     // 0x067e9c  adrp     x8, #0xad000                            
@@ -1013,7 +1013,7 @@
     // 0x067ea4  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set描述标签:(id)set描述标签 {   // 0x67ea8
+- (void)set描述标签:(UILabel *)set描述标签 {   // 0x67ea8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set描述标签: 即可补全。
     // 0x067ea8  mov      x1, x2                                  
@@ -1022,7 +1022,7 @@
     // 0x067eb4  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)联系标签 {   // 0x67eb8
+- (UILabel *)联系标签 {   // 0x67eb8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 联系标签 即可补全。
     // 0x067eb8  adrp     x8, #0xad000                            
@@ -1030,7 +1030,7 @@
     // 0x067ec0  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set联系标签:(id)set联系标签 {   // 0x67ec4
+- (void)set联系标签:(UILabel *)set联系标签 {   // 0x67ec4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set联系标签: 即可补全。
     // 0x067ec4  mov      x1, x2                                  
@@ -1039,7 +1039,7 @@
     // 0x067ed0  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)列表 {   // 0x67ed4
+- (UITableView *)列表 {   // 0x67ed4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 列表 即可补全。
     // 0x067ed4  adrp     x8, #0xad000                            
@@ -1047,7 +1047,7 @@
     // 0x067edc  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set列表:(id)set列表 {   // 0x67ee0
+- (void)set列表:(UITableView *)set列表 {   // 0x67ee0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set列表: 即可补全。
     // 0x067ee0  mov      x1, x2                                  
@@ -1056,7 +1056,7 @@
     // 0x067eec  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)列表空态 {   // 0x67ef0
+- (UILabel *)列表空态 {   // 0x67ef0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 列表空态 即可补全。
     // 0x067ef0  adrp     x8, #0xad000                            
@@ -1064,7 +1064,7 @@
     // 0x067ef8  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set列表空态:(id)set列表空态 {   // 0x67efc
+- (void)set列表空态:(UILabel *)set列表空态 {   // 0x67efc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set列表空态: 即可补全。
     // 0x067efc  mov      x1, x2                                  
@@ -1073,7 +1073,7 @@
     // 0x067f08  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)工单 {   // 0x67f0c
+- (NSArray *)工单 {   // 0x67f0c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 工单 即可补全。
     // 0x067f0c  adrp     x8, #0xad000                            
@@ -1081,7 +1081,7 @@
     // 0x067f14  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set工单:(id)set工单 {   // 0x67f18
+- (void)set工单:(NSArray *)set工单 {   // 0x67f18
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set工单: 即可补全。
     // 0x067f18  mov      x1, x2                                  
@@ -1090,7 +1090,7 @@
     // 0x067f24  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)刷新 {   // 0x67f28
+- (UIRefreshControl *)刷新 {   // 0x67f28
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 刷新 即可补全。
     // 0x067f28  adrp     x8, #0xad000                            
@@ -1098,7 +1098,7 @@
     // 0x067f30  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set刷新:(id)set刷新 {   // 0x67f34
+- (void)set刷新:(UIRefreshControl *)set刷新 {   // 0x67f34
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set刷新: 即可补全。
     // 0x067f34  mov      x1, x2                                  
@@ -1107,7 +1107,7 @@
     // 0x067f40  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)工单号输入 {   // 0x67f44
+- (UITextField *)工单号输入 {   // 0x67f44
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 工单号输入 即可补全。
     // 0x067f44  adrp     x8, #0xad000                            
@@ -1115,7 +1115,7 @@
     // 0x067f4c  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set工单号输入:(id)set工单号输入 {   // 0x67f50
+- (void)set工单号输入:(UITextField *)set工单号输入 {   // 0x67f50
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set工单号输入: 即可补全。
     // 0x067f50  mov      x1, x2                                  
@@ -1124,7 +1124,7 @@
     // 0x067f5c  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)查询按钮 {   // 0x67f60
+- (UIButton *)查询按钮 {   // 0x67f60
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 查询按钮 即可补全。
     // 0x067f60  adrp     x8, #0xad000                            
@@ -1132,7 +1132,7 @@
     // 0x067f68  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set查询按钮:(id)set查询按钮 {   // 0x67f6c
+- (void)set查询按钮:(UIButton *)set查询按钮 {   // 0x67f6c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set查询按钮: 即可补全。
     // 0x067f6c  mov      x1, x2                                  
@@ -1141,7 +1141,7 @@
     // 0x067f78  b        #0x6810c                                ; func_0x6810c
 }
 
-- (id)查询中的号 {   // 0x67f7c
+- (NSString *)查询中的号 {   // 0x67f7c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 查询中的号 即可补全。
     // 0x067f7c  adrp     x8, #0xad000                            
@@ -1149,7 +1149,7 @@
     // 0x067f84  b        #0x68140                                ; func_0x68140
 }
 
-- (void)set查询中的号:(id)set查询中的号 {   // 0x67f88
+- (void)set查询中的号:(NSString *)set查询中的号 {   // 0x67f88
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 问题反馈视图 set查询中的号: 即可补全。
     // 0x067f88  adrp     x8, #0xad000                            

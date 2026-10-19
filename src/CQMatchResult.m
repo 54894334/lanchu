@@ -7,11 +7,11 @@
 @implementation CQ匹配结果
 
 - (double)相似度 {   // 0x1ebec
-    return __相似度;
+    return _相似度;
 }
 
 - (void)set相似度:(double)set相似度 {   // 0x1ebf4
-    return __相似度;
+    _相似度 = set相似度;
 }
 
 - (CGPoint)中心 {   // 0x1ebfc
@@ -45,11 +45,11 @@
 }
 
 - (BOOL)命中 {   // 0x1ec24
-    return __命中;
+    return _命中;
 }
 
 - (void)set命中:(BOOL)set命中 {   // 0x1ec2c
-    __命中 = set命中;
+    _命中 = set命中;
 }
 
 @end

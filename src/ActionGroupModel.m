@@ -93,22 +93,22 @@
     // 0x0381c8  mov      x19, x0                                 
 }
 
-- (id)标识 {   // 0x381e8
-    return __标识;
+- (NSString *)标识 {   // 0x381e8
+    return _标识;
 }
 
-- (void)set标识:(id)set标识 {   // 0x381f0
+- (void)set标识:(NSString *)set标识 {   // 0x381f0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作组模型 set标识: 即可补全。
     // 0x0381f0  mov      w3, #0x10                               
     // 0x0381f4  b        #0x69094                                ; _objc_setProperty_nonatomic_copy
 }
 
-- (id)名称 {   // 0x381f8
-    return __名称;
+- (NSString *)名称 {   // 0x381f8
+    return _名称;
 }
 
-- (void)set名称:(id)set名称 {   // 0x38200
+- (void)set名称:(NSString *)set名称 {   // 0x38200
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 动作组模型 set名称: 即可补全。
     // 0x038200  mov      w3, #0x18                               
@@ -116,19 +116,19 @@
 }
 
 - (BOOL)专属 {   // 0x38208
-    return __专属;
+    return _专属;
 }
 
 - (void)set专属:(BOOL)set专属 {   // 0x38210
-    __专属 = set专属;
+    _专属 = set专属;
 }
 
 - (BOOL)是否开启 {   // 0x38218
-    return __是否开启;
+    return _是否开启;
 }
 
 - (void)set是否开启:(BOOL)set是否开启 {   // 0x38220
-    __是否开启 = set是否开启;
+    _是否开启 = set是否开启;
 }
 
 @end

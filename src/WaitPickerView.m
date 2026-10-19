@@ -301,7 +301,7 @@
     // 0x05eeb8  bl       #0x728c0                                ; [x0 模式段] x2, x3, x4, x5, x6, x7
 }
 
-- (id)模式段 {   // 0x5efc0
+- (UISegmentedControl *)模式段 {   // 0x5efc0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 模式段 即可补全。
     // 0x05efc0  adrp     x8, #0xad000                            
@@ -309,7 +309,7 @@
     // 0x05efc8  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set模式段:(id)set模式段 {   // 0x5efcc
+- (void)set模式段:(UISegmentedControl *)set模式段 {   // 0x5efcc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set模式段: 即可补全。
     // 0x05efcc  mov      x1, x2                                  
@@ -318,7 +318,7 @@
     // 0x05efd8  b        #0x60194                                ; func_0x60194
 }
 
-- (id)固定行 {   // 0x5efdc
+- (参数行 *)固定行 {   // 0x5efdc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 固定行 即可补全。
     // 0x05efdc  adrp     x8, #0xad000                            
@@ -326,7 +326,7 @@
     // 0x05efe4  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set固定行:(id)set固定行 {   // 0x5efe8
+- (void)set固定行:(参数行 *)set固定行 {   // 0x5efe8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set固定行: 即可补全。
     // 0x05efe8  mov      x1, x2                                  
@@ -335,7 +335,7 @@
     // 0x05eff4  b        #0x60194                                ; func_0x60194
 }
 
-- (id)下限行 {   // 0x5eff8
+- (参数行 *)下限行 {   // 0x5eff8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 下限行 即可补全。
     // 0x05eff8  adrp     x8, #0xad000                            
@@ -343,7 +343,7 @@
     // 0x05f000  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set下限行:(id)set下限行 {   // 0x5f004
+- (void)set下限行:(参数行 *)set下限行 {   // 0x5f004
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set下限行: 即可补全。
     // 0x05f004  mov      x1, x2                                  
@@ -352,7 +352,7 @@
     // 0x05f010  b        #0x60194                                ; func_0x60194
 }
 
-- (id)上限行 {   // 0x5f014
+- (参数行 *)上限行 {   // 0x5f014
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 上限行 即可补全。
     // 0x05f014  adrp     x8, #0xad000                            
@@ -360,7 +360,7 @@
     // 0x05f01c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set上限行:(id)set上限行 {   // 0x5f020
+- (void)set上限行:(参数行 *)set上限行 {   // 0x5f020
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set上限行: 即可补全。
     // 0x05f020  mov      x1, x2                                  
@@ -369,7 +369,7 @@
     // 0x05f02c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)结束段 {   // 0x5f030
+- (UISegmentedControl *)结束段 {   // 0x5f030
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 结束段 即可补全。
     // 0x05f030  adrp     x8, #0xad000                            
@@ -377,7 +377,7 @@
     // 0x05f038  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set结束段:(id)set结束段 {   // 0x5f03c
+- (void)set结束段:(UISegmentedControl *)set结束段 {   // 0x5f03c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set结束段: 即可补全。
     // 0x05f03c  mov      x1, x2                                  
@@ -386,7 +386,7 @@
     // 0x05f048  b        #0x60194                                ; func_0x60194
 }
 
-- (id)跳转按钮 {   // 0x5f04c
+- (UIButton *)跳转按钮 {   // 0x5f04c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 跳转按钮 即可补全。
     // 0x05f04c  adrp     x8, #0xad000                            
@@ -394,7 +394,7 @@
     // 0x05f054  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set跳转按钮:(id)set跳转按钮 {   // 0x5f058
+- (void)set跳转按钮:(UIButton *)set跳转按钮 {   // 0x5f058
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 等待选择视图 set跳转按钮: 即可补全。
     // 0x05f058  mov      x1, x2                                  

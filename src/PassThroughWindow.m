@@ -64,7 +64,7 @@
     // 0x037ac4  b.ne     #0x37ad0                                
 }
 
-- (id)响应视图 {   // 0x37c2c
+- (NSMutableArray *)响应视图 {   // 0x37c2c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 穿透窗口 响应视图 即可补全。
     // 0x037c2c  adrp     x8, #0xad000                            
@@ -73,7 +73,7 @@
     // 0x037c38  ret                                              
 }
 
-- (void)set响应视图:(id)set响应视图 {   // 0x37c3c
+- (void)set响应视图:(NSMutableArray *)set响应视图 {   // 0x37c3c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 穿透窗口 set响应视图: 即可补全。
     // 0x037c3c  mov      x1, x2                                  

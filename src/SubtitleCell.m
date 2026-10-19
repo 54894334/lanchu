@@ -64,7 +64,7 @@
     // 0x0256ac  fadd     d3, d3, d4                              
 }
 
-- (id)卡片底 {   // 0x256d4
+- (UIView *)卡片底 {   // 0x256d4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 副标题单元格 卡片底 即可补全。
     // 0x0256d4  adrp     x8, #0xad000                            
@@ -72,7 +72,7 @@
     // 0x0256dc  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set卡片底:(id)set卡片底 {   // 0x256e0
+- (void)set卡片底:(UIView *)set卡片底 {   // 0x256e0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 副标题单元格 set卡片底: 即可补全。
     // 0x0256e0  mov      x1, x2                                  

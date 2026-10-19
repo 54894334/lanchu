@@ -7,14 +7,14 @@
 @implementation CQTaskEngine
 
 - (BOOL)运行中 {   // 0x16370
-    return __运行中;
+    return _运行中;
 }
 
-- (void)set试跑白名单:(id)set试跑白名单 {   // 0x16378
-    __试跑白名单 = set试跑白名单;
+- (void)set试跑白名单:(NSSet *)set试跑白名单 {   // 0x16378
+    _试跑白名单 = set试跑白名单;
 }
 
-- (id)试跑白名单 {   // 0x163a4
+- (NSSet *)试跑白名单 {   // 0x163a4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQTaskEngine 试跑白名单 即可补全。
     // 0x0163a4  ldr      x0, [x0, #0x20]                         
@@ -1011,11 +1011,11 @@
     // 0x01c3bc  bl       #0x1c5a4                                ; func_0x1c5a4
 }
 
-- (id)取字暂存 {   // 0x1c434
-    return __取字暂存;
+- (NSString *)取字暂存 {   // 0x1c434
+    return _取字暂存;
 }
 
-- (void)set取字暂存:(id)set取字暂存 {   // 0x1c43c
+- (void)set取字暂存:(NSString *)set取字暂存 {   // 0x1c43c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 CQTaskEngine set取字暂存: 即可补全。
     // 0x01c43c  mov      w3, #0x30                               
@@ -1023,7 +1023,7 @@
 }
 
 - (id)状态回调 {   // 0x1c444
-    return __状态回调;
+    return _状态回调;
 }
 
 - (void)set状态回调:(id)set状态回调 {   // 0x1c44c

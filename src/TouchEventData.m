@@ -117,27 +117,27 @@
 }
 
 - (double)时间戳 {   // 0x3a11c
-    return __时间戳;
+    return _时间戳;
 }
 
 - (void)set时间戳:(double)set时间戳 {   // 0x3a124
-    return __时间戳;
+    _时间戳 = set时间戳;
 }
 
 - (long long)事件类型 {   // 0x3a12c
-    return __事件类型;
+    return _事件类型;
 }
 
 - (void)set事件类型:(long long)set事件类型 {   // 0x3a134
-    __事件类型 = set事件类型;
+    _事件类型 = set事件类型;
 }
 
 - (long long)手指ID {   // 0x3a13c
-    return __手指ID;
+    return _手指ID;
 }
 
 - (void)set手指ID:(long long)set手指ID {   // 0x3a144
-    __手指ID = set手指ID;
+    _手指ID = set手指ID;
 }
 
 - (CGPoint)位置 {   // 0x3a14c

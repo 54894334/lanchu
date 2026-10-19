@@ -67,11 +67,11 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @class 颜色取样视图;
 
 @interface CQLogger : NSObject {
-    BOOL;                            __详细;   // off 8
-    BOOL;                            __回声到系统日志;   // off 9
+    BOOL                                     _详细;   // off 8
+    BOOL                                     _回声到系统日志;   // off 9
 }
-@property (nonatomic) id 详细;
-@property (nonatomic) id 回声到系统日志;
+@property (nonatomic) BOOL 详细;
+@property (nonatomic) BOOL 回声到系统日志;
 - (void)写入:(id)写入 级别:(unsigned long long)级别;
 - (BOOL)详细;
 - (void)set详细:(BOOL)set详细;
@@ -80,31 +80,30 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface CQOCR行 : NSObject {
-    NSString *;                      __文本;   // off 8
-    CGRect;                          __框;   // off 16
+    NSString *                               _文本;   // off 8
+    CGRect                                   _框;   // off 16
 }
-@property (nonatomic) id 文本;
-@property (copy, nonatomic, readonly) id 框;
-- (id)文本;
-- (void)set文本:(id)set文本;
+@property (copy, nonatomic) NSString *文本;
+@property (nonatomic) CGRect 框;
+- (NSString *)文本;
+- (void)set文本:(NSString *)set文本;
 - (CGRect)框;
 - (void)set框:(CGRect)set框;
-- (void).cxx_destruct;
 @end
 
 @interface CQOverlay : NSObject {
-    悬浮球 *;                           __球;   // off 8
-    穿透窗口 *;                          __浮窗;   // off 16
-    NSMutableArray *;                __面板栈;   // off 24
+    悬浮球 *                                    _球;   // off 8
+    穿透窗口 *                                   _浮窗;   // off 16
+    NSMutableArray *                         _面板栈;   // off 24
 }
-@property (nonatomic) id 浮窗;
-@property (nonatomic) id 球;
-@property (nonatomic) id 面板栈;
-@property (nonatomic) id 窗口;
-@property (nonatomic) id 根视图;
+@property (strong, nonatomic) 穿透窗口 *浮窗;
+@property (strong, nonatomic) 悬浮球 *球;
+@property (strong, nonatomic) NSMutableArray *面板栈;
+@property (nonatomic, readonly) UIWindow *窗口;
+@property (nonatomic, readonly) UIView *根视图;
 - (id)init;
-- (id)窗口;
-- (id)根视图;
+- (UIWindow *)窗口;
+- (UIView *)根视图;
 - (void)安装;
 - (void)任务运行状态变更:(id)任务运行状态变更;
 - (void)任务进度变更:(id)任务进度变更;
@@ -113,40 +112,38 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)关闭面板;
 - (void)关闭全部面板;
 - (void)提示:(id)提示;
-- (id)球;
-- (void)set球:(id)set球;
-- (id)浮窗;
-- (void)set浮窗:(id)set浮窗;
-- (id)面板栈;
-- (void)set面板栈:(id)set面板栈;
-- (void).cxx_destruct;
+- (悬浮球 *)球;
+- (void)set球:(悬浮球 *)set球;
+- (穿透窗口 *)浮窗;
+- (void)set浮窗:(穿透窗口 *)set浮窗;
+- (NSMutableArray *)面板栈;
+- (void)set面板栈:(NSMutableArray *)set面板栈;
 @end
 
 @interface CQRecorder : NSObject {
-    NSMutableArray *;                __events;   // off 8
-    NSMutableDictionary *;           __fingerMap;   // off 16
-    NSDate *;                        __startDate;   // off 24
-    double;                          __录制时间;   // off 32
-    long long;                       __nextFingerID;   // off 40
-    BOOL;                            __hooked;   // off 48
-    BOOL;                            __录制中;   // off 49
-    id;                              __状态回调;   // off 56
+    NSMutableArray *                         _events;   // off 8
+    NSMutableDictionary *                    _fingerMap;   // off 16
+    NSDate *                                 _startDate;   // off 24
+    double                                   _录制时间;   // off 32
+    long long                                _nextFingerID;   // off 40
+    BOOL                                     _hooked;   // off 48
+    BOOL                                     _录制中;   // off 49
+    id                                       _状态回调;   // off 56
 }
-@property (nonatomic) id 录制中;
-@property (nonatomic) id 录制时长;
-@property (nonatomic) id 事件列表;
-@property (nonatomic) id 状态回调;
+@property (nonatomic, readonly) BOOL 录制中;
+@property (nonatomic, readonly) double 录制时长;
+@property (nonatomic, readonly) NSArray *事件列表;
+@property (copy, nonatomic) id 状态回调;
 - (id)init;
 - (void)安装;
 - (void)开始;
 - (id)停止;
-- (id)事件列表;
+- (NSArray *)事件列表;
 - (double)录制时长;
 - (void)处理事件:(id)处理事件;
 - (BOOL)录制中;
 - (id)状态回调;
 - (void)set状态回调:(id)set状态回调;
-- (void).cxx_destruct;
 @end
 
 @interface CQScreenshot : NSObject {
@@ -154,11 +151,11 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface CQStats : NSObject {
-    NSMutableDictionary *;           __存;   // off 8
-    NSObject<OS_dispatch_queue> *;   __q;   // off 16
-    BOOL;                            __开启;   // off 24
+    NSMutableDictionary *                    _存;   // off 8
+    NSObject<OS_dispatch_queue> *            _q;   // off 16
+    BOOL                                     _开启;   // off 24
 }
-@property (nonatomic) id 开启;
+@property (nonatomic) BOOL 开启;
 - (id)init;
 - (void)set开启:(BOOL)set开启;
 - (id)路径;
@@ -173,56 +170,55 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (id)汇总;
 - (void)清零;
 - (BOOL)开启;
-- (void).cxx_destruct;
 @end
 
 @interface CQStore : NSObject {
-    BOOL;                            __循环执行;   // off 8
-    BOOL;                            __自动旋转;   // off 9
-    BOOL;                            __自动缩放;   // off 10
-    BOOL;                            __悬浮球自动隐藏;   // off 11
-    BOOL;                            __悬浮球贴边隐藏;   // off 12
-    BOOL;                            __动作提示;   // off 13
-    BOOL;                            __反检测;   // off 14
-    BOOL;                            __详细日志;   // off 15
-    BOOL;                            __定时开始开;   // off 16
-    BOOL;                            __定时停止开;   // off 17
-    NSArray *;                       __动作列表;   // off 24
-    NSArray *;                       __组列表;   // off 32
-    long long;                       __列表版本;   // off 40
-    double;                          __悬浮球透明度;   // off 48
-    long long;                       __悬浮球尺寸;   // off 56
-    long long;                       __悬浮球形态;   // off 64
-    long long;                       __注入通道;   // off 72
-    long long;                       __并发模式;   // off 80
-    long long;                       __坐标量程;   // off 88
-    long long;                       __定时开始分;   // off 96
-    long long;                       __定时停止分;   // off 104
+    BOOL                                     _循环执行;   // off 8
+    BOOL                                     _自动旋转;   // off 9
+    BOOL                                     _自动缩放;   // off 10
+    BOOL                                     _悬浮球自动隐藏;   // off 11
+    BOOL                                     _悬浮球贴边隐藏;   // off 12
+    BOOL                                     _动作提示;   // off 13
+    BOOL                                     _反检测;   // off 14
+    BOOL                                     _详细日志;   // off 15
+    BOOL                                     _定时开始开;   // off 16
+    BOOL                                     _定时停止开;   // off 17
+    NSArray *                                _动作列表;   // off 24
+    NSArray *                                _组列表;   // off 32
+    long long                                _列表版本;   // off 40
+    double                                   _悬浮球透明度;   // off 48
+    long long                                _悬浮球尺寸;   // off 56
+    long long                                _悬浮球形态;   // off 64
+    long long                                _注入通道;   // off 72
+    long long                                _并发模式;   // off 80
+    long long                                _坐标量程;   // off 88
+    long long                                _定时开始分;   // off 96
+    long long                                _定时停止分;   // off 104
 }
-@property (nonatomic) id 动作列表;
-@property (nonatomic) id 组列表;
-@property (nonatomic) id 列表版本;
-@property (nonatomic) id 循环执行;
-@property (nonatomic) id 自动旋转;
-@property (nonatomic) id 自动缩放;
-@property (nonatomic) id 悬浮球自动隐藏;
-@property (nonatomic) id 悬浮球透明度;
-@property (nonatomic) id 悬浮球贴边隐藏;
-@property (nonatomic) id 动作提示;
-@property (nonatomic) id 悬浮球尺寸;
-@property (nonatomic) id 悬浮球形态;
-@property (nonatomic) id 反检测;
-@property (nonatomic) id 注入通道;
-@property (nonatomic) id 并发模式;
-@property (nonatomic) id 坐标量程;
-@property (nonatomic) id 详细日志;
-@property (nonatomic) id 定时开始开;
-@property (nonatomic) id 定时停止开;
-@property (nonatomic) id 定时开始分;
-@property (nonatomic) id 定时停止分;
+@property (copy, nonatomic) NSArray *动作列表;
+@property (copy, nonatomic) NSArray *组列表;
+@property (nonatomic) long long 列表版本;
+@property (nonatomic) BOOL 循环执行;
+@property (nonatomic) BOOL 自动旋转;
+@property (nonatomic) BOOL 自动缩放;
+@property (nonatomic) BOOL 悬浮球自动隐藏;
+@property (nonatomic) double 悬浮球透明度;
+@property (nonatomic) BOOL 悬浮球贴边隐藏;
+@property (nonatomic) BOOL 动作提示;
+@property (nonatomic) long long 悬浮球尺寸;
+@property (nonatomic) long long 悬浮球形态;
+@property (nonatomic) BOOL 反检测;
+@property (nonatomic) long long 注入通道;
+@property (nonatomic) long long 并发模式;
+@property (nonatomic) long long 坐标量程;
+@property (nonatomic) BOOL 详细日志;
+@property (nonatomic) BOOL 定时开始开;
+@property (nonatomic) BOOL 定时停止开;
+@property (nonatomic) long long 定时开始分;
+@property (nonatomic) long long 定时停止分;
 - (id)init;
-- (void)set动作列表:(id)set动作列表;
-- (void)set组列表:(id)set组列表;
+- (void)set动作列表:(NSArray *)set动作列表;
+- (void)set组列表:(NSArray *)set组列表;
 - (id)数据目录;
 - (id)归档路径;
 - (void)保存;
@@ -241,8 +237,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)设置动作开关:(id)设置动作开关 开:(BOOL)开;
 - (unsigned long long)索引Of标识:(id)索引Of标识;
 - (id)识图跳转显示名:(id)识图跳转显示名;
-- (id)动作列表;
-- (id)组列表;
+- (NSArray *)动作列表;
+- (NSArray *)组列表;
 - (long long)列表版本;
 - (void)set列表版本:(long long)set列表版本;
 - (BOOL)循环执行;
@@ -281,28 +277,27 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set定时开始分:(long long)set定时开始分;
 - (long long)定时停止分;
 - (void)set定时停止分:(long long)set定时停止分;
-- (void).cxx_destruct;
 @end
 
 @interface CQTaskEngine : NSObject {
-    BOOL;                            __运行中;   // off 8
-    BOOL;                            __需要停止;   // off 9
-    BOOL;                            __等待调度中;   // off 10
-    BOOL;                            __动作成功;   // off 11
-    NSString *;                      __动作备注;   // off 16
-    NSMutableDictionary *;           __输入表;   // off 24
-    NSSet *;                         __试跑白名单;   // off 32
-    NSMutableDictionary *;           __变量表;   // off 40
-    NSString *;                      __取字暂存;   // off 48
-    id;                              __状态回调;   // off 56
+    BOOL                                     _运行中;   // off 8
+    BOOL                                     _需要停止;   // off 9
+    BOOL                                     _等待调度中;   // off 10
+    BOOL                                     _动作成功;   // off 11
+    NSString *                               _动作备注;   // off 16
+    NSMutableDictionary *                    _输入表;   // off 24
+    NSSet *                                  _试跑白名单;   // off 32
+    NSMutableDictionary *                    _变量表;   // off 40
+    NSString *                               _取字暂存;   // off 48
+    id                                       _状态回调;   // off 56
 }
-@property (nonatomic) id 运行中;
-@property (nonatomic) id 取字暂存;
-@property (nonatomic) id 状态回调;
-@property (nonatomic) id 试跑白名单;
+@property (nonatomic, readonly) BOOL 运行中;
+@property (copy, nonatomic) NSString *取字暂存;
+@property (copy, nonatomic) id 状态回调;
+@property (copy, nonatomic) NSSet *试跑白名单;
 - (BOOL)运行中;
-- (void)set试跑白名单:(id)set试跑白名单;
-- (id)试跑白名单;
+- (void)set试跑白名单:(NSSet *)set试跑白名单;
+- (NSSet *)试跑白名单;
 - (void)启动;
 - (void)停止;
 - (void)主循环;
@@ -338,11 +333,10 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (id)跑取字:(id)跑取字;
 - (id)取字成功分支:(id)取字成功分支;
 - (id)取字失败分支:(id)取字失败分支;
-- (id)取字暂存;
-- (void)set取字暂存:(id)set取字暂存;
+- (NSString *)取字暂存;
+- (void)set取字暂存:(NSString *)set取字暂存;
 - (id)状态回调;
 - (void)set状态回调:(id)set状态回调;
-- (void).cxx_destruct;
 @end
 
 @interface CQTechKit : NSObject {
@@ -358,58 +352,58 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface CQTouchInjector : NSObject {
-    BOOL;                            __启用;   // off 8
-    BOOL;                            __显示反馈;   // off 9
-    BOOL;                            __上下文已就绪;   // off 10
-    BOOL;                            __并发已取消;   // off 11
-    BOOL;                            __保活中;   // off 12
-    BOOL;                            __已请求建客户端;   // off 13
-    BOOL;                            __已装事件观察者;   // off 14
-    unsigned int;                    __上下文Id;   // off 16
-    os_unfair_lock;                  __派发锁;   // off 20
-    os_unfair_lock;                  __客户端锁;   // off 24
-    os_unfair_lock;                  __计数锁;   // off 28
-    double;                          __抖动下限;   // off 32
-    double;                          __抖动上限;   // off 40
-    unsigned long long;              __通道;   // off 48
-    unsigned long long;              __并发模式;   // off 56
-    unsigned long long;              __坐标量程;   // off 64
-    double;                          __实测系数X;   // off 72
-    double;                          __实测系数Y;   // off 80
-    long long;                       __活跃并发数;   // off 88
-    unsigned long long;              __累计派发次数;   // off 96
-    void *;                          __client;   // off 104
-    double;                          __上下文刷新时刻;   // off 112
-    unsigned long long;              __后台任务;   // off 120
-    id;                              __后台观察者;   // off 128
-    id;                              __前台观察者;   // off 136
+    BOOL                                     _启用;   // off 8
+    BOOL                                     _显示反馈;   // off 9
+    BOOL                                     _上下文已就绪;   // off 10
+    BOOL                                     _并发已取消;   // off 11
+    BOOL                                     _保活中;   // off 12
+    BOOL                                     _已请求建客户端;   // off 13
+    BOOL                                     _已装事件观察者;   // off 14
+    unsigned int                             _上下文Id;   // off 16
+    os_unfair_lock                           _派发锁;   // off 20
+    os_unfair_lock                           _客户端锁;   // off 24
+    os_unfair_lock                           _计数锁;   // off 28
+    double                                   _抖动下限;   // off 32
+    double                                   _抖动上限;   // off 40
+    unsigned long long                       _通道;   // off 48
+    unsigned long long                       _并发模式;   // off 56
+    unsigned long long                       _坐标量程;   // off 64
+    double                                   _实测系数X;   // off 72
+    double                                   _实测系数Y;   // off 80
+    long long                                _活跃并发数;   // off 88
+    unsigned long long                       _累计派发次数;   // off 96
+    void *                                   _client;   // off 104
+    double                                   _上下文刷新时刻;   // off 112
+    unsigned long long                       _后台任务;   // off 120
+    id                                       _后台观察者;   // off 128
+    id                                       _前台观察者;   // off 136
 }
-@property (copy, nonatomic) id client;
-@property (nonatomic) id 上下文Id;
-@property (nonatomic) id 上下文已就绪;
-@property (nonatomic) id 上下文刷新时刻;
-@property (nonatomic) id 累计派发次数;
-@property (nonatomic) id 活跃并发数;
-@property (nonatomic) id 并发已取消;
-@property (nonatomic) id 派发锁;
-@property (nonatomic) id 客户端锁;
-@property (nonatomic) id 计数锁;
-@property (nonatomic) id 实测系数X;
-@property (nonatomic) id 实测系数Y;
-@property (nonatomic) id 保活中;
-@property (nonatomic) id 后台任务;
+@property (nonatomic) void *client;
+@property (nonatomic) unsigned int 上下文Id;
+@property (nonatomic) BOOL 上下文已就绪;
+@property (nonatomic) double 上下文刷新时刻;
+@property (nonatomic) unsigned long long 累计派发次数;
+@property (nonatomic) long long 活跃并发数;
+@property (nonatomic) BOOL 并发已取消;
+@property (nonatomic) os_unfair_lock 派发锁;
+@property (nonatomic) os_unfair_lock 客户端锁;
+@property (nonatomic) os_unfair_lock 计数锁;
+@property (nonatomic) double 实测系数X;
+@property (nonatomic) double 实测系数Y;
+@property (nonatomic) BOOL 保活中;
+@property (nonatomic) unsigned long long 后台任务;
 @property (nonatomic) id 后台观察者;
 @property (nonatomic) id 前台观察者;
-@property (nonatomic) id 已请求建客户端;
-@property (nonatomic) id 已装事件观察者;
-@property (nonatomic) id 启用;
-@property (nonatomic) id 显示反馈;
-@property (nonatomic) id 抖动下限;
-@property (nonatomic) id 抖动上限;
-@property (nonatomic) id 通道;
-@property (nonatomic) id 并发模式;
-@property (nonatomic) id 坐标量程;
-@property (nonatomic) id 量程说明;
+@property (nonatomic) BOOL 已请求建客户端;
+@property (nonatomic) BOOL 已装事件观察者;
+@property (nonatomic) BOOL 启用;
+@property (nonatomic) BOOL 显示反馈;
+@property (nonatomic) double 抖动下限;
+@property (nonatomic) double 抖动上限;
+@property (nonatomic) unsigned long long 通道;
+@property (nonatomic) unsigned long long 并发模式;
+@property (nonatomic) unsigned long long 坐标量程;
+@property (nonatomic, readonly) NSString *量程说明;
 - (id)init;
 - (void *)取客户端;
 - (void)刷新上下文;
@@ -428,7 +422,7 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)安装事件探针;
 - (void)cq原发事件:(id)cq原发事件;
 - (CGPoint)抖动后的点:(CGPoint)抖动后的点 开启:(BOOL)开启;
-- (id)量程说明;
+- (NSString *)量程说明;
 - (CGPoint)HID坐标:(CGPoint)HID坐标;
 - (void)派发:(id)派发 按下:(BOOL)按下;
 - (void)派发:(id)派发 按下:(BOOL)按下 起始索引:(unsigned int)起始索引;
@@ -497,15 +491,15 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface CQ匹配结果 : NSObject {
-    BOOL;                            __命中;   // off 8
-    double;                          __相似度;   // off 16
-    CGPoint;                         __中心;   // off 24
-    CGRect;                          __矩形;   // off 40
+    BOOL                                     _命中;   // off 8
+    double                                   _相似度;   // off 16
+    CGPoint                                  _中心;   // off 24
+    CGRect                                   _矩形;   // off 40
 }
-@property (nonatomic) id 相似度;
-@property (copy, nonatomic) id 中心;
-@property (copy, nonatomic, readonly) id 矩形;
-@property (nonatomic) id 命中;
+@property (nonatomic) double 相似度;
+@property (nonatomic) CGPoint 中心;
+@property (nonatomic) CGRect 矩形;
+@property (nonatomic) BOOL 命中;
 - (double)相似度;
 - (void)set相似度:(double)set相似度;
 - (CGPoint)中心;
@@ -517,27 +511,27 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 任务编辑视图 : NSObject {
-    UITableView *;                   __表;   // off 8
-    UILabel *;                       __标题;   // off 16
-    UIButton *;                      __左按钮;   // off 24
-    UIButton *;                      __右按钮;   // off 32
-    UIButton *;                      __新增动作按钮;   // off 40
-    UIButton *;                      __试跑按钮;   // off 48
-    long long;                       __层级;   // off 56
-    动作组模型 *;                         __当前组;   // off 64
+    UITableView *                            _表;   // off 8
+    UILabel *                                _标题;   // off 16
+    UIButton *                               _左按钮;   // off 24
+    UIButton *                               _右按钮;   // off 32
+    UIButton *                               _新增动作按钮;   // off 40
+    UIButton *                               _试跑按钮;   // off 48
+    long long                                _层级;   // off 56
+    动作组模型 *                                  _当前组;   // off 64
 }
-@property (nonatomic) id 表;
-@property (nonatomic) id 标题;
-@property (nonatomic) id 左按钮;
-@property (nonatomic) id 右按钮;
-@property (nonatomic) id 新增动作按钮;
-@property (nonatomic) id 试跑按钮;
-@property (nonatomic) id 层级;
-@property (nonatomic) id 当前组;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (strong, nonatomic) UITableView *表;
+@property (strong, nonatomic) UILabel *标题;
+@property (strong, nonatomic) UIButton *左按钮;
+@property (strong, nonatomic) UIButton *右按钮;
+@property (strong, nonatomic) UIButton *新增动作按钮;
+@property (strong, nonatomic) UIButton *试跑按钮;
+@property (nonatomic) long long 层级;
+@property (strong, nonatomic) 动作组模型 *当前组;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (void)构建;
 - (void)显示;
 - (void)关闭;
@@ -561,40 +555,38 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)tableView:(id)tableView commitEditingStyle:(long long)commitEditingStyle forRowAtIndexPath:(id)forRowAtIndexPath;
 - (void)删除组:(id)删除组;
 - (void)新增动作;
-- (id)表;
-- (void)set表:(id)set表;
-- (id)标题;
-- (void)set标题:(id)set标题;
-- (id)左按钮;
-- (void)set左按钮:(id)set左按钮;
-- (id)右按钮;
-- (void)set右按钮:(id)set右按钮;
-- (id)新增动作按钮;
-- (void)set新增动作按钮:(id)set新增动作按钮;
-- (id)试跑按钮;
-- (void)set试跑按钮:(id)set试跑按钮;
+- (UITableView *)表;
+- (void)set表:(UITableView *)set表;
+- (UILabel *)标题;
+- (void)set标题:(UILabel *)set标题;
+- (UIButton *)左按钮;
+- (void)set左按钮:(UIButton *)set左按钮;
+- (UIButton *)右按钮;
+- (void)set右按钮:(UIButton *)set右按钮;
+- (UIButton *)新增动作按钮;
+- (void)set新增动作按钮:(UIButton *)set新增动作按钮;
+- (UIButton *)试跑按钮;
+- (void)set试跑按钮:(UIButton *)set试跑按钮;
 - (long long)层级;
 - (void)set层级:(long long)set层级;
-- (id)当前组;
-- (void)set当前组:(id)set当前组;
-- (void).cxx_destruct;
+- (动作组模型 *)当前组;
+- (void)set当前组:(动作组模型 *)set当前组;
 @end
 
 @interface 副标题单元格 : NSObject {
-    UIView *;                        __卡片底;   // off 8
+    UIView *                                 _卡片底;   // off 8
 }
-@property (nonatomic) id 卡片底;
+@property (strong, nonatomic) UIView *卡片底;
 - (id)initWithStyle:(long long)initWithStyle reuseIdentifier:(id)reuseIdentifier;
 - (void)layoutSubviews;
-- (id)卡片底;
-- (void)set卡片底:(id)set卡片底;
-- (void).cxx_destruct;
+- (UIView *)卡片底;
+- (void)set卡片底:(UIView *)set卡片底;
 @end
 
 @interface 功能视图 : NSObject {
-    NSMutableArray *;                __按钮列表;   // off 8
+    NSMutableArray *                         _按钮列表;   // off 8
 }
-@property (nonatomic) id 按钮列表;
+@property (strong, nonatomic) NSMutableArray *按钮列表;
 - (void)构建;
 - (void)点按:(id)点按;
 - (void)使用方法;
@@ -603,243 +595,242 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)动作列表;
 - (void)录制;
 - (void)设置;
-- (id)按钮列表;
-- (void)set按钮列表:(id)set按钮列表;
-- (void).cxx_destruct;
+- (NSMutableArray *)按钮列表;
+- (void)set按钮列表:(NSMutableArray *)set按钮列表;
 @end
 
 @interface 动作模型 : NSObject {
-    BOOL;                            __是否开启;   // off 8
-    BOOL;                            __识图判断;   // off 9
-    BOOL;                            __自由长按;   // off 10
-    BOOL;                            __循环每轮清零;   // off 11
-    BOOL;                            __输入清空;   // off 12
-    BOOL;                            __输入回车;   // off 13
-    BOOL;                            __等待模式;   // off 14
-    BOOL;                            __击杀特效;   // off 15
-    BOOL;                            __自动旋转;   // off 16
-    BOOL;                            __自动缩放;   // off 17
-    NSString *;                      __标识;   // off 24
-    NSString *;                      __gid;   // off 32
-    NSString *;                      __名称;   // off 40
-    long long;                       __类型;   // off 48
-    long long;                       __次数;   // off 56
-    double;                          __开始延迟;   // off 64
-    double;                          __结束延迟;   // off 72
-    double;                          __连点间隔;   // off 80
-    long long;                       __自动复杂度;   // off 88
-    NSArray *;                       __位置偏移;   // off 96
-    long long;                       __偏移随机数;   // off 104
-    long long;                       __时长随机开关;   // off 112
-    double;                          __时长随机幅度;   // off 120
-    long long;                       __等待随机;   // off 128
-    double;                          __等待秒;   // off 136
-    double;                          __等待下限;   // off 144
-    double;                          __等待上限;   // off 152
-    long long;                       __等待结束行为;   // off 160
-    NSString *;                      __等待跳转;   // off 168
-    long long;                       __是否随机;   // off 176
-    long long;                       __位置偏移随机数开关;   // off 184
-    double;                          __长按时长;   // off 192
-    double;                          __滑动时长;   // off 200
-    long long;                       __方向;   // off 208
-    double;                          __距离;   // off 216
-    long long;                       __滑动帧数;   // off 224
-    UIImage *;                       __图片;   // off 232
-    double;                          __相似度;   // off 240
-    double;                          __识图超时;   // off 248
-    double;                          __识图延迟;   // off 256
-    long long;                       __识图点击;   // off 264
-    NSString *;                      __识图跳转;   // off 272
-    long long;                       __识图命中行为;   // off 280
-    double;                          __识图长按时长;   // off 288
-    double;                          __识图滑动时长;   // off 296
-    long long;                       __识图滑动帧数;   // off 304
-    double;                          __识图滑动时隔;   // off 312
-    NSArray *;                       __识图路径点;   // off 320
-    long long;                       __识图判断次数;   // off 328
-    long long;                       __识图判断失败行为;   // off 336
-    NSString *;                      __识图判断跳转;   // off 344
-    long long;                       __识图失败行为;   // off 352
-    NSString *;                      __识图失败跳转;   // off 360
-    NSArray *;                       __多点坐标组;   // off 368
-    long long;                       __自由模式;   // off 376
-    NSArray *;                       __自由路径点;   // off 384
-    double;                          __自由滑动时长;   // off 392
-    long long;                       __自由滑动帧数;   // off 400
-    NSArray *;                       __自由坐标组;   // off 408
-    long long;                       __循环上限;   // off 416
-    NSString *;                      __循环变量名;   // off 424
-    NSString *;                      __循环配对标识;   // off 432
-    double;                          __识字等待;   // off 440
-    long long;                       __识字类型;   // off 448
-    NSString *;                      __识字文本;   // off 456
-    long long;                       __识字条件;   // off 464
-    double;                          __识字数值;   // off 472
-    long long;                       __识字成功行为;   // off 480
-    double;                          __识字长按时长;   // off 488
-    double;                          __识字滑动时长;   // off 496
-    long long;                       __识字滑动帧数;   // off 504
-    double;                          __识字滑动时隔;   // off 512
-    NSArray *;                       __识字路径点;   // off 520
-    long long;                       __识字失败行为;   // off 528
-    NSString *;                      __识字跳转;   // off 536
-    NSString *;                      __识字失败跳转;   // off 544
-    double;                          __取字等待;   // off 552
-    long long;                       __取字存储;   // off 560
-    long long;                       __取字成功行为;   // off 568
-    long long;                       __取字失败行为;   // off 576
-    NSString *;                      __取字跳转;   // off 584
-    NSString *;                      __取字失败跳转;   // off 592
-    long long;                       __取字模式;   // off 600
-    long long;                       __取字高级类型;   // off 608
-    NSString *;                      __取字目标文本;   // off 616
-    NSString *;                      __取字替换文本;   // off 624
-    NSString *;                      __取字正则;   // off 632
-    long long;                       __取字第几条;   // off 640
-    double;                          __输入等待;   // off 648
-    NSString *;                      __输入文本;   // off 656
-    long long;                       __输入模式;   // off 664
-    long long;                       __输入来源;   // off 672
-    long long;                       __输入暂存取条;   // off 680
-    double;                          __识色等待;   // off 688
-    long long;                       __识色次数;   // off 696
-    long long;                       __识色容差;   // off 704
-    long long;                       __识色模式;   // off 712
-    NSArray *;                       __识色点组;   // off 720
-    long long;                       __识色成功行为;   // off 728
-    double;                          __识色长按时长;   // off 736
-    double;                          __识色滑动时长;   // off 744
-    long long;                       __识色滑动帧数;   // off 752
-    double;                          __识色滑动时隔;   // off 760
-    NSArray *;                       __识色路径点;   // off 768
-    long long;                       __识色失败行为;   // off 776
-    NSString *;                      __识色跳转;   // off 784
-    NSString *;                      __识色失败跳转;   // off 792
-    double;                          __等待总超时;   // off 800
-    NSData *;                        __录制数据;   // off 808
-    double;                          __录制时间;   // off 816
-    double;                          __循环次数;   // off 824
-    CGPoint;                         __坐标;   // off 832
-    CGPoint;                         __起始坐标;   // off 848
-    CGPoint;                         __结束坐标;   // off 864
-    CGRect;                          __识别区域;   // off 880
+    BOOL                                     _是否开启;   // off 8
+    BOOL                                     _识图判断;   // off 9
+    BOOL                                     _自由长按;   // off 10
+    BOOL                                     _循环每轮清零;   // off 11
+    BOOL                                     _输入清空;   // off 12
+    BOOL                                     _输入回车;   // off 13
+    BOOL                                     _等待模式;   // off 14
+    BOOL                                     _击杀特效;   // off 15
+    BOOL                                     _自动旋转;   // off 16
+    BOOL                                     _自动缩放;   // off 17
+    NSString *                               _标识;   // off 24
+    NSString *                               _gid;   // off 32
+    NSString *                               _名称;   // off 40
+    long long                                _类型;   // off 48
+    long long                                _次数;   // off 56
+    double                                   _开始延迟;   // off 64
+    double                                   _结束延迟;   // off 72
+    double                                   _连点间隔;   // off 80
+    long long                                _自动复杂度;   // off 88
+    NSArray *                                _位置偏移;   // off 96
+    long long                                _偏移随机数;   // off 104
+    long long                                _时长随机开关;   // off 112
+    double                                   _时长随机幅度;   // off 120
+    long long                                _等待随机;   // off 128
+    double                                   _等待秒;   // off 136
+    double                                   _等待下限;   // off 144
+    double                                   _等待上限;   // off 152
+    long long                                _等待结束行为;   // off 160
+    NSString *                               _等待跳转;   // off 168
+    long long                                _是否随机;   // off 176
+    long long                                _位置偏移随机数开关;   // off 184
+    double                                   _长按时长;   // off 192
+    double                                   _滑动时长;   // off 200
+    long long                                _方向;   // off 208
+    double                                   _距离;   // off 216
+    long long                                _滑动帧数;   // off 224
+    UIImage *                                _图片;   // off 232
+    double                                   _相似度;   // off 240
+    double                                   _识图超时;   // off 248
+    double                                   _识图延迟;   // off 256
+    long long                                _识图点击;   // off 264
+    NSString *                               _识图跳转;   // off 272
+    long long                                _识图命中行为;   // off 280
+    double                                   _识图长按时长;   // off 288
+    double                                   _识图滑动时长;   // off 296
+    long long                                _识图滑动帧数;   // off 304
+    double                                   _识图滑动时隔;   // off 312
+    NSArray *                                _识图路径点;   // off 320
+    long long                                _识图判断次数;   // off 328
+    long long                                _识图判断失败行为;   // off 336
+    NSString *                               _识图判断跳转;   // off 344
+    long long                                _识图失败行为;   // off 352
+    NSString *                               _识图失败跳转;   // off 360
+    NSArray *                                _多点坐标组;   // off 368
+    long long                                _自由模式;   // off 376
+    NSArray *                                _自由路径点;   // off 384
+    double                                   _自由滑动时长;   // off 392
+    long long                                _自由滑动帧数;   // off 400
+    NSArray *                                _自由坐标组;   // off 408
+    long long                                _循环上限;   // off 416
+    NSString *                               _循环变量名;   // off 424
+    NSString *                               _循环配对标识;   // off 432
+    double                                   _识字等待;   // off 440
+    long long                                _识字类型;   // off 448
+    NSString *                               _识字文本;   // off 456
+    long long                                _识字条件;   // off 464
+    double                                   _识字数值;   // off 472
+    long long                                _识字成功行为;   // off 480
+    double                                   _识字长按时长;   // off 488
+    double                                   _识字滑动时长;   // off 496
+    long long                                _识字滑动帧数;   // off 504
+    double                                   _识字滑动时隔;   // off 512
+    NSArray *                                _识字路径点;   // off 520
+    long long                                _识字失败行为;   // off 528
+    NSString *                               _识字跳转;   // off 536
+    NSString *                               _识字失败跳转;   // off 544
+    double                                   _取字等待;   // off 552
+    long long                                _取字存储;   // off 560
+    long long                                _取字成功行为;   // off 568
+    long long                                _取字失败行为;   // off 576
+    NSString *                               _取字跳转;   // off 584
+    NSString *                               _取字失败跳转;   // off 592
+    long long                                _取字模式;   // off 600
+    long long                                _取字高级类型;   // off 608
+    NSString *                               _取字目标文本;   // off 616
+    NSString *                               _取字替换文本;   // off 624
+    NSString *                               _取字正则;   // off 632
+    long long                                _取字第几条;   // off 640
+    double                                   _输入等待;   // off 648
+    NSString *                               _输入文本;   // off 656
+    long long                                _输入模式;   // off 664
+    long long                                _输入来源;   // off 672
+    long long                                _输入暂存取条;   // off 680
+    double                                   _识色等待;   // off 688
+    long long                                _识色次数;   // off 696
+    long long                                _识色容差;   // off 704
+    long long                                _识色模式;   // off 712
+    NSArray *                                _识色点组;   // off 720
+    long long                                _识色成功行为;   // off 728
+    double                                   _识色长按时长;   // off 736
+    double                                   _识色滑动时长;   // off 744
+    long long                                _识色滑动帧数;   // off 752
+    double                                   _识色滑动时隔;   // off 760
+    NSArray *                                _识色路径点;   // off 768
+    long long                                _识色失败行为;   // off 776
+    NSString *                               _识色跳转;   // off 784
+    NSString *                               _识色失败跳转;   // off 792
+    double                                   _等待总超时;   // off 800
+    NSData *                                 _录制数据;   // off 808
+    double                                   _录制时间;   // off 816
+    double                                   _循环次数;   // off 824
+    CGPoint                                  _坐标;   // off 832
+    CGPoint                                  _起始坐标;   // off 848
+    CGPoint                                  _结束坐标;   // off 864
+    CGRect                                   _识别区域;   // off 880
 }
-@property (nonatomic) id 标识;
-@property (nonatomic) id gid;
-@property (nonatomic) id 名称;
-@property (nonatomic) id 类型;
-@property (nonatomic) id 是否开启;
-@property (nonatomic) id 次数;
-@property (nonatomic) id 开始延迟;
-@property (nonatomic) id 结束延迟;
-@property (nonatomic) id 连点间隔;
-@property (nonatomic) id 自动复杂度;
-@property (copy, nonatomic) id 坐标;
-@property (copy, nonatomic) id 起始坐标;
-@property (copy, nonatomic) id 结束坐标;
-@property (nonatomic) id 位置偏移;
-@property (nonatomic) id 偏移随机数;
-@property (nonatomic) id 时长随机开关;
-@property (nonatomic) id 时长随机幅度;
-@property (nonatomic) id 等待随机;
-@property (nonatomic) id 等待秒;
-@property (nonatomic) id 等待下限;
-@property (nonatomic) id 等待上限;
-@property (nonatomic) id 等待结束行为;
-@property (nonatomic) id 等待跳转;
-@property (nonatomic) id 是否随机;
-@property (nonatomic) id 位置偏移随机数开关;
-@property (nonatomic) id 长按时长;
-@property (nonatomic) id 滑动时长;
-@property (nonatomic) id 方向;
-@property (nonatomic) id 距离;
-@property (nonatomic) id 滑动帧数;
-@property (nonatomic) id 图片;
-@property (nonatomic) id 相似度;
-@property (copy, nonatomic, readonly) id 识别区域;
-@property (nonatomic) id 识图超时;
-@property (nonatomic) id 识图延迟;
-@property (nonatomic) id 识图点击;
-@property (nonatomic) id 识图跳转;
-@property (nonatomic) id 识图命中行为;
-@property (nonatomic) id 识图长按时长;
-@property (nonatomic) id 识图滑动时长;
-@property (nonatomic) id 识图滑动帧数;
-@property (nonatomic) id 识图滑动时隔;
-@property (nonatomic) id 识图路径点;
-@property (nonatomic) id 识图判断;
-@property (nonatomic) id 识图判断次数;
-@property (nonatomic) id 识图判断失败行为;
-@property (nonatomic) id 识图判断跳转;
-@property (nonatomic) id 识图失败行为;
-@property (nonatomic) id 识图失败跳转;
-@property (nonatomic) id 多点坐标组;
-@property (nonatomic) id 自由模式;
-@property (nonatomic) id 自由长按;
-@property (nonatomic) id 自由路径点;
-@property (nonatomic) id 自由滑动时长;
-@property (nonatomic) id 自由滑动帧数;
-@property (nonatomic) id 自由坐标组;
-@property (nonatomic) id 循环上限;
-@property (nonatomic) id 循环变量名;
-@property (nonatomic) id 循环每轮清零;
-@property (nonatomic) id 循环配对标识;
-@property (nonatomic) id 识字等待;
-@property (nonatomic) id 识字类型;
-@property (nonatomic) id 识字文本;
-@property (nonatomic) id 识字条件;
-@property (nonatomic) id 识字数值;
-@property (nonatomic) id 识字成功行为;
-@property (nonatomic) id 识字长按时长;
-@property (nonatomic) id 识字滑动时长;
-@property (nonatomic) id 识字滑动帧数;
-@property (nonatomic) id 识字滑动时隔;
-@property (nonatomic) id 识字路径点;
-@property (nonatomic) id 识字失败行为;
-@property (nonatomic) id 识字跳转;
-@property (nonatomic) id 识字失败跳转;
-@property (nonatomic) id 取字等待;
-@property (nonatomic) id 取字存储;
-@property (nonatomic) id 取字成功行为;
-@property (nonatomic) id 取字失败行为;
-@property (nonatomic) id 取字跳转;
-@property (nonatomic) id 取字失败跳转;
-@property (nonatomic) id 取字模式;
-@property (nonatomic) id 取字高级类型;
-@property (nonatomic) id 取字目标文本;
-@property (nonatomic) id 取字替换文本;
-@property (nonatomic) id 取字正则;
-@property (nonatomic) id 取字第几条;
-@property (nonatomic) id 输入等待;
-@property (nonatomic) id 输入文本;
-@property (nonatomic) id 输入模式;
-@property (nonatomic) id 输入来源;
-@property (nonatomic) id 输入暂存取条;
-@property (nonatomic) id 输入清空;
-@property (nonatomic) id 输入回车;
-@property (nonatomic) id 识色等待;
-@property (nonatomic) id 识色次数;
-@property (nonatomic) id 识色容差;
-@property (nonatomic) id 识色模式;
-@property (nonatomic) id 识色点组;
-@property (nonatomic) id 识色成功行为;
-@property (nonatomic) id 识色长按时长;
-@property (nonatomic) id 识色滑动时长;
-@property (nonatomic) id 识色滑动帧数;
-@property (nonatomic) id 识色滑动时隔;
-@property (nonatomic) id 识色路径点;
-@property (nonatomic) id 识色失败行为;
-@property (nonatomic) id 识色跳转;
-@property (nonatomic) id 识色失败跳转;
-@property (nonatomic) id 等待模式;
-@property (nonatomic) id 等待总超时;
-@property (nonatomic) id 录制数据;
-@property (nonatomic) id 录制时间;
-@property (nonatomic) id 循环次数;
-@property (nonatomic) id 击杀特效;
-@property (nonatomic) id 自动旋转;
-@property (nonatomic) id 自动缩放;
+@property (copy, nonatomic) NSString *标识;
+@property (copy, nonatomic) NSString *gid;
+@property (copy, nonatomic) NSString *名称;
+@property (nonatomic) long long 类型;
+@property (nonatomic) BOOL 是否开启;
+@property (nonatomic) long long 次数;
+@property (nonatomic) double 开始延迟;
+@property (nonatomic) double 结束延迟;
+@property (nonatomic) double 连点间隔;
+@property (nonatomic) long long 自动复杂度;
+@property (nonatomic) CGPoint 坐标;
+@property (nonatomic) CGPoint 起始坐标;
+@property (nonatomic) CGPoint 结束坐标;
+@property (copy, nonatomic) NSArray *位置偏移;
+@property (nonatomic) long long 偏移随机数;
+@property (nonatomic) long long 时长随机开关;
+@property (nonatomic) double 时长随机幅度;
+@property (nonatomic) long long 等待随机;
+@property (nonatomic) double 等待秒;
+@property (nonatomic) double 等待下限;
+@property (nonatomic) double 等待上限;
+@property (nonatomic) long long 等待结束行为;
+@property (copy, nonatomic) NSString *等待跳转;
+@property (nonatomic) long long 是否随机;
+@property (nonatomic) long long 位置偏移随机数开关;
+@property (nonatomic) double 长按时长;
+@property (nonatomic) double 滑动时长;
+@property (nonatomic) long long 方向;
+@property (nonatomic) double 距离;
+@property (nonatomic) long long 滑动帧数;
+@property (strong, nonatomic) UIImage *图片;
+@property (nonatomic) double 相似度;
+@property (nonatomic) CGRect 识别区域;
+@property (nonatomic) double 识图超时;
+@property (nonatomic) double 识图延迟;
+@property (nonatomic) long long 识图点击;
+@property (copy, nonatomic) NSString *识图跳转;
+@property (nonatomic) long long 识图命中行为;
+@property (nonatomic) double 识图长按时长;
+@property (nonatomic) double 识图滑动时长;
+@property (nonatomic) long long 识图滑动帧数;
+@property (nonatomic) double 识图滑动时隔;
+@property (copy, nonatomic) NSArray *识图路径点;
+@property (nonatomic) BOOL 识图判断;
+@property (nonatomic) long long 识图判断次数;
+@property (nonatomic) long long 识图判断失败行为;
+@property (copy, nonatomic) NSString *识图判断跳转;
+@property (nonatomic) long long 识图失败行为;
+@property (copy, nonatomic) NSString *识图失败跳转;
+@property (copy, nonatomic) NSArray *多点坐标组;
+@property (nonatomic) long long 自由模式;
+@property (nonatomic) BOOL 自由长按;
+@property (copy, nonatomic) NSArray *自由路径点;
+@property (nonatomic) double 自由滑动时长;
+@property (nonatomic) long long 自由滑动帧数;
+@property (copy, nonatomic) NSArray *自由坐标组;
+@property (nonatomic) long long 循环上限;
+@property (copy, nonatomic) NSString *循环变量名;
+@property (nonatomic) BOOL 循环每轮清零;
+@property (copy, nonatomic) NSString *循环配对标识;
+@property (nonatomic) double 识字等待;
+@property (nonatomic) long long 识字类型;
+@property (copy, nonatomic) NSString *识字文本;
+@property (nonatomic) long long 识字条件;
+@property (nonatomic) double 识字数值;
+@property (nonatomic) long long 识字成功行为;
+@property (nonatomic) double 识字长按时长;
+@property (nonatomic) double 识字滑动时长;
+@property (nonatomic) long long 识字滑动帧数;
+@property (nonatomic) double 识字滑动时隔;
+@property (copy, nonatomic) NSArray *识字路径点;
+@property (nonatomic) long long 识字失败行为;
+@property (copy, nonatomic) NSString *识字跳转;
+@property (copy, nonatomic) NSString *识字失败跳转;
+@property (nonatomic) double 取字等待;
+@property (nonatomic) long long 取字存储;
+@property (nonatomic) long long 取字成功行为;
+@property (nonatomic) long long 取字失败行为;
+@property (copy, nonatomic) NSString *取字跳转;
+@property (copy, nonatomic) NSString *取字失败跳转;
+@property (nonatomic) long long 取字模式;
+@property (nonatomic) long long 取字高级类型;
+@property (copy, nonatomic) NSString *取字目标文本;
+@property (copy, nonatomic) NSString *取字替换文本;
+@property (copy, nonatomic) NSString *取字正则;
+@property (nonatomic) long long 取字第几条;
+@property (nonatomic) double 输入等待;
+@property (copy, nonatomic) NSString *输入文本;
+@property (nonatomic) long long 输入模式;
+@property (nonatomic) long long 输入来源;
+@property (nonatomic) long long 输入暂存取条;
+@property (nonatomic) BOOL 输入清空;
+@property (nonatomic) BOOL 输入回车;
+@property (nonatomic) double 识色等待;
+@property (nonatomic) long long 识色次数;
+@property (nonatomic) long long 识色容差;
+@property (nonatomic) long long 识色模式;
+@property (copy, nonatomic) NSArray *识色点组;
+@property (nonatomic) long long 识色成功行为;
+@property (nonatomic) double 识色长按时长;
+@property (nonatomic) double 识色滑动时长;
+@property (nonatomic) long long 识色滑动帧数;
+@property (nonatomic) double 识色滑动时隔;
+@property (copy, nonatomic) NSArray *识色路径点;
+@property (nonatomic) long long 识色失败行为;
+@property (copy, nonatomic) NSString *识色跳转;
+@property (copy, nonatomic) NSString *识色失败跳转;
+@property (nonatomic) BOOL 等待模式;
+@property (nonatomic) double 等待总超时;
+@property (strong, nonatomic) NSData *录制数据;
+@property (nonatomic) double 录制时间;
+@property (nonatomic) double 循环次数;
+@property (nonatomic) BOOL 击杀特效;
+@property (nonatomic) BOOL 自动旋转;
+@property (nonatomic) BOOL 自动缩放;
 - (id)init;
 - (void)确保标识;
 - (id)CQ全部跳转目标标识;
@@ -847,12 +838,12 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)encodeWithCoder:(id)encodeWithCoder;
 - (id)copyWithZone:(void *)copyWithZone;
 - (id)description;
-- (id)标识;
-- (void)set标识:(id)set标识;
-- (id)gid;
+- (NSString *)标识;
+- (void)set标识:(NSString *)set标识;
+- (NSString *)gid;
 - (void)setGid:(id)setGid;
-- (id)名称;
-- (void)set名称:(id)set名称;
+- (NSString *)名称;
+- (void)set名称:(NSString *)set名称;
 - (long long)类型;
 - (void)set类型:(long long)set类型;
 - (BOOL)是否开启;
@@ -873,8 +864,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set起始坐标:(CGPoint)set起始坐标;
 - (CGPoint)结束坐标;
 - (void)set结束坐标:(CGPoint)set结束坐标;
-- (id)位置偏移;
-- (void)set位置偏移:(id)set位置偏移;
+- (NSArray *)位置偏移;
+- (void)set位置偏移:(NSArray *)set位置偏移;
 - (long long)偏移随机数;
 - (void)set偏移随机数:(long long)set偏移随机数;
 - (long long)时长随机开关;
@@ -891,8 +882,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set等待上限:(double)set等待上限;
 - (long long)等待结束行为;
 - (void)set等待结束行为:(long long)set等待结束行为;
-- (id)等待跳转;
-- (void)set等待跳转:(id)set等待跳转;
+- (NSString *)等待跳转;
+- (void)set等待跳转:(NSString *)set等待跳转;
 - (long long)是否随机;
 - (void)set是否随机:(long long)set是否随机;
 - (long long)位置偏移随机数开关;
@@ -907,8 +898,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set距离:(double)set距离;
 - (long long)滑动帧数;
 - (void)set滑动帧数:(long long)set滑动帧数;
-- (id)图片;
-- (void)set图片:(id)set图片;
+- (UIImage *)图片;
+- (void)set图片:(UIImage *)set图片;
 - (double)相似度;
 - (void)set相似度:(double)set相似度;
 - (CGRect)识别区域;
@@ -919,8 +910,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set识图延迟:(double)set识图延迟;
 - (long long)识图点击;
 - (void)set识图点击:(long long)set识图点击;
-- (id)识图跳转;
-- (void)set识图跳转:(id)set识图跳转;
+- (NSString *)识图跳转;
+- (void)set识图跳转:(NSString *)set识图跳转;
 - (long long)识图命中行为;
 - (void)set识图命中行为:(long long)set识图命中行为;
 - (double)识图长按时长;
@@ -931,48 +922,48 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set识图滑动帧数:(long long)set识图滑动帧数;
 - (double)识图滑动时隔;
 - (void)set识图滑动时隔:(double)set识图滑动时隔;
-- (id)识图路径点;
-- (void)set识图路径点:(id)set识图路径点;
+- (NSArray *)识图路径点;
+- (void)set识图路径点:(NSArray *)set识图路径点;
 - (BOOL)识图判断;
 - (void)set识图判断:(BOOL)set识图判断;
 - (long long)识图判断次数;
 - (void)set识图判断次数:(long long)set识图判断次数;
 - (long long)识图判断失败行为;
 - (void)set识图判断失败行为:(long long)set识图判断失败行为;
-- (id)识图判断跳转;
-- (void)set识图判断跳转:(id)set识图判断跳转;
+- (NSString *)识图判断跳转;
+- (void)set识图判断跳转:(NSString *)set识图判断跳转;
 - (long long)识图失败行为;
 - (void)set识图失败行为:(long long)set识图失败行为;
-- (id)识图失败跳转;
-- (void)set识图失败跳转:(id)set识图失败跳转;
-- (id)多点坐标组;
-- (void)set多点坐标组:(id)set多点坐标组;
+- (NSString *)识图失败跳转;
+- (void)set识图失败跳转:(NSString *)set识图失败跳转;
+- (NSArray *)多点坐标组;
+- (void)set多点坐标组:(NSArray *)set多点坐标组;
 - (long long)自由模式;
 - (void)set自由模式:(long long)set自由模式;
 - (BOOL)自由长按;
 - (void)set自由长按:(BOOL)set自由长按;
-- (id)自由路径点;
-- (void)set自由路径点:(id)set自由路径点;
+- (NSArray *)自由路径点;
+- (void)set自由路径点:(NSArray *)set自由路径点;
 - (double)自由滑动时长;
 - (void)set自由滑动时长:(double)set自由滑动时长;
 - (long long)自由滑动帧数;
 - (void)set自由滑动帧数:(long long)set自由滑动帧数;
-- (id)自由坐标组;
-- (void)set自由坐标组:(id)set自由坐标组;
+- (NSArray *)自由坐标组;
+- (void)set自由坐标组:(NSArray *)set自由坐标组;
 - (long long)循环上限;
 - (void)set循环上限:(long long)set循环上限;
-- (id)循环变量名;
-- (void)set循环变量名:(id)set循环变量名;
+- (NSString *)循环变量名;
+- (void)set循环变量名:(NSString *)set循环变量名;
 - (BOOL)循环每轮清零;
 - (void)set循环每轮清零:(BOOL)set循环每轮清零;
-- (id)循环配对标识;
-- (void)set循环配对标识:(id)set循环配对标识;
+- (NSString *)循环配对标识;
+- (void)set循环配对标识:(NSString *)set循环配对标识;
 - (double)识字等待;
 - (void)set识字等待:(double)set识字等待;
 - (long long)识字类型;
 - (void)set识字类型:(long long)set识字类型;
-- (id)识字文本;
-- (void)set识字文本:(id)set识字文本;
+- (NSString *)识字文本;
+- (void)set识字文本:(NSString *)set识字文本;
 - (long long)识字条件;
 - (void)set识字条件:(long long)set识字条件;
 - (double)识字数值;
@@ -987,14 +978,14 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set识字滑动帧数:(long long)set识字滑动帧数;
 - (double)识字滑动时隔;
 - (void)set识字滑动时隔:(double)set识字滑动时隔;
-- (id)识字路径点;
-- (void)set识字路径点:(id)set识字路径点;
+- (NSArray *)识字路径点;
+- (void)set识字路径点:(NSArray *)set识字路径点;
 - (long long)识字失败行为;
 - (void)set识字失败行为:(long long)set识字失败行为;
-- (id)识字跳转;
-- (void)set识字跳转:(id)set识字跳转;
-- (id)识字失败跳转;
-- (void)set识字失败跳转:(id)set识字失败跳转;
+- (NSString *)识字跳转;
+- (void)set识字跳转:(NSString *)set识字跳转;
+- (NSString *)识字失败跳转;
+- (void)set识字失败跳转:(NSString *)set识字失败跳转;
 - (double)取字等待;
 - (void)set取字等待:(double)set取字等待;
 - (long long)取字存储;
@@ -1003,26 +994,26 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set取字成功行为:(long long)set取字成功行为;
 - (long long)取字失败行为;
 - (void)set取字失败行为:(long long)set取字失败行为;
-- (id)取字跳转;
-- (void)set取字跳转:(id)set取字跳转;
-- (id)取字失败跳转;
-- (void)set取字失败跳转:(id)set取字失败跳转;
+- (NSString *)取字跳转;
+- (void)set取字跳转:(NSString *)set取字跳转;
+- (NSString *)取字失败跳转;
+- (void)set取字失败跳转:(NSString *)set取字失败跳转;
 - (long long)取字模式;
 - (void)set取字模式:(long long)set取字模式;
 - (long long)取字高级类型;
 - (void)set取字高级类型:(long long)set取字高级类型;
-- (id)取字目标文本;
-- (void)set取字目标文本:(id)set取字目标文本;
-- (id)取字替换文本;
-- (void)set取字替换文本:(id)set取字替换文本;
-- (id)取字正则;
-- (void)set取字正则:(id)set取字正则;
+- (NSString *)取字目标文本;
+- (void)set取字目标文本:(NSString *)set取字目标文本;
+- (NSString *)取字替换文本;
+- (void)set取字替换文本:(NSString *)set取字替换文本;
+- (NSString *)取字正则;
+- (void)set取字正则:(NSString *)set取字正则;
 - (long long)取字第几条;
 - (void)set取字第几条:(long long)set取字第几条;
 - (double)输入等待;
 - (void)set输入等待:(double)set输入等待;
-- (id)输入文本;
-- (void)set输入文本:(id)set输入文本;
+- (NSString *)输入文本;
+- (void)set输入文本:(NSString *)set输入文本;
 - (long long)输入模式;
 - (void)set输入模式:(long long)set输入模式;
 - (long long)输入来源;
@@ -1041,8 +1032,8 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set识色容差:(long long)set识色容差;
 - (long long)识色模式;
 - (void)set识色模式:(long long)set识色模式;
-- (id)识色点组;
-- (void)set识色点组:(id)set识色点组;
+- (NSArray *)识色点组;
+- (void)set识色点组:(NSArray *)set识色点组;
 - (long long)识色成功行为;
 - (void)set识色成功行为:(long long)set识色成功行为;
 - (double)识色长按时长;
@@ -1053,20 +1044,20 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set识色滑动帧数:(long long)set识色滑动帧数;
 - (double)识色滑动时隔;
 - (void)set识色滑动时隔:(double)set识色滑动时隔;
-- (id)识色路径点;
-- (void)set识色路径点:(id)set识色路径点;
+- (NSArray *)识色路径点;
+- (void)set识色路径点:(NSArray *)set识色路径点;
 - (long long)识色失败行为;
 - (void)set识色失败行为:(long long)set识色失败行为;
-- (id)识色跳转;
-- (void)set识色跳转:(id)set识色跳转;
-- (id)识色失败跳转;
-- (void)set识色失败跳转:(id)set识色失败跳转;
+- (NSString *)识色跳转;
+- (void)set识色跳转:(NSString *)set识色跳转;
+- (NSString *)识色失败跳转;
+- (void)set识色失败跳转:(NSString *)set识色失败跳转;
 - (BOOL)等待模式;
 - (void)set等待模式:(BOOL)set等待模式;
 - (double)等待总超时;
 - (void)set等待总超时:(double)set等待总超时;
-- (id)录制数据;
-- (void)set录制数据:(id)set录制数据;
+- (NSData *)录制数据;
+- (void)set录制数据:(NSData *)set录制数据;
 - (double)录制时间;
 - (void)set录制时间:(double)set录制时间;
 - (double)循环次数;
@@ -1077,76 +1068,74 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set自动旋转:(BOOL)set自动旋转;
 - (BOOL)自动缩放;
 - (void)set自动缩放:(BOOL)set自动缩放;
-- (void).cxx_destruct;
 @end
 
 @interface 动作组模型 : NSObject {
-    BOOL;                            __专属;   // off 8
-    BOOL;                            __是否开启;   // off 9
-    NSString *;                      __标识;   // off 16
-    NSString *;                      __名称;   // off 24
+    BOOL                                     _专属;   // off 8
+    BOOL                                     _是否开启;   // off 9
+    NSString *                               _标识;   // off 16
+    NSString *                               _名称;   // off 24
 }
-@property (nonatomic) id 标识;
-@property (nonatomic) id 名称;
-@property (nonatomic) id 专属;
-@property (nonatomic) id 是否开启;
+@property (copy, nonatomic) NSString *标识;
+@property (copy, nonatomic) NSString *名称;
+@property (nonatomic) BOOL 专属;
+@property (nonatomic) BOOL 是否开启;
 - (id)initWithCoder:(id)initWithCoder;
 - (void)encodeWithCoder:(id)encodeWithCoder;
 - (id)description;
-- (id)标识;
-- (void)set标识:(id)set标识;
-- (id)名称;
-- (void)set名称:(id)set名称;
+- (NSString *)标识;
+- (void)set标识:(NSString *)set标识;
+- (NSString *)名称;
+- (void)set名称:(NSString *)set名称;
 - (BOOL)专属;
 - (void)set专属:(BOOL)set专属;
 - (BOOL)是否开启;
 - (void)set是否开启:(BOOL)set是否开启;
-- (void).cxx_destruct;
 @end
 
 @interface 动作选择视图 : NSObject {
-    BOOL;                            __最小化;   // off 8
-    BOOL;                            __面板位置已重定;   // off 9
-    BOOL;                            __内容已搬运;   // off 10
-    id;                              __完成回调;   // off 16
-    id;                              __隐式归组回调;   // off 24
-    UIView *;                        __标记视图;   // off 32
-    UISegmentedControl *;            __时长随机段;   // off 40
-    参数行 *;                           __随机幅度行;   // off 48
-    UIView *;                        __面板;   // off 56
-    UILabel *;                       __坐标标签;   // off 64
-    NSMutableArray *;                __行列表;   // off 72
-    动作模型 *;                          __编辑动作;   // off 80
-    动作模型 *;                          __原动作;   // off 88
-    UIView *;                        __把手栏;   // off 96
-    UIButton *;                      __最小化按钮;   // off 104
-    UITextField *;                   __名称输入框;   // off 112
-    UIScrollView *;                  __内容滚动;   // off 120
-    CGPoint;                         __拖动偏移;   // off 128
-    CGPoint;                         __面板中心自定;   // off 144
+    BOOL                                     _最小化;   // off 8
+    BOOL                                     _面板位置已重定;   // off 9
+    BOOL                                     _内容已搬运;   // off 10
+    id                                       _完成回调;   // off 16
+    id                                       _隐式归组回调;   // off 24
+    UIView *                                 _标记视图;   // off 32
+    UISegmentedControl *                     _时长随机段;   // off 40
+    参数行 *                                    _随机幅度行;   // off 48
+    UIView *                                 _面板;   // off 56
+    UILabel *                                _坐标标签;   // off 64
+    NSMutableArray *                         _行列表;   // off 72
+    动作模型 *                                   _编辑动作;   // off 80
+    动作模型 *                                   _原动作;   // off 88
+    UIView *                                 _把手栏;   // off 96
+    UIButton *                               _最小化按钮;   // off 104
+    UITextField *                            _名称输入框;   // off 112
+    UIScrollView *                           _内容滚动;   // off 120
+    CGPoint                                  _拖动偏移;   // off 128
+    CGPoint                                  _面板中心自定;   // off 144
 }
-@property (copy, nonatomic) id 拖动偏移;
-@property (copy, nonatomic) id 时长随机段;
-@property (nonatomic) id 随机幅度行;
-@property (nonatomic) id 标记视图;
-@property (nonatomic) id 面板;
-@property (nonatomic) id 坐标标签;
-@property (nonatomic) id 行列表;
-@property (nonatomic) id 编辑动作;
-@property (nonatomic) id 原动作;
-@property (nonatomic) id 把手栏;
-@property (nonatomic) id 最小化按钮;
-@property (nonatomic) id 最小化;
-@property (nonatomic) id 面板位置已重定;
-@property (copy, nonatomic) id 面板中心自定;
-@property (nonatomic) id 名称输入框;
-@property (nonatomic) id 内容滚动;
-@property (nonatomic) id 内容已搬运;
-@property (nonatomic) id 动作;
-@property (nonatomic) id 完成回调;
-@property (nonatomic) id 隐式归组回调;
+@property (nonatomic) CGPoint 拖动偏移;
+@property (strong, nonatomic) UISegmentedControl *时长随机段;
+@property (weak, nonatomic) 参数行 *随机幅度行;
+@property (strong, nonatomic) UIView *标记视图;
+@property (strong, nonatomic) UIView *面板;
+@property (strong, nonatomic) UILabel *坐标标签;
+@property (strong, nonatomic) NSMutableArray *行列表;
+@property (strong, nonatomic) 动作模型 *编辑动作;
+@property (strong, nonatomic) 动作模型 *原动作;
+@property (strong, nonatomic) UIView *把手栏;
+@property (strong, nonatomic) UIButton *最小化按钮;
+@property (nonatomic) BOOL 最小化;
+@property (nonatomic) BOOL 面板位置已重定;
+@property (nonatomic) CGPoint 面板中心自定;
+@property (strong, nonatomic) UITextField *名称输入框;
+@property (strong, nonatomic) UIScrollView *内容滚动;
+@property (nonatomic) BOOL 内容已搬运;
+@property (nonatomic, readonly) 动作模型 *动作;
+@property (copy, nonatomic) id 完成回调;
+@property (copy, nonatomic) id 隐式归组回调;
 - (id)initWith动作:(id)initWith动作;
-- (id)动作;
+- (动作模型 *)动作;
 - (id)hitTest:(CGPoint)hitTest withEvent:(id)withEvent;
 - (id)新建标记视图;
 - (void)摆放标记:(CGPoint)摆放标记;
@@ -1185,75 +1174,73 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set完成回调:(id)set完成回调;
 - (id)隐式归组回调;
 - (void)set隐式归组回调:(id)set隐式归组回调;
-- (id)标记视图;
-- (void)set标记视图:(id)set标记视图;
+- (UIView *)标记视图;
+- (void)set标记视图:(UIView *)set标记视图;
 - (CGPoint)拖动偏移;
 - (void)set拖动偏移:(CGPoint)set拖动偏移;
-- (id)时长随机段;
-- (void)set时长随机段:(id)set时长随机段;
-- (id)随机幅度行;
-- (void)set随机幅度行:(id)set随机幅度行;
-- (id)面板;
-- (void)set面板:(id)set面板;
-- (id)坐标标签;
-- (void)set坐标标签:(id)set坐标标签;
-- (id)行列表;
-- (void)set行列表:(id)set行列表;
-- (id)编辑动作;
-- (void)set编辑动作:(id)set编辑动作;
-- (id)原动作;
-- (void)set原动作:(id)set原动作;
-- (id)把手栏;
-- (void)set把手栏:(id)set把手栏;
-- (id)最小化按钮;
-- (void)set最小化按钮:(id)set最小化按钮;
+- (UISegmentedControl *)时长随机段;
+- (void)set时长随机段:(UISegmentedControl *)set时长随机段;
+- (参数行 *)随机幅度行;
+- (void)set随机幅度行:(参数行 *)set随机幅度行;
+- (UIView *)面板;
+- (void)set面板:(UIView *)set面板;
+- (UILabel *)坐标标签;
+- (void)set坐标标签:(UILabel *)set坐标标签;
+- (NSMutableArray *)行列表;
+- (void)set行列表:(NSMutableArray *)set行列表;
+- (动作模型 *)编辑动作;
+- (void)set编辑动作:(动作模型 *)set编辑动作;
+- (动作模型 *)原动作;
+- (void)set原动作:(动作模型 *)set原动作;
+- (UIView *)把手栏;
+- (void)set把手栏:(UIView *)set把手栏;
+- (UIButton *)最小化按钮;
+- (void)set最小化按钮:(UIButton *)set最小化按钮;
 - (BOOL)最小化;
 - (void)set最小化:(BOOL)set最小化;
 - (BOOL)面板位置已重定;
 - (void)set面板位置已重定:(BOOL)set面板位置已重定;
 - (CGPoint)面板中心自定;
 - (void)set面板中心自定:(CGPoint)set面板中心自定;
-- (id)名称输入框;
-- (void)set名称输入框:(id)set名称输入框;
-- (id)内容滚动;
-- (void)set内容滚动:(id)set内容滚动;
+- (UITextField *)名称输入框;
+- (void)set名称输入框:(UITextField *)set名称输入框;
+- (UIScrollView *)内容滚动;
+- (void)set内容滚动:(UIScrollView *)set内容滚动;
 - (BOOL)内容已搬运;
 - (void)set内容已搬运:(BOOL)set内容已搬运;
-- (void).cxx_destruct;
 @end
 
 @interface 参数行 : NSObject {
-    long long;                       __小数位;   // off 8
-    BOOL;                            __隐藏;   // off 16
-    UILabel *;                       __标题;   // off 24
-    UILabel *;                       __数值;   // off 32
-    UIStepper *;                     __步进;   // off 40
-    id;                              __变化;   // off 48
-    NSString *;                      __零显示;   // off 56
+    long long                                _小数位;   // off 8
+    BOOL                                     _隐藏;   // off 16
+    UILabel *                                _标题;   // off 24
+    UILabel *                                _数值;   // off 32
+    UIStepper *                              _步进;   // off 40
+    id                                       _变化;   // off 48
+    NSString *                               _零显示;   // off 56
 }
-@property (nonatomic) id 标题;
-@property (nonatomic) id 数值;
-@property (nonatomic) id 步进;
-@property (nonatomic) id 零显示;
-@property (nonatomic) id 变化;
-@property (nonatomic) id 隐藏;
+@property (strong, nonatomic) UILabel *标题;
+@property (strong, nonatomic) UILabel *数值;
+@property (strong, nonatomic) UIStepper *步进;
+@property (copy, nonatomic) NSString *零显示;
+@property (copy, nonatomic) id 变化;
+@property (nonatomic) BOOL 隐藏;
 - (void)布局宽:(double)布局宽;
 - (void)值变化:(id)值变化;
 - (void)刷新:(double)刷新;
 - (void)赋值:(double)赋值;
-- (id)标题;
-- (void)set标题:(id)set标题;
-- (id)数值;
-- (void)set数值:(id)set数值;
-- (id)步进;
-- (void)set步进:(id)set步进;
+- (UILabel *)标题;
+- (void)set标题:(UILabel *)set标题;
+- (UILabel *)数值;
+- (void)set数值:(UILabel *)set数值;
+- (UIStepper *)步进;
+- (void)set步进:(UIStepper *)set步进;
 - (id)变化;
 - (void)set变化:(id)set变化;
 - (BOOL)隐藏;
 - (void)set隐藏:(BOOL)set隐藏;
-- (id)零显示;
-- (void)set零显示:(id)set零显示;
-- (void).cxx_destruct;
+- (NSString *)零显示;
+- (void)set零显示:(NSString *)set零显示;
 @end
 
 @interface 双击选择视图 : 动作选择视图 {
@@ -1264,37 +1251,37 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 取字选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __模式段;   // off 160
-    UISegmentedControl *;            __高级段;   // off 168
-    UITextField *;                   __目标框;   // off 176
-    UITextField *;                   __替换框;   // off 184
-    UITextField *;                   __正则框;   // off 192
-    UITextField *;                   __第几条框;   // off 200
-    UISegmentedControl *;            __存储段;   // off 208
-    UIButton *;                      __框选按钮;   // off 216
-    UIButton *;                      __测试按钮;   // off 224
-    UISegmentedControl *;            __成功段;   // off 232
-    UIButton *;                      __成功跳按钮;   // off 240
-    UISegmentedControl *;            __失败段;   // off 248
-    UIButton *;                      __失败跳按钮;   // off 256
-    参数行 *;                           __区域宽行;   // off 264
-    参数行 *;                           __区域高行;   // off 272
+    UISegmentedControl *                     _模式段;   // off 160
+    UISegmentedControl *                     _高级段;   // off 168
+    UITextField *                            _目标框;   // off 176
+    UITextField *                            _替换框;   // off 184
+    UITextField *                            _正则框;   // off 192
+    UITextField *                            _第几条框;   // off 200
+    UISegmentedControl *                     _存储段;   // off 208
+    UIButton *                               _框选按钮;   // off 216
+    UIButton *                               _测试按钮;   // off 224
+    UISegmentedControl *                     _成功段;   // off 232
+    UIButton *                               _成功跳按钮;   // off 240
+    UISegmentedControl *                     _失败段;   // off 248
+    UIButton *                               _失败跳按钮;   // off 256
+    参数行 *                                    _区域宽行;   // off 264
+    参数行 *                                    _区域高行;   // off 272
 }
-@property (copy, nonatomic) id 模式段;
-@property (copy, nonatomic) id 高级段;
-@property (nonatomic) id 目标框;
-@property (nonatomic) id 替换框;
-@property (nonatomic) id 正则框;
-@property (nonatomic) id 第几条框;
-@property (copy, nonatomic) id 存储段;
-@property (nonatomic) id 框选按钮;
-@property (nonatomic) id 测试按钮;
-@property (copy, nonatomic) id 成功段;
-@property (nonatomic) id 成功跳按钮;
-@property (copy, nonatomic) id 失败段;
-@property (nonatomic) id 失败跳按钮;
-@property (nonatomic) id 区域宽行;
-@property (nonatomic) id 区域高行;
+@property (strong, nonatomic) UISegmentedControl *模式段;
+@property (strong, nonatomic) UISegmentedControl *高级段;
+@property (strong, nonatomic) UITextField *目标框;
+@property (strong, nonatomic) UITextField *替换框;
+@property (strong, nonatomic) UITextField *正则框;
+@property (strong, nonatomic) UITextField *第几条框;
+@property (strong, nonatomic) UISegmentedControl *存储段;
+@property (strong, nonatomic) UIButton *框选按钮;
+@property (strong, nonatomic) UIButton *测试按钮;
+@property (strong, nonatomic) UISegmentedControl *成功段;
+@property (strong, nonatomic) UIButton *成功跳按钮;
+@property (strong, nonatomic) UISegmentedControl *失败段;
+@property (strong, nonatomic) UIButton *失败跳按钮;
+@property (weak, nonatomic) 参数行 *区域宽行;
+@property (weak, nonatomic) 参数行 *区域高行;
 - (BOOL)显示标记;
 - (id)新建标记视图;
 - (void)构建参数;
@@ -1318,67 +1305,66 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)刷新跳转按钮;
 - (void)框选识别区;
 - (void)测试提取;
-- (id)模式段;
-- (void)set模式段:(id)set模式段;
-- (id)高级段;
-- (void)set高级段:(id)set高级段;
-- (id)目标框;
-- (void)set目标框:(id)set目标框;
-- (id)替换框;
-- (void)set替换框:(id)set替换框;
-- (id)正则框;
-- (void)set正则框:(id)set正则框;
-- (id)第几条框;
-- (void)set第几条框:(id)set第几条框;
-- (id)存储段;
-- (void)set存储段:(id)set存储段;
-- (id)框选按钮;
-- (void)set框选按钮:(id)set框选按钮;
-- (id)测试按钮;
-- (void)set测试按钮:(id)set测试按钮;
-- (id)成功段;
-- (void)set成功段:(id)set成功段;
-- (id)成功跳按钮;
-- (void)set成功跳按钮:(id)set成功跳按钮;
-- (id)失败段;
-- (void)set失败段:(id)set失败段;
-- (id)失败跳按钮;
-- (void)set失败跳按钮:(id)set失败跳按钮;
-- (id)区域宽行;
-- (void)set区域宽行:(id)set区域宽行;
-- (id)区域高行;
-- (void)set区域高行:(id)set区域高行;
-- (void).cxx_destruct;
+- (UISegmentedControl *)模式段;
+- (void)set模式段:(UISegmentedControl *)set模式段;
+- (UISegmentedControl *)高级段;
+- (void)set高级段:(UISegmentedControl *)set高级段;
+- (UITextField *)目标框;
+- (void)set目标框:(UITextField *)set目标框;
+- (UITextField *)替换框;
+- (void)set替换框:(UITextField *)set替换框;
+- (UITextField *)正则框;
+- (void)set正则框:(UITextField *)set正则框;
+- (UITextField *)第几条框;
+- (void)set第几条框:(UITextField *)set第几条框;
+- (UISegmentedControl *)存储段;
+- (void)set存储段:(UISegmentedControl *)set存储段;
+- (UIButton *)框选按钮;
+- (void)set框选按钮:(UIButton *)set框选按钮;
+- (UIButton *)测试按钮;
+- (void)set测试按钮:(UIButton *)set测试按钮;
+- (UISegmentedControl *)成功段;
+- (void)set成功段:(UISegmentedControl *)set成功段;
+- (UIButton *)成功跳按钮;
+- (void)set成功跳按钮:(UIButton *)set成功跳按钮;
+- (UISegmentedControl *)失败段;
+- (void)set失败段:(UISegmentedControl *)set失败段;
+- (UIButton *)失败跳按钮;
+- (void)set失败跳按钮:(UIButton *)set失败跳按钮;
+- (参数行 *)区域宽行;
+- (void)set区域宽行:(参数行 *)set区域宽行;
+- (参数行 *)区域高行;
+- (void)set区域高行:(参数行 *)set区域高行;
 @end
 
 @interface 命中路径编辑器 : NSObject {
-    NSMutableArray *;                __点们;   // off 8
-    NSMutableArray *;                __标签们;   // off 16
-    NSMutableArray *;                __线们;   // off 24
-    UITableView *;                   __表;   // off 32
-    BOOL;                            __起点已被用户拖动;   // off 40
-    UIView *;                        __宿主;   // off 48
-    UIView *;                        __面板;   // off 56
-    UIView *;                        __容器;   // off 64
-    NSArray *;                       __路径点;   // off 72
-    id;                              __变化;   // off 80
-    CGPoint;                         __起点参考;   // off 88
-    CGRect;                          __列表区;   // off 104
+    NSMutableArray *                         _点们;   // off 8
+    NSMutableArray *                         _标签们;   // off 16
+    NSMutableArray *                         _线们;   // off 24
+    UITableView *                            _表;   // off 32
+    BOOL                                     _起点已被用户拖动;   // off 40
+    UIView *                                 _宿主;   // off 48
+    UIView *                                 _面板;   // off 56
+    UIView *                                 _容器;   // off 64
+    NSArray *                                _路径点;   // off 72
+    id                                       _变化;   // off 80
+    CGPoint                                  _起点参考;   // off 88
+    CGRect                                   _列表区;   // off 104
 }
-@property (nonatomic) id 宿主;
-@property (nonatomic) id 面板;
-@property (nonatomic) id 容器;
-@property (nonatomic) id 路径点;
-@property (nonatomic) id 变化;
-@property (copy, nonatomic) id 起点参考;
-@property (nonatomic) id 起点已被用户拖动;
-@property (copy, nonatomic, readonly) id 列表区;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (weak, nonatomic) UIView *宿主;
+@property (weak, nonatomic) UIView *面板;
+@property (weak, nonatomic) UIView *容器;
+@property (copy, nonatomic) NSArray *路径点;
+@property (copy, nonatomic) id 变化;
+@property (nonatomic) CGPoint 起点参考;
+@property (nonatomic) BOOL 起点已被用户拖动;
+@property (nonatomic) CGRect 列表区;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (id)init;
-- (void)set路径点:(id)set路径点;
+- (void)set路径点:(NSArray *)set路径点;
 - (void)布局;
 - (long long)tableView:(id)tableView numberOfRowsInSection:(long long)numberOfRowsInSection;
 - (id)tableView:(id)tableView cellForRowAtIndexPath:(id)cellForRowAtIndexPath;
@@ -1394,13 +1380,13 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)摆放标记;
 - (void)拖动:(id)拖动;
 - (void)清理;
-- (id)宿主;
-- (void)set宿主:(id)set宿主;
-- (id)面板;
-- (void)set面板:(id)set面板;
-- (id)容器;
-- (void)set容器:(id)set容器;
-- (id)路径点;
+- (UIView *)宿主;
+- (void)set宿主:(UIView *)set宿主;
+- (UIView *)面板;
+- (void)set面板:(UIView *)set面板;
+- (UIView *)容器;
+- (void)set容器:(UIView *)set容器;
+- (NSArray *)路径点;
 - (id)变化;
 - (void)set变化:(id)set变化;
 - (CGPoint)起点参考;
@@ -1409,15 +1395,14 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set起点已被用户拖动:(BOOL)set起点已被用户拖动;
 - (CGRect)列表区;
 - (void)set列表区:(CGRect)set列表区;
-- (void).cxx_destruct;
 @end
 
 @interface 多点选择视图 : 动作选择视图 {
-    NSMutableArray *;                __标记们;   // off 160
-    NSMutableArray *;                __标签们;   // off 168
+    NSMutableArray *                         _标记们;   // off 160
+    NSMutableArray *                         _标签们;   // off 168
 }
-@property (nonatomic) id 标记们;
-@property (nonatomic) id 标签们;
+@property (strong, nonatomic) NSMutableArray *标记们;
+@property (strong, nonatomic) NSMutableArray *标签们;
 - (void)构建参数;
 - (BOOL)显示标记;
 - (id)新建标记视图;
@@ -1428,19 +1413,18 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)同步标记;
 - (void)摆放点标记:(long long)摆放点标记;
 - (void)刷新准星;
-- (id)标记们;
-- (void)set标记们:(id)set标记们;
-- (id)标签们;
-- (void)set标签们:(id)set标签们;
-- (void).cxx_destruct;
+- (NSMutableArray *)标记们;
+- (void)set标记们:(NSMutableArray *)set标记们;
+- (NSMutableArray *)标签们;
+- (void)set标签们:(NSMutableArray *)set标签们;
 @end
 
 @interface 录制视图 : NSObject {
-    UILabel *;                       __状态;   // off 8
-    UILabel *;                       __统计;   // off 16
-    UIButton *;                      __主按钮;   // off 24
-    UIView *;                        __状态灯;   // off 32
-    NSTimer *;                       __刷新;   // off 40
+    UILabel *                                _状态;   // off 8
+    UILabel *                                _统计;   // off 16
+    UIButton *                               _主按钮;   // off 24
+    UIView *                                 _状态灯;   // off 32
+    NSTimer *                                _刷新;   // off 40
 }
 - (void)构建;
 - (void)刷新状态灯;
@@ -1449,95 +1433,92 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)刷新;
 - (void)切换;
 - (void)保存;
-- (void).cxx_destruct;
 @end
 
 @interface 循环结尾选择视图 : 动作选择视图 {
-    UILabel *;                       __配对标签;   // off 160
+    UILabel *                                _配对标签;   // off 160
 }
-@property (nonatomic) id 配对标签;
+@property (strong, nonatomic) UILabel *配对标签;
 - (BOOL)显示标记;
 - (id)新建标记视图;
 - (void)构建参数;
 - (double)面板附加高度;
 - (void)布局参数区;
 - (void)刷新;
-- (id)配对标签;
-- (void)set配对标签:(id)set配对标签;
-- (void).cxx_destruct;
+- (UILabel *)配对标签;
+- (void)set配对标签:(UILabel *)set配对标签;
 @end
 
 @interface 循环选择视图 : 动作选择视图 {
-    UILabel *;                       __配对标签;   // off 160
-    参数行 *;                           __清零行;   // off 168
+    UILabel *                                _配对标签;   // off 160
+    参数行 *                                    _清零行;   // off 168
 }
-@property (nonatomic) id 配对标签;
-@property (nonatomic) id 清零行;
+@property (strong, nonatomic) UILabel *配对标签;
+@property (strong, nonatomic) 参数行 *清零行;
 - (BOOL)显示标记;
 - (id)新建标记视图;
 - (void)构建参数;
 - (double)面板附加高度;
 - (void)布局参数区;
 - (void)刷新配对:(BOOL)刷新配对;
-- (id)配对标签;
-- (void)set配对标签:(id)set配对标签;
-- (id)清零行;
-- (void)set清零行:(id)set清零行;
-- (void).cxx_destruct;
+- (UILabel *)配对标签;
+- (void)set配对标签:(UILabel *)set配对标签;
+- (参数行 *)清零行;
+- (void)set清零行:(参数行 *)set清零行;
 @end
 
 @interface 悬浮球 : NSObject {
-    BOOL;                            __自动隐藏;   // off 8
-    BOOL;                            __贴边隐藏;   // off 9
-    BOOL;                            __已贴边;   // off 10
-    BOOL;                            __拉手态;   // off 11
-    BOOL;                            __运行中;   // off 12
-    BOOL;                            __已运行过;   // off 13
-    BOOL;                            __已移动;   // off 14
-    BOOL;                            __闪现中;   // off 15
-    BOOL;                            __本次由拉手拖出;   // off 16
-    id;                              __点击回调;   // off 24
-    id;                              __长按回调;   // off 32
-    double;                          __隐藏透明度;   // off 40
-    double;                          __直径;   // off 48
-    long long;                       __形态;   // off 56
-    UIPanGestureRecognizer *;        __拖动手势;   // off 64
-    NSTimer *;                       __隐藏计时器;   // off 72
-    UILabel *;                       __名称标签;   // off 80
-    UILabel *;                       __副标签;   // off 88
-    CAShapeLayer *;                  __图标层;   // off 96
-    long long;                       __闪现代号;   // off 104
-    CAShapeLayer *;                  __箭头层;   // off 112
-    CAShapeLayer *;                  __进度底环;   // off 120
-    CAShapeLayer *;                  __进度环;   // off 128
-    NSTimer *;                       __计时器;   // off 136
-    CGPoint;                         __拖动起点;   // off 144
+    BOOL                                     _自动隐藏;   // off 8
+    BOOL                                     _贴边隐藏;   // off 9
+    BOOL                                     _已贴边;   // off 10
+    BOOL                                     _拉手态;   // off 11
+    BOOL                                     _运行中;   // off 12
+    BOOL                                     _已运行过;   // off 13
+    BOOL                                     _已移动;   // off 14
+    BOOL                                     _闪现中;   // off 15
+    BOOL                                     _本次由拉手拖出;   // off 16
+    id                                       _点击回调;   // off 24
+    id                                       _长按回调;   // off 32
+    double                                   _隐藏透明度;   // off 40
+    double                                   _直径;   // off 48
+    long long                                _形态;   // off 56
+    UIPanGestureRecognizer *                 _拖动手势;   // off 64
+    NSTimer *                                _隐藏计时器;   // off 72
+    UILabel *                                _名称标签;   // off 80
+    UILabel *                                _副标签;   // off 88
+    CAShapeLayer *                           _图标层;   // off 96
+    long long                                _闪现代号;   // off 104
+    CAShapeLayer *                           _箭头层;   // off 112
+    CAShapeLayer *                           _进度底环;   // off 120
+    CAShapeLayer *                           _进度环;   // off 128
+    NSTimer *                                _计时器;   // off 136
+    CGPoint                                  _拖动起点;   // off 144
 }
-@property (nonatomic, readonly) id 拖动手势;
-@property (nonatomic) id 隐藏计时器;
-@property (copy, nonatomic) id 拖动起点;
-@property (nonatomic) id 已移动;
-@property (nonatomic) id 名称标签;
-@property (nonatomic) id 副标签;
-@property (copy, nonatomic) id 图标层;
-@property (nonatomic) id 闪现代号;
-@property (nonatomic) id 闪现中;
-@property (copy, nonatomic) id 箭头层;
-@property (nonatomic) id 本次由拉手拖出;
-@property (copy, nonatomic) id 进度底环;
-@property (copy, nonatomic) id 进度环;
-@property (nonatomic) id 拉手态;
-@property (nonatomic) id 计时器;
-@property (nonatomic) id 点击回调;
-@property (nonatomic) id 长按回调;
-@property (nonatomic) id 自动隐藏;
-@property (nonatomic) id 隐藏透明度;
-@property (nonatomic) id 贴边隐藏;
-@property (nonatomic) id 已贴边;
-@property (nonatomic) id 直径;
-@property (nonatomic) id 形态;
-@property (nonatomic) id 运行中;
-@property (nonatomic) id 已运行过;
+@property (strong, nonatomic) UIPanGestureRecognizer *拖动手势;
+@property (strong, nonatomic) NSTimer *隐藏计时器;
+@property (nonatomic) CGPoint 拖动起点;
+@property (nonatomic) BOOL 已移动;
+@property (strong, nonatomic) UILabel *名称标签;
+@property (strong, nonatomic) UILabel *副标签;
+@property (strong, nonatomic) CAShapeLayer *图标层;
+@property (nonatomic) long long 闪现代号;
+@property (nonatomic) BOOL 闪现中;
+@property (strong, nonatomic) CAShapeLayer *箭头层;
+@property (nonatomic) BOOL 本次由拉手拖出;
+@property (strong, nonatomic) CAShapeLayer *进度底环;
+@property (strong, nonatomic) CAShapeLayer *进度环;
+@property (nonatomic) BOOL 拉手态;
+@property (strong, nonatomic) NSTimer *计时器;
+@property (copy, nonatomic) id 点击回调;
+@property (copy, nonatomic) id 长按回调;
+@property (nonatomic) BOOL 自动隐藏;
+@property (nonatomic) double 隐藏透明度;
+@property (nonatomic) BOOL 贴边隐藏;
+@property (nonatomic) BOOL 已贴边;
+@property (nonatomic) double 直径;
+@property (nonatomic) long long 形态;
+@property (nonatomic) BOOL 运行中;
+@property (nonatomic) BOOL 已运行过;
 - (double)半径;
 - (double)缩放比;
 - (id)initWithFrame:(CGRect)initWithFrame;
@@ -1587,46 +1568,45 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set形态:(long long)set形态;
 - (BOOL)运行中;
 - (BOOL)已运行过;
-- (id)拖动手势;
-- (void)set拖动手势:(id)set拖动手势;
-- (id)隐藏计时器;
-- (void)set隐藏计时器:(id)set隐藏计时器;
+- (UIPanGestureRecognizer *)拖动手势;
+- (void)set拖动手势:(UIPanGestureRecognizer *)set拖动手势;
+- (NSTimer *)隐藏计时器;
+- (void)set隐藏计时器:(NSTimer *)set隐藏计时器;
 - (CGPoint)拖动起点;
 - (void)set拖动起点:(CGPoint)set拖动起点;
 - (BOOL)已移动;
 - (void)set已移动:(BOOL)set已移动;
-- (id)名称标签;
-- (void)set名称标签:(id)set名称标签;
-- (id)副标签;
-- (void)set副标签:(id)set副标签;
-- (id)图标层;
-- (void)set图标层:(id)set图标层;
+- (UILabel *)名称标签;
+- (void)set名称标签:(UILabel *)set名称标签;
+- (UILabel *)副标签;
+- (void)set副标签:(UILabel *)set副标签;
+- (CAShapeLayer *)图标层;
+- (void)set图标层:(CAShapeLayer *)set图标层;
 - (long long)闪现代号;
 - (void)set闪现代号:(long long)set闪现代号;
 - (BOOL)闪现中;
 - (void)set闪现中:(BOOL)set闪现中;
-- (id)箭头层;
-- (void)set箭头层:(id)set箭头层;
+- (CAShapeLayer *)箭头层;
+- (void)set箭头层:(CAShapeLayer *)set箭头层;
 - (BOOL)本次由拉手拖出;
 - (void)set本次由拉手拖出:(BOOL)set本次由拉手拖出;
-- (id)进度底环;
-- (void)set进度底环:(id)set进度底环;
-- (id)进度环;
-- (void)set进度环:(id)set进度环;
-- (id)计时器;
-- (void)set计时器:(id)set计时器;
-- (void).cxx_destruct;
+- (CAShapeLayer *)进度底环;
+- (void)set进度底环:(CAShapeLayer *)set进度底环;
+- (CAShapeLayer *)进度环;
+- (void)set进度环:(CAShapeLayer *)set进度环;
+- (NSTimer *)计时器;
+- (void)set计时器:(NSTimer *)set计时器;
 @end
 
 @interface 方向箭头视图 : NSObject {
-    CAShapeLayer *;                  __杆;   // off 8
-    CAShapeLayer *;                  __头;   // off 16
-    CAShapeLayer *;                  __尾;   // off 24
-    long long;                       __方向;   // off 32
-    double;                          __长度;   // off 40
+    CAShapeLayer *                           _杆;   // off 8
+    CAShapeLayer *                           _头;   // off 16
+    CAShapeLayer *                           _尾;   // off 24
+    long long                                _方向;   // off 32
+    double                                   _长度;   // off 40
 }
-@property (nonatomic) id 方向;
-@property (nonatomic) id 长度;
+@property (nonatomic) long long 方向;
+@property (nonatomic) double 长度;
 - (id)initWithFrame:(CGRect)initWithFrame;
 - (void)set方向:(long long)set方向;
 - (void)set长度:(double)set长度;
@@ -1634,37 +1614,35 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)重画;
 - (long long)方向;
 - (double)长度;
-- (void).cxx_destruct;
 @end
 
 @interface 时间选择弹窗 : NSObject {
-    UIDatePicker *;                  __picker;   // off 8
-    id;                              __回调;   // off 16
+    UIDatePicker *                           _picker;   // off 8
+    id                                       _回调;   // off 16
 }
 - (void)确定;
 - (void)取消;
 - (void)收起;
 - (id)描述;
-- (void).cxx_destruct;
 @end
 
 @interface 模板裁切视图 : NSObject {
-    UIImage *;                       __截图;   // off 8
-    NSMutableArray *;                __遮罩;   // off 16
-    UIView *;                        __框;   // off 24
-    NSMutableArray *;                __角;   // off 32
-    UILabel *;                       __尺寸;   // off 40
-    CGRect;                          __选区;   // off 48
-    CGPoint;                         __起点;   // off 80
-    long long;                       __模式;   // off 96
-    UIView *;                        __按钮条;   // off 104
-    id;                              __完成;   // off 112
-    id;                              __取消;   // off 120
+    UIImage *                                _截图;   // off 8
+    NSMutableArray *                         _遮罩;   // off 16
+    UIView *                                 _框;   // off 24
+    NSMutableArray *                         _角;   // off 32
+    UILabel *                                _尺寸;   // off 40
+    CGRect                                   _选区;   // off 48
+    CGPoint                                  _起点;   // off 80
+    long long                                _模式;   // off 96
+    UIView *                                 _按钮条;   // off 104
+    id                                       _完成;   // off 112
+    id                                       _取消;   // off 120
 }
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (id)initWithFrame:(CGRect)initWithFrame 截图:(id)截图;
 - (void)刷新选区;
 - (long long)命中角:(CGPoint)命中角;
@@ -1673,12 +1651,11 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)拖:(id)拖;
 - (void)确认裁切;
 - (void)取消裁切;
-- (void).cxx_destruct;
 @end
 
 @interface 滑动选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __方向段;   // off 160
-    方向箭头视图 *;                        __箭头;   // off 168
+    UISegmentedControl *                     _方向段;   // off 160
+    方向箭头视图 *                                 _箭头;   // off 168
 }
 - (void)构建参数;
 - (void)方向变化:(id)方向变化;
@@ -1691,7 +1668,6 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)同步起止;
 - (void)刷新准星;
 - (id)坐标文本;
-- (void).cxx_destruct;
 @end
 
 @interface 点击反馈视图 : NSObject {
@@ -1706,14 +1682,13 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 穿透窗口 : NSObject {
-    NSMutableArray *;                __响应视图;   // off 8
+    NSMutableArray *                         _响应视图;   // off 8
 }
-@property (nonatomic) id 响应视图;
+@property (strong, nonatomic) NSMutableArray *响应视图;
 - (id)initWithFrame:(CGRect)initWithFrame;
 - (id)hitTest:(CGPoint)hitTest withEvent:(id)withEvent;
-- (id)响应视图;
-- (void)set响应视图:(id)set响应视图;
-- (void).cxx_destruct;
+- (NSMutableArray *)响应视图;
+- (void)set响应视图:(NSMutableArray *)set响应视图;
 @end
 
 @interface 穿透窗口控制器 : NSObject {
@@ -1725,19 +1700,19 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 等待选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __模式段;   // off 160
-    参数行 *;                           __固定行;   // off 168
-    参数行 *;                           __下限行;   // off 176
-    参数行 *;                           __上限行;   // off 184
-    UISegmentedControl *;            __结束段;   // off 192
-    UIButton *;                      __跳转按钮;   // off 200
+    UISegmentedControl *                     _模式段;   // off 160
+    参数行 *                                    _固定行;   // off 168
+    参数行 *                                    _下限行;   // off 176
+    参数行 *                                    _上限行;   // off 184
+    UISegmentedControl *                     _结束段;   // off 192
+    UIButton *                               _跳转按钮;   // off 200
 }
-@property (copy, nonatomic) id 模式段;
-@property (nonatomic) id 固定行;
-@property (nonatomic) id 下限行;
-@property (nonatomic) id 上限行;
-@property (copy, nonatomic) id 结束段;
-@property (nonatomic) id 跳转按钮;
+@property (strong, nonatomic) UISegmentedControl *模式段;
+@property (strong, nonatomic) 参数行 *固定行;
+@property (strong, nonatomic) 参数行 *下限行;
+@property (strong, nonatomic) 参数行 *上限行;
+@property (strong, nonatomic) UISegmentedControl *结束段;
+@property (strong, nonatomic) UIButton *跳转按钮;
 - (BOOL)显示标记;
 - (id)新建标记视图;
 - (void)构建参数;
@@ -1750,39 +1725,38 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (id)等待动作名By标识:(id)等待动作名By标识;
 - (double)面板附加高度;
 - (void)布局参数区;
-- (id)模式段;
-- (void)set模式段:(id)set模式段;
-- (id)固定行;
-- (void)set固定行:(id)set固定行;
-- (id)下限行;
-- (void)set下限行:(id)set下限行;
-- (id)上限行;
-- (void)set上限行:(id)set上限行;
-- (id)结束段;
-- (void)set结束段:(id)set结束段;
-- (id)跳转按钮;
-- (void)set跳转按钮:(id)set跳转按钮;
-- (void).cxx_destruct;
+- (UISegmentedControl *)模式段;
+- (void)set模式段:(UISegmentedControl *)set模式段;
+- (参数行 *)固定行;
+- (void)set固定行:(参数行 *)set固定行;
+- (参数行 *)下限行;
+- (void)set下限行:(参数行 *)set下限行;
+- (参数行 *)上限行;
+- (void)set上限行:(参数行 *)set上限行;
+- (UISegmentedControl *)结束段;
+- (void)set结束段:(UISegmentedControl *)set结束段;
+- (UIButton *)跳转按钮;
+- (void)set跳转按钮:(UIButton *)set跳转按钮;
 @end
 
 @interface 统计视图 : NSObject {
-    UILabel *;                       __今日值;   // off 8
-    UILabel *;                       __累计值;   // off 16
-    UIScrollView *;                  __列表;   // off 24
-    UILabel *;                       __空态;   // off 32
-    UIButton *;                      __明细按钮;   // off 40
-    UIButton *;                      __清零按钮;   // off 48
-    NSArray *;                       __数据;   // off 56
-    long long;                       __选中行;   // off 64
+    UILabel *                                _今日值;   // off 8
+    UILabel *                                _累计值;   // off 16
+    UIScrollView *                           _列表;   // off 24
+    UILabel *                                _空态;   // off 32
+    UIButton *                               _明细按钮;   // off 40
+    UIButton *                               _清零按钮;   // off 48
+    NSArray *                                _数据;   // off 56
+    long long                                _选中行;   // off 64
 }
-@property (nonatomic) id 今日值;
-@property (nonatomic) id 累计值;
-@property (nonatomic) id 列表;
-@property (nonatomic) id 空态;
-@property (nonatomic) id 明细按钮;
-@property (nonatomic) id 清零按钮;
-@property (nonatomic) id 数据;
-@property (nonatomic) id 选中行;
+@property (strong, nonatomic) UILabel *今日值;
+@property (strong, nonatomic) UILabel *累计值;
+@property (strong, nonatomic) UIScrollView *列表;
+@property (strong, nonatomic) UILabel *空态;
+@property (strong, nonatomic) UIButton *明细按钮;
+@property (strong, nonatomic) UIButton *清零按钮;
+@property (strong, nonatomic) NSArray *数据;
+@property (nonatomic) long long 选中行;
 - (id)initWithFrame:(CGRect)initWithFrame;
 - (void)构建;
 - (void)刷新;
@@ -1791,23 +1765,22 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)查看明细;
 - (void)清零;
 - (void)关闭自己;
-- (id)今日值;
-- (void)set今日值:(id)set今日值;
-- (id)累计值;
-- (void)set累计值:(id)set累计值;
-- (id)列表;
-- (void)set列表:(id)set列表;
-- (id)空态;
-- (void)set空态:(id)set空态;
-- (id)明细按钮;
-- (void)set明细按钮:(id)set明细按钮;
-- (id)清零按钮;
-- (void)set清零按钮:(id)set清零按钮;
-- (id)数据;
-- (void)set数据:(id)set数据;
+- (UILabel *)今日值;
+- (void)set今日值:(UILabel *)set今日值;
+- (UILabel *)累计值;
+- (void)set累计值:(UILabel *)set累计值;
+- (UIScrollView *)列表;
+- (void)set列表:(UIScrollView *)set列表;
+- (UILabel *)空态;
+- (void)set空态:(UILabel *)set空态;
+- (UIButton *)明细按钮;
+- (void)set明细按钮:(UIButton *)set明细按钮;
+- (UIButton *)清零按钮;
+- (void)set清零按钮:(UIButton *)set清零按钮;
+- (NSArray *)数据;
+- (void)set数据:(NSArray *)set数据;
 - (long long)选中行;
 - (void)set选中行:(long long)set选中行;
-- (void).cxx_destruct;
 @end
 
 @interface 网格格 : NSObject {
@@ -1818,31 +1791,30 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 自定义弹窗 : NSObject {
-    id;                              __回调;   // off 8
-    id;                              __回调2;   // off 16
+    id                                       _回调;   // off 8
+    id                                       _回调2;   // off 16
 }
 - (void)按钮点击:(id)按钮点击;
 - (void)分组项点击:(id)分组项点击;
 - (id)描述;
-- (void).cxx_destruct;
 @end
 
 @interface 自由滑动选择视图 : 动作选择视图 {
-    NSMutableArray *;                __点们;   // off 160
-    NSMutableArray *;                __标签们;   // off 168
-    NSMutableArray *;                __连线们;   // off 176
-    UISegmentedControl *;            __模式段;   // off 184
-    UIButton *;                      __添加组按钮;   // off 192
-    UIView *;                        __组列表容器;   // off 200
-    long long;                       __当前组;   // off 208
+    NSMutableArray *                         _点们;   // off 160
+    NSMutableArray *                         _标签们;   // off 168
+    NSMutableArray *                         _连线们;   // off 176
+    UISegmentedControl *                     _模式段;   // off 184
+    UIButton *                               _添加组按钮;   // off 192
+    UIView *                                 _组列表容器;   // off 200
+    long long                                _当前组;   // off 208
 }
-@property (nonatomic) id 点们;
-@property (nonatomic) id 标签们;
-@property (nonatomic) id 连线们;
-@property (copy, nonatomic) id 模式段;
-@property (nonatomic) id 添加组按钮;
-@property (nonatomic) id 组列表容器;
-@property (nonatomic) id 当前组;
+@property (strong, nonatomic) NSMutableArray *点们;
+@property (strong, nonatomic) NSMutableArray *标签们;
+@property (strong, nonatomic) NSMutableArray *连线们;
+@property (strong, nonatomic) UISegmentedControl *模式段;
+@property (strong, nonatomic) UIButton *添加组按钮;
+@property (strong, nonatomic) UIView *组列表容器;
+@property (nonatomic) long long 当前组;
 - (void)构建参数;
 - (void)模式变化:(id)模式变化;
 - (void)更新模式相关UI;
@@ -1867,33 +1839,32 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (long long)列表行数;
 - (double)面板附加高度;
 - (void)布局参数区;
-- (id)点们;
-- (void)set点们:(id)set点们;
-- (id)标签们;
-- (void)set标签们:(id)set标签们;
-- (id)连线们;
-- (void)set连线们:(id)set连线们;
-- (id)模式段;
-- (void)set模式段:(id)set模式段;
-- (id)添加组按钮;
-- (void)set添加组按钮:(id)set添加组按钮;
-- (id)组列表容器;
-- (void)set组列表容器:(id)set组列表容器;
+- (NSMutableArray *)点们;
+- (void)set点们:(NSMutableArray *)set点们;
+- (NSMutableArray *)标签们;
+- (void)set标签们:(NSMutableArray *)set标签们;
+- (NSMutableArray *)连线们;
+- (void)set连线们:(NSMutableArray *)set连线们;
+- (UISegmentedControl *)模式段;
+- (void)set模式段:(UISegmentedControl *)set模式段;
+- (UIButton *)添加组按钮;
+- (void)set添加组按钮:(UIButton *)set添加组按钮;
+- (UIView *)组列表容器;
+- (void)set组列表容器:(UIView *)set组列表容器;
 - (long long)当前组;
 - (void)set当前组:(long long)set当前组;
-- (void).cxx_destruct;
 @end
 
 @interface 触摸事件数据 : NSObject {
-    double;                          __时间戳;   // off 8
-    long long;                       __事件类型;   // off 16
-    long long;                       __手指ID;   // off 24
-    CGPoint;                         __位置;   // off 32
+    double                                   _时间戳;   // off 8
+    long long                                _事件类型;   // off 16
+    long long                                _手指ID;   // off 24
+    CGPoint                                  _位置;   // off 32
 }
-@property (nonatomic) id 时间戳;
-@property (nonatomic) id 事件类型;
-@property (nonatomic) id 手指ID;
-@property (copy, nonatomic) id 位置;
+@property (nonatomic) double 时间戳;
+@property (nonatomic) long long 事件类型;
+@property (nonatomic) long long 手指ID;
+@property (nonatomic) CGPoint 位置;
 - (id)initWithCoder:(id)initWithCoder;
 - (void)encodeWithCoder:(id)encodeWithCoder;
 - (id)copyWithZone:(void *)copyWithZone;
@@ -1909,26 +1880,26 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 设置视图 : NSObject {
-    UISwitch *;                      __循环;   // off 8
-    UISwitch *;                      __自动隐藏;   // off 16
-    UISwitch *;                      __贴边隐藏;   // off 24
-    UISwitch *;                      __动作提示;   // off 32
-    UISwitch *;                      __反馈;   // off 40
-    UISwitch *;                      __详细日志;   // off 48
-    UISwitch *;                      __定时开始开关;   // off 56
-    UIButton *;                      __定时开始按钮;   // off 64
-    UISwitch *;                      __定时停止开关;   // off 72
-    UIButton *;                      __定时停止按钮;   // off 80
-    UISlider *;                      __透明;   // off 88
-    UISegmentedControl *;            __通道段;   // off 96
-    UISegmentedControl *;            __并发段;   // off 104
-    UISegmentedControl *;            __量程段;   // off 112
-    UISegmentedControl *;            __尺寸段;   // off 120
-    UISegmentedControl *;            __形状段;   // off 128
-    UILabel *;                       __通道标题;   // off 136
-    UILabel *;                       __并发标题;   // off 144
-    UILabel *;                       __量程标题;   // off 152
-    NSArray *;                       __高级区子视图;   // off 160
+    UISwitch *                               _循环;   // off 8
+    UISwitch *                               _自动隐藏;   // off 16
+    UISwitch *                               _贴边隐藏;   // off 24
+    UISwitch *                               _动作提示;   // off 32
+    UISwitch *                               _反馈;   // off 40
+    UISwitch *                               _详细日志;   // off 48
+    UISwitch *                               _定时开始开关;   // off 56
+    UIButton *                               _定时开始按钮;   // off 64
+    UISwitch *                               _定时停止开关;   // off 72
+    UIButton *                               _定时停止按钮;   // off 80
+    UISlider *                               _透明;   // off 88
+    UISegmentedControl *                     _通道段;   // off 96
+    UISegmentedControl *                     _并发段;   // off 104
+    UISegmentedControl *                     _量程段;   // off 112
+    UISegmentedControl *                     _尺寸段;   // off 120
+    UISegmentedControl *                     _形状段;   // off 128
+    UILabel *                                _通道标题;   // off 136
+    UILabel *                                _并发标题;   // off 144
+    UILabel *                                _量程标题;   // off 152
+    NSArray *                                _高级区子视图;   // off 160
 }
 - (id)添加开关:(id)添加开关 y:(double)y on:(BOOL)on;
 - (id)添加开关:(id)添加开关 y:(double)y on:(BOOL)on 进高级区:(BOOL)进高级区;
@@ -1963,41 +1934,40 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)导入配置;
 - (void)导出配置;
 - (void)清空;
-- (void).cxx_destruct;
 @end
 
 @interface 识图选择视图 : 动作选择视图 {
-    UIImageView *;                   __预览;   // off 160
-    参数行 *;                           __宽行;   // off 168
-    参数行 *;                           __高行;   // off 176
-    UISegmentedControl *;            __命中段;   // off 184
-    UIButton *;                      __跳转按钮;   // off 192
-    命中路径编辑器 *;                       __路径编辑器;   // off 200
-    参数行 *;                           __命中长按行;   // off 208
-    参数行 *;                           __命中滑时行;   // off 216
-    参数行 *;                           __命中帧数行;   // off 224
-    参数行 *;                           __命中时隔行;   // off 232
-    UISegmentedControl *;            __判断段;   // off 240
-    UISegmentedControl *;            __失败段;   // off 248
-    UIButton *;                      __失败跳按钮;   // off 256
-    UISegmentedControl *;            __识失败段;   // off 264
-    UIButton *;                      __识失败跳按钮;   // off 272
+    UIImageView *                            _预览;   // off 160
+    参数行 *                                    _宽行;   // off 168
+    参数行 *                                    _高行;   // off 176
+    UISegmentedControl *                     _命中段;   // off 184
+    UIButton *                               _跳转按钮;   // off 192
+    命中路径编辑器 *                                _路径编辑器;   // off 200
+    参数行 *                                    _命中长按行;   // off 208
+    参数行 *                                    _命中滑时行;   // off 216
+    参数行 *                                    _命中帧数行;   // off 224
+    参数行 *                                    _命中时隔行;   // off 232
+    UISegmentedControl *                     _判断段;   // off 240
+    UISegmentedControl *                     _失败段;   // off 248
+    UIButton *                               _失败跳按钮;   // off 256
+    UISegmentedControl *                     _识失败段;   // off 264
+    UIButton *                               _识失败跳按钮;   // off 272
 }
-@property (nonatomic) id 预览;
-@property (nonatomic) id 宽行;
-@property (nonatomic) id 高行;
-@property (copy, nonatomic) id 命中段;
-@property (nonatomic) id 跳转按钮;
-@property (nonatomic) id 路径编辑器;
-@property (nonatomic) id 命中长按行;
-@property (nonatomic) id 命中滑时行;
-@property (nonatomic) id 命中帧数行;
-@property (nonatomic) id 命中时隔行;
-@property (copy, nonatomic) id 判断段;
-@property (copy, nonatomic) id 失败段;
-@property (nonatomic) id 失败跳按钮;
-@property (copy, nonatomic) id 识失败段;
-@property (nonatomic) id 识失败跳按钮;
+@property (strong, nonatomic) UIImageView *预览;
+@property (strong, nonatomic) 参数行 *宽行;
+@property (strong, nonatomic) 参数行 *高行;
+@property (strong, nonatomic) UISegmentedControl *命中段;
+@property (strong, nonatomic) UIButton *跳转按钮;
+@property (strong, nonatomic) 命中路径编辑器 *路径编辑器;
+@property (strong, nonatomic) 参数行 *命中长按行;
+@property (strong, nonatomic) 参数行 *命中滑时行;
+@property (strong, nonatomic) 参数行 *命中帧数行;
+@property (strong, nonatomic) 参数行 *命中时隔行;
+@property (strong, nonatomic) UISegmentedControl *判断段;
+@property (strong, nonatomic) UISegmentedControl *失败段;
+@property (strong, nonatomic) UIButton *失败跳按钮;
+@property (strong, nonatomic) UISegmentedControl *识失败段;
+@property (strong, nonatomic) UIButton *识失败跳按钮;
 - (BOOL)显示标记;
 - (id)hitTest:(CGPoint)hitTest withEvent:(id)withEvent;
 - (void)同步起点参考;
@@ -2019,79 +1989,78 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)刷新预览;
 - (void)刷新区域行;
 - (void)测试匹配;
-- (id)预览;
-- (void)set预览:(id)set预览;
-- (id)宽行;
-- (void)set宽行:(id)set宽行;
-- (id)高行;
-- (void)set高行:(id)set高行;
-- (id)命中段;
-- (void)set命中段:(id)set命中段;
-- (id)跳转按钮;
-- (void)set跳转按钮:(id)set跳转按钮;
-- (id)路径编辑器;
-- (void)set路径编辑器:(id)set路径编辑器;
-- (id)命中长按行;
-- (void)set命中长按行:(id)set命中长按行;
-- (id)命中滑时行;
-- (void)set命中滑时行:(id)set命中滑时行;
-- (id)命中帧数行;
-- (void)set命中帧数行:(id)set命中帧数行;
-- (id)命中时隔行;
-- (void)set命中时隔行:(id)set命中时隔行;
-- (id)判断段;
-- (void)set判断段:(id)set判断段;
-- (id)失败段;
-- (void)set失败段:(id)set失败段;
-- (id)失败跳按钮;
-- (void)set失败跳按钮:(id)set失败跳按钮;
-- (id)识失败段;
-- (void)set识失败段:(id)set识失败段;
-- (id)识失败跳按钮;
-- (void)set识失败跳按钮:(id)set识失败跳按钮;
-- (void).cxx_destruct;
+- (UIImageView *)预览;
+- (void)set预览:(UIImageView *)set预览;
+- (参数行 *)宽行;
+- (void)set宽行:(参数行 *)set宽行;
+- (参数行 *)高行;
+- (void)set高行:(参数行 *)set高行;
+- (UISegmentedControl *)命中段;
+- (void)set命中段:(UISegmentedControl *)set命中段;
+- (UIButton *)跳转按钮;
+- (void)set跳转按钮:(UIButton *)set跳转按钮;
+- (命中路径编辑器 *)路径编辑器;
+- (void)set路径编辑器:(命中路径编辑器 *)set路径编辑器;
+- (参数行 *)命中长按行;
+- (void)set命中长按行:(参数行 *)set命中长按行;
+- (参数行 *)命中滑时行;
+- (void)set命中滑时行:(参数行 *)set命中滑时行;
+- (参数行 *)命中帧数行;
+- (void)set命中帧数行:(参数行 *)set命中帧数行;
+- (参数行 *)命中时隔行;
+- (void)set命中时隔行:(参数行 *)set命中时隔行;
+- (UISegmentedControl *)判断段;
+- (void)set判断段:(UISegmentedControl *)set判断段;
+- (UISegmentedControl *)失败段;
+- (void)set失败段:(UISegmentedControl *)set失败段;
+- (UIButton *)失败跳按钮;
+- (void)set失败跳按钮:(UIButton *)set失败跳按钮;
+- (UISegmentedControl *)识失败段;
+- (void)set识失败段:(UISegmentedControl *)set识失败段;
+- (UIButton *)识失败跳按钮;
+- (void)set识失败跳按钮:(UIButton *)set识失败跳按钮;
 @end
 
 @interface 识字选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __类型段;   // off 160
-    UITextField *;                   __文本框;   // off 168
-    UIButton *;                      __条件按钮;   // off 176
-    UITextField *;                   __数值框;   // off 184
-    UIButton *;                      __框选按钮;   // off 192
-    UIButton *;                      __测试按钮;   // off 200
-    UISegmentedControl *;            __成功段;   // off 208
-    UIButton *;                      __成功跳按钮;   // off 216
-    UISegmentedControl *;            __失败段;   // off 224
-    UIButton *;                      __失败跳按钮;   // off 232
-    参数行 *;                           __区域宽行;   // off 240
-    参数行 *;                           __区域高行;   // off 248
-    参数行 *;                           __成功长按行;   // off 256
-    参数行 *;                           __成功滑时行;   // off 264
-    参数行 *;                           __成功帧数行;   // off 272
-    参数行 *;                           __成功时隔行;   // off 280
-    命中路径编辑器 *;                       __路径编辑器;   // off 288
-    UISegmentedControl *;            __等待段;   // off 296
-    参数行 *;                           __等待超时行;   // off 304
+    UISegmentedControl *                     _类型段;   // off 160
+    UITextField *                            _文本框;   // off 168
+    UIButton *                               _条件按钮;   // off 176
+    UITextField *                            _数值框;   // off 184
+    UIButton *                               _框选按钮;   // off 192
+    UIButton *                               _测试按钮;   // off 200
+    UISegmentedControl *                     _成功段;   // off 208
+    UIButton *                               _成功跳按钮;   // off 216
+    UISegmentedControl *                     _失败段;   // off 224
+    UIButton *                               _失败跳按钮;   // off 232
+    参数行 *                                    _区域宽行;   // off 240
+    参数行 *                                    _区域高行;   // off 248
+    参数行 *                                    _成功长按行;   // off 256
+    参数行 *                                    _成功滑时行;   // off 264
+    参数行 *                                    _成功帧数行;   // off 272
+    参数行 *                                    _成功时隔行;   // off 280
+    命中路径编辑器 *                                _路径编辑器;   // off 288
+    UISegmentedControl *                     _等待段;   // off 296
+    参数行 *                                    _等待超时行;   // off 304
 }
-@property (copy, nonatomic) id 类型段;
-@property (nonatomic) id 文本框;
-@property (nonatomic) id 条件按钮;
-@property (nonatomic) id 数值框;
-@property (nonatomic) id 框选按钮;
-@property (nonatomic) id 测试按钮;
-@property (copy, nonatomic) id 成功段;
-@property (nonatomic) id 成功跳按钮;
-@property (copy, nonatomic) id 失败段;
-@property (nonatomic) id 失败跳按钮;
-@property (nonatomic) id 区域宽行;
-@property (nonatomic) id 区域高行;
-@property (nonatomic) id 成功长按行;
-@property (nonatomic) id 成功滑时行;
-@property (nonatomic) id 成功帧数行;
-@property (nonatomic) id 成功时隔行;
-@property (nonatomic) id 路径编辑器;
-@property (copy, nonatomic) id 等待段;
-@property (nonatomic) id 等待超时行;
+@property (strong, nonatomic) UISegmentedControl *类型段;
+@property (strong, nonatomic) UITextField *文本框;
+@property (strong, nonatomic) UIButton *条件按钮;
+@property (strong, nonatomic) UITextField *数值框;
+@property (strong, nonatomic) UIButton *框选按钮;
+@property (strong, nonatomic) UIButton *测试按钮;
+@property (strong, nonatomic) UISegmentedControl *成功段;
+@property (strong, nonatomic) UIButton *成功跳按钮;
+@property (strong, nonatomic) UISegmentedControl *失败段;
+@property (strong, nonatomic) UIButton *失败跳按钮;
+@property (weak, nonatomic) 参数行 *区域宽行;
+@property (weak, nonatomic) 参数行 *区域高行;
+@property (strong, nonatomic) 参数行 *成功长按行;
+@property (strong, nonatomic) 参数行 *成功滑时行;
+@property (strong, nonatomic) 参数行 *成功帧数行;
+@property (strong, nonatomic) 参数行 *成功时隔行;
+@property (strong, nonatomic) 命中路径编辑器 *路径编辑器;
+@property (strong, nonatomic) UISegmentedControl *等待段;
+@property (weak, nonatomic) 参数行 *等待超时行;
 - (BOOL)显示标记;
 - (id)hitTest:(CGPoint)hitTest withEvent:(id)withEvent;
 - (void)同步起点参考;
@@ -2116,85 +2085,84 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)刷新跳转按钮;
 - (void)框选识别区;
 - (void)测试识别;
-- (id)类型段;
-- (void)set类型段:(id)set类型段;
-- (id)文本框;
-- (void)set文本框:(id)set文本框;
-- (id)条件按钮;
-- (void)set条件按钮:(id)set条件按钮;
-- (id)数值框;
-- (void)set数值框:(id)set数值框;
-- (id)框选按钮;
-- (void)set框选按钮:(id)set框选按钮;
-- (id)测试按钮;
-- (void)set测试按钮:(id)set测试按钮;
-- (id)成功段;
-- (void)set成功段:(id)set成功段;
-- (id)成功跳按钮;
-- (void)set成功跳按钮:(id)set成功跳按钮;
-- (id)失败段;
-- (void)set失败段:(id)set失败段;
-- (id)失败跳按钮;
-- (void)set失败跳按钮:(id)set失败跳按钮;
-- (id)区域宽行;
-- (void)set区域宽行:(id)set区域宽行;
-- (id)区域高行;
-- (void)set区域高行:(id)set区域高行;
-- (id)成功长按行;
-- (void)set成功长按行:(id)set成功长按行;
-- (id)成功滑时行;
-- (void)set成功滑时行:(id)set成功滑时行;
-- (id)成功帧数行;
-- (void)set成功帧数行:(id)set成功帧数行;
-- (id)成功时隔行;
-- (void)set成功时隔行:(id)set成功时隔行;
-- (id)路径编辑器;
-- (void)set路径编辑器:(id)set路径编辑器;
-- (id)等待段;
-- (void)set等待段:(id)set等待段;
-- (id)等待超时行;
-- (void)set等待超时行:(id)set等待超时行;
-- (void).cxx_destruct;
+- (UISegmentedControl *)类型段;
+- (void)set类型段:(UISegmentedControl *)set类型段;
+- (UITextField *)文本框;
+- (void)set文本框:(UITextField *)set文本框;
+- (UIButton *)条件按钮;
+- (void)set条件按钮:(UIButton *)set条件按钮;
+- (UITextField *)数值框;
+- (void)set数值框:(UITextField *)set数值框;
+- (UIButton *)框选按钮;
+- (void)set框选按钮:(UIButton *)set框选按钮;
+- (UIButton *)测试按钮;
+- (void)set测试按钮:(UIButton *)set测试按钮;
+- (UISegmentedControl *)成功段;
+- (void)set成功段:(UISegmentedControl *)set成功段;
+- (UIButton *)成功跳按钮;
+- (void)set成功跳按钮:(UIButton *)set成功跳按钮;
+- (UISegmentedControl *)失败段;
+- (void)set失败段:(UISegmentedControl *)set失败段;
+- (UIButton *)失败跳按钮;
+- (void)set失败跳按钮:(UIButton *)set失败跳按钮;
+- (参数行 *)区域宽行;
+- (void)set区域宽行:(参数行 *)set区域宽行;
+- (参数行 *)区域高行;
+- (void)set区域高行:(参数行 *)set区域高行;
+- (参数行 *)成功长按行;
+- (void)set成功长按行:(参数行 *)set成功长按行;
+- (参数行 *)成功滑时行;
+- (void)set成功滑时行:(参数行 *)set成功滑时行;
+- (参数行 *)成功帧数行;
+- (void)set成功帧数行:(参数行 *)set成功帧数行;
+- (参数行 *)成功时隔行;
+- (void)set成功时隔行:(参数行 *)set成功时隔行;
+- (命中路径编辑器 *)路径编辑器;
+- (void)set路径编辑器:(命中路径编辑器 *)set路径编辑器;
+- (UISegmentedControl *)等待段;
+- (void)set等待段:(UISegmentedControl *)set等待段;
+- (参数行 *)等待超时行;
+- (void)set等待超时行:(参数行 *)set等待超时行;
 @end
 
 @interface 识色选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __模式段;   // off 160
-    UIButton *;                      __框选按钮;   // off 168
-    UIButton *;                      __取色按钮;   // off 176
-    UIView *;                        __色点条;   // off 184
-    UIButton *;                      __测试按钮;   // off 192
-    UISegmentedControl *;            __成功段;   // off 200
-    UIButton *;                      __成功跳按钮;   // off 208
-    UISegmentedControl *;            __失败段;   // off 216
-    UIButton *;                      __失败跳按钮;   // off 224
-    参数行 *;                           __区域宽行;   // off 232
-    参数行 *;                           __区域高行;   // off 240
-    参数行 *;                           __成功长按行;   // off 248
-    参数行 *;                           __成功滑时行;   // off 256
-    参数行 *;                           __成功帧数行;   // off 264
-    参数行 *;                           __成功时隔行;   // off 272
-    命中路径编辑器 *;                       __路径编辑器;   // off 280
-    UISegmentedControl *;            __等待段;   // off 288
-    参数行 *;                           __等待超时行;   // off 296
+    UISegmentedControl *                     _模式段;   // off 160
+    UIButton *                               _框选按钮;   // off 168
+    UIButton *                               _取色按钮;   // off 176
+    UIView *                                 _色点条;   // off 184
+    UIButton *                               _测试按钮;   // off 192
+    UISegmentedControl *                     _成功段;   // off 200
+    UIButton *                               _成功跳按钮;   // off 208
+    UISegmentedControl *                     _失败段;   // off 216
+    UIButton *                               _失败跳按钮;   // off 224
+    参数行 *                                    _区域宽行;   // off 232
+    参数行 *                                    _区域高行;   // off 240
+    参数行 *                                    _成功长按行;   // off 248
+    参数行 *                                    _成功滑时行;   // off 256
+    参数行 *                                    _成功帧数行;   // off 264
+    参数行 *                                    _成功时隔行;   // off 272
+    命中路径编辑器 *                                _路径编辑器;   // off 280
+    UISegmentedControl *                     _等待段;   // off 288
+    参数行 *                                    _等待超时行;   // off 296
 }
-@property (copy, nonatomic) id 模式段;
-@property (nonatomic) id 框选按钮;
-@property (nonatomic) id 取色按钮;
-@property (nonatomic) id 色点条;
-@property (nonatomic) id 测试按钮;
-@property (copy, nonatomic) id 成功段;
-@property (nonatomic) id 成功跳按钮;
-@property (copy, nonatomic) id 失败段;
-@property (nonatomic) id 失败跳按钮;
-@property (nonatomic) id 区域宽行;
-@property (nonatomic) id 区域高行;
-@property (nonatomic) id 成功长按行;
-@property (nonatomic) id 成功滑时行;
-@property (nonatomic) id 成功帧数行;
-@property (nonatomic) id 成功时隔行;
-@property (nonatomic) id 路径编辑器;
-@property (copy, nonatomic) id 等待段;
-@property (nonatomic) id 等待超时行;
+@property (strong, nonatomic) UISegmentedControl *模式段;
+@property (strong, nonatomic) UIButton *框选按钮;
+@property (strong, nonatomic) UIButton *取色按钮;
+@property (strong, nonatomic) UIView *色点条;
+@property (strong, nonatomic) UIButton *测试按钮;
+@property (strong, nonatomic) UISegmentedControl *成功段;
+@property (strong, nonatomic) UIButton *成功跳按钮;
+@property (strong, nonatomic) UISegmentedControl *失败段;
+@property (strong, nonatomic) UIButton *失败跳按钮;
+@property (weak, nonatomic) 参数行 *区域宽行;
+@property (weak, nonatomic) 参数行 *区域高行;
+@property (strong, nonatomic) 参数行 *成功长按行;
+@property (strong, nonatomic) 参数行 *成功滑时行;
+@property (strong, nonatomic) 参数行 *成功帧数行;
+@property (strong, nonatomic) 参数行 *成功时隔行;
+@property (strong, nonatomic) 命中路径编辑器 *路径编辑器;
+@property (strong, nonatomic) UISegmentedControl *等待段;
+@property (weak, nonatomic) 参数行 *等待超时行;
 - (BOOL)显示标记;
 - (id)hitTest:(CGPoint)hitTest withEvent:(id)withEvent;
 - (void)同步起点参考;
@@ -2216,62 +2184,61 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)刷新取色按钮;
 - (void)刷新色点条;
 - (void)测试识别;
-- (id)模式段;
-- (void)set模式段:(id)set模式段;
-- (id)框选按钮;
-- (void)set框选按钮:(id)set框选按钮;
-- (id)取色按钮;
-- (void)set取色按钮:(id)set取色按钮;
-- (id)色点条;
-- (void)set色点条:(id)set色点条;
-- (id)测试按钮;
-- (void)set测试按钮:(id)set测试按钮;
-- (id)成功段;
-- (void)set成功段:(id)set成功段;
-- (id)成功跳按钮;
-- (void)set成功跳按钮:(id)set成功跳按钮;
-- (id)失败段;
-- (void)set失败段:(id)set失败段;
-- (id)失败跳按钮;
-- (void)set失败跳按钮:(id)set失败跳按钮;
-- (id)区域宽行;
-- (void)set区域宽行:(id)set区域宽行;
-- (id)区域高行;
-- (void)set区域高行:(id)set区域高行;
-- (id)成功长按行;
-- (void)set成功长按行:(id)set成功长按行;
-- (id)成功滑时行;
-- (void)set成功滑时行:(id)set成功滑时行;
-- (id)成功帧数行;
-- (void)set成功帧数行:(id)set成功帧数行;
-- (id)成功时隔行;
-- (void)set成功时隔行:(id)set成功时隔行;
-- (id)路径编辑器;
-- (void)set路径编辑器:(id)set路径编辑器;
-- (id)等待段;
-- (void)set等待段:(id)set等待段;
-- (id)等待超时行;
-- (void)set等待超时行:(id)set等待超时行;
-- (void).cxx_destruct;
+- (UISegmentedControl *)模式段;
+- (void)set模式段:(UISegmentedControl *)set模式段;
+- (UIButton *)框选按钮;
+- (void)set框选按钮:(UIButton *)set框选按钮;
+- (UIButton *)取色按钮;
+- (void)set取色按钮:(UIButton *)set取色按钮;
+- (UIView *)色点条;
+- (void)set色点条:(UIView *)set色点条;
+- (UIButton *)测试按钮;
+- (void)set测试按钮:(UIButton *)set测试按钮;
+- (UISegmentedControl *)成功段;
+- (void)set成功段:(UISegmentedControl *)set成功段;
+- (UIButton *)成功跳按钮;
+- (void)set成功跳按钮:(UIButton *)set成功跳按钮;
+- (UISegmentedControl *)失败段;
+- (void)set失败段:(UISegmentedControl *)set失败段;
+- (UIButton *)失败跳按钮;
+- (void)set失败跳按钮:(UIButton *)set失败跳按钮;
+- (参数行 *)区域宽行;
+- (void)set区域宽行:(参数行 *)set区域宽行;
+- (参数行 *)区域高行;
+- (void)set区域高行:(参数行 *)set区域高行;
+- (参数行 *)成功长按行;
+- (void)set成功长按行:(参数行 *)set成功长按行;
+- (参数行 *)成功滑时行;
+- (void)set成功滑时行:(参数行 *)set成功滑时行;
+- (参数行 *)成功帧数行;
+- (void)set成功帧数行:(参数行 *)set成功帧数行;
+- (参数行 *)成功时隔行;
+- (void)set成功时隔行:(参数行 *)set成功时隔行;
+- (命中路径编辑器 *)路径编辑器;
+- (void)set路径编辑器:(命中路径编辑器 *)set路径编辑器;
+- (UISegmentedControl *)等待段;
+- (void)set等待段:(UISegmentedControl *)set等待段;
+- (参数行 *)等待超时行;
+- (void)set等待超时行:(参数行 *)set等待超时行;
 @end
 
 @interface 试跑会话 : NSObject {
-    BOOL;                            __原循环;   // off 8
-    BOOL;                            __原开始;   // off 9
-    BOOL;                            __原停止;   // off 10
-    NSArray *;                       __组开备份;   // off 16
-    id;                              __结束时;   // off 24
-    id;                              __观察者;   // off 32
+    BOOL                                     _原循环;   // off 8
+    BOOL                                     _原开始;   // off 9
+    BOOL                                     _原停止;   // off 10
+    NSArray *                                _组开备份;   // off 16
+    id                                       _结束时;   // off 24
+    id                                       _观察者;   // off 32
 }
-@property (nonatomic) id 组开备份;
-@property (nonatomic) id 原循环;
-@property (nonatomic) id 原开始;
-@property (nonatomic) id 原停止;
-@property (nonatomic) id 结束时;
-@property (nonatomic) id 观察者;
+@property (copy, nonatomic) NSArray *组开备份;
+@property (nonatomic) BOOL 原循环;
+@property (nonatomic) BOOL 原开始;
+@property (nonatomic) BOOL 原停止;
+@property (copy, nonatomic) id 结束时;
+@property (strong, nonatomic) id 观察者;
 - (void)收尾;
-- (id)组开备份;
-- (void)set组开备份:(id)set组开备份;
+- (NSArray *)组开备份;
+- (void)set组开备份:(NSArray *)set组开备份;
 - (BOOL)原循环;
 - (void)set原循环:(BOOL)set原循环;
 - (BOOL)原开始;
@@ -2282,35 +2249,34 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)set结束时:(id)set结束时;
 - (id)观察者;
 - (void)set观察者:(id)set观察者;
-- (void).cxx_destruct;
 @end
 
 @interface 试跑选择视图 : NSObject {
-    BOOL;                            __已默认全选;   // off 8
-    id;                              __结束回调;   // off 16
-    UITableView *;                   __表;   // off 24
-    UILabel *;                       __标题;   // off 32
-    UILabel *;                       __副标题;   // off 40
-    UIButton *;                      __单选按钮;   // off 48
-    UIButton *;                      __连跑按钮;   // off 56
-    NSArray *;                       __动作;   // off 64
-    NSMutableSet *;                  __选中;   // off 72
-    动作组模型 *;                         __组;   // off 80
+    BOOL                                     _已默认全选;   // off 8
+    id                                       _结束回调;   // off 16
+    UITableView *                            _表;   // off 24
+    UILabel *                                _标题;   // off 32
+    UILabel *                                _副标题;   // off 40
+    UIButton *                               _单选按钮;   // off 48
+    UIButton *                               _连跑按钮;   // off 56
+    NSArray *                                _动作;   // off 64
+    NSMutableSet *                           _选中;   // off 72
+    动作组模型 *                                  _组;   // off 80
 }
-@property (nonatomic) id 表;
-@property (nonatomic) id 标题;
-@property (nonatomic) id 副标题;
-@property (nonatomic) id 单选按钮;
-@property (nonatomic) id 连跑按钮;
-@property (nonatomic) id 动作;
-@property (nonatomic) id 选中;
-@property (nonatomic) id 组;
-@property (nonatomic) id 已默认全选;
-@property (nonatomic) id 结束回调;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (strong, nonatomic) UITableView *表;
+@property (strong, nonatomic) UILabel *标题;
+@property (strong, nonatomic) UILabel *副标题;
+@property (strong, nonatomic) UIButton *单选按钮;
+@property (strong, nonatomic) UIButton *连跑按钮;
+@property (copy, nonatomic) NSArray *动作;
+@property (strong, nonatomic) NSMutableSet *选中;
+@property (strong, nonatomic) 动作组模型 *组;
+@property (nonatomic) BOOL 已默认全选;
+@property (copy, nonatomic) id 结束回调;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (void)设置组:(id)设置组;
 - (id)initWithFrame:(CGRect)initWithFrame;
 - (void)构建;
@@ -2327,64 +2293,62 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)关闭自己;
 - (id)结束回调;
 - (void)set结束回调:(id)set结束回调;
-- (id)表;
-- (void)set表:(id)set表;
-- (id)标题;
-- (void)set标题:(id)set标题;
-- (id)副标题;
-- (void)set副标题:(id)set副标题;
-- (id)单选按钮;
-- (void)set单选按钮:(id)set单选按钮;
-- (id)连跑按钮;
-- (void)set连跑按钮:(id)set连跑按钮;
-- (id)动作;
-- (void)set动作:(id)set动作;
-- (id)选中;
-- (void)set选中:(id)set选中;
-- (id)组;
-- (void)set组:(id)set组;
+- (UITableView *)表;
+- (void)set表:(UITableView *)set表;
+- (UILabel *)标题;
+- (void)set标题:(UILabel *)set标题;
+- (UILabel *)副标题;
+- (void)set副标题:(UILabel *)set副标题;
+- (UIButton *)单选按钮;
+- (void)set单选按钮:(UIButton *)set单选按钮;
+- (UIButton *)连跑按钮;
+- (void)set连跑按钮:(UIButton *)set连跑按钮;
+- (NSArray *)动作;
+- (void)set动作:(NSArray *)set动作;
+- (NSMutableSet *)选中;
+- (void)set选中:(NSMutableSet *)set选中;
+- (动作组模型 *)组;
+- (void)set组:(动作组模型 *)set组;
 - (BOOL)已默认全选;
 - (void)set已默认全选:(BOOL)set已默认全选;
-- (void).cxx_destruct;
 @end
 
 @interface 输入弹窗视图 : NSObject {
-    UITextField *;                   __输入框;   // off 8
-    id;                              __回调;   // off 16
+    UITextField *                            _输入框;   // off 8
+    id                                       _回调;   // off 16
 }
 - (void)取消;
 - (void)完成输入;
 - (void)收起;
 - (id)描述;
-- (void).cxx_destruct;
 @end
 
 @interface 输入选择视图 : 动作选择视图 {
-    UISegmentedControl *;            __来源段;   // off 160
-    UISegmentedControl *;            __暂存段;   // off 168
-    UISegmentedControl *;            __模式段;   // off 176
-    UITextView *;                    __文本框;   // off 184
-    UILabel *;                       __占位标签;   // off 192
-    UILabel *;                       __来源提示;   // off 200
-    UILabel *;                       __清空标签;   // off 208
-    UISwitch *;                      __清空开关;   // off 216
-    UILabel *;                       __回车标签;   // off 224
-    UISwitch *;                      __回车开关;   // off 232
+    UISegmentedControl *                     _来源段;   // off 160
+    UISegmentedControl *                     _暂存段;   // off 168
+    UISegmentedControl *                     _模式段;   // off 176
+    UITextView *                             _文本框;   // off 184
+    UILabel *                                _占位标签;   // off 192
+    UILabel *                                _来源提示;   // off 200
+    UILabel *                                _清空标签;   // off 208
+    UISwitch *                               _清空开关;   // off 216
+    UILabel *                                _回车标签;   // off 224
+    UISwitch *                               _回车开关;   // off 232
 }
-@property (copy, nonatomic) id 来源段;
-@property (copy, nonatomic) id 暂存段;
-@property (copy, nonatomic) id 模式段;
-@property (nonatomic) id 文本框;
-@property (nonatomic) id 占位标签;
-@property (nonatomic) id 来源提示;
-@property (nonatomic) id 清空标签;
-@property (nonatomic) id 清空开关;
-@property (nonatomic) id 回车标签;
-@property (nonatomic) id 回车开关;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (strong, nonatomic) UISegmentedControl *来源段;
+@property (strong, nonatomic) UISegmentedControl *暂存段;
+@property (strong, nonatomic) UISegmentedControl *模式段;
+@property (strong, nonatomic) UITextView *文本框;
+@property (strong, nonatomic) UILabel *占位标签;
+@property (strong, nonatomic) UILabel *来源提示;
+@property (strong, nonatomic) UILabel *清空标签;
+@property (strong, nonatomic) UISwitch *清空开关;
+@property (strong, nonatomic) UILabel *回车标签;
+@property (strong, nonatomic) UISwitch *回车开关;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (BOOL)显示标记;
 - (id)新建标记视图;
 - (void)构建参数;
@@ -2401,52 +2365,50 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (id)行开关:(BOOL)行开关 动作:(SEL)动作;
 - (void)收起键盘;
 - (void)textViewDidChange:(id)textViewDidChange;
-- (id)来源段;
-- (void)set来源段:(id)set来源段;
-- (id)暂存段;
-- (void)set暂存段:(id)set暂存段;
-- (id)模式段;
-- (void)set模式段:(id)set模式段;
-- (id)文本框;
-- (void)set文本框:(id)set文本框;
-- (id)占位标签;
-- (void)set占位标签:(id)set占位标签;
-- (id)来源提示;
-- (void)set来源提示:(id)set来源提示;
-- (id)清空标签;
-- (void)set清空标签:(id)set清空标签;
-- (id)清空开关;
-- (void)set清空开关:(id)set清空开关;
-- (id)回车标签;
-- (void)set回车标签:(id)set回车标签;
-- (id)回车开关;
-- (void)set回车开关:(id)set回车开关;
-- (void).cxx_destruct;
+- (UISegmentedControl *)来源段;
+- (void)set来源段:(UISegmentedControl *)set来源段;
+- (UISegmentedControl *)暂存段;
+- (void)set暂存段:(UISegmentedControl *)set暂存段;
+- (UISegmentedControl *)模式段;
+- (void)set模式段:(UISegmentedControl *)set模式段;
+- (UITextView *)文本框;
+- (void)set文本框:(UITextView *)set文本框;
+- (UILabel *)占位标签;
+- (void)set占位标签:(UILabel *)set占位标签;
+- (UILabel *)来源提示;
+- (void)set来源提示:(UILabel *)set来源提示;
+- (UILabel *)清空标签;
+- (void)set清空标签:(UILabel *)set清空标签;
+- (UISwitch *)清空开关;
+- (void)set清空开关:(UISwitch *)set清空开关;
+- (UILabel *)回车标签;
+- (void)set回车标签:(UILabel *)set回车标签;
+- (UISwitch *)回车开关;
+- (void)set回车开关:(UISwitch *)set回车开关;
 @end
 
 @interface 配置导入视图 : NSObject {
-    UITableView *;                   __表;   // off 8
-    NSMutableArray *;                __文件列表;   // off 16
+    UITableView *                            _表;   // off 8
+    NSMutableArray *                         _文件列表;   // off 16
 }
-@property (nonatomic) id 表;
-@property (nonatomic) id 文件列表;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (strong, nonatomic) UITableView *表;
+@property (strong, nonatomic) NSMutableArray *文件列表;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (void)构建;
 - (void)显示;
 - (void)关闭;
-- (id)文件列表;
+- (NSMutableArray *)文件列表;
 - (long long)tableView:(id)tableView numberOfRowsInSection:(long long)numberOfRowsInSection;
 - (id)tableView:(id)tableView cellForRowAtIndexPath:(id)cellForRowAtIndexPath;
 - (void)tableView:(id)tableView didSelectRowAtIndexPath:(id)didSelectRowAtIndexPath;
 - (BOOL)tableView:(id)tableView canEditRowAtIndexPath:(id)canEditRowAtIndexPath;
 - (void)tableView:(id)tableView commitEditingStyle:(long long)commitEditingStyle forRowAtIndexPath:(id)forRowAtIndexPath;
-- (id)表;
-- (void)set表:(id)set表;
-- (void)set文件列表:(id)set文件列表;
-- (void).cxx_destruct;
+- (UITableView *)表;
+- (void)set表:(UITableView *)set表;
+- (void)set文件列表:(NSMutableArray *)set文件列表;
 @end
 
 @interface 长按选择视图 : 动作选择视图 {
@@ -2457,61 +2419,61 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 @end
 
 @interface 问题反馈视图 : NSObject {
-    UISegmentedControl *;            __页签;   // off 8
-    UIView *;                        __提交页;   // off 16
-    UIView *;                        __工单页;   // off 24
-    UISegmentedControl *;            __分类段;   // off 32
-    UITextField *;                   __主题输入;   // off 40
-    UITextView *;                    __描述输入;   // off 48
-    UILabel *;                       __描述占位;   // off 56
-    UILabel *;                       __字数提示;   // off 64
-    UITextField *;                   __联系方式输入;   // off 72
-    UIButton *;                      __取消按钮;   // off 80
-    UIButton *;                      __提交按钮;   // off 88
-    UILabel *;                       __备用提示;   // off 96
-    UIScrollView *;                  __提交滚动;   // off 104
-    UILabel *;                       __分类标签;   // off 112
-    UILabel *;                       __主题标签;   // off 120
-    UILabel *;                       __描述标签;   // off 128
-    UILabel *;                       __联系标签;   // off 136
-    UITableView *;                   __列表;   // off 144
-    UILabel *;                       __列表空态;   // off 152
-    NSArray *;                       __工单;   // off 160
-    UIRefreshControl *;              __刷新;   // off 168
-    UITextField *;                   __工单号输入;   // off 176
-    UIButton *;                      __查询按钮;   // off 184
-    NSString *;                      __查询中的号;   // off 192
-    double;                          __键盘位移;   // off 200
+    UISegmentedControl *                     _页签;   // off 8
+    UIView *                                 _提交页;   // off 16
+    UIView *                                 _工单页;   // off 24
+    UISegmentedControl *                     _分类段;   // off 32
+    UITextField *                            _主题输入;   // off 40
+    UITextView *                             _描述输入;   // off 48
+    UILabel *                                _描述占位;   // off 56
+    UILabel *                                _字数提示;   // off 64
+    UITextField *                            _联系方式输入;   // off 72
+    UIButton *                               _取消按钮;   // off 80
+    UIButton *                               _提交按钮;   // off 88
+    UILabel *                                _备用提示;   // off 96
+    UIScrollView *                           _提交滚动;   // off 104
+    UILabel *                                _分类标签;   // off 112
+    UILabel *                                _主题标签;   // off 120
+    UILabel *                                _描述标签;   // off 128
+    UILabel *                                _联系标签;   // off 136
+    UITableView *                            _列表;   // off 144
+    UILabel *                                _列表空态;   // off 152
+    NSArray *                                _工单;   // off 160
+    UIRefreshControl *                       _刷新;   // off 168
+    UITextField *                            _工单号输入;   // off 176
+    UIButton *                               _查询按钮;   // off 184
+    NSString *                               _查询中的号;   // off 192
+    double                                   _键盘位移;   // off 200
 }
-@property (copy, nonatomic) id 页签;
-@property (nonatomic) id 提交页;
-@property (nonatomic) id 工单页;
-@property (copy, nonatomic) id 分类段;
-@property (nonatomic) id 主题输入;
-@property (nonatomic) id 描述输入;
-@property (nonatomic) id 描述占位;
-@property (nonatomic) id 字数提示;
-@property (nonatomic) id 联系方式输入;
-@property (nonatomic) id 取消按钮;
-@property (nonatomic) id 提交按钮;
-@property (nonatomic) id 备用提示;
-@property (nonatomic) id 提交滚动;
-@property (nonatomic) id 分类标签;
-@property (nonatomic) id 主题标签;
-@property (nonatomic) id 描述标签;
-@property (nonatomic) id 联系标签;
-@property (nonatomic) id 列表;
-@property (nonatomic) id 列表空态;
-@property (nonatomic) id 工单;
-@property (copy, nonatomic, readonly) id 刷新;
-@property (nonatomic) id 工单号输入;
-@property (nonatomic) id 查询按钮;
-@property (nonatomic) id 查询中的号;
-@property (nonatomic) id 键盘位移;
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (strong, nonatomic) UISegmentedControl *页签;
+@property (strong, nonatomic) UIView *提交页;
+@property (strong, nonatomic) UIView *工单页;
+@property (strong, nonatomic) UISegmentedControl *分类段;
+@property (strong, nonatomic) UITextField *主题输入;
+@property (strong, nonatomic) UITextView *描述输入;
+@property (strong, nonatomic) UILabel *描述占位;
+@property (strong, nonatomic) UILabel *字数提示;
+@property (strong, nonatomic) UITextField *联系方式输入;
+@property (strong, nonatomic) UIButton *取消按钮;
+@property (strong, nonatomic) UIButton *提交按钮;
+@property (strong, nonatomic) UILabel *备用提示;
+@property (strong, nonatomic) UIScrollView *提交滚动;
+@property (strong, nonatomic) UILabel *分类标签;
+@property (strong, nonatomic) UILabel *主题标签;
+@property (strong, nonatomic) UILabel *描述标签;
+@property (strong, nonatomic) UILabel *联系标签;
+@property (strong, nonatomic) UITableView *列表;
+@property (strong, nonatomic) UILabel *列表空态;
+@property (strong, nonatomic) NSArray *工单;
+@property (strong, nonatomic) UIRefreshControl *刷新;
+@property (strong, nonatomic) UITextField *工单号输入;
+@property (strong, nonatomic) UIButton *查询按钮;
+@property (copy, nonatomic) NSString *查询中的号;
+@property (nonatomic) double 键盘位移;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (void)显示;
 - (void)关闭;
 - (void)layoutSubviews;
@@ -2540,74 +2502,73 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (id)tableView:(id)tableView cellForRowAtIndexPath:(id)cellForRowAtIndexPath;
 - (id)状态文本:(long long)状态文本;
 - (id)渲染工单:(id)渲染工单;
-- (id)页签;
-- (void)set页签:(id)set页签;
-- (id)提交页;
-- (void)set提交页:(id)set提交页;
-- (id)工单页;
-- (void)set工单页:(id)set工单页;
-- (id)分类段;
-- (void)set分类段:(id)set分类段;
-- (id)主题输入;
-- (void)set主题输入:(id)set主题输入;
-- (id)描述输入;
-- (void)set描述输入:(id)set描述输入;
-- (id)描述占位;
-- (void)set描述占位:(id)set描述占位;
-- (id)字数提示;
-- (void)set字数提示:(id)set字数提示;
-- (id)联系方式输入;
-- (void)set联系方式输入:(id)set联系方式输入;
-- (id)取消按钮;
-- (void)set取消按钮:(id)set取消按钮;
-- (id)提交按钮;
-- (void)set提交按钮:(id)set提交按钮;
-- (id)备用提示;
-- (void)set备用提示:(id)set备用提示;
-- (id)提交滚动;
-- (void)set提交滚动:(id)set提交滚动;
-- (id)分类标签;
-- (void)set分类标签:(id)set分类标签;
-- (id)主题标签;
-- (void)set主题标签:(id)set主题标签;
-- (id)描述标签;
-- (void)set描述标签:(id)set描述标签;
-- (id)联系标签;
-- (void)set联系标签:(id)set联系标签;
-- (id)列表;
-- (void)set列表:(id)set列表;
-- (id)列表空态;
-- (void)set列表空态:(id)set列表空态;
-- (id)工单;
-- (void)set工单:(id)set工单;
-- (id)刷新;
-- (void)set刷新:(id)set刷新;
-- (id)工单号输入;
-- (void)set工单号输入:(id)set工单号输入;
-- (id)查询按钮;
-- (void)set查询按钮:(id)set查询按钮;
-- (id)查询中的号;
-- (void)set查询中的号:(id)set查询中的号;
+- (UISegmentedControl *)页签;
+- (void)set页签:(UISegmentedControl *)set页签;
+- (UIView *)提交页;
+- (void)set提交页:(UIView *)set提交页;
+- (UIView *)工单页;
+- (void)set工单页:(UIView *)set工单页;
+- (UISegmentedControl *)分类段;
+- (void)set分类段:(UISegmentedControl *)set分类段;
+- (UITextField *)主题输入;
+- (void)set主题输入:(UITextField *)set主题输入;
+- (UITextView *)描述输入;
+- (void)set描述输入:(UITextView *)set描述输入;
+- (UILabel *)描述占位;
+- (void)set描述占位:(UILabel *)set描述占位;
+- (UILabel *)字数提示;
+- (void)set字数提示:(UILabel *)set字数提示;
+- (UITextField *)联系方式输入;
+- (void)set联系方式输入:(UITextField *)set联系方式输入;
+- (UIButton *)取消按钮;
+- (void)set取消按钮:(UIButton *)set取消按钮;
+- (UIButton *)提交按钮;
+- (void)set提交按钮:(UIButton *)set提交按钮;
+- (UILabel *)备用提示;
+- (void)set备用提示:(UILabel *)set备用提示;
+- (UIScrollView *)提交滚动;
+- (void)set提交滚动:(UIScrollView *)set提交滚动;
+- (UILabel *)分类标签;
+- (void)set分类标签:(UILabel *)set分类标签;
+- (UILabel *)主题标签;
+- (void)set主题标签:(UILabel *)set主题标签;
+- (UILabel *)描述标签;
+- (void)set描述标签:(UILabel *)set描述标签;
+- (UILabel *)联系标签;
+- (void)set联系标签:(UILabel *)set联系标签;
+- (UITableView *)列表;
+- (void)set列表:(UITableView *)set列表;
+- (UILabel *)列表空态;
+- (void)set列表空态:(UILabel *)set列表空态;
+- (NSArray *)工单;
+- (void)set工单:(NSArray *)set工单;
+- (UIRefreshControl *)刷新;
+- (void)set刷新:(UIRefreshControl *)set刷新;
+- (UITextField *)工单号输入;
+- (void)set工单号输入:(UITextField *)set工单号输入;
+- (UIButton *)查询按钮;
+- (void)set查询按钮:(UIButton *)set查询按钮;
+- (NSString *)查询中的号;
+- (void)set查询中的号:(NSString *)set查询中的号;
 - (double)键盘位移;
 - (void)set键盘位移:(double)set键盘位移;
-- (void).cxx_destruct;
 @end
 
 @interface 颜色取样视图 : NSObject {
-    UIImage *;                       __截图;   // off 8
-    UIView *;                        __框;   // off 16
-    NSMutableArray *;                __点组;   // off 24
-    NSMutableArray *;                __点标;   // off 32
-    UIView *;                        __按钮条;   // off 40
-    id;                              __完成;   // off 48
-    id;                              __取消;   // off 56
-    long long;                       __拖动序号;   // off 64
-    CGPoint;                         __拖动偏移;   // off 72
+    UIImage *                                _截图;   // off 8
+    UIView *                                 _框;   // off 16
+    NSMutableArray *                         _点组;   // off 24
+    NSMutableArray *                         _点标;   // off 32
+    UIView *                                 _按钮条;   // off 40
+    id                                       _完成;   // off 48
+    id                                       _取消;   // off 56
+    long long                                _拖动序号;   // off 64
+    CGPoint                                  _拖动偏移;   // off 72
 }
-@property (nonatomic) id hash;
-@property (nonatomic) id superclass;
-@property (nonatomic) id description;
-@property (nonatomic) id debugDescription;
+@property (atomic, readonly) unsigned long long hash;
+@property (atomic, readonly) Class superclass;
+@property (copy, atomic, readonly) NSString *description;
+@property (copy, atomic, readonly) NSString *debugDescription;
 - (id)initWithFrame:(CGRect)initWithFrame 截图:(id)截图 区域:(CGRect)区域 点组:(id)点组;
 - (CGPoint)点位:(id)点位;
 - (void)刷新点标;
@@ -2618,5 +2579,4 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 - (void)拖动色点:(id)拖动色点;
 - (void)确认取样;
 - (void)取消取样;
-- (void).cxx_destruct;
 @end

@@ -35,7 +35,7 @@
     // 0x04a888  mov      x29, x29                                
 }
 
-- (void)set路径点:(id)set路径点 {   // 0x4a91c
+- (void)set路径点:(NSArray *)set路径点 {   // 0x4a91c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 set路径点: 即可补全。
     // 0x04a91c  stp      x20, x19, [sp, #-0x20]!                 
@@ -430,7 +430,7 @@
     // 0x04bec8  ldr      x22, [x8]                               
 }
 
-- (id)宿主 {   // 0x4c080
+- (UIView *)宿主 {   // 0x4c080
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 宿主 即可补全。
     // 0x04c080  stp      x29, x30, [sp, #-0x10]!                 
@@ -441,7 +441,7 @@
     // 0x04c094  b        #0x68f98                                ; _objc_autoreleaseReturnValue
 }
 
-- (void)set宿主:(id)set宿主 {   // 0x4c098
+- (void)set宿主:(UIView *)set宿主 {   // 0x4c098
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 set宿主: 即可补全。
     // 0x04c098  mov      x1, x2                                  
@@ -449,7 +449,7 @@
     // 0x04c0a0  b        #0x690ac                                ; _objc_storeWeak
 }
 
-- (id)面板 {   // 0x4c0a4
+- (UIView *)面板 {   // 0x4c0a4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 面板 即可补全。
     // 0x04c0a4  stp      x29, x30, [sp, #-0x10]!                 
@@ -460,7 +460,7 @@
     // 0x04c0b8  b        #0x68f98                                ; _objc_autoreleaseReturnValue
 }
 
-- (void)set面板:(id)set面板 {   // 0x4c0bc
+- (void)set面板:(UIView *)set面板 {   // 0x4c0bc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 set面板: 即可补全。
     // 0x04c0bc  mov      x1, x2                                  
@@ -468,7 +468,7 @@
     // 0x04c0c4  b        #0x690ac                                ; _objc_storeWeak
 }
 
-- (id)容器 {   // 0x4c0c8
+- (UIView *)容器 {   // 0x4c0c8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 容器 即可补全。
     // 0x04c0c8  stp      x29, x30, [sp, #-0x10]!                 
@@ -479,7 +479,7 @@
     // 0x04c0dc  b        #0x68f98                                ; _objc_autoreleaseReturnValue
 }
 
-- (void)set容器:(id)set容器 {   // 0x4c0e0
+- (void)set容器:(UIView *)set容器 {   // 0x4c0e0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 命中路径编辑器 set容器: 即可补全。
     // 0x04c0e0  mov      x1, x2                                  
@@ -487,12 +487,12 @@
     // 0x04c0e8  b        #0x690ac                                ; _objc_storeWeak
 }
 
-- (id)路径点 {   // 0x4c0ec
-    return __路径点;
+- (NSArray *)路径点 {   // 0x4c0ec
+    return _路径点;
 }
 
 - (id)变化 {   // 0x4c0f4
-    return __变化;
+    return _变化;
 }
 
 - (void)set变化:(id)set变化 {   // 0x4c0fc
@@ -517,11 +517,11 @@
 }
 
 - (BOOL)起点已被用户拖动 {   // 0x4c114
-    return __起点已被用户拖动;
+    return _起点已被用户拖动;
 }
 
 - (void)set起点已被用户拖动:(BOOL)set起点已被用户拖动 {   // 0x4c11c
-    __起点已被用户拖动 = set起点已被用户拖动;
+    _起点已被用户拖动 = set起点已被用户拖动;
 }
 
 - (CGRect)列表区 {   // 0x4c124

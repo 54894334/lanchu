@@ -637,7 +637,7 @@
     // 0x04909c  bl       #0x728c0                                ; [x0 模式段] x2, x3, x4, x5, x6, x7
 }
 
-- (id)点们 {   // 0x49164
+- (NSMutableArray *)点们 {   // 0x49164
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 点们 即可补全。
     // 0x049164  adrp     x8, #0xad000                            
@@ -645,7 +645,7 @@
     // 0x04916c  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set点们:(id)set点们 {   // 0x49170
+- (void)set点们:(NSMutableArray *)set点们 {   // 0x49170
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set点们: 即可补全。
     // 0x049170  mov      x1, x2                                  
@@ -654,7 +654,7 @@
     // 0x04917c  b        #0x60194                                ; func_0x60194
 }
 
-- (id)标签们 {   // 0x49180
+- (NSMutableArray *)标签们 {   // 0x49180
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 标签们 即可补全。
     // 0x049180  adrp     x8, #0xad000                            
@@ -662,7 +662,7 @@
     // 0x049188  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set标签们:(id)set标签们 {   // 0x4918c
+- (void)set标签们:(NSMutableArray *)set标签们 {   // 0x4918c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set标签们: 即可补全。
     // 0x04918c  mov      x1, x2                                  
@@ -671,7 +671,7 @@
     // 0x049198  b        #0x60194                                ; func_0x60194
 }
 
-- (id)连线们 {   // 0x4919c
+- (NSMutableArray *)连线们 {   // 0x4919c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 连线们 即可补全。
     // 0x04919c  adrp     x8, #0xad000                            
@@ -679,7 +679,7 @@
     // 0x0491a4  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set连线们:(id)set连线们 {   // 0x491a8
+- (void)set连线们:(NSMutableArray *)set连线们 {   // 0x491a8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set连线们: 即可补全。
     // 0x0491a8  mov      x1, x2                                  
@@ -688,7 +688,7 @@
     // 0x0491b4  b        #0x60194                                ; func_0x60194
 }
 
-- (id)模式段 {   // 0x491b8
+- (UISegmentedControl *)模式段 {   // 0x491b8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 模式段 即可补全。
     // 0x0491b8  adrp     x8, #0xad000                            
@@ -696,7 +696,7 @@
     // 0x0491c0  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set模式段:(id)set模式段 {   // 0x491c4
+- (void)set模式段:(UISegmentedControl *)set模式段 {   // 0x491c4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set模式段: 即可补全。
     // 0x0491c4  mov      x1, x2                                  
@@ -705,7 +705,7 @@
     // 0x0491d0  b        #0x60194                                ; func_0x60194
 }
 
-- (id)添加组按钮 {   // 0x491d4
+- (UIButton *)添加组按钮 {   // 0x491d4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 添加组按钮 即可补全。
     // 0x0491d4  adrp     x8, #0xad000                            
@@ -713,7 +713,7 @@
     // 0x0491dc  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set添加组按钮:(id)set添加组按钮 {   // 0x491e0
+- (void)set添加组按钮:(UIButton *)set添加组按钮 {   // 0x491e0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set添加组按钮: 即可补全。
     // 0x0491e0  mov      x1, x2                                  
@@ -722,7 +722,7 @@
     // 0x0491ec  b        #0x60194                                ; func_0x60194
 }
 
-- (id)组列表容器 {   // 0x491f0
+- (UIView *)组列表容器 {   // 0x491f0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 组列表容器 即可补全。
     // 0x0491f0  adrp     x8, #0xad000                            
@@ -730,7 +730,7 @@
     // 0x0491f8  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set组列表容器:(id)set组列表容器 {   // 0x491fc
+- (void)set组列表容器:(UIView *)set组列表容器 {   // 0x491fc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 自由滑动选择视图 set组列表容器: 即可补全。
     // 0x0491fc  mov      x1, x2                                  

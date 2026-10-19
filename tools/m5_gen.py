@@ -169,21 +169,26 @@ def simple_body(cls, m):
     # 空方法
     if ops == [('ret', '')]:
         return ''
+    # setter 绝不能还原成 return —— 否则 void 方法里 return 值，编译就废了
+    is_setter = m['sel'].startswith('set') and m['sel'].endswith(':') and bool(sel_parts(m['sel']))
+    sargs = sel_parts(m['sel'])
+    pname = sargs[0] if sargs else 'value'
     if len(ops) == 2 and ops[1] == ('ret', ''):
         mn, op = ops[0]
-        mm = re.match(r'(w0|x0|d0|s0|x1), \[x0, #(0x[0-9a-f]+|\d+)\]', op)
-        if mm:
-            off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
-            iv = ivar_by_offset(cls, off)
-            if iv:
-                return 'return _%s;' % iv['name']
-        mm = re.match(r'(w2|x2|d0|s0), \[x0, #(0x[0-9a-f]+|\d+)\]', op)
-        if mm and m['sel'].startswith('set') and m['sel'].endswith(':'):
-            off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
-            iv = ivar_by_offset(cls, off)
-            if iv:
-                pname = sel_parts(m['sel'])[0] if sel_parts(m['sel']) else 'value'
-                return '_%s = %s;' % (iv['name'], pname)
+        if not is_setter:
+            mm = re.match(r'(w0|x0|d0|s0|x1), \[x0, #(0x[0-9a-f]+|\d+)\]', op)
+            if mm:
+                off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
+                iv = ivar_by_offset(cls, off)
+                if iv:
+                    return 'return %s;' % iv['name']
+        else:
+            mm = re.match(r'(w0|x0|d0|s0|x1|w2|x2), \[x0, #(0x[0-9a-f]+|\d+)\]', op)
+            if mm:
+                off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
+                iv = ivar_by_offset(cls, off)
+                if iv:
+                    return '%s = %s;' % (iv['name'], pname)
     # self 被搬到 x19/x20 后再访问 ivar（ARC 常见）
     if len(ops) <= 6:
         self_regs = set()
@@ -194,18 +199,17 @@ def simple_body(cls, m):
         for sr in self_regs:
             for mn, op in ops:
                 mm = re.match(r'(w0|x0|d0|s0), \[%s, #(0x[0-9a-f]+|\d+)\]' % sr, op)
-                if mm and mn in ('ldr', 'ldrb', 'ldrh', 'ldur', 'ldurb'):
+                if mm and mn in ('ldr', 'ldrb', 'ldrh', 'ldur', 'ldurb') and not is_setter:
                     off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
                     iv = ivar_by_offset(cls, off)
                     if iv:
-                        return 'return _%s;' % iv['name']
-                mm = re.match(r'(w2|x2|d0|s0), \[%s, #(0x[0-9a-f]+|\d+)\]' % sr, op)
-                if mm and mn in ('str', 'strb', 'strh', 'stur', 'sturb') and m['sel'].endswith(':'):
+                        return 'return %s;' % iv['name']
+                mm = re.match(r'(w0|x0|d0|s0|w2|x2), \[%s, #(0x[0-9a-f]+|\d+)\]' % sr, op)
+                if mm and mn in ('str', 'strb', 'strh', 'stur', 'sturb') and is_setter:
                     off = int(mm.group(2), 16) if mm.group(2).startswith('0x') else int(mm.group(2))
                     iv = ivar_by_offset(cls, off)
                     if iv:
-                        pn = sel_parts(m['sel'])[0] or 'value'
-                        return '_%s = %s;' % (iv['name'], pn)
+                        return '%s = %s;' % (iv['name'], pname)
 
     # 对象 setter：retain + 写 ivar + release
     if m['sel'].startswith('set') and m['sel'].endswith(':'):
@@ -217,7 +221,7 @@ def simple_body(cls, m):
                 iv = ivar_by_offset(cls, off)
                 if iv:
                     pname = sel_parts(m['sel'])[0]
-                    return '_%s = %s;' % (iv['name'], pname)
+                    return '%s = %s;' % (iv['name'], pname)
     # getter 直接返回 ivar（x0 经 x19/x20 间接）
     return None
 
@@ -286,24 +290,122 @@ FILENAME = {
     'CQ匹配结果': 'CQMatchResult',
 }
 
-def type_decl_of_ivar(iv):
-    t = iv['type']
+def decode_type_enc(t):
+    """把一个完整类型编码（ivar 的 type / 属性的 T 段）翻成 C 声明"""
+    t = t.strip()
+    if not t:
+        return 'id'
     if t.startswith('@"'):
-        cls = t[2:-1]
+        k = t.find('"', 2)
+        cls = t[2:k] if k > 0 else t[2:]
+        if cls.startswith('<') or not cls:
+            return 'id'          # @"<Protocol>" 之类
         return cls + ' *'
     if t.startswith('{'):
         name = t[1:t.index('=')] if '=' in t else t[1:-1]
         return STRUCTS.get(name, 'void *')
-    if t == '@':
-        return 'id'
-    if t == '@?':
-        return 'id'
+    if t.startswith('['):
+        return 'void *'
     if t.startswith('^'):
         return 'void *'
+    if t.startswith('@?'):
+        return 'id'
+    if t == '@':
+        return 'id'
     return PRIM.get(t, 'id')
 
 
+def type_decl_of_ivar(iv):
+    return decode_type_enc(iv['type'])
+
+
+def is_obj_type(t):
+    return t.endswith('*') or t in ('id', 'Class')
+
+
+def split_prop_attrs(a):
+    """属性字符串按逗号切段，但要跳过 @"..." 引号内和 {..}(..)[..] 括号内的逗号"""
+    parts, cur = [], ''
+    quote = False
+    depth = 0
+    for ch in a:
+        if ch == '"':
+            quote = not quote
+            cur += ch
+        elif quote:
+            cur += ch
+        elif ch in '{([<':
+            depth += 1
+            cur += ch
+        elif ch in '})]>':
+            depth -= 1
+            cur += ch
+        elif ch == ',' and depth == 0:
+            parts.append(cur)
+            cur = ''
+        else:
+            cur += ch
+    if cur:
+        parts.append(cur)
+    return parts
+
+
+def parse_prop(p):
+    """返回 dict(type/ivar/copy/strong/weak/readonly/nonatomic/atomic/dynamic)"""
+    out = {'type': 'id', 'ivar': None, 'copy': False, 'strong': False,
+           'weak': False, 'readonly': False, 'nonatomic': False, 'dynamic': False}
+    for seg in split_prop_attrs(p['attrs']):
+        if seg.startswith('T'):
+            out['type'] = decode_type_enc(seg[1:])
+            continue
+        if seg.startswith('V'):
+            out['ivar'] = seg[1:]
+            continue
+        if seg == 'C':
+            out['copy'] = True
+        elif seg == '&':
+            out['strong'] = True
+        elif seg == 'W':
+            out['weak'] = True
+        elif seg == 'R':
+            out['readonly'] = True
+        elif seg == 'N':
+            out['nonatomic'] = True
+        elif seg == 'D':
+            out['dynamic'] = True
+        # G/S 只是改存取器名，声明属性时不需要
+    return out
+
+
+def prop_types(c):
+    """{属性名: C 类型}；属性存取器的签名必须和属性类型一致，否则 clang 报冲突"""
+    return {p['name']: parse_prop(p)['type'] for p in c['props']}
+
+
+def method_sig(c, m, ptypes):
+    """生成方法签名；属性存取器强制用属性类型"""
+    sel = m['sel']
+    ret, args = parse_encoding(m['type'])
+    if sel in ptypes and not sel_parts(sel):
+        ret = ptypes[sel]
+    if sel.startswith('set') and sel.endswith(':') and sel[3:-1] in ptypes:
+        if args:
+            args = [ptypes[sel[3:-1]]] + args[1:]
+        else:
+            args = [ptypes[sel[3:-1]]]
+    parts = sel_parts(sel)
+    if not parts:
+        return '- (%s)%s' % (ret, sel)
+    segs = []
+    for i, nm in enumerate(parts):
+        a = args[i] if i < len(args) else 'id'
+        an = nm if nm else ('arg%d' % i)
+        segs.append('%s:(%s)%s' % (nm, a, an))
+    return '- (%s)%s' % (ret, ' '.join(segs))
+
+
 def gen_header(classes):
+    cls_by_name = {c['name']: c for c in classes}
     L = []
     L.append('//')
     L.append('//  LZLanchu.h — 懒触 v1.0.35 逆向还原工程（接口层）')
@@ -327,42 +429,64 @@ def gen_header(classes):
         cls = c['name']
         sup = c['superclass'] if c['superclass'] != 'ROOT' else 'NSObject'
         L.append('@interface %s : %s {' % (cls, sup))
+        # 属性 → 后备 ivar，用来对齐 ivar 声明与属性类型（类型不一致会编译报错）
+        backing = {}
+        for p in c['props']:
+            pa = parse_prop(p)
+            if pa['ivar']:
+                backing[pa['ivar']] = pa['type']
+        # 父类已声明的 ivar 名不能再声明一次
+        inherited = set()
+        seen = set()
+        cur = sup
+        chain = 0
+        while cur and chain < 16:
+            pc = cls_by_name.get(cur)
+            if not pc:
+                break
+            for iv in pc['ivars']:
+                inherited.add(iv['name'])
+            cur = pc['superclass'] if pc['superclass'] != 'ROOT' else None
+            chain += 1
         if c['ivars']:
             for iv in sorted(c['ivars'], key=lambda x: x['offset']):
-                L.append('    %-32s _%s;   // off %d' % (type_decl_of_ivar(iv) + ';', iv['name'], iv['offset']))
+                nm = iv['name']
+                if nm in inherited:
+                    L.append('    // %-40s 继承自 %s（off %d）' % (nm + ';', sup, iv['offset']))
+                    continue
+                if nm in seen:
+                    continue
+                seen.add(nm)
+                decl = backing.get(nm) or type_decl_of_ivar(iv)
+                L.append('    %-40s %s;   // off %d' % (decl, nm, iv['offset']))
         L.append('}')
         # 属性
         for p in c['props']:
-            attrs = p['attrs']
+            pa = parse_prop(p)
+            t = pa['type']
             keep = []
-            if 'C' in attrs.split(',')[0]:
+            if pa['copy'] and is_obj_type(t):
                 keep.append('copy')
-            elif '&' in attrs.split(',')[0]:
+            elif pa['strong'] and is_obj_type(t):
                 keep.append('strong')
-            keep.append('nonatomic')
-            if 'R' in attrs.split(',')[0]:
+            elif pa['weak'] and is_obj_type(t):
+                keep.append('weak')
+            keep.append('nonatomic' if pa['nonatomic'] else 'atomic')
+            if pa['readonly']:
                 keep.append('readonly')
-            t = None
-            for iv in c['ivars']:
-                if '_' + p['name'] == '_' + iv['name']:
-                    t = type_decl_of_ivar(iv)
-                    break
-            if not t:
-                t = 'id'
-            L.append('@property (%s) %s%s;' % (', '.join(keep), t, '' if t.endswith('*') else ' ', p['name']) if t.endswith('*')
-                     else '@property (%s) %s %s;' % (', '.join(keep), t, p['name']))
+            if pa['dynamic']:
+                keep.append('dynamic')
+            L.append('@property (%s) %s%s%s;' % (
+                ', '.join(keep), t, '' if t.endswith('*') else ' ', p['name']))
+        # 方法（.cxx_destruct / .cxx_construct 这类 SEL 不能声明；同名只声明一次）
+        ptypes = prop_types(c)
+        decl_done = set()
         for m in c['methods']:
-            ret, args = parse_encoding(m['type'])
-            parts = sel_parts(m['sel'])
-            if not parts:
-                L.append('- (%s)%s;' % (ret, m['sel']))
-            else:
-                segs = []
-                for i, nm in enumerate(parts):
-                    a = args[i] if i < len(args) else 'id'
-                    an = nm if nm else ('arg%d' % i)
-                    segs.append('%s:(%s)%s' % (nm, a, an))
-                L.append('- (%s)%s;' % (ret, ' '.join(segs)))
+            sel = m['sel']
+            if sel.startswith('.') or sel in decl_done:
+                continue
+            decl_done.add(sel)
+            L.append(method_sig(c, m, ptypes) + ';')
         L.append('@end')
         L.append('')
     return '\n'.join(L)
@@ -379,31 +503,25 @@ def gen_impl(c, autogen_ratio):
     L.append('#import "LZRuntime.h"')
     L.append('')
     L.append('@implementation %s' % cls)
-    # synthesize 属性
-    prop_ivars = {}
+    # 只在「属性没有任何手写存取器」时才 @synthesize；
+    # 有存取器时交给头文件里已声明的 ivar，避免与自动合成冲突。
+    sels = {m['sel'] for m in c['methods']}
     for p in c['props']:
-        for iv in c['ivars']:
-            if iv['name'] == p['name']:
-                prop_ivars[p['name']] = iv['name']
-    for p, ivn in prop_ivars.items():
-        L.append('@synthesize %s = _%s;' % (p, ivn))
+        pa = parse_prop(p)
+        name = p['name']
+        if name in sels or ('set%s:' % name) in sels:
+            continue
+        if not pa['ivar']:
+            continue
+        L.append('@synthesize %s = %s;' % (name, pa['ivar']))
     L.append('')
     todo = 0
+    ptypes = prop_types(c)
     for m in c['methods']:
-        if m['sel'] in ('.cxx_destruct',):
+        if m['sel'].startswith('.'):
             continue
         # 若该方法是属性存取器且已 synthesize，跳过（除非手写实现有额外逻辑）
-        ret, args = parse_encoding(m['type'])
-        parts = sel_parts(m['sel'])
-        if parts:
-            segs = []
-            for i, nm in enumerate(parts):
-                a = args[i] if i < len(args) else 'id'
-                an = nm if nm else ('arg%d' % i)
-                segs.append('%s:(%s)%s' % (nm, a, an))
-            sig = '- (%s)%s' % (ret, ' '.join(segs))
-        else:
-            sig = '- (%s)%s' % (ret, m['sel'])
+        sig = method_sig(c, m, ptypes)
         body = simple_body(c, m)
         L.append('%s {   // 0x%x' % (sig, m['imp']))
         if body is not None:

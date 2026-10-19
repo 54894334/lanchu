@@ -255,7 +255,7 @@
     // 0x045db4  b        #0x60ccc                                ; func_0x60ccc
 }
 
-- (id)标记们 {   // 0x45db8
+- (NSMutableArray *)标记们 {   // 0x45db8
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 多点选择视图 标记们 即可补全。
     // 0x045db8  adrp     x8, #0xad000                            
@@ -263,7 +263,7 @@
     // 0x045dc0  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set标记们:(id)set标记们 {   // 0x45dc4
+- (void)set标记们:(NSMutableArray *)set标记们 {   // 0x45dc4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 多点选择视图 set标记们: 即可补全。
     // 0x045dc4  mov      x1, x2                                  
@@ -272,7 +272,7 @@
     // 0x045dd0  b        #0x60194                                ; func_0x60194
 }
 
-- (id)标签们 {   // 0x45dd4
+- (NSMutableArray *)标签们 {   // 0x45dd4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 多点选择视图 标签们 即可补全。
     // 0x045dd4  adrp     x8, #0xad000                            
@@ -280,7 +280,7 @@
     // 0x045ddc  b        #0x601f8                                ; func_0x601f8
 }
 
-- (void)set标签们:(id)set标签们 {   // 0x45de0
+- (void)set标签们:(NSMutableArray *)set标签们 {   // 0x45de0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 多点选择视图 set标签们: 即可补全。
     // 0x045de0  mov      x1, x2                                  

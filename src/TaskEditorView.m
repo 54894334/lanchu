@@ -639,7 +639,7 @@
     // 0x02a0d8  mov      x0, x20                                 
 }
 
-- (id)表 {   // 0x2a8e0
+- (UITableView *)表 {   // 0x2a8e0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 表 即可补全。
     // 0x02a8e0  adrp     x8, #0xad000                            
@@ -647,7 +647,7 @@
     // 0x02a8e8  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set表:(id)set表 {   // 0x2a8ec
+- (void)set表:(UITableView *)set表 {   // 0x2a8ec
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set表: 即可补全。
     // 0x02a8ec  mov      x1, x2                                  
@@ -656,7 +656,7 @@
     // 0x02a8f8  b        #0x2aa74                                ; func_0x2aa74
 }
 
-- (id)标题 {   // 0x2a8fc
+- (UILabel *)标题 {   // 0x2a8fc
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 标题 即可补全。
     // 0x02a8fc  adrp     x8, #0xad000                            
@@ -664,7 +664,7 @@
     // 0x02a904  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set标题:(id)set标题 {   // 0x2a908
+- (void)set标题:(UILabel *)set标题 {   // 0x2a908
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set标题: 即可补全。
     // 0x02a908  mov      x1, x2                                  
@@ -673,7 +673,7 @@
     // 0x02a914  b        #0x2aa74                                ; func_0x2aa74
 }
 
-- (id)左按钮 {   // 0x2a918
+- (UIButton *)左按钮 {   // 0x2a918
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 左按钮 即可补全。
     // 0x02a918  adrp     x8, #0xad000                            
@@ -681,7 +681,7 @@
     // 0x02a920  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set左按钮:(id)set左按钮 {   // 0x2a924
+- (void)set左按钮:(UIButton *)set左按钮 {   // 0x2a924
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set左按钮: 即可补全。
     // 0x02a924  mov      x1, x2                                  
@@ -690,7 +690,7 @@
     // 0x02a930  b        #0x2aa74                                ; func_0x2aa74
 }
 
-- (id)右按钮 {   // 0x2a934
+- (UIButton *)右按钮 {   // 0x2a934
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 右按钮 即可补全。
     // 0x02a934  adrp     x8, #0xad000                            
@@ -698,7 +698,7 @@
     // 0x02a93c  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set右按钮:(id)set右按钮 {   // 0x2a940
+- (void)set右按钮:(UIButton *)set右按钮 {   // 0x2a940
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set右按钮: 即可补全。
     // 0x02a940  mov      x1, x2                                  
@@ -707,7 +707,7 @@
     // 0x02a94c  b        #0x2aa74                                ; func_0x2aa74
 }
 
-- (id)新增动作按钮 {   // 0x2a950
+- (UIButton *)新增动作按钮 {   // 0x2a950
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 新增动作按钮 即可补全。
     // 0x02a950  adrp     x8, #0xad000                            
@@ -715,7 +715,7 @@
     // 0x02a958  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set新增动作按钮:(id)set新增动作按钮 {   // 0x2a95c
+- (void)set新增动作按钮:(UIButton *)set新增动作按钮 {   // 0x2a95c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set新增动作按钮: 即可补全。
     // 0x02a95c  mov      x1, x2                                  
@@ -724,7 +724,7 @@
     // 0x02a968  b        #0x2aa74                                ; func_0x2aa74
 }
 
-- (id)试跑按钮 {   // 0x2a96c
+- (UIButton *)试跑按钮 {   // 0x2a96c
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 试跑按钮 即可补全。
     // 0x02a96c  adrp     x8, #0xad000                            
@@ -732,7 +732,7 @@
     // 0x02a974  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set试跑按钮:(id)set试跑按钮 {   // 0x2a978
+- (void)set试跑按钮:(UIButton *)set试跑按钮 {   // 0x2a978
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set试跑按钮: 即可补全。
     // 0x02a978  mov      x1, x2                                  
@@ -758,7 +758,7 @@
     // 0x02a9a0  ret                                              
 }
 
-- (id)当前组 {   // 0x2a9a4
+- (动作组模型 *)当前组 {   // 0x2a9a4
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 当前组 即可补全。
     // 0x02a9a4  adrp     x8, #0xad000                            
@@ -766,7 +766,7 @@
     // 0x02a9ac  b        #0x2ab24                                ; func_0x2ab24
 }
 
-- (void)set当前组:(id)set当前组 {   // 0x2a9b0
+- (void)set当前组:(动作组模型 *)set当前组 {   // 0x2a9b0
     // TODO(逆向): 该方法的完整逻辑尚未逐条还原，下面是原二进制反汇编，
     //              对照 analysis/all.asm 里的 任务编辑视图 set当前组: 即可补全。
     // 0x02a9b0  mov      x1, x2                                  
