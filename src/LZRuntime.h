@@ -10,6 +10,9 @@
 #pragma mark - IOHID 私有函数（全部 dlsym 拿，避免链接期依赖私有 tbd）
 
 typedef struct __IOHIDEvent *IOHIDEventRef;
+// IOFixed 是 IOKit 里的 16.16 定点数，Theos 公开 SDK 不带 IOKit 头，
+// 这里按真实宽度自己定义（int32_t，与 IOFixed 二进制布局一致）。
+typedef int32_t LZIOFixed;
 typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 
 // IOHIDEventType / IOHIDEventField 里用到的几个常量
@@ -35,10 +38,10 @@ typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
 
 typedef IOHIDEventRef (*LZCreateDigitizerEventFn)(CFAllocatorRef, int64_t, int, uint32_t,
                                                   uint32_t, uint32_t, uint32_t,
-                                                  IOFixed, IOFixed, IOFixed, IOFixed, IOFixed,
+                                                  LZIOFixed, LZIOFixed, LZIOFixed, LZIOFixed, LZIOFixed,
                                                   Boolean, Boolean, uint32_t);
 typedef IOHIDEventRef (*LZCreateFingerEventFn)(CFAllocatorRef, int64_t, uint32_t, uint32_t,
-                                               uint32_t, IOFixed, IOFixed, Boolean, Boolean,
+                                               uint32_t, LZIOFixed, LZIOFixed, Boolean, Boolean,
                                                uint32_t);
 typedef IOHIDEventSystemClientRef (*LZClientCreateFn)(CFAllocatorRef);
 typedef void (*LZDispatchEventFn)(IOHIDEventSystemClientRef, IOHIDEventRef);
